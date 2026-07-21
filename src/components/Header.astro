@@ -122,8 +122,8 @@ const otherHref = switchLocaleHref(pathname, lang === 'zh' ? 'en' : 'zh');
 
   .header-actions { display: flex; align-items: center; gap: 0.35rem; flex-shrink: 0; }
   .lang-switch {
-    font-family: var(--font-head); font-weight: 700; font-size: 0.9rem; color: var(--c-ink-strong);
-    padding: 0.45em 0.7em; border-radius: var(--radius-pill); border: 1.5px solid var(--c-line-strong);
+    font-family: var(--font-head); font-weight: 700; font-size: var(--fs-400); line-height: 1; color: var(--c-ink-strong);
+    padding: 0.85em 1.1em; border-radius: var(--radius-pill); border: 1.5px solid var(--c-line-strong);
     transition: border-color 0.15s ease, color 0.15s ease;
   }
   .lang-switch:hover { color: var(--c-accent-strong); border-color: var(--c-accent); }
