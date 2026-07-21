@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import CTABand from '../CTABand.astro';
+import Icon from '../Icon.astro';
+import { getLang } from '../../i18n/utils';
+import { ROUTES } from '../../i18n/ui';
+import { company } from '../../i18n/company';
+import { contentJobs, engineeringJobs, employmentLabel, type Job } from '../../data/careers';
+
+const lang = getLang(Astro.currentLocale);
+
+const c = {
+  zh: {
+    eyebrow: '人才招募',
+    title: '加入遊遊',
+    lead: '把台灣人才帶向國際，把國際人才帶進台灣。我們是遠端優先、扁平、直接的團隊，找的是能自主安排工作、對成果負責的夥伴。',
+    contentTitle: '內容與社群',
+    contentLead: '品牌社群與活動',
+    contentDesc: '經營自家與客戶的品牌社群，企劃並執行實體與線上活動。',
+    engTitle: '遠端派遣工程師',
+    engLead: '日本大型系統專案',
+    engDesc: '團隊涵蓋後端、前端、雲端、AI 與系統架構，全程遠端協作。專案規模：同時在線 16 萬人、系統可用率 99.9%。實際條件與時區配合方式將於面談說明。',
+    respLabel: '工作內容',
+    reqLabel: '條件要求',
+    bonusLabel: '加分條件',
+    stackLabel: '技術關鍵字',
+    applyTitle: '應徵方式',
+    applyLead: '請將履歷寄至下方信箱，主旨註明應徵職缺。',
+    applyContent: '應徵社群小編或活動企劃，請一併附上：(1) 經營過或參與過的社群、活動（連結或截圖，個人帳號也可以）；(2) 一張自己用 Canva 製作的圖；(3) 一句話：挑一個你有在追蹤的品牌，說說它的社群現在最該改進的一件事。',
+    applyEng: '應徵工程職缺，請附上履歷與 GitHub 或作品集連結，主旨註明應徵角色（可複選）。',
+    applyBtn: '寄出履歷',
+    applyRole: '應徵此職缺',
+    metaDescription: '遊遊股份有限公司（Twouring 遊遊）人才招募：社群小編（正職全遠端）、活動企劃（兼職），以及日本大型系統專案的遠端派遣工程師（Rails、Next.js、AWS/SRE、AI/LLM、SharePoint、系統架構），月薪 NT$100,000 起。',
+  },
+  en: {
+    eyebrow: 'Careers',
+    title: 'Join Twouring',
+    lead: 'Bring Taiwan’s talent to the world, and the world’s talent to Taiwan. We are a remote-first, flat, direct team looking for people who organise their own work and own their results.',
+    contentTitle: 'Content & Social',
+    contentLead: 'Brand social & events',
+    contentDesc: 'Run social media for our own and client brands, and plan and deliver in-person and online events.',
+    engTitle: 'Contract Engineers (Remote)',
+    engLead: 'A large-scale project in Japan',
+    engDesc: 'The team covers backend, frontend, cloud, AI and architecture, working fully remotely. Project scale: 160,000 concurrent users, 99.9% availability. Exact terms and time-zone arrangements discussed at interview.',
+    respLabel: 'Responsibilities',
+    reqLabel: 'Requirements',
+    bonusLabel: 'Nice to have',
+    stackLabel: 'Tech keywords',
+    applyTitle: 'How to apply',
+    applyLead: 'Email your resume to the address below with the role in the subject line.',
+    applyContent: 'For social media or event roles, please also include: (1) social accounts or events you have run or joined (links or screenshots — personal accounts count); (2) one graphic you made in Canva; (3) one line: pick a brand you follow and name the one thing its social media should fix.',
+    applyEng: 'For engineering roles, attach your resume and GitHub or portfolio links, and name the role(s) in the subject line.',
+    applyBtn: 'Send your resume',
+    applyRole: 'Apply for this role',
+    metaDescription: 'Careers at Twouring Co., Ltd.: Social Media Editor (full-time remote), Event Producer (part-time), and remote contract engineers for a large-scale Japan project (Rails, Next.js, AWS/SRE, AI/LLM, SharePoint, architecture) from NT$100,000/month.',
+  },
+}[lang];
+
+const ctaBand = {
+  zh: {
+    title: '沒看到適合的職缺？',
+    text: '跟我們說你擅長什麼、想做什麼。合適的話，我們會主動聯絡你。',
+  },
+  en: {
+    title: 'No role that fits?',
+    text: 'Tell us what you are good at and what you want to do. If there is a fit, we will reach out.',
+  },
+}[lang];
+
+const mailSubject = lang === 'zh' ? '應徵：[職缺名稱]' : 'Application: [role]';
+const mailHref = `mailto:${company.email}?subject=${encodeURIComponent(mailSubject)}`;
+const applyHref = (job: Job) =>
+  `mailto:${company.email}?subject=${encodeURIComponent((lang === 'zh' ? '應徵：' : 'Application: ') + job.title[lang])}`;
+---
+<BaseLayout title={c.eyebrow} description={c.metaDescription} path={ROUTES.careers}>
+  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: c.eyebrow }]} />
+
+  <!-- 內容與社群 -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><p class="eyebrow">{c.contentTitle}</p><h2>{c.contentLead}</h2><p class="lead">{c.contentDesc}</p></div>
+      <div class="grid grid--2 jobs">
+        {contentJobs.map((job: Job) => (
+          <article class="card job-card">
+            <div class="job-tags">
+              <span class:list={['emp-badge', `emp-badge--${job.employment}`]}>{employmentLabel[job.employment][lang]}</span>
+              <span class="tag">{job.mode[lang]}</span>
+              {job.tag && <span class="tag">{job.tag[lang]}</span>}
+            </div>
+            <h3 class="job-title">{job.title[lang]}</h3>
+            <p class="job-salary">{job.salary[lang]}</p>
+            <p class="job-summary">{job.summary[lang]}</p>
+            {job.responsibilities && (
+              <div class="job-block">
+                <h4>{c.respLabel}</h4>
+                <ul role="list">{job.responsibilities[lang].map((x) => (<li><Icon name="check" size={17} /> {x}</li>))}</ul>
+              </div>
+            )}
+            {job.requirements && (
+              <div class="job-block">
+                <h4>{c.reqLabel}</h4>
+                <ul role="list">{job.requirements[lang].map((x) => (<li><Icon name="check" size={17} /> {x}</li>))}</ul>
+              </div>
+            )}
+            {job.bonus && (
+              <div class="job-block">
+                <h4>{c.bonusLabel}</h4>
+                <ul role="list">{job.bonus[lang].map((x) => (<li><Icon name="check" size={17} /> {x}</li>))}</ul>
+              </div>
+            )}
+            <a class="btn btn--primary job-cta" href={applyHref(job)}>{c.applyRole}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 遠端派遣工程師 -->
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-head"><p class="eyebrow">{c.engTitle}</p><h2>{c.engLead}</h2><p class="lead">{c.engDesc}</p></div>
+      <div class="grid grid--2 jobs">
+        {engineeringJobs.map((job: Job) => (
+          <article class="card job-card">
+            <div class="job-tags">
+              <span class:list={['emp-badge', `emp-badge--${job.employment}`]}>{employmentLabel[job.employment][lang]}</span>
+              <span class="tag">{job.mode[lang]}</span>
+              {job.tag && <span class="tag">{job.tag[lang]}</span>}
+            </div>
+            <h3 class="job-title">{job.title[lang]}</h3>
+            <p class="job-salary">{job.salary[lang]}</p>
+            <p class="job-summary">{job.summary[lang]}</p>
+            {job.requirements && (
+              <div class="job-block">
+                <h4>{c.reqLabel}</h4>
+                <ul role="list">{job.requirements[lang].map((x) => (<li><Icon name="check" size={17} /> {x}</li>))}</ul>
+              </div>
+            )}
+            {job.stack && (
+              <div class="job-block">
+                <h4>{c.stackLabel}</h4>
+                <ul class="stack" role="list">{job.stack.map((s) => (<li class="tag tag--stack">{s}</li>))}</ul>
+              </div>
+            )}
+            <a class="btn btn--primary job-cta" href={applyHref(job)}>{c.applyRole}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 應徵方式 -->
+  <section class="section">
+    <div class="container container--narrow">
+      <div class="section-head"><h2 class="eyebrow"><Icon name="mail" size={16} /> {c.applyTitle}</h2></div>
+      <div class="flow apply">
+        <p class="lead">{c.applyLead}</p>
+        <p>{c.applyContent}</p>
+        <p>{c.applyEng}</p>
+        <a class="btn btn--primary btn--lg" href={mailHref}>{c.applyBtn} · {company.email}</a>
+      </div>
+    </div>
+  </section>
+
+  <CTABand title={ctaBand.title} text={ctaBand.text} />
+</BaseLayout>
+
+<style>
+  .jobs { align-items: start; }
+  .job-card { display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .job-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .emp-badge {
+    display: inline-flex; align-items: center;
+    font-size: var(--fs-300); font-weight: 700; font-family: var(--font-head);
+    padding: 0.3em 0.8em; border-radius: var(--radius-pill);
+  }
+  .emp-badge--fulltime { background: var(--c-accent-soft); color: var(--c-accent-deep); }
+  .emp-badge--parttime { background: #fff3d6; color: #7a5200; }
+  .emp-badge--dispatch { background: #e3edfb; color: #1e4e8f; }
+
+  .job-title { font-size: var(--fs-500); margin: 0; }
+  .job-salary { font-weight: 700; color: var(--c-accent-strong); margin: 0; }
+  .job-summary { color: var(--c-ink); border-left: 3px solid var(--c-accent-2); padding-left: 1rem; }
+
+  .job-block h4 { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-muted); font-family: var(--font-head); margin-bottom: 0.7rem; }
+  .job-block ul { display: grid; gap: 0.55rem; }
+  .job-block li { display: flex; gap: 0.6rem; align-items: flex-start; color: var(--c-ink); font-size: 0.95rem; }
+  .job-block :global(svg) { color: var(--c-accent-strong); flex-shrink: 0; margin-top: 3px; }
+
+  .job-cta { margin-top: auto; align-self: flex-start; }
+  .stack { display: flex !important; flex-wrap: wrap; gap: 0.5rem; }
+  .tag--stack { background: var(--c-surface); color: var(--c-ink-strong); border: 1px solid var(--c-line); }
+
+  .apply .btn { margin-top: 0.6rem; }
+</style>

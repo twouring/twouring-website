@@ -153,9 +153,9 @@ const personLd = {
   <section class="section">
     <div class="container kk-wrap">
       <div class="kk-aside">
-        <div class="kk-avatar" aria-hidden="true">KK</div>
+        <img class="kk-photo" src="/kk-portrait.jpg" alt={lang === 'zh' ? '徐愷（KK）肖像照' : 'Portrait of Kai Hsu (KK)'} width="640" height="965" loading="lazy" />
         <p class="kk-name">{company.representative[lang]}</p>
-        <a class="kk-linkedin" href={company.linkedin} target="_blank" rel="noopener">LinkedIn →</a>
+        <a class="kk-linkedin" href={company.linkedinKK} target="_blank" rel="noopener">LinkedIn →</a>
       </div>
       <div class="kk-body">
         <h2 class="eyebrow">{c.kkTitle}</h2>
@@ -191,6 +191,11 @@ const personLd = {
       <dl class="reg-table">
         {reg.map(([k, v]) => (<div class="reg-row"><dt>{k}</dt><dd>{v}</dd></div>))}
       </dl>
+      <p class="reg-linkedin">
+        <a href={company.linkedin} target="_blank" rel="noopener">
+          {lang === 'zh' ? '在 LinkedIn 追蹤 Twouring →' : 'Follow Twouring on LinkedIn →'}
+        </a>
+      </p>
     </div>
   </section>
 
@@ -204,7 +209,7 @@ const personLd = {
 
   .kk-wrap { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: start; }
   .kk-aside { position: sticky; top: 90px; text-align: center; background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1.8rem; }
-  .kk-avatar { width: 110px; height: 110px; margin: 0 auto 1rem; border-radius: 50%; display: grid; place-items: center; background: var(--grad-brand); color: #fff; font-family: var(--font-head); font-weight: 800; font-size: 2.4rem; box-shadow: var(--shadow-accent); }
+  .kk-photo { width: 100%; height: auto; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow-sm); }
   .kk-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); }
   .kk-linkedin { display: inline-block; margin-top: 0.6rem; font-weight: 700; }
   .kk-roles { margin: 1.4rem 0; display: grid; gap: 0.7rem; }
@@ -222,6 +227,7 @@ const personLd = {
   .reg-row:nth-child(odd) { background: var(--c-surface); }
   .reg-row dt { font-weight: 700; font-family: var(--font-head); color: var(--c-ink-strong); }
   .reg-row dd { color: var(--c-ink); }
+  .reg-linkedin { margin-top: 1rem; font-weight: 700; font-family: var(--font-head); }
 
   @media (max-width: 760px) {
     .kk-wrap { grid-template-columns: 1fr; }
