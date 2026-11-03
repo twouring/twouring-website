@@ -55,7 +55,7 @@ backend/       Code.gs + DEPLOY.md（聯絡表單的 Apps Script 後端）
 
 ## 部署
 
-- 靜態輸出，可放 Zeabur／Cloudflare Pages／任一靜態主機（`dist/`）。
+- 正式環境在 GCP，見 `CLAUDE.md`。
 - `astro.config.mjs` 的 `site` 設為 `https://www.twouring.com`（改網域只需改這一處）。
 - 上線時：DNS 切換、SSL、舊 WordPress 頁面 301 redirect、提交 sitemap 至 Search Console。
 
