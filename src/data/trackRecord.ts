@@ -162,7 +162,7 @@ export const engagements: Engagement[] = [
   },
   {
     tag: { zh: '日本 · 公部門教育平台', en: 'Japan · Public education platform', ja: '日本 · 教育行政プラットフォーム' },
-    client: { zh: '大阪市教育委員會（協力開發）', en: 'Osaka City Board of Education (co-development)', ja: '大阪市教育委員会（開発協力）' },
+    client: { zh: '日本政令指定都市 教育委員會（協力開發）', en: 'A Japanese designated-city board of education (co-development)', ja: '政令指定都市の教育委員会（開発協力）' },
     title: {
       zh: '教職員學習平台「スキルアップライブラリ」',
       en: 'Teacher learning platform “Skill-up Library”',
