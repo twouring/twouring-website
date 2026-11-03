@@ -38,10 +38,15 @@ Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: co
 - Enterprise AI consulting: diagnose processes first, then adopt AI with a 90-day roadmap, KPIs and PMO. Starting package: AI operations health-check from NTD 120,000.
 - AI corporate training: executive workshops from NTD 100,000 per session.
 - AI workflow automation: identify the three workflows most worth automating and measure ROI.
+- Systems development & integration: ERP/CRM integration, quoting and order systems, part-number master data, traceability and quality documents. Requirements interview can be bought alone; a 4-week PoC with acceptance criteria in the quote comes before any build; builds typically NTD 1,000,000–3,000,000; existing ERP/HIS is kept where possible. Engineering delivered with long-term partner Adata; contracts signed by Twouring.
 - Remote / hybrid work consulting: policies, collaboration and performance systems (separate purchase from AI).
 - Digital-nomad city strategy: maturity diagnostic, strategy and annual advisory for local governments.
 - Nomad-friendly venues: internationalisation for stays, cafés and districts; Nomad Ready is the method name.
 - International visits: Taiwan business delegation and startup ecosystem visit design (not travel agency booking).
+
+## Lead advisor
+
+Kai Hsu (徐愷, KK) is founder and lead advisor. B.S. Computer Science, National Taiwan University; 15 years building software; former VP of Engineering at MoBagel (2014–2018); AWS Certified Solutions Architect – Associate; speaker at PyCon Taiwan and PyCon JP 2019 (Tokyo, in English); corporate trainer for Chunghwa Telecom and III. Also Chair of the Taiwan Digital Nomad Association and Executive Director of the NDC Nomad Taiwan Office (personal roles, not Twouring clients). He scopes every engagement; day-to-day delivery is by the project team.
 
 ## Entry ladder
 

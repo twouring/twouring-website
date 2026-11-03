@@ -9,6 +9,7 @@ export const ROUTES = {
   aiTraining: '/services/ai-training',
   aiWorkflow: '/services/ai-workflow-automation',
   remoteWork: '/services/remote-work-consulting',
+  systems: '/services/systems',
   /** @deprecated 舊路徑，已 301 至 aiConsulting */
   aiRemote: '/services/ai-remote',
   venue: '/services/venue',
@@ -24,25 +25,28 @@ export const ROUTES = {
   cookies: '/cookies',
 } as const;
 
-/** 主導覽四大服務入口（給下拉與行動選單共用）。 */
+/** 主導覽服務入口（下拉、行動選單、首頁入口、頁尾共用）。順序＝潛在客戶詢問量：企業 → 政府 → 國際。 */
 export const SERVICE_NAV: {
-  key: 'city' | 'aiConsulting' | 'venue' | 'international';
+  key: 'aiConsulting' | 'aiTraining' | 'systems' | 'city' | 'venue' | 'international';
   path: string;
 }[] = [
   { key: 'aiConsulting', path: ROUTES.aiConsulting },
+  { key: 'aiTraining', path: ROUTES.aiTraining },
+  { key: 'systems', path: ROUTES.systems },
   { key: 'city', path: ROUTES.city },
   { key: 'venue', path: ROUTES.venue },
   { key: 'international', path: ROUTES.international },
 ];
 
-/** AI 相關子服務（服務總覽與 AI 導入頁交叉連結）。 */
+/** 企業線子服務（服務總覽與 AI 導入頁交叉連結）。 */
 export const AI_SERVICE_NAV: {
-  key: 'aiConsulting' | 'aiTraining' | 'aiWorkflow' | 'remoteWork';
+  key: 'aiConsulting' | 'aiTraining' | 'aiWorkflow' | 'systems' | 'remoteWork';
   path: string;
 }[] = [
   { key: 'aiConsulting', path: ROUTES.aiConsulting },
   { key: 'aiTraining', path: ROUTES.aiTraining },
   { key: 'aiWorkflow', path: ROUTES.aiWorkflow },
+  { key: 'systems', path: ROUTES.systems },
   { key: 'remoteWork', path: ROUTES.remoteWork },
 ];
 
@@ -69,15 +73,17 @@ export const ui = {
       aiTraining: 'AI 企業內訓',
       aiWorkflow: 'AI 流程自動化',
       remoteWork: '遠距與混合工作',
+      systems: '系統開發與整合',
       venue: '場域與商家',
       international: '國際交流與參訪',
     },
     serviceNavDesc: {
       city: '把數位遊牧變成可執行的城市策略',
-      aiConsulting: '企業 AI 導入顧問與 90 天路線圖',
-      aiTraining: '高階主管與團隊 AI 內訓',
+      aiConsulting: '先診斷再導入：AI 健檢與 90 天路線圖',
+      aiTraining: '一日實作：帶自己的文件來，帶工作流回去',
       aiWorkflow: '找出最值得自動化的工作流',
       remoteWork: '遠距及混合工作制度顧問',
+      systems: 'ERP／CRM 整合、報價與訂單系統，先 PoC 再建置',
       venue: '數位遊牧友善場域與旅宿國際化',
       international: '亞洲城市交流與企業參訪設計',
     },
@@ -152,15 +158,17 @@ export const ui = {
       aiTraining: 'AI corporate training',
       aiWorkflow: 'AI workflow automation',
       remoteWork: 'Remote & hybrid work',
+      systems: 'Systems & integration',
       venue: 'Venues & Local Business',
       international: 'International Exchange',
     },
     serviceNavDesc: {
       city: 'Turn digital nomadism into a city strategy',
-      aiConsulting: 'Enterprise AI adoption and 90-day roadmaps',
-      aiTraining: 'Executive and team AI training',
+      aiConsulting: 'Diagnose first: AI health-check and 90-day roadmap',
+      aiTraining: 'One-day hands-on: bring your documents, leave with a workflow',
       aiWorkflow: 'Find the workflows worth automating',
       remoteWork: 'Remote and hybrid work systems',
+      systems: 'ERP/CRM integration, quoting & order systems — PoC first',
       venue: 'Nomad-friendly venues and hospitality internationalisation',
       international: 'Asia city exchange & corporate visits',
     },
@@ -235,15 +243,17 @@ export const ui = {
       aiTraining: 'AI企業研修',
       aiWorkflow: 'AI業務自動化',
       remoteWork: 'リモート・ハイブリッドワーク',
+      systems: 'システム開発・統合',
       venue: '施設・店舗',
       international: '国際交流・視察',
     },
     serviceNavDesc: {
       city: 'デジタルノマドを実行可能な地域戦略に',
-      aiConsulting: 'AI導入コンサルティングと90日ロードマップ',
-      aiTraining: '経営層・チーム向けAI研修',
+      aiConsulting: 'まず診断：AI業務診断と90日ロードマップ',
+      aiTraining: '1日実践研修：自分の資料を持ち込み、ワークフローを持ち帰る',
       aiWorkflow: '自動化すべき業務フローを特定',
       remoteWork: 'リモート・ハイブリッドワーク制度設計',
+      systems: 'ERP／CRM連携、見積・受注システム。まずPoCから',
       venue: 'ノマドフレンドリーな施設・宿泊のインバウンド対応',
       international: 'アジア都市交流と台湾企業視察の企画',
     },

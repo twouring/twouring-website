@@ -14,7 +14,19 @@ export const homeFaq = {
     },
     {
       q: '企業 AI 導入要花多少錢、多久？',
-      a: '常見起點是 AI 營運健檢約 NTD 120,000；工作流導入顧問約 NTD 150,000／月起。標準路徑是 30 分鐘需求初談 → 付費健檢 → 90 天試點與 KPI 驗收。實際報價依範圍與是否含技術開發而定。',
+      a: '常見起點是 AI 營運健檢約 NTD 120,000；工作流導入顧問約 NTD 150,000／月起；一日 AI 實作工作坊 NTD 80,000–100,000 起；ERP／CRM 等系統建置常見 NTD 1,000,000–3,000,000，先 4 週 PoC 再建置。標準路徑是 30 分鐘需求初談 → 付費診斷 → 90 天試點與 KPI 驗收。實際報價依範圍與是否含技術開發而定。',
+    },
+    {
+      q: '我們公司沒有 ERP、資料都在 Excel，也能做嗎？',
+      a: '可以，這是最常見的起點。先用 2–3 週需求訪談，把報價、接單、庫存、生產進度的流程和 Excel 檔盤點清楚，找出最花人力、最常出錯的三個環節，再決定先數位化哪一段。能和既有系統串接就串接，不強迫全部汰換。',
+    },
+    {
+      q: '上課或導入會碰到公司的機敏資料嗎？',
+      a: '內訓一律用模擬資料或去識別化資料，學員帶來的文件不需要含客戶個資或未公開財務。系統 PoC 需要真實資料時，會先簽保密協議，並約定資料範圍、存放位置與結案後的刪除方式。',
+    },
+    {
+      q: '誰負責我的案子？',
+      a: '需求判斷、關鍵提案與品質把關由負責人徐愷（KK）負責：台大資工畢業、前 MoBagel 技術副總、AWS 認證架構師、15 年軟體經驗。日常執行由專案團隊承接，系統工程由長期合作的適才科技（Adata）團隊交付，合約一律由遊遊簽署。',
     },
     {
       q: '花蓮、臺東案是遊遊的客戶嗎？契約金額多少？',
@@ -32,7 +44,19 @@ export const homeFaq = {
     },
     {
       q: 'How much does enterprise AI adoption cost, and how long does it take?',
-      a: 'A common starting point is an AI operations health-check around NTD 120,000; workflow advisory from about NTD 150,000/mo. The path is a free 30-minute discovery call → paid diagnostic → 90-day pilot with KPIs. Quotes depend on scope and whether build is included.',
+      a: 'A common starting point is an AI operations health-check around NTD 120,000; workflow advisory from about NTD 150,000/mo; a one-day hands-on AI workshop from NTD 80,000–100,000; ERP/CRM-type system builds typically NTD 1,000,000–3,000,000 with a 4-week PoC first. The path is a free 30-minute discovery call → paid diagnostic → 90-day pilot with KPIs. Quotes depend on scope and whether build is included.',
+    },
+    {
+      q: 'We have no ERP and everything lives in Excel. Can you still help?',
+      a: 'Yes — that is the most common starting point. A 2–3 week requirements review maps your quoting, order intake, inventory and production-tracking flows and spreadsheets, finds the three steps that cost the most labour or cause the most errors, and decides which to digitise first. We integrate with what you already run rather than forcing a full replacement.',
+    },
+    {
+      q: 'Will training or rollout touch our confidential data?',
+      a: 'Training always uses mock or de-identified data; documents participants bring need not contain customer personal data or unpublished financials. When a system PoC needs real data, we sign an NDA first and agree the data scope, storage location and deletion at project close.',
+    },
+    {
+      q: 'Who is actually responsible for my project?',
+      a: 'Scoping, key proposals and quality control sit with founder Kai Hsu (KK): NTU Computer Science graduate, former VP of Engineering at MoBagel, AWS-certified architect, 15 years in software. Day-to-day delivery is handled by the project team; systems engineering is delivered by long-term partner Adata, and every contract is signed by Twouring.',
     },
     {
       q: 'Are Hualien and Taitung Twouring clients, and what were the contract amounts?',
@@ -50,7 +74,19 @@ export const homeFaq = {
     },
     {
       q: '企業のAI導入にはどれくらいの費用と期間がかかりますか？',
-      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜です。標準的な流れは、無料の30分初回ヒアリング → 有償診断 → KPIによる検収を伴う90日間の試行です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
+      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜、1日のAI実践研修がNTD 80,000〜100,000程度〜です。ERP／CRMなどのシステム構築は一般的にNTD 1,000,000〜3,000,000で、まず4週間のPoCを行います。標準的な流れは、無料の30分初回ヒアリング → 有償診断 → KPIによる検収を伴う90日間の試行です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
+    },
+    {
+      q: 'ERPがなく、データがすべてExcelにある状態でも依頼できますか？',
+      a: 'はい。それがもっとも多い出発点です。まず2〜3週間の要件ヒアリングで、見積、受注、在庫、生産進捗の流れとExcelファイルを棚卸しし、もっとも工数がかかり、ミスの多い3つの工程を特定してから、どこをデジタル化するかを決めます。既存システムと連携できるものは連携し、全面的な入れ替えは強いません。',
+    },
+    {
+      q: '研修や導入で社内の機密データに触れますか？',
+      a: '研修では必ず模擬データまたは匿名化したデータを使い、参加者が持ち込む資料に顧客の個人情報や未公開の財務情報を含める必要はありません。システムのPoCで実データが必要な場合は、先に秘密保持契約を締結し、データの範囲、保管場所、終了後の削除方法を取り決めます。',
+    },
+    {
+      q: '案件の責任者は誰ですか？',
+      a: '要件の見極め、重要な提案、品質管理は代表の徐愷（KK）が担当します。国立台湾大学資訊工程学科卒、MoBagel 元技術副総裁、AWS 認定アーキテクト、ソフトウェア開発歴15年。日々の実行はプロジェクトチームが担い、システム開発は長期パートナーの適才科技（Adata）が納品し、契約はすべて Twouring が締結します。',
     },
     {
       q: '花蓮県・台東県の案件はTwouringのクライアント案件ですか？契約金額はいくらですか？',

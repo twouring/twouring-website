@@ -8,6 +8,7 @@ export type ServiceSlug =
   | 'aiTraining'
   | 'aiWorkflow'
   | 'remoteWork'
+  | 'systems'
   | 'venue'
   | 'international';
 
@@ -1069,6 +1070,209 @@ export const services: Record<
         '評価制度フレームワークと管理職ガイド',
         'ツール整備と情報セキュリティの提案',
         '試行時のフィードバックと改訂記録',
+      ],
+    },
+  },
+
+  systems: {
+    path: '/services/systems',
+    icon: 'layers',
+    zh: {
+      navLabel: '系統開發與整合',
+      eyebrow: '企業 · 系統開發與整合',
+      title: '系統開發與整合：把 ERP、CRM 和現場資料接起來',
+      lead: '報價、訂單、料號、排程、庫存、品質文件，散在 Excel 和各業務手上。遊遊先訪談需求、寫清楚規格，用 4 週 PoC 拿真實資料驗證，驗收通過才建置。能在既有 ERP 上加一層解決的，就不重做。',
+      metaDescription:
+        '遊遊為製造業、醫療生技與服務業做系統開發與整合：ERP 與內部系統串接、CRM、報價與訂單系統、料號主檔、生產追溯與品質文件、MRP／MES。先 4 週 PoC 用真實資料驗證，驗收通過再建置。',
+      highlights: ['需求訪談可單獨購買', '4 週 PoC 用真實資料驗證', '既有 ERP 能保留就保留'],
+      painTitle: '資料散在 Excel 和各業務手上，什麼都要人追',
+      painPoints: [
+        '報價靠資深同仁的經驗和 Excel，料號幾千到上萬筆，詢報價和訂單還要人工繕打。',
+        '接單、排程、委外加工和出貨進度要一通通電話追，庫存帳和實際對不起來。',
+        'BOM、工程變更（ECN）和在製品（WIP）靠人工對；批號追溯和品質文件（APQP／PPAP、8D）散在不同系統，客戶稽核前得花好幾天整理。',
+        '客戶和訂單資料沒有 CRM，都在各業務手上；老師傅快退休，經驗都在腦袋裡。',
+      ],
+      solutionTitle: '先訪談、再 PoC，驗收通過才建置',
+      solutionLead:
+        '遊遊負責需求、規格、專案管理與驗收，系統由長期合作夥伴適才科技（Adata）的工程團隊承接。例如一家數千料號的五金材料業者，我們以商品資料為核心整合電商、ERP 與門市，減少重複輸入和人工比對；一家電子廠不換 ERP，在既有系統上加一層決策中樞，MRP 幾分鐘就重算完，總費用約為原廠模組的一半。',
+      solutionPoints: [
+        '需求訪談與系統規格：2 到 3 週，訪談老闆、業務、現場和財務，寫出可報價、可驗收的規格。',
+        '4 週 PoC：用公司真實的料號、訂單和報工資料驗證，驗收指標寫在報價裡，通過才進入建置。',
+        '系統建置：ERP 與內部系統整合、CRM 與業務系統、報價與訂單系統、料號主檔、生產追溯與品質文件、MRP／MES、EDI、多院區或多店資料整合。',
+        '既有系統保留：能在現有 ERP 或 HIS 之上加一層解決的就不重做，減少汰換風險和停工時間。',
+        '上線與維運：分階段上線、資料轉換、現場教學；每個階段都有驗收條件，維運另外簽約。',
+      ],
+      pitch: '不是換掉 ERP，是把報價、訂單、現場和庫存接起來。先訪談、再 PoC，驗收通過才建置。',
+      packagesTitle: '系統開發與整合服務方案',
+      packagesNote: '三個階段可以分開買。訪談先把需求講清楚，PoC 用真實資料驗證，通過才進入建置；日本企業的正式系統也以同樣方式按月交付中。',
+      packages: [
+        {
+          name: '需求訪談與系統規格',
+          price: '可單獨購買，依範圍報價',
+          desc: '2 到 3 週。訪談、現況資料盤點、系統規格與驗收條件，規格可以直接拿去比價。',
+        },
+        {
+          name: '4 週 PoC',
+          price: '依資料與系統數報價；驗收指標寫進報價',
+          desc: '用真實資料驗證最關鍵的一段流程，例如報價、MRP 重算或批號追溯，通過才建置。',
+        },
+        {
+          name: '系統建置',
+          price: '常見 NTD 1,000,000–3,000,000',
+          desc: '依規格分階段建置、上線與驗收：ERP 整合、CRM、報價與訂單、料號主檔、追溯與品質文件。',
+        },
+      ],
+      priceFootnote:
+        '以上為服務起點價格，實際依專案範圍、合作單位與交付深度報價，正式合作以書面報價與合約為準。 維運另外簽約；既有 ERP／HIS 能保留就保留，不強迫全部汰換；技術開發由遊遊與適才科技（Adata）的工程團隊承接。',
+      goodFit: [
+        '製造業、醫療生技或服務業中小企業，資料散在 Excel 和各業務手上，想把報價、訂單、現場和庫存接起來。',
+        '已有 ERP 或 HIS，不想全部汰換，但要補上 CRM、報價、追溯或品質文件這幾塊。',
+        '願意先花 2 到 3 週訪談、再用 4 週 PoC 驗證，接受分階段驗收。',
+      ],
+      notFit: [
+        '只想買一套現成套裝軟體，不願配合需求訪談。',
+        '想一次全部汰換，不接受分階段驗收。',
+        '要壓到遠低於市場行情，或不做需求訪談就直接開工。',
+      ],
+      deliverables: [
+        '需求訪談紀錄與現況流程圖',
+        '系統規格書與各階段驗收條件',
+        'PoC 成果報告與驗收指標對照',
+        '系統建置、上線與資料轉換',
+        '操作手冊與現場教學紀錄',
+        '維運合約與下一階段建議',
+      ],
+    },
+    en: {
+      navLabel: 'Systems & integration',
+      eyebrow: 'Enterprise · Systems development & integration',
+      title: 'Systems development and integration: connect ERP, CRM and the shop floor',
+      lead: 'Quotes, orders, part numbers, scheduling, stock and quality records live in Excel and in each salesperson’s inbox. We interview first, write a clear spec, prove it on your real data in a four-week PoC, and build only after sign-off. If a layer on top of your existing ERP solves it, we don’t rebuild.',
+      metaDescription:
+        'Twouring builds and integrates systems for manufacturing, healthcare and service SMEs: ERP integration, CRM, quote and order systems, traceability, MRP/MES. Four-week PoC on real data before any build.',
+      highlights: ['Requirements interview sold separately', 'Four-week PoC on real data', 'Keep your existing ERP where it works'],
+      painTitle: 'Data sits in Excel and with each salesperson — everything needs chasing',
+      painPoints: [
+        'Quoting depends on senior staff and Excel; thousands of part numbers, and enquiries and orders are still typed in by hand.',
+        'Order intake, scheduling, subcontracting and shipping progress are chased by phone, and stock records don’t match what’s on the shelf.',
+        'BOMs, engineering changes (ECN) and work in progress (WIP) are reconciled manually; lot traceability and quality records (APQP/PPAP, 8D) sit in separate systems, so customer audits take days to prepare.',
+        'There is no CRM — customer and order data lives with each salesperson, and senior technicians near retirement carry the know-how in their heads.',
+      ],
+      solutionTitle: 'Interview first, PoC second, build only after sign-off',
+      solutionLead:
+        'Twouring owns requirements, specification, project management and acceptance; our long-term partner Adata’s engineering team builds the system. A hardware materials supplier with thousands of part numbers had e-commerce, ERP and stores integrated around a single product master, cutting duplicate entry and manual matching. An electronics plant kept its ERP and added a decision layer on top so MRP reruns in minutes — total cost about half of the vendor’s own module.',
+      solutionPoints: [
+        'Requirements interview & specification: two to three weeks with the owner, sales, shop floor and finance, producing a spec you can quote and sign off against.',
+        'Four-week PoC: validated on your real part, order and shop-floor data, with acceptance metrics written into the quote; build starts only when they pass.',
+        'System build: ERP and internal system integration, CRM and sales systems, quote and order systems, part master data, production traceability and quality records, MRP/MES, EDI, multi-site and multi-store data integration.',
+        'Keep what works: where a layer on top of your existing ERP or HIS solves the problem, we don’t rebuild it — less replacement risk and less downtime.',
+        'Go-live & maintenance: staged rollout, data migration and on-site training; every stage has acceptance criteria, and maintenance is a separate contract.',
+      ],
+      pitch: 'Not a new ERP — connecting quotes, orders, the shop floor and stock. Interview first, PoC second, build only after sign-off.',
+      packagesTitle: 'Systems development & integration programmes',
+      packagesNote: 'The three stages can be bought separately. The interview makes the need clear, the PoC proves it on real data, and only then do we build; a Japanese company’s production system is delivered the same way on a monthly basis.',
+      packages: [
+        {
+          name: 'Requirements interview & specification',
+          price: 'sold separately, quoted by scope',
+          desc: 'Two to three weeks. Interviews, current data audit, system specification and acceptance criteria — a spec you can take out to tender.',
+        },
+        {
+          name: 'Four-week PoC',
+          price: 'quoted by data and system count; acceptance metrics in the quote',
+          desc: 'Validates the most critical slice of the process — quoting, MRP reruns or lot traceability — on real data before any build.',
+        },
+        {
+          name: 'System build',
+          price: 'typically NTD 1,000,000–3,000,000',
+          desc: 'Staged build, go-live and acceptance against the spec: ERP integration, CRM, quotes and orders, part master data, traceability and quality records.',
+        },
+      ],
+      priceFootnote:
+        'Prices shown are starting points. Actual quotes depend on scope, partners and delivery depth; engagements are confirmed by written quote and contract. Maintenance is a separate contract; existing ERP/HIS is kept wherever it works rather than replaced wholesale; development is delivered by Twouring with Adata’s engineering team.',
+      goodFit: [
+        'Manufacturing, healthcare or service SMEs whose data lives in Excel and with individual salespeople, and who want quotes, orders, the shop floor and stock connected.',
+        'Organisations with an existing ERP or HIS that don’t want to replace it but need CRM, quoting, traceability or quality records added.',
+        'Teams willing to spend two to three weeks on interviews and four weeks on a PoC, and who accept staged sign-off.',
+      ],
+      notFit: [
+        'You want an off-the-shelf package only and won’t take part in requirements interviews.',
+        'You want everything replaced at once with no staged sign-off.',
+        'You want a price far below market rate, or to start building without a requirements interview.',
+      ],
+      deliverables: [
+        'Interview records & current-state process map',
+        'System specification & acceptance criteria per stage',
+        'PoC report with results against acceptance metrics',
+        'System build, go-live & data migration',
+        'Operating manual & on-site training records',
+        'Maintenance contract & next-stage recommendations',
+      ],
+    },
+    ja: {
+      navLabel: 'システム開発・統合',
+      eyebrow: '企業向け · システム開発・統合',
+      title: 'システム開発・統合：ERP、CRM、現場のデータをつなぐ',
+      lead: '見積、受注、品番、生産計画、在庫、品質書類が Excel と各営業担当の手元に散らばっていませんか。Twouringはまず要件をヒアリングして仕様を明確にし、4週間の PoC で実データを使って検証し、検収に合格してから構築します。既存の ERP の上に一層加えて解決できる場合は、作り直しません。',
+      metaDescription:
+        'Twouringは製造業、医療・バイオ、サービス業の中小企業向けに、ERP 連携、CRM、見積・受注システム、品番マスタ、トレーサビリティ、MRP／MES のシステム開発・統合を提供。4週間の PoC で実データを検証してから構築します。',
+      highlights: ['要件ヒアリングは単独でご購入可能', '4週間の PoC で実データを検証', '既存の ERP は活かせる限り残す'],
+      painTitle: 'データが Excel と営業担当の手元に散らばり、何でも人が追いかけている',
+      painPoints: [
+        '見積はベテラン社員の経験と Excel 頼み。品番は数千から数万件あり、引合や受注の入力はいまだに手作業です。',
+        '受注、生産計画、外注加工、出荷の進捗を一件ずつ電話で確認し、在庫の帳簿と実物が合いません。',
+        'BOM、設計変更（ECN）、仕掛品（WIP）の照合は手作業。ロット追跡や品質書類（APQP／PPAP、8D）が別々のシステムにあり、顧客監査の前に数日かけて資料をまとめています。',
+        'CRM がなく、顧客と受注のデータは各営業担当の手元にあります。熟練技術者の定年が近く、ノウハウは頭の中にしかありません。',
+      ],
+      solutionTitle: 'まずヒアリング、次に PoC、検収に合格してから構築',
+      solutionLead:
+        'Twouringが要件定義、仕様、プロジェクト管理、検収を担当し、システムは長年の協力会社である適才科技（Adata）のエンジニアチームが構築します。数千品番を扱う金物材料の会社では、商品データを軸に EC、ERP、店舗を統合し、二重入力と手作業の照合を減らしました。ある電子部品メーカーでは ERP を入れ替えず、既存システムの上に意思決定の中枢となる層を加え、MRP の再計算が数分で終わるようになりました。総費用はメーカー純正モジュールの約半分です。',
+      solutionPoints: [
+        '要件ヒアリングと仕様策定：2〜3週間で経営者、営業、現場、経理にヒアリングし、見積と検収の基準にできる仕様を作成します。',
+        '4週間の PoC：実際の品番、受注、現場の実績データで検証します。検収指標は見積書に明記し、合格した場合のみ構築に進みます。',
+        'システム構築：ERP と社内システムの統合、CRM と営業システム、見積・受注システム、品番マスタ、生産トレーサビリティと品質書類、MRP／MES、EDI、複数拠点・複数店舗のデータ統合。',
+        '既存システムの維持：既存の ERP や HIS の上に一層加えて解決できる場合は作り直さず、入替のリスクと停止時間を減らします。',
+        '稼働と保守：段階的な稼働、データ移行、現場での操作研修。各段階に検収条件を設け、保守は別途契約します。',
+      ],
+      pitch: 'ERP を入れ替えるのではなく、見積、受注、現場、在庫をつなぎます。まずヒアリング、次に PoC、検収に合格してから構築します。',
+      packagesTitle: 'システム開発・統合プログラム',
+      packagesNote: '3つの段階は個別にご購入いただけます。ヒアリングで要件を明確にし、PoC で実データを検証し、合格してから構築に進みます。日本企業の本番システムも同じ進め方で月次で納品しています。',
+      packages: [
+        {
+          name: '要件ヒアリングと仕様策定',
+          price: '単独でご購入可能、範囲に応じてお見積り',
+          desc: '2〜3週間。ヒアリング、現状データの棚卸し、システム仕様書と検収条件。仕様書はそのまま相見積にお使いいただけます。',
+        },
+        {
+          name: '4週間の PoC',
+          price: 'データ量とシステム数に応じてお見積り。検収指標は見積書に明記',
+          desc: '見積、MRP の再計算、ロット追跡など、最も重要な業務の一部を実データで検証し、合格してから構築します。',
+        },
+        {
+          name: 'システム構築',
+          price: '一般的に NTD 1,000,000〜3,000,000',
+          desc: '仕様に基づき段階的に構築、稼働、検収します。ERP 統合、CRM、見積・受注、品番マスタ、トレーサビリティと品質書類。',
+        },
+      ],
+      priceFootnote:
+        '掲載価格はサービスの開始価格です。実際の金額はプロジェクトの範囲、連携先、提供内容の深さに応じてお見積りし、正式なご契約は書面の見積書および契約書をもって確定します。 保守は別途契約です。既存の ERP／HIS は活かせる限り残し、全面的な入替を強いることはありません。技術開発はTwouringと適才科技（Adata）のエンジニアチームが担当します。',
+      goodFit: [
+        '製造業、医療・バイオ、サービス業の中小企業で、データが Excel と営業担当の手元に散らばり、見積、受注、現場、在庫をつなぎたい企業。',
+        'ERP や HIS はすでにあり、全面入替はせずに CRM、見積、トレーサビリティ、品質書類を補いたい企業。',
+        '2〜3週間のヒアリングと4週間の PoC に時間をかけ、段階的な検収を受け入れられるチーム。',
+      ],
+      notFit: [
+        '既製のパッケージソフトだけを求め、要件ヒアリングに協力できない場合。',
+        '一度にすべてを入れ替えたく、段階的な検収を望まない場合。',
+        '市場相場を大きく下回る価格を求める、または要件ヒアリングなしで着手したい場合。',
+      ],
+      deliverables: [
+        'ヒアリング記録と現状の業務フロー図',
+        'システム仕様書と各段階の検収条件',
+        'PoC 成果報告書と検収指標の対照',
+        'システム構築、稼働、データ移行',
+        '操作マニュアルと現場研修の記録',
+        '保守契約と次段階の提案',
       ],
     },
   },

@@ -27,19 +27,29 @@ const c = {
       { icon: 'globe', t: '願景', d: '成為亞洲數位遊牧、遠距工作與 AI 營運轉型的首選顧問夥伴。' },
       { icon: 'compass', t: '價值', d: '診斷先於方案、成果可驗收、角色與授權清楚切分，不用 AI 當空泛口號。' },
     ],
-    kkTitle: '主導顧問：徐愷（KK）',
-    kkLead: 'KK 不是單一領域顧問，而是橫跨技術、產品、遠端團隊、數位遊牧、社群與政府生態系的整合型角色。',
+    kkTitle: '負責人暨主導顧問：徐愷（KK）',
+    kkLead: '工程師出身、做過技術副總、自己創業、也投過政府標案。KK 看案子只問兩件事：值不值得做、做了能不能驗收。他會自己寫程式、也會自己寫標書，所以你談的是能落地的方案，不是簡報。',
+    kkRolesTitle: '背景與資歷',
     kkRoles: [
-      '台灣數位遊牧者協會（TDNA）理事長',
-      '國發會數位遊牧辦公室執行長（2025 年起）',
-      '適才科技負責人、言文字負責人；匠說技術長暨共同創辦人',
-      '前 MoBagel 技術副總（VP of Engineering）',
+      '台灣大學資訊工程學系畢業（雙主修資訊管理），15 年軟體開發經驗',
+      '前 MoBagel 技術副總（VP of Engineering，2014–2018）',
       'AWS Certified Solutions Architect – Associate',
+      '遊遊股份有限公司負責人；適才科技負責人、言文字負責人；匠說技術長暨共同創辦人',
+      '台灣數位遊牧者協會（TDNA）理事長；國發會遊牧臺灣辦公室執行長（2025 年起）',
       'PyCon Taiwan／PyCon JP 2019（東京，英文演講）、Modern Web 講者',
       '中華電信、資策會內訓講師；東吳大學、花蓮慈濟醫院等授課',
       'Microsoft GCR Startup Hackfest 第一名、Salesforce 百萬美金 Hackathon 全球第六名',
     ],
-    kkNote: 'KK 負責高階判斷、關係建立、關鍵提案與品質把關；日常執行由專案 Pod 承接，讓顧問服務不依賴單一個人。',
+    kkHowTitle: 'KK 怎麼做顧問',
+    kkHow: [
+      { t: '先診斷，不先賣', d: '30 分鐘初談先確認問題、預算與決策者；不清楚的案子他會直接說不適合做。' },
+      { t: '能用現成的就不開發', d: '工程師背景讓他知道哪些該買、哪些該做、哪些根本不用做。' },
+      { t: '每個階段都能驗收', d: '需求訪談、PoC、建置分開報價，驗收指標寫在報價裡，過了才往下。' },
+    ],
+    kkQuote: '不要先買系統，先把最卡的那個流程講清楚。能用現成工具解決的，我不會叫你開發。',
+    kkQuoteBy: 'KK',
+    kkBook: '直接和 KK 約 30 分鐘',
+    kkNote: 'KK 負責需求判斷、關係建立、關鍵提案與品質把關；日常執行由專案團隊承接，讓顧問服務不依賴單一個人。',
     groupTitle: '合作夥伴與治理邊界',
     groupLead: '遊遊是對外的顧問主體；適才、言文字與 TDNA 為長期合作夥伴，各司其職。商業合約一律由遊遊簽署，TDNA 角色另行列明，會員與社群資料不作商業開發。',
     group: [
@@ -66,19 +76,29 @@ const c = {
       { icon: 'globe', t: 'Vision', d: 'Be Asia’s go-to advisory partner for digital nomadism, remote work and AI operations transformation.' },
       { icon: 'compass', t: 'Values', d: 'Diagnosis before pitch, auditable results, clearly split roles and authorisation — and never AI as an empty slogan.' },
     ],
-    kkTitle: 'Lead advisor: Kai Hsu (KK)',
-    kkLead: 'KK is not a single-domain consultant but an integrator spanning technology, product, remote teams, digital nomadism, community and the government ecosystem.',
+    kkTitle: 'Founder & lead advisor: Kai Hsu (KK)',
+    kkLead: 'Engineer by training, former VP of Engineering, founder, and a winner of public tenders. KK asks two questions of any project: is it worth doing, and can it be signed off. He still writes code and writes bids himself, so what you discuss is a plan that ships — not a deck.',
+    kkRolesTitle: 'Background',
     kkRoles: [
-      'Chair, Taiwan Digital Nomad Association (TDNA)',
-      'Executive Director, NDC Digital Nomad Office (since 2025)',
-      'Founder of Adata and Yan-Wen-Zi; CTO & co-founder of Jiangshuo',
-      'Former VP of Engineering, MoBagel',
+      'B.S. Computer Science, National Taiwan University (double major in Information Management); 15 years building software',
+      'Former VP of Engineering, MoBagel (2014–2018)',
       'AWS Certified Solutions Architect – Associate',
+      'Founder of Twouring; founder of Adata and Yan-Wen-Zi; CTO & co-founder of Jiangshuo',
+      'Chair, Taiwan Digital Nomad Association (TDNA); Executive Director, NDC Nomad Taiwan Office (since 2025)',
       'Speaker at PyCon Taiwan, PyCon JP 2019 (Tokyo, in English) and Modern Web',
       'Corporate trainer for Chunghwa Telecom and III; lectures at Soochow University and Hualien Tzu Chi Hospital',
       '1st place, Microsoft GCR Startup Hackfest; 6th worldwide, Salesforce $1M Hackathon',
     ],
-    kkNote: 'KK leads high-level judgment, relationships, key proposals and quality control; day-to-day delivery is handled by a project pod, so advisory never depends on one person.',
+    kkHowTitle: 'How KK works',
+    kkHow: [
+      { t: 'Diagnose before selling', d: 'A 30-minute call confirms the problem, budget and decision-maker; if a project is not a fit, he says so.' },
+      { t: 'Buy before build', d: 'An engineering background means he knows what to buy, what to build, and what not to do at all.' },
+      { t: 'Sign-off at every stage', d: 'Requirements, PoC and build are quoted separately, with acceptance criteria written into the quote.' },
+    ],
+    kkQuote: 'Don’t buy a system first. Describe the one process that hurts most. If an existing tool solves it, I won’t tell you to build.',
+    kkQuoteBy: 'KK',
+    kkBook: 'Book 30 minutes with KK',
+    kkNote: 'KK leads scoping, relationships, key proposals and quality control; day-to-day delivery is handled by the project team, so advisory never depends on one person.',
     groupTitle: 'Partners & governance boundaries',
     groupLead: 'Twouring is the advisory entity; Adata, Yan-Wen-Zi and TDNA are long-term partners, each with their lane. Commercial contracts are always signed by Twouring; TDNA’s role is listed separately, and member or community data is never used for business development.',
     group: [
@@ -106,18 +126,28 @@ const c = {
       { icon: 'compass', t: 'バリュー', d: '提案より先に診断。成果は検収できる形で。役割と許諾は明確に。AI を空虚なスローガンにしない。' },
     ],
     kkTitle: '代表・リードコンサルタント：徐愷（KK）',
-    kkLead: 'KK は単一分野のコンサルタントではなく、技術、プロダクト、リモートチーム、デジタルノマド、コミュニティ、行政エコシステムを横断してつなぐ統合型の人材です。',
+    kkLead: 'エンジニア出身で技術副総裁を経て起業、公共入札の落札経験もあります。KK が案件を見るときの問いは二つだけ。やる価値があるか、検収できるか。いまも自分でコードを書き、入札提案書も自分で書くため、お話しするのはスライドではなく、実際に動く計画です。',
+    kkRolesTitle: '経歴',
     kkRoles: [
-      '台湾デジタルノマド協会（TDNA）理事長',
-      '台湾 国家発展委員会 デジタルノマド事務局 執行長（2025年〜）',
-      '適才科技・言文字 代表、匠說 CTO 兼共同創業者',
-      'MoBagel 元技術副総裁（VP of Engineering）',
+      '国立台湾大学 資訊工程学科卒（資訊管理学科 ダブルメジャー）、ソフトウェア開発歴15年',
+      'MoBagel 元技術副総裁（VP of Engineering、2014–2018）',
       'AWS 認定ソリューションアーキテクト – アソシエイト',
+      'Twouring 代表。適才科技・言文字 代表、匠說 CTO 兼共同創業者',
+      '台湾デジタルノマド協会（TDNA）理事長。国家発展委員会「遊牧臺灣」事務局 執行長（2025年〜）',
       'PyCon Taiwan、PyCon JP 2019（東京・英語で登壇）、Modern Web 登壇',
       '中華電信・資策会（III）の社内研修講師、東呉大学・花蓮慈済病院などで講義',
       'Microsoft GCR Startup Hackfest 優勝、Salesforce 100万ドルハッカソン 世界6位',
     ],
-    kkNote: 'KK は経営判断、関係構築、重要な提案と品質管理を担い、日々の実行はプロジェクトチームが担当します。特定の個人に依存しない体制でご支援します。',
+    kkHowTitle: 'KK のコンサルティングの進め方',
+    kkHow: [
+      { t: '売る前に診断する', d: '30分のヒアリングで課題、予算、意思決定者を確認します。合わない案件は、はっきりそう申し上げます。' },
+      { t: '既存ツールで済むなら開発しない', d: 'エンジニアとしての経験から、買うべきもの、作るべきもの、そもそも不要なものを見分けます。' },
+      { t: 'すべての段階で検収できる', d: '要件定義、PoC、構築は別々にお見積りし、検収基準を見積書に明記します。' },
+    ],
+    kkQuote: 'まずシステムを買うのではなく、いちばん困っている業務をはっきりさせること。既存のツールで解決できるなら、開発は勧めません。',
+    kkQuoteBy: 'KK',
+    kkBook: 'KK との30分相談を予約',
+    kkNote: 'KK は要件の見極め、関係構築、重要な提案と品質管理を担い、日々の実行はプロジェクトチームが担当します。特定の個人に依存しない体制でご支援します。',
     groupTitle: 'パートナーとガバナンス',
     groupLead: '対外的なコンサルティングの主体は Twouring です。適才科技・言文字・TDNA は長期パートナーとしてそれぞれの役割を担います。商取引の契約はすべて Twouring が締結し、TDNA の役割は別途明記します。会員やコミュニティのデータを営業目的に使うことはありません。',
     group: [
@@ -175,6 +205,9 @@ const personLd = {
   jobTitle: { zh: '遊遊股份有限公司負責人 / 主導顧問', en: 'Founder & lead advisor, Twouring Co., Ltd.', ja: 'Twouring 代表／リードコンサルタント' }[lang],
   worksFor: { '@id': company.siteUrl + '/#organization' },
   url: company.siteUrl + lp(ROUTES.about),
+  alumniOf: { '@type': 'CollegeOrUniversity', name: { zh: '國立臺灣大學', en: 'National Taiwan University', ja: '国立台湾大学' }[lang] },
+  hasCredential: { '@type': 'EducationalOccupationalCredential', name: 'AWS Certified Solutions Architect – Associate' },
+  sameAs: [company.linkedinKK, 'https://www.youtube.com/watch?v=NLLhYKscuMk'],
 };
 ---
 <BaseLayout title={{ zh: '關於遊遊', en: 'About', ja: '会社概要' }[lang]} description={c.metaDescription} path={ROUTES.about} jsonLd={[personLd]}>
@@ -217,10 +250,28 @@ const personLd = {
       <div class="kk-body">
         <h2 class="eyebrow">{c.kkTitle}</h2>
         <p class="lead">{c.kkLead}</p>
+        <blockquote class="kk-quote">
+          <p>「{c.kkQuote}」</p>
+          <cite>— {c.kkQuoteBy}</cite>
+        </blockquote>
+        <h3 class="kk-sub">{c.kkHowTitle}</h3>
+        <div class="grid grid--3 kk-how">
+          {c.kkHow.map((h) => (
+            <div class="kk-how-item">
+              <h4>{h.t}</h4>
+              <p>{h.d}</p>
+            </div>
+          ))}
+        </div>
+        <h3 class="kk-sub">{c.kkRolesTitle}</h3>
         <ul class="kk-roles" role="list">
           {c.kkRoles.map((r) => (<li><Icon name="check" size={18} /> {r}</li>))}
         </ul>
         <p class="kk-note">{c.kkNote}</p>
+        <div class="cluster kk-cta">
+          <a class="btn btn--primary" href={company.bookingUrl} target="_blank" rel="noopener">{c.kkBook}</a>
+          <a class="btn btn--ghost" href={company.linkedinKK} target="_blank" rel="noopener">LinkedIn <Icon name="arrow" size={18} /></a>
+        </div>
       </div>
     </div>
   </section>
@@ -269,10 +320,19 @@ const personLd = {
   .kk-photo { width: 100%; height: auto; border-radius: var(--radius-lg); margin-bottom: 1rem; box-shadow: var(--shadow-sm); }
   .kk-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); }
   .kk-linkedin { display: inline-block; margin-top: 0.6rem; font-weight: 700; }
-  .kk-roles { margin: 1.4rem 0; display: grid; gap: 0.7rem; }
+  .kk-roles { margin: 0.8rem 0 1.4rem; display: grid; gap: 0.7rem; }
   .kk-roles li { display: flex; gap: 0.6rem; align-items: flex-start; }
   .kk-roles :global(svg) { color: var(--c-accent-strong); flex-shrink: 0; margin-top: 3px; }
   .kk-note { color: var(--c-muted); border-left: 3px solid var(--c-accent-2); padding-left: 1rem; }
+  .kk-quote { margin-top: 1.4rem; padding: 1.1rem 1.4rem; border-left: 3px solid var(--c-accent); background: var(--c-surface-warm); border-radius: 0 var(--radius) var(--radius) 0; max-width: 60ch; }
+  .kk-quote p { font-family: var(--font-head); font-weight: 700; font-size: var(--fs-500); color: var(--c-ink-strong); line-height: 1.5; }
+  .kk-quote cite { display: block; margin-top: 0.5rem; font-style: normal; color: var(--c-muted); font-size: 0.9rem; }
+  .kk-sub { margin-top: 1.8rem; font-size: var(--fs-500); }
+  .kk-how { margin-top: 0.8rem; gap: 1rem; }
+  .kk-how-item { background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+  .kk-how-item h4 { font-size: var(--fs-400); }
+  .kk-how-item p { color: var(--c-muted); font-size: 0.92rem; margin-top: 0.3rem; }
+  .kk-cta { margin-top: 1.4rem; }
 
   .group-card h3 { font-size: var(--fs-500); }
   .group-role { color: var(--c-accent-strong); font-size: 0.85rem; font-weight: 600; font-family: var(--font-head); margin: 0.3rem 0 0.6rem; }
