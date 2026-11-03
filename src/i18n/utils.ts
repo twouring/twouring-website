@@ -1,25 +1,34 @@
 import type { Lang } from './company';
 
-export const LOCALES: Lang[] = ['zh', 'en'];
+export const LOCALES: Lang[] = ['zh', 'en', 'ja'];
 export const DEFAULT_LOCALE: Lang = 'zh';
 
-/** 將 Astro.currentLocale 等輸入正規化為 'zh' | 'en'。 */
+/** 各語言的 HTML lang / hreflang / OG locale / 顯示名。 */
+export const LOCALE_META: Record<Lang, { html: string; og: string; label: string }> = {
+  zh: { html: 'zh-Hant-TW', og: 'zh_TW', label: '中文' },
+  en: { html: 'en', og: 'en_US', label: 'English' },
+  ja: { html: 'ja', og: 'ja_JP', label: '日本語' },
+};
+
+/** 將 Astro.currentLocale 等輸入正規化為 'zh' | 'en' | 'ja'。 */
 export function getLang(input: string | undefined | null): Lang {
-  return input === 'en' ? 'en' : 'zh';
+  return input === 'en' || input === 'ja' ? input : 'zh';
 }
 
-/** 邏輯路徑（不含語言前綴）→ 實際 URL（帶尾斜線，與 sitemap 一致）。zh 無前綴；en 加 /en。 */
+/** 邏輯路徑（不含語言前綴）→ 實際 URL（帶尾斜線，與 sitemap 一致）。zh 無前綴；en、ja 加前綴。 */
 export function localizePath(path: string, lang: Lang): string {
   const clean = path === '/' ? '' : '/' + path.replace(/^\/+|\/+$/g, '');
-  if (lang === 'en') return clean === '' ? '/en/' : `/en${clean}/`;
-  return clean === '' ? '/' : clean + '/';
+  if (lang === 'zh') return clean === '' ? '/' : clean + '/';
+  return clean === '' ? `/${lang}/` : `/${lang}${clean}/`;
 }
 
 /** 由目前 pathname 還原不含語言前綴的邏輯路徑。 */
 export function toLogicalPath(pathname: string): string {
   let p = (pathname || '/').replace(/\/+$/, '') || '/';
-  if (p === '/en') return '/';
-  if (p.startsWith('/en/')) p = p.slice(3);
+  for (const l of ['en', 'ja']) {
+    if (p === '/' + l) return '/';
+    if (p.startsWith('/' + l + '/')) p = p.slice(l.length + 1);
+  }
   return p || '/';
 }
 

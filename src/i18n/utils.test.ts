@@ -11,6 +11,13 @@ assert.equal(getLang('zh'), 'zh');
 assert.equal(getLang(undefined), 'zh');
 assert.equal(getLang(null), 'zh');
 assert.equal(getLang('fr'), 'zh');
+assert.equal(getLang('ja'), 'ja');
+assert.equal(localizePath('/', 'ja'), '/ja/');
+assert.equal(localizePath('/cases', 'ja'), '/ja/cases/');
+assert.equal(toLogicalPath('/ja/'), '/');
+assert.equal(toLogicalPath('/ja/services/city/'), '/services/city');
+assert.equal(switchLocaleHref('/ja/about/', 'en'), '/en/about/');
+assert.equal(switchLocaleHref('/about/', 'ja'), '/ja/about/');
 
 // localizePath：zh 無前綴、en 加 /en，皆帶尾斜線；輸入的前後斜線需正規化
 assert.equal(localizePath('/', 'zh'), '/');

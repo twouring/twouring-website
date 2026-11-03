@@ -9,10 +9,12 @@ export const company = {
   legalName: {
     zh: '遊遊股份有限公司',
     en: 'Twouring Co., Ltd.',
+    ja: '遊遊股份有限公司（Twouring Co., Ltd.）',
   },
   formerName: {
     zh: '遊遊有限公司',
     en: 'Twouring Ltd. (former)',
+    ja: '遊遊有限公司（旧社名）',
   },
   taxId: '95440838', // 統一編號
   founded: '2024-05-27',
@@ -20,16 +22,19 @@ export const company = {
   representative: {
     zh: '徐愷（KK）',
     en: 'Kai Hsu (KK)',
+    ja: '徐愷（Kai Hsu / KK）',
   },
   /** 經濟部登記地址 */
   address: {
     zh: '臺北市中正區開封街一段 37 號 11 樓',
     en: '11F., No. 37, Sec. 1, Kaifeng St., Zhongzheng Dist., Taipei City 100, Taiwan',
+    ja: '台湾 台北市中正区開封街一段37号11階',
   },
   /** 營運／面試／會議地點（與登記地址不同時需同時揭露） */
   operatingAddress: {
     zh: '臺北市中正區重慶南路一段 11 號',
     en: 'No. 11, Sec. 1, Chongqing S. Rd., Zhongzheng Dist., Taipei City 100, Taiwan',
+    ja: '台湾 台北市中正区重慶南路一段11号',
   },
   email: 'us@twouring.com',
   slogan: 'Tour your life together',
@@ -48,4 +53,4 @@ export const company = {
   llmsTxtUrl: 'https://www.twouring.com/llms.txt',
 } as const;
 
-export type Lang = 'zh' | 'en';
+export type Lang = 'zh' | 'en' | 'ja';

@@ -105,6 +105,18 @@ h3 { font-size: var(--fs-600); }
 h4 { font-size: var(--fs-500); }
 p { text-wrap: pretty; }
 
+/* 標題內不可拆開的詞組 */
+.keep { white-space: nowrap; }
+
+/* ---- 日文版：日文字形與斷行（避免「日／本」這類字中斷行） ---- */
+html:lang(ja) {
+  --font-head: 'Nunito', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', 'Meiryo', system-ui, sans-serif;
+  --font-body: 'Source Sans 3', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', 'Meiryo', system-ui, sans-serif;
+}
+:lang(ja) :is(h1, h2, h3, h4, .eyebrow, .tag, .proof-n) { word-break: auto-phrase; overflow-wrap: anywhere; }
+:lang(ja) :is(p, li, dd) { line-break: strict; }
+:lang(ja) h1 { letter-spacing: 0; }
+
 a { color: var(--c-accent-strong); text-decoration: none; transition: color 0.15s var(--ease); }
 a:hover { color: var(--c-accent-deep); }
 

@@ -51,10 +51,10 @@ const year = new Date().getFullYear(); // 建置時求值
 
   <div class="container footer-legal-row">
     <div class="footer-legal">
-      <p class="legal-name">{company.legalName[lang]} · <span lang={lang === 'zh' ? 'en' : 'zh-Hant'}>{company.legalName[lang === 'zh' ? 'en' : 'zh']}</span></p>
+      <p class="legal-name">{lang === 'ja' ? company.legalName.ja : <>{company.legalName[lang]} · <span lang={lang === 'zh' ? 'en' : 'zh-Hant'}>{company.legalName[lang === 'zh' ? 'en' : 'zh']}</span></>}</p>
       <p class="legal-meta">
         <span>{t.footer.taxIdLabel}：{company.taxId}</span>
-        <span>{lang === 'zh' ? '代表人' : 'Representative'}：{company.representative[lang]}</span>
+        <span>{{ zh: '代表人', en: 'Representative', ja: '代表者' }[lang]}：{company.representative[lang]}</span>
       </p>
       <p class="legal-note">{t.footer.legalNote}</p>
     </div>
@@ -65,7 +65,7 @@ const year = new Date().getFullYear(); // 建置時求值
         <li><a href={lp(ROUTES.cookies)}>{t.footer.cookies}</a></li>
         <li><a href={lp(ROUTES.cis)}>{t.footer.cis}</a></li>
       </ul>
-      <p class="copyright">© {year} {company.legalName[lang]}. {t.footer.rights}.</p>
+      <p class="copyright">© {year} {lang === 'ja' ? company.legalName.en : company.legalName[lang]}. {t.footer.rights}.</p>
     </div>
   </div>
 </footer>

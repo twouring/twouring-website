@@ -9,6 +9,7 @@ export interface CaseDetail {
   path: string;
   zh: CaseLocale;
   en: CaseLocale;
+  ja: CaseLocale;
 }
 
 interface CaseLocale {
@@ -122,6 +123,48 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       lastUpdated: '2026-07-30',
       summary: 'Hualien County Cloud Base operations & promotion contract; award total NTD 5.88M.',
     },
+    ja: {
+      tag: '自治体 · 行政 · 落札案件',
+      title: '花蓮「雲基地」運営推進計画',
+      client: '花蓮県政府',
+      period: '2026年度（公開入札にて落札）',
+      metaDescription:
+        'Twouring（遊遊股份有限公司）は花蓮県政府「115花蓮雲基地運営推進計画」専門サービス業務を公開入札で落札（公開契約額 NTD 5,880,000）。課題、役割、成果物、マイルストーンをご紹介します。',
+      lead: 'デジタルノマドと「雲基地」の運営を、単発イベントから、海外人材を受け入れ地域消費を生む都市の取り組みへと広げる花蓮県の挑戦を支援しています。',
+      contractAmount: 'NTD 5,880,000',
+      contractSourceLabel: '公共入札データ（ezbid）',
+      contractSourceUrl: TENDER_URL,
+      problem:
+        'デジタルノマドと雲基地を一過性のイベントで終わらせず、海外人材を惹きつけ、地域の拠点や事業者とつながり、成果を継続的に追える都市の運営推進へと発展させること。',
+      roles: [
+        { name: 'Twouring（遊遊股份有限公司）', role: '受託・落札事業者：コンサルティング、プロジェクト統括、実行管理（PMO）' },
+        { name: '徐愷（KK）', role: 'リードコンサルタント。政策関連の経歴は会社概要に記載（本案件における発注者側の役職ではありません）' },
+        { name: 'デリバリーパートナー', role: '技術・施設・イベントの実施は必要に応じてパートナーが担当' },
+        { name: 'TDNA エコシステム', role: '業界・コミュニティとの連携先。本案件で TDNA が有償の顧客関係にあるわけではありません' },
+      ],
+      deliverables: [
+        '施設・リソースの棚卸しと地元事業者の連携',
+        '海外ノマドコミュニティの受け入れとプログラム設計',
+        '運営推進計画の策定と関係者間の合意形成',
+        '成果の取りまとめと公開用素材の制作',
+      ],
+      milestones: [
+        '落札・契約開始',
+        '施設・事業者の棚卸しと受け入れ設計',
+        'イベントとコミュニティ連携の実施',
+        '成果報告と継続運営に向けた提言',
+      ],
+      kpis: [
+        '施設・事業者の連携カバー率（最終報告による）',
+        '海外人材・ノマドの受け入れ回数と人数',
+        '継続可能な運営・コミュニティの仕組みが構築されたか',
+      ],
+      links: [
+        { label: '公共入札の事業者ページ（遊遊股份有限公司）', url: TENDER_URL },
+      ],
+      lastUpdated: '2026-11-03',
+      summary: '花蓮県政府のデジタルノマド・雲基地運営推進業務。公開契約額 NT$588万。',
+    },
   },
 
   'taitung-ttnomads': {
@@ -211,6 +254,48 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       lastUpdated: '2026-07-30',
       summary: 'Taitung TTNomads living-room & community platform contract; award total NTD 2.4M.',
     },
+    ja: {
+      tag: '自治体 · 行政 · 落札案件',
+      title: '台東 TTNomads 移動式国際リビング＆コミュニティプラットフォーム',
+      client: '台東県政府',
+      period: '2026年度（公開入札にて落札）',
+      metaDescription:
+        'Twouring（遊遊股份有限公司）は台東県政府「115年台東県移動式国際リビング・デジタルノマド TTNomads コミュニティプラットフォーム」業務を公開入札で落札（公開契約額 NTD 2,400,000）。',
+      lead: '地域の拠点と世界のノマドコミュニティを結び、継続的な受け入れ・交流と TTNomads コミュニティ基盤づくりを設計しています。',
+      contractAmount: 'NTD 2,400,000',
+      contractSourceLabel: '公共入札データ（ezbid）',
+      contractSourceUrl: TENDER_URL,
+      problem:
+        '地域の拠点と海外ノマドコミュニティを組み合わせ、継続できる受け入れ・交流・地域とのつながりを設計し、TTNomads コミュニティプラットフォーム関連サービスを推進すること。',
+      roles: [
+        { name: 'Twouring（遊遊股份有限公司）', role: '受託・落札事業者：コンサルティング、プログラムと拠点の統合' },
+        { name: '徐愷（KK）', role: 'リードコンサルタント。政策関連の経歴は会社概要に記載' },
+        { name: 'デリバリーパートナー', role: '施設・イベント・技術の実施は必要に応じて担当' },
+        { name: 'TDNA エコシステム', role: 'コミュニティ・業界との連携先。本案件で有償の顧客関係にあるわけではありません' },
+      ],
+      deliverables: [
+        '地域の拠点とコミュニティの棚卸し',
+        '海外ノマドの受け入れと交流プログラム',
+        '地元事業者・リソースとの連携',
+        'TTNomads コミュニティ基盤関連サービスと成果の取りまとめ',
+      ],
+      milestones: [
+        '落札・契約開始',
+        '拠点・コミュニティの棚卸し',
+        '受け入れ・交流プログラムの実施',
+        'プラットフォーム・コミュニティの継続施策と成果報告',
+      ],
+      kpis: [
+        '受け入れ・交流の回数と人数',
+        '連携した地元事業者・リソースの数',
+        'プラットフォームの利用・継続に関する指標（最終報告による）',
+      ],
+      links: [
+        { label: '公共入札の事業者ページ（遊遊股份有限公司）', url: TENDER_URL },
+      ],
+      lastUpdated: '2026-11-03',
+      summary: '台東県政府の TTNomads 移動式国際リビング＆コミュニティ業務。公開契約額 NT$240万。',
+    },
   },
 };
 
@@ -229,5 +314,11 @@ export const relationLabels = {
     policy: 'KK’s policy roles & professional experience',
     partner: 'Delivery partners',
     ecosystem: 'TDNA non-profit ecosystem',
+  },
+  ja: {
+    awarded: 'Twouring の受託・落札案件',
+    policy: 'KK の政策関連の役職・経歴',
+    partner: 'デリバリーパートナー',
+    ecosystem: 'TDNA（非営利）エコシステム',
   },
 } as const;

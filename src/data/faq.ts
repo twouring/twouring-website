@@ -43,6 +43,24 @@ export const homeFaq = {
       a: 'Book a free 30-minute discovery call to confirm problem, budget and decision-maker, then decide on a paid diagnostic. Start from the contact page or the Google Calendar booking link.',
     },
   ] satisfies FaqItem[],
+  ja: [
+    {
+      q: 'Twouringはどのような会社ですか？',
+      a: 'Twouring（遊遊股份有限公司）は、企業のAI導入と都市のデジタルトランスフォーメーションを支援するコンサルティング会社です。企業向けにはAI診断、90日ロードマップ、業務自動化、社内研修を、地方自治体向けにはデジタルノマド都市戦略、ノマド対応拠点づくり、国際人材プロジェクトの企画を支援しています。',
+    },
+    {
+      q: '企業のAI導入にはどれくらいの費用と期間がかかりますか？',
+      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜です。標準的な流れは、無料の30分初回ヒアリング → 有償診断 → KPIによる検収を伴う90日間の試行です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
+    },
+    {
+      q: '花蓮県・台東県の案件はTwouringのクライアント案件ですか？契約金額はいくらですか？',
+      a: 'はい。花蓮雲基地（Hualien Cloud Base）と台東TTNomadsは、遊遊股份有限公司が公開入札で受注した案件で、公開されている契約金額はそれぞれNTD 5,880,000とNTD 2,400,000です（落札総額であり、会社の利益ではありません）。国家発展委員会（国発会）に関する記述はKKの政策分野での職務経歴であり、有償のクライアント関係とは性質が異なります。',
+    },
+    {
+      q: 'どのように依頼を始めればよいですか？',
+      a: 'まず無料の30分初回ヒアリングをご予約いただき、課題、予算、意思決定者を確認します。そのうえで、有償診断に進むかどうかをご判断ください。Webサイトのお問い合わせページ、またはGoogleカレンダーの予約リンクからお申し込みいただけます。',
+    },
+  ] satisfies FaqItem[],
 };
 
 export const aiConsultingFaq = {
@@ -72,6 +90,20 @@ export const aiConsultingFaq = {
     {
       q: 'Can company data go into ChatGPT or Copilot?',
       a: 'It depends on product terms, account type and data classification. Personal data, unpublished finance and client contracts should not go into unapproved tools. See the insight article on company data in ChatGPT / Copilot.',
+    },
+  ] satisfies FaqItem[],
+  ja: [
+    {
+      q: '企業向けAI導入コンサルティングとは何ですか？',
+      a: '企業向けAI導入コンサルティングでは、まず業務プロセスとツールを棚卸しし、そのうえで自動化するワークフロー、ツール選定、研修、KPIを決めます。最初にシステムを購入するのではありません。Twouringは診断とPMOを担い、技術面の実装は適才科技（Adata）または指定ベンダーが担当できます。',
+    },
+    {
+      q: 'AIコンサルティング、社内研修、システム開発は何が違いますか？',
+      a: 'コンサルティングは「どこから始め、何を優先するか」を明確にします。研修は経営層とチームの共通言語をつくります。システム開発は、業務プロセスが明確になった後に連携や実装を行います。これらは別々の調達であり、段階に応じて組み合わせるべきもので、ひとまとめの万能パッケージにすべきではありません。',
+    },
+    {
+      q: '社内データをChatGPTやCopilotに入力してもよいですか？',
+      a: '製品の利用規約、アカウントの種類、データ分類によって異なります。個人情報、未公開の財務情報、顧客との契約書は、未承認のツールに入力すべきではありません。導入前に、利用を許可するツールの一覧とアップロード禁止のデータ種別を定める必要があります。詳しくはインサイト記事「社内データをChatGPT／Copilotに入力してもよいのか？」をご覧ください。',
     },
   ] satisfies FaqItem[],
 };

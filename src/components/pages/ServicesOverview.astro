@@ -56,11 +56,33 @@ const c = {
     grantDesc: 'Twouring also offers grant/tender feasibility diagnostics (NTD 50,000), proposal strategy (from NTD 150,000) and PMO (NTD 80,000/mo). We position on strategy, plan design and delivery management — not low-cost ghost-writing; a 5–12% success fee always comes with a base fee.',
     seeService: 'View service',
   },
+  ja: {
+    eyebrow: 'サービス一覧',
+    title: '企業のAI導入、地域戦略、国際視察まで。わかりやすい相談窓口',
+    lead: 'Twouring は提供できる価値を、そのまま発注できるサービスとして整理しています。どのサービスも30分の無料ヒアリングから始まり、有償診断、コンサルティング、PMO、導入へと段階的に進みます。',
+    metaDescription:
+      'Twouring のサービス：企業AI導入支援、AI研修、業務自動化、リモートワーク制度、デジタルノマド誘致戦略、ノマドフレンドリーな施設づくり、台湾視察の企画。すべて30分の無料ヒアリングから。',
+    aiTitle: '企業AI・働き方',
+    aiLead: 'AI導入とリモートワークは別の発注テーマのため、ページを分けてご案内しています。',
+    otherTitle: '自治体・施設・国際交流',
+    ladderTitle: '共通の進め方',
+    ladderLead: 'どのサービスも同じステップで進めるため、投資額とリスクを段階的にコントロールできます。',
+    ladder: [
+      { t: 'インサイト記事・講演', d: '記事、公開講演、説明会で判断材料を提供します（個別戦略は含みません）。' },
+      { t: '30分の無料ヒアリング', d: '課題の明確さ、予算と意思決定者の有無を確認します。' },
+      { t: '有償診断', d: 'NTD 30,000–200,000。お客様の種別と複雑さに応じて設定します。' },
+      { t: '3か月のコンサルティング／PMO', d: 'NTD 80,000–250,000／月。診断結果を実行に移します。' },
+      { t: '導入プロジェクト・年間契約', d: 'NTD 300,000–3,000,000＋。規模や、開発・イベント・国際連携の有無で変動します。' },
+    ],
+    grantTitle: '補助金・公共入札の戦略支援',
+    grantDesc: '補助金・入札の実現可能性診断（NTD 50,000）、計画書の戦略設計（NTD 150,000〜）、PMO（NTD 80,000／月）も提供しています。安価な代筆ではなく、戦略・計画設計・実行管理が役割です。成功報酬（5–12%）は必ず基本料金と組み合わせます。',
+    seeService: '詳しく見る',
+  },
 }[lang];
 
 const otherKeys = ['city', 'venue', 'international'] as const;
 ---
-<BaseLayout title={lang === 'zh' ? '服務' : 'Services'} description={c.metaDescription} path={ROUTES.services}>
+<BaseLayout title={{ zh: '服務', en: 'Services', ja: 'サービス' }[lang]} description={c.metaDescription} path={ROUTES.services}>
   <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.services }]} />
 
   <section class="section">

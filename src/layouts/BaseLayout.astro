@@ -9,7 +9,7 @@ import '../styles/global.css';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { getLang, localizePath } from '../i18n/utils';
+import { getLang, localizePath, LOCALES, LOCALE_META } from '../i18n/utils';
 import { useUI } from '../i18n/ui';
 import { company } from '../i18n/company';
 
@@ -25,22 +25,26 @@ interface Props {
 const { title, description, path, ogImage = '/og-default.jpg', jsonLd = [], noindex = false } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
-const htmlLang = lang === 'zh' ? 'zh-Hant-TW' : 'en';
+const htmlLang = LOCALE_META[lang].html;
 
 const base = company.siteUrl;
 const canonical = base + localizePath(path, lang);
 const zhHref = base + localizePath(path, 'zh');
-const enHref = base + localizePath(path, 'en');
+const altHrefs = LOCALES.map((l) => ({ hreflang: LOCALE_META[l].html, href: base + localizePath(path, l) }));
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : base + ogImage;
 const fullTitle = path === '/' ? title : `${title}｜${company.brand}`;
 
-const knowsAbout = lang === 'zh'
-  ? ['企業 AI 導入', 'AI 流程自動化', 'AI 企業內訓', '數位轉型顧問', '遠距與混合工作', '數位遊牧城市策略', '友善場域與旅宿國際化', '國際企業參訪']
-  : ['Enterprise AI consulting', 'AI workflow automation', 'AI corporate training', 'Digital transformation', 'Remote and hybrid work', 'Digital-nomad city strategy', 'Nomad-friendly venues', 'Taiwan business delegation'];
+const knowsAbout = {
+  zh: ['企業 AI 導入', 'AI 流程自動化', 'AI 企業內訓', '數位轉型顧問', '遠距與混合工作', '數位遊牧城市策略', '友善場域與旅宿國際化', '國際企業參訪'],
+  en: ['Enterprise AI consulting', 'AI workflow automation', 'AI corporate training', 'Digital transformation', 'Remote and hybrid work', 'Digital-nomad city strategy', 'Nomad-friendly venues', 'Taiwan business delegation'],
+  ja: ['企業向けAI導入支援', 'AI業務自動化', 'AI企業研修', 'DXコンサルティング', 'リモート・ハイブリッドワーク', 'デジタルノマド誘致戦略', 'ノマドフレンドリーな施設づくり', '台湾視察・企業訪問'],
+}[lang];
 
-const orgDescription = lang === 'zh'
-  ? 'Twouring 遊遊（遊遊股份有限公司）提供企業 AI 導入顧問、AI 流程自動化、企業內訓，以及數位遊牧城市策略與國際參訪顧問。合作從 30 分鐘需求初談開始。'
-  : 'Twouring Co., Ltd. (Twouring 遊遊) provides enterprise AI consulting, workflow automation, corporate training, and digital-nomad city strategy and international visit advisory. Engagements start with a 30-minute discovery call.';
+const orgDescription = {
+  zh: 'Twouring 遊遊（遊遊股份有限公司）提供企業 AI 導入顧問、AI 流程自動化、企業內訓，以及數位遊牧城市策略與國際參訪顧問。合作從 30 分鐘需求初談開始。',
+  en: 'Twouring Co., Ltd. (Twouring 遊遊) provides enterprise AI consulting, workflow automation, corporate training, and digital-nomad city strategy and international visit advisory. Engagements start with a 30-minute discovery call.',
+  ja: 'Twouring（遊遊股份有限公司）は、台湾を拠点に企業のAI導入支援・業務自動化・社内研修、そして自治体向けのデジタルノマド誘致戦略や国際交流・視察の企画を手がけるコンサルティング会社です。ご相談は30分の無料ヒアリングから。',
+}[lang];
 
 const orgLd = {
   '@context': 'https://schema.org',
@@ -59,9 +63,9 @@ const orgLd = {
   founder: {
     '@type': 'Person',
     '@id': base + '/#kk',
-    name: lang === 'zh' ? '徐愷' : 'Kai Hsu',
+    name: lang === 'en' ? 'Kai Hsu' : '徐愷',
     alternateName: ['KK', 'Kai Hsu', '徐愷（KK）'],
-    jobTitle: lang === 'zh' ? '負責人／主導顧問' : 'Founder & lead advisor',
+    jobTitle: { zh: '負責人／主導顧問', en: 'Founder & lead advisor', ja: '代表／リードコンサルタント' }[lang],
     url: company.linkedinKK,
     sameAs: [company.linkedinKK],
   },
@@ -75,7 +79,7 @@ const orgLd = {
   },
   location: {
     '@type': 'Place',
-    name: lang === 'zh' ? '營運／會議地點' : 'Operating / meeting location',
+    name: { zh: '營運／會議地點', en: 'Operating / meeting location', ja: 'オフィス・打ち合わせ場所' }[lang],
     address: {
       '@type': 'PostalAddress',
       streetAddress: '重慶南路一段11號',
@@ -91,7 +95,7 @@ const orgLd = {
       contactType: 'sales',
       email: company.email,
       url: base + localizePath('/contact', lang),
-      availableLanguage: ['zh-Hant', 'en'],
+      availableLanguage: ['zh-Hant', 'en', 'ja'],
     },
   ],
   areaServed: ['TW', 'Asia'],
@@ -110,8 +114,7 @@ const allLd = [orgLd, ...jsonLd];
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="zh-Hant-TW" href={zhHref} />
-    <link rel="alternate" hreflang="en" href={enHref} />
+    {altHrefs.map((a) => (<link rel="alternate" hreflang={a.hreflang} href={a.href} />))}
     <link rel="alternate" hreflang="x-default" href={zhHref} />
 
     <meta name="theme-color" content="#ffffff" />
@@ -124,8 +127,8 @@ const allLd = [orgLd, ...jsonLd];
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={company.brand} />
-    <meta property="og:locale" content={lang === 'zh' ? 'zh_TW' : 'en_US'} />
-    <meta property="og:locale:alternate" content={lang === 'zh' ? 'en_US' : 'zh_TW'} />
+    <meta property="og:locale" content={LOCALE_META[lang].og} />
+    {LOCALES.filter((l) => l !== lang).map((l) => (<meta property="og:locale:alternate" content={LOCALE_META[l].og} />))}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

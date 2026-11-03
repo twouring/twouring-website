@@ -14,11 +14,11 @@ const { eyebrow, title, lead, crumbs = [], variant = 'warm' } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const lp = (p: string) => localizePath(p, lang);
-const home = lang === 'zh' ? '首頁' : 'Home';
+const home = { zh: '首頁', en: 'Home', ja: 'ホーム' }[lang];
 ---
 <section class:list={['page-hero', `page-hero--${variant}`]}>
   <div class="container">
-    <nav class="crumbs" aria-label={lang === 'zh' ? '麵包屑' : 'Breadcrumb'}>
+    <nav class="crumbs" aria-label={{ zh: '麵包屑', en: 'Breadcrumb', ja: 'パンくずリスト' }[lang]}>
       <a href={lp(ROUTES.home)}>{home}</a>
       {crumbs.map((c) => (
         <>

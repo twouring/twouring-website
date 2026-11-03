@@ -13,7 +13,7 @@ export interface LegalDoc {
   metaDescription: string;
 }
 
-export const legal: Record<LegalSlug, { zh: LegalDoc; en: LegalDoc }> = {
+export const legal: Record<LegalSlug, { zh: LegalDoc; en: LegalDoc; ja: LegalDoc }> = {
   privacy: {
     zh: {
       title: '隱私權政策',
@@ -41,6 +41,20 @@ export const legal: Record<LegalSlug, { zh: LegalDoc; en: LegalDoc }> = {
         { heading: 'Third-party sharing', paras: ['We do not sell your personal data. We share it with necessary third-party processors only to provide services, comply with the law, maintain security, or with your consent.'] },
         { heading: 'Your rights', paras: ['You may request to access, correct, stop the use of, or delete your personal data.'] },
         { heading: 'Contact', paras: ['To exercise these rights or ask about this policy, email us@twouring.com.'] },
+      ],
+    },
+    ja: {
+      title: 'プライバシーポリシー',
+      updated: '最終更新日：2026-06-30',
+      intro: 'Twouring（遊遊股份有限公司、以下「当社」）は、お客様の個人情報の保護を重視しています。本ポリシーでは、本Webサイトを通じてご提供いただいた情報を、当社がどのように収集・利用・保護するかについてご説明します。本ポリシーの日本語版は参考訳であり、繁体字中国語版と内容に相違がある場合は繁体字中国語版が優先します。',
+      metaDescription: 'Twouring（遊遊股份有限公司）のプライバシーポリシー：個人情報の収集・利用・保管・保護の方法と、開示・訂正・削除を求める権利について。',
+      blocks: [
+        { heading: '収集する情報', paras: ['当社は、コンサルティングサービスの提供、プロジェクトでの協業、イベントへの参加申込、コンテンツの配信、お問い合わせへの回答のため、氏名、会社名、役職、メールアドレス、電話番号、メッセージの内容、Webサイトの利用履歴を収集することがあります。'] },
+        { heading: '利用目的', paras: ['収集した情報は、お問い合わせへの回答、サービスの提供、顧客管理、イベントのご案内、Webサイトの分析、および必要な事務手続きにのみ利用します。'] },
+        { heading: '情報の保管', paras: ['お問い合わせフォームの情報は、Google Workspace、Google スプレッドシート、または当社が指定するクラウドツールに保管されることがあり、合理的な安全管理措置を講じて保護します。'] },
+        { heading: '第三者への提供', paras: ['当社がお客様の個人情報を販売することはありません。サービスの提供、法令上の要請、情報セキュリティの維持のために必要な場合、またはお客様の同意を得た場合に限り、必要な第三者の委託先と共有します。'] },
+        { heading: 'お客様の権利', paras: ['お客様は、ご自身の個人情報の開示、訂正、利用停止、または削除を請求することができます。'] },
+        { heading: 'お問い合わせ', paras: ['上記の権利の行使や本ポリシーに関するご質問は、us@twouring.com までメールでお問い合わせください。'] },
       ],
     },
   },
@@ -71,6 +85,19 @@ export const legal: Record<LegalSlug, { zh: LegalDoc; en: LegalDoc }> = {
         { heading: 'Limitation of liability', paras: ['For losses caused by force majeure, third-party service outages, network failures or data errors, we are not liable beyond directly attributable scope, to the extent permitted by law.'] },
       ],
     },
+    ja: {
+      title: '利用規約',
+      updated: '最終更新日：2026-06-30',
+      intro: 'Twouring（遊遊股份有限公司）のWebサイトをご利用いただきありがとうございます。本Webサイトをご利用いただくことにより、以下の規約に同意したものとみなされます。本規約の日本語版は参考訳であり、繁体字中国語版と内容に相違がある場合は繁体字中国語版が優先します。',
+      metaDescription: 'Twouring（遊遊股份有限公司）の利用規約：Webサイトの内容の位置づけ、サービスとお見積もり、知的財産権、利用上の制限、責任の制限について。',
+      blocks: [
+        { heading: 'Webサイトの内容の位置づけ', paras: ['本Webサイトの内容は、当社のサービス、事例、見解、連絡先をご理解いただくためのものであり、個別のプロジェクトに関する約束や、法律・財務・税務上の助言を構成するものではありません。'] },
+        { heading: 'サービスとお見積もり', paras: ['本Webサイトに掲載しているサービス、プラン、事例、価格は変更されることがあり、双方間の正式なお見積もり、契約、または書面による確認が優先します。'] },
+        { heading: '知的財産権', paras: ['許可なく、本Webサイトの文章、画像、ロゴ、プレゼンテーション資料、ダウンロード資料その他のコンテンツを複製、配布、改変、または商業利用することはできません。'] },
+        { heading: '利用上の制限', paras: ['攻撃、クローリング、妨害、なりすまし、その他不正な方法で本Webサイトを利用することはできません。'] },
+        { heading: '責任の制限', paras: ['不可抗力、第三者のサービス停止、ネットワーク障害、またはデータの誤りにより生じた損害について、当社は法令で認められる範囲において、直接責めに帰すべき範囲を超える責任を負いません。'] },
+      ],
+    },
   },
   cookies: {
     zh: {
@@ -95,6 +122,18 @@ export const legal: Record<LegalSlug, { zh: LegalDoc; en: LegalDoc }> = {
         { heading: 'Analytics', paras: ['Analytics may use Google Analytics 4 or an equivalent. This website currently does not use advertising cookies.'] },
         { heading: 'Managing cookies', paras: ['You can block or delete cookies in your browser settings; some features may not work as a result.'] },
         { heading: 'Policy updates', paras: ['If we add remarketing, ad tracking or cross-site identification, we will update this policy and add the necessary consent management.'] },
+      ],
+    },
+    ja: {
+      title: 'Cookieポリシー',
+      updated: '最終更新日：2026-06-30',
+      intro: '本ポリシーでは、Twouring（遊遊股份有限公司）のWebサイトにおけるCookieおよび類似技術の利用についてご説明します。本ポリシーの日本語版は参考訳であり、繁体字中国語版と内容に相違がある場合は繁体字中国語版が優先します。',
+      metaDescription: 'Twouring（遊遊股份有限公司）のCookieポリシー：必須Cookieと分析ツールの利用方法、およびCookieの管理方法について。',
+      blocks: [
+        { heading: 'Cookieの利用方法', paras: ['本Webサイトでは、サイトの運営維持、コンテンツの改善、流入元の把握、マーケティング効果の測定のため、必須Cookie、分析ツール、第三者の埋め込みサービスを利用することがあります。'] },
+        { heading: '分析ツール', paras: ['分析ツールには、Google Analytics 4 またはこれと同等のツールを使用することがあります。本Webサイトでは現在、広告用Cookieは使用していません。'] },
+        { heading: 'Cookieの管理', paras: ['ブラウザの設定によりCookieをブロックまたは削除できます。ただし、その場合は一部の機能が正常に動作しないことがあります。'] },
+        { heading: 'ポリシーの更新', paras: ['今後、リターゲティング、広告トラッキング、またはクロスサイト識別のツールを導入する場合、当社は本ポリシーを更新し、必要な同意管理の仕組みを導入します。'] },
       ],
     },
   },

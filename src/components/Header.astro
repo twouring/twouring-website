@@ -1,5 +1,5 @@
 ---
-import { getLang, localizePath, switchLocaleHref, isActivePath } from '../i18n/utils';
+import { getLang, localizePath, switchLocaleHref, isActivePath, LOCALES, LOCALE_META } from '../i18n/utils';
 import { useUI, ROUTES, SERVICE_NAV } from '../i18n/ui';
 import { company } from '../i18n/company';
 
@@ -8,16 +8,26 @@ const t = useUI(lang);
 const pathname = Astro.url.pathname;
 const lp = (p: string) => localizePath(p, lang);
 const active = (p: string) => isActivePath(pathname, p);
-const otherHref = switchLocaleHref(pathname, lang === 'zh' ? 'en' : 'zh');
+const otherLangs = LOCALES.filter((l) => l !== lang).map((l) => ({
+  code: l,
+  href: switchLocaleHref(pathname, l),
+  label: LOCALE_META[l].label,
+  html: LOCALE_META[l].html,
+}));
+const a11y = {
+  zh: { home: '首頁', primary: '主要導覽', mobile: '行動導覽', lang: '切換語言' },
+  en: { home: 'home', primary: 'Primary', mobile: 'Mobile', lang: 'Change language' },
+  ja: { home: 'ホーム', primary: 'メインナビゲーション', mobile: 'モバイルナビゲーション', lang: '言語を切り替える' },
+}[lang];
 ---
 
 <header class="site-header" id="site-header">
   <div class="container header-inner">
-    <a class="brand" href={lp(ROUTES.home)} aria-label={`${company.brand} ${lang === 'zh' ? '首頁' : 'home'}`}>
+    <a class="brand" href={lp(ROUTES.home)} aria-label={`${company.brand} ${a11y.home}`}>
       <img src="/brand/twouring-wordmark.svg" alt={company.brand} width="148" height="32" />
     </a>
 
-    <nav class="nav-desktop" aria-label={lang === 'zh' ? '主要導覽' : 'Primary'}>
+    <nav class="nav-desktop" aria-label={a11y.primary}>
       <ul class="nav-list">
         <li class="has-menu">
           <a
@@ -48,7 +58,11 @@ const otherHref = switchLocaleHref(pathname, lang === 'zh' ? 'en' : 'zh');
     </nav>
 
     <div class="header-actions">
-      <a class="lang-switch" href={otherHref} hreflang={lang === 'zh' ? 'en' : 'zh'} lang={lang === 'zh' ? 'en' : 'zh-Hant'} rel="alternate">{t.langSwitch}</a>
+      <span class="lang-group" role="group" aria-label={a11y.lang}>
+        {otherLangs.map((o) => (
+          <a class="lang-switch" href={o.href} hreflang={o.html} lang={o.html} rel="alternate">{o.label}</a>
+        ))}
+      </span>
       <a class="btn btn--primary btn-cta-desktop" href={company.bookingUrl} target="_blank" rel="noopener">{t.cta.primaryShort}</a>
       <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label={t.nav.menu}>
         <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -57,7 +71,7 @@ const otherHref = switchLocaleHref(pathname, lang === 'zh' ? 'en' : 'zh');
   </div>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <nav class="container" aria-label={lang === 'zh' ? '行動導覽' : 'Mobile'}>
+    <nav class="container" aria-label={a11y.mobile}>
       <p class="m-group-label">{t.nav.services}</p>
       <ul class="m-services">
         {SERVICE_NAV.map((s) => (
@@ -71,7 +85,9 @@ const otherHref = switchLocaleHref(pathname, lang === 'zh' ? 'en' : 'zh');
         <li><a href={lp(ROUTES.about)} aria-current={active(ROUTES.about) ? 'page' : undefined}>{t.nav.about}</a></li>
         <li><a href={lp(ROUTES.careers)} aria-current={active(ROUTES.careers) ? 'page' : undefined}>{t.nav.careers}</a></li>
         <li><a href={lp(ROUTES.contact)} aria-current={active(ROUTES.contact) ? 'page' : undefined}>{t.nav.contact}</a></li>
-        <li><a href={otherHref} hreflang={lang === 'zh' ? 'en' : 'zh'} lang={lang === 'zh' ? 'en' : 'zh-Hant'}>{t.langSwitch}</a></li>
+        {otherLangs.map((o) => (
+          <li><a href={o.href} hreflang={o.html} lang={o.html}>{o.label}</a></li>
+        ))}
       </ul>
       <a class="btn btn--primary btn--block" href={company.bookingUrl} target="_blank" rel="noopener">{t.cta.primary}</a>
     </nav>
@@ -129,6 +145,14 @@ const otherHref = switchLocaleHref(pathname, lang === 'zh' ? 'en' : 'zh');
     transition: border-color 0.15s ease, color 0.15s ease;
   }
   .lang-switch:hover { color: var(--c-accent-strong); border-color: var(--c-accent); }
+  .lang-group { display: inline-flex; gap: 0.3rem; }
+  .lang-group .lang-switch { padding-inline: 0.75em; }
+  @media (max-width: 1180px) and (min-width: 881px) {
+    .nav-link { padding: 0.5em 0.6em; font-size: 0.92rem; }
+  }
+  @media (max-width: 520px) {
+    .lang-group { display: none; }
+  }
   .menu-toggle { display: none; width: 42px; height: 42px; border: 1.5px solid var(--c-line-strong); background: #fff; border-radius: var(--radius); cursor: pointer; place-items: center; }
   .menu-bars { display: grid; gap: 4px; width: 18px; }
   .menu-bars span { height: 2px; background: var(--c-ink-strong); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }

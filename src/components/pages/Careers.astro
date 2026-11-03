@@ -55,6 +55,28 @@ const c = {
     applyRole: 'Apply for this role',
     metaDescription: 'Careers at Twouring Co., Ltd.: Social Media Editor (full-time remote), Event Producer (part-time), and remote contract engineers for a large-scale Japan project (Rails, Next.js, AWS/SRE, AI/LLM, SharePoint, architecture) from NT$100,000/month.',
   },
+  ja: {
+    eyebrow: '採用情報',
+    title: 'Twouring で働く',
+    lead: '台湾の人材を世界へ、世界の人材を台湾へ。リモートファーストでフラット、率直なチームです。自分で仕事を組み立て、成果に責任を持てる仲間を探しています。',
+    contentTitle: 'コンテンツ・コミュニティ',
+    contentLead: 'ブランドSNSとイベント',
+    contentDesc: '自社およびクライアントのブランドSNSを運用し、オンライン・オフラインのイベントを企画・実施します。',
+    engTitle: 'リモート派遣エンジニア',
+    engLead: '日本の大規模システム案件',
+    engDesc: 'バックエンド、フロントエンド、クラウド、AI、システムアーキテクチャまで、フルリモートで協業するチームです。案件規模：同時接続16万人、可用性99.9%。詳細条件と時差への対応はご面談時にご説明します。',
+    respLabel: '業務内容',
+    reqLabel: '応募要件',
+    bonusLabel: '歓迎スキル',
+    stackLabel: '技術キーワード',
+    applyTitle: '応募方法',
+    applyLead: '下記アドレスに履歴書をお送りください。件名に応募職種をご記入ください。',
+    applyContent: 'SNS担当・イベント企画にご応募の方は、次も添えてください：(1) 運用・参加したSNSアカウントやイベント（リンクまたはスクリーンショット、個人アカウント可）、(2) Canva で作成した画像1点、(3) フォローしているブランドを1つ選び、そのSNSで今いちばん改善すべき点をひと言で。',
+    applyEng: 'エンジニア職にご応募の方は、履歴書と GitHub またはポートフォリオのリンクを添え、件名に応募職種（複数可）をご記入ください。',
+    applyBtn: '履歴書を送る',
+    applyRole: 'この職種に応募する',
+    metaDescription: 'Twouring（遊遊股份有限公司）採用情報：SNS担当（正社員・フルリモート）、イベント企画（パートタイム）、日本の大規模システム案件のリモート派遣エンジニア（Rails、Next.js、AWS/SRE、AI/LLM、SharePoint、アーキテクチャ）。月給 NT$100,000〜。',
+  },
 }[lang];
 
 const ctaBand = {
@@ -66,12 +88,16 @@ const ctaBand = {
     title: 'No role that fits?',
     text: 'Tell us what you are good at and what you want to do. If there is a fit, we will reach out.',
   },
+  ja: {
+    title: 'ぴったりの職種が見つかりませんか？',
+    text: '得意なこと、やりたいことを教えてください。合うポジションがあれば、こちらからご連絡します。',
+  },
 }[lang];
 
-const mailSubject = lang === 'zh' ? '應徵：[職缺名稱]' : 'Application: [role]';
+const mailSubject = { zh: '應徵：[職缺名稱]', en: 'Application: [role]', ja: '応募：[職種名]' }[lang];
 const mailHref = `mailto:${company.email}?subject=${encodeURIComponent(mailSubject)}`;
 const applyHref = (job: Job) =>
-  `mailto:${company.email}?subject=${encodeURIComponent((lang === 'zh' ? '應徵：' : 'Application: ') + job.title[lang])}`;
+  `mailto:${company.email}?subject=${encodeURIComponent(({ zh: '應徵：', en: 'Application: ', ja: '応募：' }[lang]) + job.title[lang])}`;
 ---
 <BaseLayout title={c.eyebrow} description={c.metaDescription} path={ROUTES.careers}>
   <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: c.eyebrow }]} />

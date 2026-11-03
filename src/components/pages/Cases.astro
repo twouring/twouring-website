@@ -6,6 +6,7 @@ import Icon from '../Icon.astro';
 import { getLang, localizePath } from '../../i18n/utils';
 import { useUI, ROUTES } from '../../i18n/ui';
 import { CASE_LIST, relationLabels } from '../../data/cases';
+import { trackStats, engagements, coachingCases } from '../../data/trackRecord';
 
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
@@ -14,63 +15,90 @@ const rel = relationLabels[lang];
 
 const c = {
   zh: {
-    eyebrow: '案例與成果',
-    title: '公開得標實績與可複製方法',
-    lead: '花蓮、臺東為遊遊簽約／得標客戶，並揭露公開契約金額（決標總額，非利潤）。國發會相關為 KK 政策職務經歷；情境案例為匿名類型，不對應特定客戶。',
-    disclosure: '角色依「得標客戶／政策經歷／交付夥伴／TDNA 生態系」切分揭露。契約金額取自公開標案資料。',
-    govTitle: '政府得標案例（獨立頁）',
+    pageTitle: '實績',
+    eyebrow: '實績與成果',
+    title: '兩年內交付的政府、企業與跨國專案',
+    lead: '從縣府標案、日本企業系統開發，到醫院 AI 培訓與企業流程自動化。政府案金額取自公開採購資料（決標總額，非利潤）。',
+    disclosure: '角色依「得標／簽約客戶、KK 政策職務、交付夥伴、TDNA 生態系」切分揭露；未授權具名的企業以產業類型呈現。',
+    govTitle: '政府得標案（獨立案例頁）',
+    namedTitle: '企業與海外實績',
+    namedLead: '已交付或進行中的正式合作。',
+    coachTitle: '企業輔導案例',
+    coachLead: '客戶未授權具名，以產業類型呈現；皆為實際執行的輔導。',
     policyTitle: '政策職務與生態系（非付費客戶）',
-    scenarioTitle: '情境案例（匿名）',
-    scenarioLead: '在客戶尚未授權具名前，以匿名類型呈現合作型態與可複製方法。',
     openCase: '查看完整案例',
     metaDescription:
-      '遊遊案例：花蓮雲基地（契約 588 萬）、臺東 TTNomads（契約 240 萬）獨立案例頁，以及企業 AI、場域與國際交流匿名情境。',
+      '遊遊實績：花蓮雲基地（NT$588 萬）、臺東 TTNomads（NT$240 萬）兩件縣府得標案、日本 ALION 系統開發月約、大阪市教育委員會學習平台協力開發、花蓮慈濟醫院 AI 工作坊，以及企業流程自動化輔導。',
     policyCase: {
       tag: '政策經歷',
       client: '國家發展委員會 × 數位遊牧生態系',
       problem: '把數位遊牧推動與國際人才議題，連結成政策、社群與產業可協作的生態系。',
-      role: 'KK 任國發會數位遊牧相關職務之專業經歷；非遊遊股份有限公司對國發會的付費客戶合約。',
-      did: ['數位遊牧政策推動參與', 'Nomad Taiwan / TDNA 生態系連結', '城市、場域與社群串聯'],
-      outcome: '強化台灣數位遊牧生態系的政策與社群連結（角色與授權清楚揭露）。',
+      role: 'KK 任國發會數位遊牧辦公室執行長之專業經歷；非遊遊股份有限公司對國發會的付費客戶合約。',
+      did: ['數位遊牧簽證上路後的政策推動與國際關係', 'Taiwan Digital Fest 2025 臺北、2026 花東（TDNA 主辦，累計 700+ 人）', '高雄、沖繩等地講座與國際論壇'],
+      outcome: '讓遊遊在城市與國際交流專案上，具備第一手的政策脈絡與國際網絡（角色與授權清楚揭露）。',
     },
-    scenarioCases: [
-      { tag: '企業 · AI', title: '服務業 AI 營運健檢', desc: '為連鎖服務業盤點流程與工具，產出 AI 導入機會清單與優先順序，先做最值得自動化的三個工作流。' },
-      { tag: '場域 · 友善商家', title: '商圈多店國際化共創', desc: '協助商圈 10–20 家商家進行數位遊牧友善改造（Nomad Ready 方法），建立英文資訊、地圖、活動與國際社群曝光。' },
-      { tag: '國際 · 參訪', title: '亞洲城市數位遊牧交流', desc: '為海外代表團設計一日城市參訪與單位對接，把交流變成可延續的跨國合作。' },
-    ],
     labels: { problem: '問題', role: '角色說明', did: '做了什麼', outcome: '成果' },
   },
   en: {
+    pageTitle: 'Work',
     eyebrow: 'Work & results',
-    title: 'Published awards and repeatable methods',
-    lead: 'Hualien and Taitung are Twouring contracted/awarded clients, with public award totals (not profit). NDC items reflect KK’s policy experience; scenario cases are anonymised.',
-    disclosure: 'Roles are disclosed as awarded client / policy experience / delivery partner / TDNA ecosystem. Contract amounts come from public tender data.',
+    title: 'Government, enterprise and cross-border projects delivered in two years',
+    lead: 'County-government tenders, engineering for a Japanese company, hospital AI training and business automation. Government values come from public procurement records (award totals, not profit).',
+    disclosure: 'Roles are disclosed as awarded/contracted client, KK’s policy role, delivery partner or TDNA ecosystem; companies that have not authorised naming are shown by industry.',
     govTitle: 'Awarded government cases (dedicated pages)',
+    namedTitle: 'Enterprise & overseas work',
+    namedLead: 'Formal engagements, delivered or in progress.',
+    coachTitle: 'Business coaching cases',
+    coachLead: 'Shown by industry until clients authorise naming — all are real engagements.',
     policyTitle: 'Policy roles & ecosystem (not paid clients)',
-    scenarioTitle: 'Scenario cases (anonymised)',
-    scenarioLead: 'Until clients authorise named cases, we present the engagement type and repeatable method anonymously.',
     openCase: 'Open full case',
     metaDescription:
-      'Twouring work: Hualien Cloud Base (NTD 5.88M award) and Taitung TTNomads (NTD 2.4M award) case pages, plus anonymised AI, venue and exchange scenarios.',
+      'Twouring work: Hualien Cloud Base (NT$5.88M) and Taitung TTNomads (NT$2.4M) county tenders, a monthly engineering retainer with ALION (Japan), Osaka City education platform co-development, a Tzu Chi Hospital AI workshop and business automation coaching.',
     policyCase: {
       tag: 'Policy experience',
       client: 'National Development Council × nomad ecosystem',
       problem: 'Connect digital-nomad and talent agendas into an ecosystem that policy, community and industry can work on together.',
-      role: 'KK’s professional experience in NDC digital-nomad roles — not a Twouring paid-client contract with the NDC.',
-      did: ['Contributing to digital-nomad policy', 'Nomad Taiwan / TDNA ecosystem links', 'Connecting cities, venues and community'],
-      outcome: 'Stronger policy and community links across Taiwan’s nomad ecosystem (roles disclosed).',
+      role: 'KK’s professional experience as Executive Director of the NDC Digital Nomad Office — not a Twouring paid-client contract with the NDC.',
+      did: ['Policy and international relations after the nomad visa launched', 'Taiwan Digital Fest 2025 Taipei and 2026 East Coast (run by TDNA, 700+ people)', 'Talks and forums from Kaohsiung to Okinawa'],
+      outcome: 'First-hand policy context and an international network that Twouring brings to city and exchange projects (roles disclosed).',
     },
-    scenarioCases: [
-      { tag: 'Enterprise · AI', title: 'Service-sector AI health-check', desc: 'Mapping process and tooling into an AI opportunity list — automating the three workflows worth it first.' },
-      { tag: 'Venue · Friendly shops', title: 'District multi-store internationalisation', desc: 'Helping 10–20 shops go nomad-friendly (Nomad Ready method) with English info, maps, events and global exposure.' },
-      { tag: 'International · Visit', title: 'Asia city nomad exchange', desc: 'Designing a one-day city visit and matchmaking for an overseas delegation.' },
-    ],
     labels: { problem: 'Problem', role: 'Role', did: 'What we did', outcome: 'Result' },
+  },
+  ja: {
+    pageTitle: '実績',
+    eyebrow: '実績・成果',
+    title: 'この2年で納品してきた、行政・企業・越境プロジェクト',
+    lead: '県政府の公共入札、日本企業のシステム開発、病院のAI研修、企業の業務自動化まで。行政案件の金額は公開調達データ（落札総額であり、利益額ではありません）に基づきます。',
+    disclosure: '「受託・落札先」「KK の政策関連の役職」「デリバリーパートナー」「TDNA エコシステム」に区別して掲載しています。社名掲載の許諾がない企業は業種で記載しています。',
+    govTitle: '行政の落札案件（詳細ページあり）',
+    namedTitle: '企業・海外の実績',
+    namedLead: '納品済み・進行中の正式なお取引です。',
+    coachTitle: '企業支援の事例',
+    coachLead: '社名掲載の許諾がないため業種で記載していますが、いずれも実際の支援事例です。',
+    policyTitle: '政策関連の役職とエコシステム（有償顧客ではありません）',
+    openCase: '詳細を見る',
+    metaDescription:
+      'Twouring の実績：花蓮県「雲基地」（NT$588万）・台東県「TTNomads」（NT$240万）の公共入札、ALION株式会社とのシステム開発月額契約、大阪市教育委員会の学習基盤の開発協力、花蓮慈済病院のAI研修、企業の業務自動化支援。',
+    policyCase: {
+      tag: '政策関連の経歴',
+      client: '台湾 国家発展委員会 × デジタルノマド・エコシステム',
+      problem: 'デジタルノマドと海外人材の議題を、政策・コミュニティ・産業が協働できるエコシステムへつなげること。',
+      role: 'KK が国家発展委員会デジタルノマド事務局の執行長を務める個人の経歴であり、Twouring と国家発展委員会との有償契約ではありません。',
+      did: ['デジタルノマドビザ開始後の政策推進と国際連携', 'Taiwan Digital Fest 2025 台北・2026 花蓮台東（TDNA主催、累計700名以上）', '高雄から沖縄まで、各地での講演・国際フォーラム'],
+      outcome: '自治体・国際交流プロジェクトに、一次情報としての政策文脈と海外ネットワークを持ち込めます（役割と許諾を明示）。',
+    },
+    labels: { problem: '課題', role: '役割', did: '取り組み', outcome: '成果' },
   },
 }[lang];
 ---
-<BaseLayout title={lang === 'zh' ? '案例' : 'Work'} description={c.metaDescription} path={ROUTES.cases}>
-  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.cases }]} />
+<BaseLayout title={c.pageTitle} description={c.metaDescription} path={ROUTES.cases}>
+  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.cases }]}>
+    <ul class="hero-stats" role="list">
+      {trackStats.slice(0, 3).map((s) => (
+        <li><strong>{s.n[lang]}</strong><span>{s.l[lang]}</span></li>
+      ))}
+    </ul>
+  </PageHero>
 
   <div class="container disclosure-wrap">
     <p class="disclosure"><Icon name="shield" size={18} /> {c.disclosure}</p>
@@ -104,6 +132,46 @@ const c = {
 
   <section class="section section--surface">
     <div class="container">
+      <div class="section-head">
+        <h2 class="eyebrow">{c.namedTitle}</h2>
+        <p class="lead">{c.namedLead}</p>
+      </div>
+      <div class="grid grid--3">
+        {engagements.slice(0, 3).map((e) => (
+          <article class="card named-card">
+            <span class="tag">{e.tag[lang]}</span>
+            <p class="named-client">{e.client[lang]}</p>
+            <h3>{e.title[lang]}</h3>
+            <p>{e.desc[lang]}</p>
+            <ul class="named-points" role="list">
+              {e.points[lang].map((x) => (<li><Icon name="check" size={15} /> {x}</li>))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="eyebrow">{c.coachTitle}</h2>
+        <p class="lead">{c.coachLead}</p>
+      </div>
+      <div class="grid grid--4 coach-grid">
+        {coachingCases.map((cs) => (
+          <article class="card">
+            <span class="tag">{cs.tag[lang]}</span>
+            <h3>{cs.title[lang]}</h3>
+            <p>{cs.desc[lang]}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
       <div class="section-head"><h2 class="eyebrow">{c.policyTitle}</h2></div>
       <article class="card case-detail">
         <header class="case-head">
@@ -117,24 +185,6 @@ const c = {
           <div><h4>{c.labels.outcome}</h4><p>{c.policyCase.outcome}</p></div>
         </div>
       </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="eyebrow">{c.scenarioTitle}</h2>
-        <p class="lead">{c.scenarioLead}</p>
-      </div>
-      <div class="grid grid--3">
-        {c.scenarioCases.map((cs) => (
-          <article class="card">
-            <span class="tag">{cs.tag}</span>
-            <h3>{cs.title}</h3>
-            <p>{cs.desc}</p>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -158,5 +208,18 @@ const c = {
   .case-grid li { display: flex; gap: 0.4rem; }
   .grid--3 .card { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
   .grid--3 .card p { color: var(--c-muted); }
-  @media (max-width: 720px) { .case-grid { grid-template-columns: 1fr; } }
+  .hero-stats { margin-top: 1.6rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 900px; }
+  .hero-stats li { display: grid; gap: 0.25rem; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius); padding: 0.9rem 1rem; }
+  .hero-stats strong { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-600); color: var(--c-accent-strong); }
+  .hero-stats span { color: var(--c-muted); font-size: 0.86rem; line-height: 1.45; }
+  .named-card { display: flex; flex-direction: column; gap: 0.55rem; align-items: flex-start; background: #fff; }
+  .named-client { font-family: var(--font-head); font-weight: 700; color: var(--c-accent-strong); font-size: 0.92rem; }
+  .named-card p { color: var(--c-muted); }
+  .named-points { display: grid; gap: 0.35rem; }
+  .named-points li { display: flex; gap: 0.4rem; font-size: 0.9rem; color: var(--c-ink); }
+  .coach-grid .card { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+  .coach-grid .card p { color: var(--c-muted); font-size: 0.94rem; }
+  @media (max-width: 960px) { .coach-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 720px) { .case-grid { grid-template-columns: 1fr; } .hero-stats { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .coach-grid { grid-template-columns: 1fr; } }
 </style>

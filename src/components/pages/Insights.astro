@@ -28,9 +28,17 @@ const c = {
       'Twouring insights: enterprise AI adoption and cost, consulting vs training vs build, company data in ChatGPT, department automation ROI, digital-nomad city maturity.',
     read: 'Read article',
   },
+  ja: {
+    eyebrow: 'インサイト',
+    title: '現場の経験から書く、企業AIと地域戦略のノート',
+    lead: '「AIとは何か」のような一般論は書きません。導入プロセス、発注先の選び方、データのリスク、自動化のROI、デジタルノマド受け入れの成熟度など、実際の検討・発注で出てくる疑問に答えます。',
+    metaDescription:
+      'Twouring のインサイト：企業AI導入の流れと費用、コンサル・研修・開発の選び方、社内データとChatGPT、部門別自動化のROI、デジタルノマド受け入れの成熟度。',
+    read: '記事を読む',
+  },
 }[lang];
 ---
-<BaseLayout title={lang === 'zh' ? '洞察' : 'Insights'} description={c.metaDescription} path={ROUTES.insights}>
+<BaseLayout title={{ zh: '洞察', en: 'Insights', ja: 'インサイト' }[lang]} description={c.metaDescription} path={ROUTES.insights}>
   <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.insights }]} />
 
   <section class="section">

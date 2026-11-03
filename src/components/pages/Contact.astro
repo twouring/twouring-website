@@ -81,9 +81,42 @@ const c = {
     linkedinLabel: 'LinkedIn (primary official channel)',
     note: 'LinkedIn is our primary official channel; we don’t currently run Instagram or Facebook. Brand name everywhere: Twouring 遊遊 | Twouring Co., Ltd.',
   },
+  ja: {
+    eyebrow: 'お問い合わせ',
+    title: 'まずは30分の無料ヒアリングから。次に打つべき一手を一緒に見極めます',
+    lead: '日時を直接ご予約いただくか、下記フォームからご相談内容をお送りください。2営業日以内にご返信します。日本語でのご相談も歓迎です。',
+    metaDescription: 'Twouring（遊遊股份有限公司）へのお問い合わせ：企業AI導入・地域DXに関する30分の無料ヒアリングをご予約いただけます。日本語対応可。us@twouring.com',
+    bookTitle: '日時を指定して予約',
+    bookText: 'ご都合のよい時間を選んで、30分のオンラインヒアリングをご予約ください。',
+    bookBtn: '30分の枠を予約する',
+    orLeave: 'または、下記フォームからご相談ください',
+    prepareTitle: '事前にご準備いただくとスムーズです',
+    prepare: ['解決したい課題・目標', '現在の進捗と既存のリソース', 'スケジュールとおおよその予算感', '意思決定者と社内のご担当窓口'],
+    form: {
+      name: 'お名前', company: '会社名・団体名', email: 'メールアドレス', type: 'ご相談のテーマ', message: 'ご相談内容',
+      typePlaceholder: '選択してください',
+      types: ['企業AI導入コンサルティング', 'AI研修・業務自動化', 'リモート・ハイブリッドワーク制度', '自治体・行政（デジタルノマド誘致戦略）', '施設・店舗（ノマドフレンドリー化・宿泊のインバウンド対応）', '台湾視察・企業訪問', '補助金・入札の戦略支援', '講演・ワークショップ・その他'],
+      messagePlaceholder: '現状、目標、スケジュールなどを簡単にご記入ください…',
+      consent: '以下に同意します：',
+      privacy: 'プライバシーポリシー',
+      submit: '送信してヒアリングを依頼',
+      sending: '送信中…',
+      successTitle: '送信しました。ありがとうございます。',
+      success: '2営業日以内にご返信し、30分のヒアリング日程をご案内します。返信が届かない場合は us@twouring.com までご連絡ください。',
+      errorTitle: '送信できませんでした',
+      error: 'お手数ですが、メールで直接ご連絡ください：',
+      required: '必須項目です',
+    },
+    infoTitle: 'その他の連絡先',
+    emailLabel: 'メール',
+    addrLabel: '登記住所',
+    operatingLabel: 'オフィス・打ち合わせ場所',
+    linkedinLabel: 'LinkedIn（公式チャネル）',
+    note: 'LinkedIn を公式チャネルとしています（Instagram・Facebook は運用していません）。正式名称：Twouring 遊遊｜遊遊股份有限公司。',
+  },
 }[lang];
 ---
-<BaseLayout title={lang === 'zh' ? '聯絡我們' : 'Contact'} description={c.metaDescription} path={ROUTES.contact}>
+<BaseLayout title={{ zh: '聯絡我們', en: 'Contact', ja: 'お問い合わせ' }[lang]} description={c.metaDescription} path={ROUTES.contact}>
   <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.contact }]} />
 
   <section class="section section--tight">
@@ -235,11 +268,14 @@ const c = {
 
   const EMAIL = form?.dataset.email || 'us@twouring.com';
   const IS_EN = document.documentElement.lang.startsWith('en');
+  const IS_JA = document.documentElement.lang.startsWith('ja');
 
   function buildMailto(data: Record<string, string>): string {
     const L = IS_EN
       ? { subj: '[Website inquiry]', name: 'Name', company: 'Organisation', email: 'Email', topic: 'Topic' }
-      : { subj: '[官網詢問]', name: '姓名', company: '單位', email: 'Email', topic: '方向' };
+      : IS_JA
+        ? { subj: '[Webお問い合わせ]', name: 'お名前', company: '会社名', email: 'Email', topic: 'テーマ' }
+        : { subj: '[官網詢問]', name: '姓名', company: '單位', email: 'Email', topic: '方向' };
     const subject = encodeURIComponent(`${L.subj} ${data.name || ''} ${data.company || ''}`.trim());
     const body = encodeURIComponent(
       `${L.name}: ${data.name || ''}\n${L.company}: ${data.company || ''}\n${L.email}: ${data.email || ''}\n${L.topic}: ${data.type || ''}\n\n${data.message || ''}`,
@@ -282,7 +318,7 @@ const c = {
       };
       const showError = () => {
         statusEl.classList.add('error');
-        const label = IS_EN ? 'Please email us:' : '請改用 Email 聯絡：';
+        const label = IS_EN ? 'Please email us:' : IS_JA ? 'メールでご連絡ください：' : '請改用 Email 聯絡：';
         statusEl.innerHTML = `${label} <a href="${buildMailto(data)}">${EMAIL}</a>`;
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
