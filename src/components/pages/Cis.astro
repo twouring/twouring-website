@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import { getLang } from '../../i18n/utils';
+import { ROUTES } from '../../i18n/ui';
+import { company } from '../../i18n/company';
+
+const lang = getLang(Astro.currentLocale);
+
+const c = {
+  zh: {
+    eyebrow: '品牌識別',
+    title: 'Twouring 遊遊 CIS',
+    lead: '標誌、色彩與字體的使用規範。合作夥伴、媒體與活動主辦單位請依本頁規範使用，並直接下載原始檔，勿自行重繪或變形。',
+    metaDescription: 'Twouring 遊遊（遊遊股份有限公司）企業識別系統：標誌下載（SVG／PNG／PDF）、品牌色 #333333 / #ff0844 / #ffb199、字體 Nunito 與 Source Sans 3，以及使用規範。',
+    logoTitle: '標誌',
+    logoLead: '主標誌由圖形符號、「twouring」字標與標語組成。優先使用完整版；空間受限時用無標語版或符號。',
+    variants: {
+      main: '主標誌（彩色）',
+      wordmark: '無標語版',
+      symbol: '圖形符號',
+      white: '白色版（深色底）',
+      black: '黑色版（單色印刷）',
+    },
+    download: '下載：',
+    vector: '向量',
+    rulesTitle: '使用規範',
+    rules: [
+      ['保留淨空區', '標誌四周至少保留符號高度的一半作為淨空區，不放置其他文字或圖形。'],
+      ['最小尺寸', '完整標誌螢幕寬度不低於 120px、印刷不低於 25mm；符號不低於 24px。'],
+      ['勿變形與改色', '不得拉伸、旋轉、加陰影或外框，不得改用品牌色以外的顏色。'],
+      ['底色', '彩色版與黑色版用於白色或淺色底；深色或照片底一律用白色版。'],
+      ['名稱寫法', '中文對外名稱「遊遊股份有限公司」，品牌名「Twouring 遊遊」，英文「Twouring Co., Ltd.」；字標一律小寫 twouring。'],
+    ],
+    colorTitle: '色彩',
+    colorLead: '四個品牌色來自 LogoAI 視覺識別。紅色是輔助色，用在重點與強調，不作整面底色。',
+    colors: [
+      ['Background', '#ffffff', '背景'],
+      ['Main', '#333333', '主色：標題與內文'],
+      ['Auxiliary 1', '#ff0844', '輔助色 1：重點、漸層、圖示'],
+      ['Auxiliary 2', '#ffb199', '輔助色 2：暖色區塊與裝飾'],
+    ],
+    a11yTitle: '數位無障礙補充',
+    a11yText: '品牌紅 #ff0844 上放白字對比不足（約 3.6:1）。網站與後台的文字、實心按鈕改用加深的 #d80038（約 5.3:1，符合 WCAG AA）；原色保留給漸層與裝飾。',
+    gradientLabel: '品牌漸層',
+    typeTitle: '字體',
+    typeLead: '標誌與標題用 Nunito，標語與內文用 Source Sans 3；中文以系統字體（Noto Sans TC／PingFang TC／微軟正黑體）補位。兩套字體皆為 SIL Open Font License，可自由使用。',
+    headSample: 'Tour your life together',
+    bodySample: '用科技解決企業、政府與城市的問題。',
+    sloganTitle: '標語',
+    sloganText: '英文標語固定為「Tour your life together」，與標誌並用時採大寫字距排版；單獨引用時用一般句型寫法。',
+    contact: '需要其他格式或有使用疑問，來信',
+  },
+  en: {
+    eyebrow: 'Brand',
+    title: 'Twouring Brand Identity',
+    lead: 'Guidelines for our logo, colours and typography. Partners, press and event organisers: please follow this page and use the original files below. Do not redraw or alter the logo.',
+    metaDescription: 'Twouring Co., Ltd. corporate identity: logo downloads (SVG/PNG/PDF), brand colours #333333 / #ff0844 / #ffb199, typefaces Nunito and Source Sans 3, and usage rules.',
+    logoTitle: 'Logo',
+    logoLead: 'The primary logo combines the symbol, the “twouring” wordmark and the tagline. Use the full version whenever possible; fall back to the wordmark or symbol in tight spaces.',
+    variants: {
+      main: 'Primary logo (colour)',
+      wordmark: 'Without tagline',
+      symbol: 'Symbol',
+      white: 'White (on dark backgrounds)',
+      black: 'Black (single-colour print)',
+    },
+    download: 'Download:',
+    vector: 'Vector',
+    rulesTitle: 'Usage rules',
+    rules: [
+      ['Clear space', 'Keep at least half the symbol’s height clear on every side. No text or graphics inside that area.'],
+      ['Minimum size', 'Full logo: no narrower than 120px on screen or 25mm in print. Symbol: no smaller than 24px.'],
+      ['No distortion or recolouring', 'Do not stretch, rotate, outline or add shadows. Do not use colours outside the palette.'],
+      ['Backgrounds', 'Colour and black versions go on white or light backgrounds. On dark or photographic backgrounds, always use the white version.'],
+      ['Naming', 'Legal name “Twouring Co., Ltd.”, brand “Twouring 遊遊”. The wordmark is always lower-case: twouring.'],
+    ],
+    colorTitle: 'Colours',
+    colorLead: 'Four brand colours from the LogoAI visual identity. Red is an accent: use it for emphasis, never as a full-page background.',
+    colors: [
+      ['Background', '#ffffff', 'Background'],
+      ['Main', '#333333', 'Main: headings and body text'],
+      ['Auxiliary 1', '#ff0844', 'Accent 1: highlights, gradients, icons'],
+      ['Auxiliary 2', '#ffb199', 'Accent 2: warm surfaces and decoration'],
+    ],
+    a11yTitle: 'Digital accessibility note',
+    a11yText: 'White text on brand red #ff0844 falls short of contrast requirements (about 3.6:1). On the website and internal tools, text and solid buttons use the deeper #d80038 (about 5.3:1, WCAG AA); the original red is reserved for gradients and decoration.',
+    gradientLabel: 'Brand gradient',
+    typeTitle: 'Typography',
+    typeLead: 'Nunito for the logo and headings, Source Sans 3 for the tagline and body copy. Chinese text falls back to system fonts (Noto Sans TC / PingFang TC / Microsoft JhengHei). Both typefaces are under the SIL Open Font License.',
+    headSample: 'Tour your life together',
+    bodySample: 'Solving problems for businesses, governments and cities with technology.',
+    sloganTitle: 'Tagline',
+    sloganText: 'The tagline is always “Tour your life together”. Set it in spaced capitals next to the logo; in running text, use sentence case.',
+    contact: 'Need another format or have a question? Email',
+  },
+}[lang];
+
+const variants = [
+  { key: 'main', img: '/brand/twouring-logo.svg', bg: 'light', files: [['SVG', '/brand/twouring-logo.svg'], ['PNG', '/brand/twouring-logo.png'], ['PDF', '/brand/twouring-logo.pdf']] },
+  { key: 'wordmark', img: '/brand/twouring-wordmark.svg', bg: 'light', files: [['SVG', '/brand/twouring-wordmark.svg']] },
+  { key: 'symbol', img: '/brand/twouring-symbol.svg', bg: 'light', files: [['SVG', '/brand/twouring-symbol.svg'], ['PNG', '/brand/twouring-symbol.png']] },
+  { key: 'white', img: '/brand/twouring-logo-white.svg', bg: 'dark', files: [['SVG', '/brand/twouring-logo-white.svg'], ['PNG', '/brand/twouring-logo-white.png']] },
+  { key: 'black', img: '/brand/twouring-logo-black.svg', bg: 'light', files: [['SVG', '/brand/twouring-logo-black.svg'], ['PNG', '/brand/twouring-logo-black.png']] },
+] as const;
+---
+<BaseLayout title={c.eyebrow} description={c.metaDescription} path={ROUTES.cis}>
+  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: c.eyebrow }]} />
+
+  <section class="section" id="logo">
+    <div class="container">
+      <div class="section-head">
+        <h2>{c.logoTitle}</h2>
+        <p class="lead">{c.logoLead}</p>
+      </div>
+      <ul class="grid grid--2 logo-grid" role="list">
+        {variants.map((v) => (
+          <li class="card logo-card">
+            <div class:list={['logo-stage', `logo-stage--${v.bg}`]}>
+              <img src={v.img} alt={c.variants[v.key]} loading="lazy" />
+            </div>
+            <div class="logo-meta">
+              <h3>{c.variants[v.key]}</h3>
+              <p class="downloads">
+                <span>{c.download}</span>
+                {v.files.map(([label, href]) => (
+                  <a class="tag" href={href} download>{label}</a>
+                ))}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="rules-title">{c.rulesTitle}</h3>
+      <ol class="rules" role="list">
+        {c.rules.map(([title, text]) => (
+          <li><strong>{title}</strong><span>{text}</span></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--surface" id="color">
+    <div class="container">
+      <div class="section-head">
+        <h2>{c.colorTitle}</h2>
+        <p class="lead">{c.colorLead}</p>
+      </div>
+      <ul class="grid grid--4 swatches" role="list">
+        {c.colors.map(([name, hex, use]) => (
+          <li class="card swatch">
+            <div class="swatch-chip" style={`background:${hex}`}></div>
+            <div class="swatch-meta">
+              <h3>{name}</h3>
+              <code>{hex}</code>
+              <p>{use}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div class="card gradient-card">
+        <div class="swatch-chip swatch-chip--grad"></div>
+        <div class="swatch-meta">
+          <h3>{c.gradientLabel}</h3>
+          <code>linear-gradient(118deg, #ff0844 0%, #ff5f74 52%, #ffb199 100%)</code>
+        </div>
+      </div>
+      <div class="a11y">
+        <h3>{c.a11yTitle}</h3>
+        <p>{c.a11yText}</p>
+        <p class="downloads">
+          <span class="chip" style="background:#ff0844">#ff0844</span>
+          <span class="chip" style="background:#d80038">#d80038</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="type">
+    <div class="container">
+      <div class="section-head">
+        <h2>{c.typeTitle}</h2>
+        <p class="lead">{c.typeLead}</p>
+      </div>
+      <div class="grid grid--2">
+        <div class="card type-card">
+          <p class="type-name">Nunito <span>800 / 700 / 600</span></p>
+          <p class="type-sample type-sample--head">{c.headSample}</p>
+          <p class="type-sample type-sample--head" lang="en">twouring</p>
+          <a href="https://fonts.google.com/specimen/Nunito" target="_blank" rel="noopener">Google Fonts ↗</a>
+        </div>
+        <div class="card type-card">
+          <p class="type-name">Source Sans 3 <span>600 / 400</span></p>
+          <p class="type-sample type-sample--body">{c.bodySample}</p>
+          <p class="type-sample type-sample--slogan">TOUR YOUR LIFE TOGETHER</p>
+          <a href="https://fonts.google.com/specimen/Source+Sans+3" target="_blank" rel="noopener">Google Fonts ↗</a>
+        </div>
+      </div>
+      <div class="a11y">
+        <h3>{c.sloganTitle}</h3>
+        <p>{c.sloganText}</p>
+      </div>
+      <p class="contact">{c.contact} <a href={`mailto:${company.email}`}>{company.email}</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .logo-grid { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+  .logo-card { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .logo-stage { display: grid; place-items: center; padding: clamp(1.5rem, 4vw, 2.6rem); min-height: 220px; }
+  .logo-stage--light { background: var(--c-surface); background-image: linear-gradient(45deg, var(--c-line) 25%, transparent 25%, transparent 75%, var(--c-line) 75%), linear-gradient(45deg, var(--c-line) 25%, transparent 25%, transparent 75%, var(--c-line) 75%); background-size: 20px 20px; background-position: 0 0, 10px 10px; }
+  .logo-stage--dark { background: var(--c-surface-ink); }
+  .logo-stage img { max-height: 160px; width: auto; }
+  .logo-meta { padding: var(--sp-4) var(--sp-5) var(--sp-5); }
+  .logo-meta h3 { font-size: var(--fs-500); margin-bottom: var(--sp-2); }
+  .downloads { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; color: var(--c-muted); font-size: var(--fs-300); }
+
+  .rules-title { margin-bottom: var(--sp-4); }
+  .rules { display: grid; gap: var(--sp-3); counter-reset: rule; }
+  .rules li { display: grid; grid-template-columns: 2.2rem 1fr; gap: var(--sp-1) var(--sp-3); padding: var(--sp-4) var(--sp-5); border: 1px solid var(--c-line); border-radius: var(--radius); background: var(--c-bg); counter-increment: rule; }
+  .rules li::before { content: counter(rule, decimal-leading-zero); grid-row: 1 / span 2; font-family: var(--font-head); font-weight: 800; color: var(--c-accent-strong); }
+  .rules strong { font-family: var(--font-head); color: var(--c-ink-strong); }
+  .rules span { color: var(--c-muted); }
+
+  .swatches { margin-bottom: var(--sp-5); }
+  .swatch, .gradient-card { padding: 0; overflow: hidden; }
+  .swatch-chip { height: 150px; border-bottom: 1px solid var(--c-line); }
+  .swatch-chip--grad { background: var(--grad-brand); }
+  .swatch-meta { padding: var(--sp-4) var(--sp-5); }
+  .swatch-meta h3 { font-size: var(--fs-500); }
+  .swatch-meta code { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--fs-300); background: var(--c-surface); border: 1px solid var(--c-line); border-radius: var(--radius-sm); padding: 0.15em 0.5em; margin-block: var(--sp-2); }
+  .swatch-meta p { color: var(--c-muted); font-size: var(--fs-300); }
+  .gradient-card { margin-bottom: var(--sp-6); }
+
+  .a11y { max-width: 60ch; margin-top: var(--sp-6); }
+  .a11y h3 { margin-bottom: var(--sp-2); }
+  .a11y p { color: var(--c-muted); }
+  .a11y .downloads { margin-top: var(--sp-3); }
+  .chip { display: inline-block; color: #fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: var(--fs-300); padding: 0.6em 1em; border-radius: var(--radius-sm); }
+
+  .type-card { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .type-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-600); color: var(--c-ink-strong); }
+  .type-name span { font-weight: 400; color: var(--c-muted); font-size: var(--fs-300); margin-left: 0.5em; }
+  .type-sample--head { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-800); line-height: 1.1; color: var(--c-ink-strong); }
+  .type-sample--body { font-size: var(--fs-500); }
+  .type-sample--slogan { font-family: var(--font-body); font-weight: 600; letter-spacing: 0.12em; color: var(--c-brand-ink); }
+  .type-card a { margin-top: auto; font-size: var(--fs-300); }
+  .contact { margin-top: var(--sp-6); color: var(--c-muted); }
+</style>

@@ -1,0 +1,16 @@
+# Netlify / Cloudflare Pages 風格：apex → www 永久轉址
+# Zeabur 若支援相同格式會套用；否則請在主機／DNS 將 twouring.com 設為 301 至 www。
+https://twouring.com/* https://www.twouring.com/:splat 301
+http://twouring.com/* https://www.twouring.com/:splat 301
+
+# 舊路徑（備援；Astro redirects 亦有）
+/services/ai-remote /services/ai-consulting 301
+/services/ai-remote/ /services/ai-consulting/ 301
+/en/services/ai-remote /en/services/ai-consulting 301
+/en/services/ai-remote/ /en/services/ai-consulting/ 301
+/遊遊週報 /insights/ 301
+/遊遊週報/ /insights/ 301
+/%E9%81%8A%E9%81%8A%E9%80%B1%E5%A0%B1 /insights/ 301
+/%E9%81%8A%E9%81%8A%E9%80%B1%E5%A0%B1/ /insights/ 301
+/sitemap-index.xml /sitemap.xml 301
+/sitemap-0.xml /sitemap.xml 301

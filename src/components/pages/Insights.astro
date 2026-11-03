@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import CTABand from '../CTABand.astro';
+import Icon from '../Icon.astro';
+import { getLang, localizePath } from '../../i18n/utils';
+import { useUI, ROUTES } from '../../i18n/ui';
+import { INSIGHT_LIST } from '../../data/insights';
+
+const lang = getLang(Astro.currentLocale);
+const t = useUI(lang);
+const lp = (p: string) => localizePath(p, lang);
+
+const c = {
+  zh: {
+    eyebrow: '洞察與工具',
+    title: '第一手經驗的企業 AI 與城市策略內容',
+    lead: '不做空泛的「什麼是 AI」。這裡整理導入流程、採購選擇、資料風險、自動化 ROI 與數位遊牧城市成熟度——對準實際搜尋與採購問題。',
+    metaDescription:
+      'Twouring 遊遊洞察中心：企業 AI 導入流程與費用、顧問與內訓怎麼選、公司資料與 ChatGPT、部門自動化 ROI、數位遊牧城市成熟度。',
+    read: '閱讀文章',
+  },
+  en: {
+    eyebrow: 'Insights & tools',
+    title: 'First-hand notes on enterprise AI and city strategy',
+    lead: 'No generic “what is AI”. Adoption process, buying choices, data risk, automation ROI and digital-nomad city maturity — written for real search and purchase questions.',
+    metaDescription:
+      'Twouring insights: enterprise AI adoption and cost, consulting vs training vs build, company data in ChatGPT, department automation ROI, digital-nomad city maturity.',
+    read: 'Read article',
+  },
+}[lang];
+---
+<BaseLayout title={lang === 'zh' ? '洞察' : 'Insights'} description={c.metaDescription} path={ROUTES.insights}>
+  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.insights }]} />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2 insight-grid">
+        {INSIGHT_LIST.map((article) => {
+          const d = article[lang];
+          return (
+            <a class="card card--link insight-card" href={lp(article.path)}>
+              <span class="tag">{d.eyebrow}</span>
+              <h2>{d.title}</h2>
+              <p>{d.description}</p>
+              <span class="go">{c.read} <Icon name="arrow" size={18} /></span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
+
+<style>
+  .insight-grid { gap: 1.2rem; }
+  .insight-card { display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
+  .insight-card h2 { font-size: var(--fs-500); }
+  .insight-card p { color: var(--c-muted); }
+  .go { margin-top: auto; padding-top: 0.6rem; display: inline-flex; align-items: center; gap: 0.4em; color: var(--c-accent-strong); font-family: var(--font-head); font-weight: 700; }
+</style>

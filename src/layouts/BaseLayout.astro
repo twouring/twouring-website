@@ -1,0 +1,158 @@
+---
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/600.css';
+import '@fontsource/nunito/700.css';
+import '@fontsource/nunito/800.css';
+import '@fontsource/source-sans-3/400.css';
+import '@fontsource/source-sans-3/600.css';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLang, localizePath } from '../i18n/utils';
+import { useUI } from '../i18n/ui';
+import { company } from '../i18n/company';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // 邏輯路徑（不含語言前綴），例：/services/city
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const { title, description, path, ogImage = '/og-default.jpg', jsonLd = [], noindex = false } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const t = useUI(lang);
+const htmlLang = lang === 'zh' ? 'zh-Hant-TW' : 'en';
+
+const base = company.siteUrl;
+const canonical = base + localizePath(path, lang);
+const zhHref = base + localizePath(path, 'zh');
+const enHref = base + localizePath(path, 'en');
+const ogImageAbs = ogImage.startsWith('http') ? ogImage : base + ogImage;
+const fullTitle = path === '/' ? title : `${title}｜${company.brand}`;
+
+const knowsAbout = lang === 'zh'
+  ? ['企業 AI 導入', 'AI 流程自動化', 'AI 企業內訓', '數位轉型顧問', '遠距與混合工作', '數位遊牧城市策略', '友善場域與旅宿國際化', '國際企業參訪']
+  : ['Enterprise AI consulting', 'AI workflow automation', 'AI corporate training', 'Digital transformation', 'Remote and hybrid work', 'Digital-nomad city strategy', 'Nomad-friendly venues', 'Taiwan business delegation'];
+
+const orgDescription = lang === 'zh'
+  ? 'Twouring 遊遊（遊遊股份有限公司）提供企業 AI 導入顧問、AI 流程自動化、企業內訓，以及數位遊牧城市策略與國際參訪顧問。合作從 30 分鐘需求初談開始。'
+  : 'Twouring Co., Ltd. (Twouring 遊遊) provides enterprise AI consulting, workflow automation, corporate training, and digital-nomad city strategy and international visit advisory. Engagements start with a 30-minute discovery call.';
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': base + '/#organization',
+  name: lang === 'zh' ? company.legalName.zh : company.legalName.en,
+  alternateName: [company.brand, company.brandEn, company.legalName.en, company.legalName.zh],
+  url: base + '/',
+  logo: base + '/brand/twouring-logo.svg',
+  image: ogImageAbs,
+  email: company.email,
+  slogan: company.slogan,
+  description: orgDescription,
+  taxID: company.taxId,
+  foundingDate: company.founded,
+  founder: {
+    '@type': 'Person',
+    '@id': base + '/#kk',
+    name: lang === 'zh' ? '徐愷' : 'Kai Hsu',
+    alternateName: ['KK', 'Kai Hsu', '徐愷（KK）'],
+    jobTitle: lang === 'zh' ? '負責人／主導顧問' : 'Founder & lead advisor',
+    url: company.linkedinKK,
+    sameAs: [company.linkedinKK],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '開封街一段37號11樓',
+    addressLocality: '中正區',
+    addressRegion: '臺北市',
+    postalCode: '100',
+    addressCountry: 'TW',
+  },
+  location: {
+    '@type': 'Place',
+    name: lang === 'zh' ? '營運／會議地點' : 'Operating / meeting location',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '重慶南路一段11號',
+      addressLocality: '中正區',
+      addressRegion: '臺北市',
+      postalCode: '100',
+      addressCountry: 'TW',
+    },
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      email: company.email,
+      url: base + localizePath('/contact', lang),
+      availableLanguage: ['zh-Hant', 'en'],
+    },
+  ],
+  areaServed: ['TW', 'Asia'],
+  sameAs: [company.linkedin, company.tenderProfileUrl, company.findbizUrl, company.llmsTxtUrl],
+  knowsAbout,
+};
+const allLd = [orgLd, ...jsonLd];
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="zh-Hant-TW" href={zhHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={zhHref} />
+
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={company.brand} />
+    <meta property="og:locale" content={lang === 'zh' ? 'zh_TW' : 'en_US'} />
+    <meta property="og:locale:alternate" content={lang === 'zh' ? 'en_US' : 'zh_TW'} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image:alt" content={company.brand} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbs} />
+
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+    {allLd.map((ld) => (<script type="application/ld+json" set:html={JSON.stringify(ld)} />))}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skipToContent}</a>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body { display: flex; flex-direction: column; min-height: 100vh; }
+  main { flex: 1 0 auto; }
+</style>

@@ -1,0 +1,60 @@
+# Twouring 遊遊
+
+> Twouring 遊遊（遊遊股份有限公司，統一編號 95440838）是台灣的企業 AI 導入與城市數位轉型顧問公司。協助企業做 AI 營運健檢、90 天路線圖、流程自動化與內訓；協助地方政府規劃數位遊牧城市策略、友善場域與國際人才接待。
+
+## Company facts
+
+- Legal name (zh): 遊遊股份有限公司
+- Legal name (en): Twouring Co., Ltd.
+- Brand: Twouring 遊遊
+- Tax ID: 95440838
+- Founded: 2024-05-27
+- Representative: 徐愷（KK）
+- Registered address: 臺北市中正區開封街一段 37 號 11 樓
+- Operating / meeting address: 臺北市中正區重慶南路一段 11 號
+- Email: us@twouring.com
+- Site: https://www.twouring.com/
+- LinkedIn: https://www.linkedin.com/company/twouring
+- Public tenders: https://ezbid.tw/vendor/%E9%81%8A%E9%81%8A%E8%82%A1%E4%BB%BD%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8
+
+## What Twouring is
+
+Twouring 遊遊是企業 AI 導入顧問，也是城市數位轉型與數位遊牧策略顧問。合作從免費的 30 分鐘需求初談開始，再進入付費診斷、顧問／PMO 與導入。技術交付可由合作夥伴適才科技承接；TDNA 為公益生態系連結，不是遊遊的付費客戶關係。
+
+## Awarded government cases
+
+### 花蓮雲基地營運推廣計畫
+https://www.twouring.com/cases/hualien-cloud-base/
+
+Client: 花蓮縣政府. Public contract award: NTD 5,880,000 (tender award total, not company profit). Twouring role: contracted vendor — advisory, integration, PMO.
+
+### 臺東 TTNomads
+https://www.twouring.com/cases/taitung-ttnomads/
+
+Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: contracted vendor — advisory, programme and venue integration. Cumulative published awards with Hualien: NTD 8,280,000.
+
+## Services (definitions)
+
+- Enterprise AI consulting: diagnose processes first, then adopt AI with a 90-day roadmap, KPIs and PMO. Starting package: AI operations health-check from NTD 120,000.
+- AI corporate training: executive workshops from NTD 100,000 per session.
+- AI workflow automation: identify the three workflows most worth automating and measure ROI.
+- Remote / hybrid work consulting: policies, collaboration and performance systems (separate purchase from AI).
+- Digital-nomad city strategy: maturity diagnostic, strategy and annual advisory for local governments.
+- Nomad-friendly venues: internationalisation for stays, cafés and districts; Nomad Ready is the method name.
+- International visits: Taiwan business delegation and startup ecosystem visit design (not travel agency booking).
+
+## Entry ladder
+
+1. Insights / talks (no custom strategy)
+2. 30-minute discovery call (free)
+3. Paid diagnostic (NTD 30,000–200,000)
+4. Advisory / PMO (NTD 80,000–250,000/mo)
+5. Rollout / annual (NTD 300,000–3,000,000+)
+
+## Key insights
+
+- https://www.twouring.com/insights/enterprise-ai-adoption-roadmap/
+- https://www.twouring.com/insights/ai-consultant-vs-training-vs-build/
+- https://www.twouring.com/insights/company-data-in-chatgpt/
+- https://www.twouring.com/insights/department-ai-automation-roi/
+- https://www.twouring.com/insights/digital-nomad-city-maturity/

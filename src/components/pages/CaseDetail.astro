@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import CTABand from '../CTABand.astro';
+import Icon from '../Icon.astro';
+import { getLang, localizePath } from '../../i18n/utils';
+import { useUI, ROUTES } from '../../i18n/ui';
+import { company } from '../../i18n/company';
+import { cases, type CaseSlug } from '../../data/cases';
+
+interface Props { slug: CaseSlug; }
+const { slug } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const t = useUI(lang);
+const lp = (p: string) => localizePath(p, lang);
+const d = cases[slug][lang];
+const path = cases[slug].path;
+
+const labels = {
+  zh: {
+    problem: '問題',
+    roles: '角色切分',
+    deliverables: '交付物',
+    milestones: '已完成／規劃里程碑',
+    kpis: 'KPI',
+    links: '公開文件與連結',
+    back: '全部案例',
+  },
+  en: {
+    problem: 'Problem',
+    roles: 'Role split',
+    deliverables: 'Deliverables',
+    milestones: 'Milestones',
+    kpis: 'KPIs',
+    links: 'Public links',
+    back: 'All work',
+  },
+}[lang];
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: lang === 'zh' ? '首頁' : 'Home', item: company.siteUrl + lp(ROUTES.home) },
+    { '@type': 'ListItem', position: 2, name: t.nav.cases, item: company.siteUrl + lp(ROUTES.cases) },
+    { '@type': 'ListItem', position: 3, name: d.title, item: company.siteUrl + lp(path) },
+  ],
+};
+---
+<BaseLayout title={d.title} description={d.metaDescription} path={path} jsonLd={[breadcrumbLd]}>
+  <PageHero
+    eyebrow={d.tag}
+    title={d.title}
+    lead={d.lead}
+    crumbs={[{ label: t.nav.cases, path: ROUTES.cases }, { label: d.client }]}
+  >
+    <p class="case-meta">{d.client} · {d.period}</p>
+  </PageHero>
+
+  <div class="container disclosure-wrap">
+    <p class="disclosure"><Icon name="shield" size={18} /> {t.common.contractNote}</p>
+  </div>
+
+  <section class="section section--tight">
+    <div class="container amount-band">
+      <div>
+        <p class="eyebrow">{t.common.contractAmount}</p>
+        <p class="amount">{d.contractAmount}</p>
+        <p class="amount-note">
+          <a href={d.contractSourceUrl} target="_blank" rel="noopener">{d.contractSourceLabel}</a>
+        </p>
+      </div>
+      <p class="updated">{t.common.lastUpdated}：{d.lastUpdated}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container case-body">
+      <div>
+        <h2>{labels.problem}</h2>
+        <p>{d.problem}</p>
+      </div>
+      <div>
+        <h2>{labels.roles}</h2>
+        <ul class="role-list" role="list">
+          {d.roles.map((r) => (
+            <li><strong>{r.name}</strong><span>{r.role}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2>{labels.deliverables}</h2>
+        <ul role="list">{d.deliverables.map((x) => (<li><Icon name="check" size={16} /> {x}</li>))}</ul>
+      </div>
+      <div>
+        <h2>{labels.milestones}</h2>
+        <ol class="mile-list" role="list">{d.milestones.map((x) => (<li>{x}</li>))}</ol>
+      </div>
+      <div>
+        <h2>{labels.kpis}</h2>
+        <ul role="list">{d.kpis.map((x) => (<li><Icon name="chart" size={16} /> {x}</li>))}</ul>
+      </div>
+      <div>
+        <h2>{labels.links}</h2>
+        <ul role="list">
+          {d.links.map((l) => (
+            <li><a href={l.url} target="_blank" rel="noopener">{l.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="container back-row">
+      <a class="btn btn--ghost" href={lp(ROUTES.cases)}>{labels.back}</a>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
+
+<style>
+  .case-meta { margin-top: 1rem; color: var(--c-muted); font-weight: 600; }
+  .disclosure-wrap { margin-top: -1rem; }
+  .disclosure { display: flex; gap: 0.6rem; align-items: flex-start; background: var(--c-surface); border-radius: var(--radius); padding: 1rem 1.2rem; color: var(--c-muted); font-size: 0.94rem; }
+  .amount-band { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; align-items: end; background: var(--c-surface-warm); border-radius: var(--radius-lg); padding: 1.6rem 1.8rem; }
+  .amount { font-family: var(--font-head); font-weight: 800; font-size: clamp(1.8rem, 1.4rem + 2vw, 2.6rem); color: var(--c-accent-strong); margin: 0.3rem 0; }
+  .amount-note a { color: var(--c-muted); text-decoration: underline; }
+  .updated { color: var(--c-faint); font-size: 0.9rem; }
+  .case-body { display: grid; gap: 2rem; max-width: 820px; }
+  .case-body h2 { font-size: var(--fs-500); margin-bottom: 0.7rem; }
+  .case-body p, .case-body li { color: var(--c-muted); }
+  .case-body ul, .case-body ol { display: grid; gap: 0.5rem; }
+  .case-body ul li { display: flex; gap: 0.5rem; align-items: flex-start; }
+  .role-list li { display: grid; gap: 0.2rem; padding: 0.8rem 0; border-bottom: 1px solid var(--c-line); }
+  .role-list strong { color: var(--c-ink); }
+  .mile-list { list-style: decimal; padding-left: 1.2rem; }
+  .back-row { margin-top: 2rem; }
+</style>

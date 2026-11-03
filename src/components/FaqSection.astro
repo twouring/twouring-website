@@ -1,0 +1,33 @@
+---
+import type { FaqItem } from '../data/faq';
+
+interface Props {
+  title: string;
+  items: FaqItem[];
+}
+const { title, items } = Astro.props;
+---
+<section class="section section--surface faq-section">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow">FAQ</p>
+      <h2>{title}</h2>
+    </div>
+    <div class="faq-list">
+      {items.map((item) => (
+        <details class="faq-item">
+          <summary>{item.q}</summary>
+          <p class="faq-a">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 0.8rem; }
+  .faq-item { background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius); padding: 1rem 1.2rem; }
+  .faq-item summary { font-family: var(--font-head); font-weight: 700; cursor: pointer; list-style: none; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-a { margin-top: 0.8rem; color: var(--c-muted); line-height: 1.65; }
+</style>

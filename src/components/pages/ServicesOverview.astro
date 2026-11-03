@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import CTABand from '../CTABand.astro';
+import Icon from '../Icon.astro';
+import { getLang, localizePath } from '../../i18n/utils';
+import { useUI, ROUTES, AI_SERVICE_NAV } from '../../i18n/ui';
+import { services } from '../../data/services';
+
+const lang = getLang(Astro.currentLocale);
+const t = useUI(lang);
+const lp = (p: string) => localizePath(p, lang);
+
+const c = {
+  zh: {
+    eyebrow: '服務總覽',
+    title: '企業 AI 導入、城市策略與國際參訪——清楚的合作入口',
+    lead: '遊遊把能力整理成可購買、可詢問的服務。所有服務都從一場 30 分鐘需求初談開始，再延伸到付費診斷、顧問、PMO 與導入。',
+    metaDescription:
+      '遊遊顧問服務：企業 AI 導入、AI 內訓、流程自動化、遠距工作制度、數位遊牧城市策略、友善場域與國際企業參訪。皆以 30 分鐘需求初談為入口。',
+    aiTitle: '企業 AI 與工作制度',
+    aiLead: 'AI 與遠距是不同採購需求，已拆成獨立頁面，避免主題稀釋。',
+    otherTitle: '城市、場域與國際',
+    ladderTitle: '同一套銷售階梯',
+    ladderLead: '不論哪一條服務線，都依同一套產品階梯逐步合作，讓投入與風險可控。',
+    ladder: [
+      { t: '洞察內容 / 講座', d: '官網洞察文章、公開講座與說明會，建立信任，不提供客製策略。' },
+      { t: '30 分鐘需求初談', d: '判斷問題是否清楚、是否有預算與決策者（免費）。' },
+      { t: '付費診斷', d: 'NTD 30,000–200,000，依客戶類型與複雜度，是最重要的銷售入口。' },
+      { t: '3 個月顧問 / PMO', d: 'NTD 80,000–250,000／月，把診斷結果轉成執行。' },
+      { t: '導入專案 / 年度合作', d: 'NTD 300,000–3,000,000＋，依規模與是否含技術、活動、國際對接。' },
+    ],
+    grantTitle: '補助與標案策略顧問',
+    grantDesc: '遊遊也提供補助／標案的可行性診斷（NTD 50,000）、計畫書策略（NTD 150,000 起）與 PMO（NTD 80,000／月）。定位是策略、計畫設計與執行管理，而非低價代寫；成功分潤 5–12% 必與基本費搭配，不做無基本費的純抽成案。',
+    seeService: '查看服務',
+  },
+  en: {
+    eyebrow: 'All services',
+    title: 'Enterprise AI, city strategy and international visits — clear entry points',
+    lead: 'Twouring packages capabilities into services you can buy. Every path starts with a 30-minute discovery call, then extends into paid diagnostics, advisory, PMO and rollout.',
+    metaDescription:
+      'Twouring advisory: enterprise AI adoption, AI training, workflow automation, remote-work systems, digital-nomad city strategy, friendly venues and Taiwan business delegations — starting with a 30-minute discovery call.',
+    aiTitle: 'Enterprise AI & work systems',
+    aiLead: 'AI and remote work are different purchases — split into dedicated pages so topics stay focused.',
+    otherTitle: 'City, venue and international',
+    ladderTitle: 'One sales ladder',
+    ladderLead: 'Every service line follows the same product ladder, keeping investment and risk under control.',
+    ladder: [
+      { t: 'Insights / talks', d: 'Articles, public talks and briefings that build trust — no custom strategy.' },
+      { t: '30-min discovery', d: 'Confirm the problem is clear and there is budget and a decision-maker (free).' },
+      { t: 'Paid diagnostic', d: 'NTD 30,000–200,000 by client type and complexity — the key sales entry.' },
+      { t: '3-month advisory / PMO', d: 'NTD 80,000–250,000/mo, turning the diagnosis into delivery.' },
+      { t: 'Rollout / annual', d: 'NTD 300,000–3,000,000+, by scale and whether tech, events or exchange are included.' },
+    ],
+    grantTitle: 'Grants & public-tender strategy',
+    grantDesc: 'Twouring also offers grant/tender feasibility diagnostics (NTD 50,000), proposal strategy (from NTD 150,000) and PMO (NTD 80,000/mo). We position on strategy, plan design and delivery management — not low-cost ghost-writing; a 5–12% success fee always comes with a base fee.',
+    seeService: 'View service',
+  },
+}[lang];
+
+const otherKeys = ['city', 'venue', 'international'] as const;
+---
+<BaseLayout title={lang === 'zh' ? '服務' : 'Services'} description={c.metaDescription} path={ROUTES.services}>
+  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.services }]} />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{c.aiTitle}</p>
+        <h2>{c.aiLead}</h2>
+      </div>
+      <div class="grid grid--2 svc-grid">
+        {AI_SERVICE_NAV.map((s) => {
+          const d = services[s.key][lang];
+          return (
+            <article class="card svc-card">
+              <span class="svc-icon"><Icon name={services[s.key].icon} size={26} /></span>
+              <p class="svc-eyebrow">{d.eyebrow}</p>
+              <h2>{d.title}</h2>
+              <p class="svc-lead">{d.lead}</p>
+              <ul class="svc-highlights" role="list">
+                {d.highlights.map((h) => (<li><Icon name="check" size={16} /> {h}</li>))}
+              </ul>
+              <a class="btn btn--ghost svc-btn" href={lp(services[s.key].path)}>{c.seeService} <Icon name="arrow" size={18} /></a>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{c.otherTitle}</p>
+      </div>
+      <div class="grid grid--2 svc-grid">
+        {otherKeys.map((key) => {
+          const d = services[key][lang];
+          return (
+            <article class="card svc-card">
+              <span class="svc-icon"><Icon name={services[key].icon} size={26} /></span>
+              <p class="svc-eyebrow">{d.eyebrow}</p>
+              <h2>{d.title}</h2>
+              <p class="svc-lead">{d.lead}</p>
+              <ul class="svc-highlights" role="list">
+                {d.highlights.map((h) => (<li><Icon name="check" size={16} /> {h}</li>))}
+              </ul>
+              <a class="btn btn--ghost svc-btn" href={lp(services[key].path)}>{c.seeService} <Icon name="arrow" size={18} /></a>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center"><p class="eyebrow">{c.ladderTitle}</p><h2>{c.ladderLead}</h2></div>
+      <ol class="ladder" role="list">
+        {c.ladder.map((step, i) => (
+          <li class="ladder-step">
+            <span class="ladder-num">{i + 1}</span>
+            <div>
+              <h3>{step.t}</h3>
+              <p>{step.d}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div class="grant">
+        <h3>{c.grantTitle}</h3>
+        <p>{c.grantDesc}</p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</BaseLayout>
+
+<style>
+  .svc-grid { gap: 1.2rem; }
+  .svc-card { display: flex; flex-direction: column; gap: 0.6rem; }
+  .svc-icon { display: grid; place-items: center; width: 52px; height: 52px; border-radius: var(--radius); background: var(--grad-soft); color: var(--c-accent-strong); }
+  .svc-eyebrow { font-size: 0.85rem; color: var(--c-faint); font-weight: 600; }
+  .svc-lead { color: var(--c-muted); }
+  .svc-highlights { display: grid; gap: 0.4rem; margin: 0.4rem 0; }
+  .svc-highlights li { display: flex; gap: 0.45rem; align-items: flex-start; color: var(--c-ink); font-size: 0.94rem; }
+  .svc-btn { margin-top: auto; align-self: flex-start; }
+  .ladder { display: grid; gap: 1rem; max-width: 760px; margin: 0 auto; }
+  .ladder-step { display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-lg); padding: 1.2rem 1.4rem; }
+  .ladder-num { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--grad-brand); color: #fff; font-family: var(--font-head); font-weight: 800; }
+  .ladder-step h3 { font-size: var(--fs-400); }
+  .ladder-step p { color: var(--c-muted); margin-top: 0.3rem; }
+  .grant { margin-top: 2.5rem; max-width: 760px; margin-inline: auto; padding: 1.4rem 1.6rem; background: var(--c-surface-warm); border-radius: var(--radius-lg); }
+  .grant h3 { margin-bottom: 0.6rem; }
+  .grant p { color: var(--c-muted); }
+</style>
