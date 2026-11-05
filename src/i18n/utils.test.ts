@@ -47,3 +47,8 @@ assert.equal(isActivePath('/services/city/', '/services'), true);
 assert.equal(isActivePath('/about/', '/services'), false);
 
 console.log('✓ i18n utils 全部通過');
+
+// 只有中文版的頁面：切到 en/ja 回該語言首頁
+assert.equal(switchLocaleHref('/webinar/', 'en'), '/en/');
+assert.equal(switchLocaleHref('/webinar/', 'ja'), '/ja/');
+assert.equal(switchLocaleHref('/webinar/', 'zh'), '/webinar/');

@@ -33,9 +33,14 @@ export function toLogicalPath(pathname: string): string {
 }
 
 /** 切換語言時對應的另一語版 URL。404 無對應語版，導向該語言首頁。 */
+/** 只有中文版的邏輯路徑。 */
+export const ZH_ONLY = ['/webinar'];
+
 export function switchLocaleHref(pathname: string, target: Lang): string {
   const logical = toLogicalPath(pathname);
   if (logical === '/404') return localizePath('/', target);
+  // 只有中文版的頁面：切語言時回該語言首頁
+  if (target !== 'zh' && ZH_ONLY.includes(logical)) return localizePath('/', target);
   return localizePath(logical, target);
 }
 

@@ -1,0 +1,43 @@
+---
+/**
+ * 說明會推廣卡（中文頁使用）：洞察文章末、首頁共用。讀 data/webinars 的下一場；
+ * 沒有未來場次時整塊不輸出。瀏覽器端再檢查一次，build 後才過期的場次改顯示下一場。
+ */
+import { TOPICS, upcomingSessions, fmtDate, endsAt, WEBINAR_PATH } from '../data/webinars';
+
+interface Props { variant?: 'card' | 'band'; }
+const { variant = 'card' } = Astro.props;
+const list = upcomingSessions().slice(0, 3);
+---
+{list.length > 0 && (
+  <aside class:list={['wpromo', `wpromo--${variant}`]} aria-label="線上說明會">
+    <div class="wpromo-copy">
+      <p class="eyebrow">免費線上說明會</p>
+      {list.map((s, i) => (
+        <div class="wpromo-item" data-ends={endsAt(s)} hidden={i > 0}>
+          <p class="wpromo-title">{fmtDate(s.date)} {s.start}｜{TOPICS[s.topic].label}：{TOPICS[s.topic].title}</p>
+          <p class="wpromo-text">60 分鐘，用模擬資料現場示範傳產怎麼導入 AI。適合：{TOPICS[s.topic].audience}。</p>
+        </div>
+      ))}
+    </div>
+    <a class="btn btn--primary" href={`${WEBINAR_PATH}/#register`} data-cta={`webinar_promo_${variant}`}>免費報名</a>
+  </aside>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('.wpromo').forEach((box) => {
+    const items = [...box.querySelectorAll<HTMLElement>('.wpromo-item')];
+    const live = items.filter((el) => Number(el.dataset.ends) > Date.now());
+    items.forEach((el) => (el.hidden = el !== live[0]));
+    if (!live.length) box.remove();
+  });
+</script>
+
+<style>
+  .wpromo { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap; background: var(--grad-soft); border: 1px solid #ffe0d6; border-radius: var(--radius-lg); padding: 1.4rem 1.6rem; margin: 2rem 0; }
+  .wpromo-copy { flex: 1 1 22rem; }
+  .wpromo-title { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); color: var(--c-ink-strong); margin-top: 0.3rem; }
+  .wpromo-text { color: var(--c-muted); font-size: 0.94rem; margin-top: 0.3rem; }
+  .wpromo .btn { flex-shrink: 0; }
+  .wpromo--band { margin: 0; }
+</style>

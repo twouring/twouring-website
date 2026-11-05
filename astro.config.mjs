@@ -5,7 +5,7 @@ import { sitemapXml } from './src/integrations/sitemap-xml.js';
 
 // 正式對外網域。如改用 apex（https://twouring.com）只需改這一處。
 const SITE = 'https://www.twouring.com';
-const LASTMOD = new Date('2026-11-03T00:00:00.000Z');
+const LASTMOD = new Date('2026-11-05T00:00:00.000Z');
 
 export default defineConfig({
   site: SITE,
@@ -24,10 +24,15 @@ export default defineConfig({
     '/ja/services/ai-remote': '/ja/services/ai-consulting',
     // 舊週報（搜尋仍可能指向）→ 洞察中心
     '/遊遊週報': '/insights',
+    // 說明會只有中文版（受眾為台灣傳產）
+    '/en/webinar': '/webinar',
+    '/ja/webinar': '/webinar',
     // 注意：勿在此 redirect sitemap-*.xml（會建成目錄，擋住 @astrojs/sitemap 寫檔）
   },
   integrations: [
     sitemap({
+      // 說明會只有中文版：/en、/ja 轉址頁不進 sitemap
+      filter: (page) => !/\/(en|ja)\/webinar\/?$/.test(page),
       i18n: {
         defaultLocale: 'zh',
         locales: {

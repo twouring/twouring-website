@@ -11,7 +11,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLang, localizePath, LOCALES, LOCALE_META } from '../i18n/utils';
 import { useUI } from '../i18n/ui';
-import { company } from '../i18n/company';
+import { company, type Lang } from '../i18n/company';
 
 interface Props {
   title: string;
@@ -20,9 +20,11 @@ interface Props {
   ogImage?: string;
   jsonLd?: Record<string, unknown>[];
   noindex?: boolean;
+  /** 頁面實際存在的語言；預設三語皆有。只有中文版的頁面傳 ['zh']，避免輸出指向轉址頁的 hreflang。 */
+  locales?: Lang[];
 }
 
-const { title, description, path, ogImage = '/og-default.jpg', jsonLd = [], noindex = false } = Astro.props;
+const { title, description, path, ogImage = '/og-default.jpg', jsonLd = [], noindex = false, locales = LOCALES } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const htmlLang = LOCALE_META[lang].html;
@@ -30,7 +32,7 @@ const htmlLang = LOCALE_META[lang].html;
 const base = company.siteUrl;
 const canonical = base + localizePath(path, lang);
 const zhHref = base + localizePath(path, 'zh');
-const altHrefs = LOCALES.map((l) => ({ hreflang: LOCALE_META[l].html, href: base + localizePath(path, l) }));
+const altHrefs = locales.map((l) => ({ hreflang: LOCALE_META[l].html, href: base + localizePath(path, l) }));
 const ogImageAbs = ogImage.startsWith('http') ? ogImage : base + ogImage;
 const fullTitle = path === '/' ? title : `${title}｜${company.brand}`;
 
@@ -103,6 +105,8 @@ const orgLd = {
   knowsAbout,
 };
 const allLd = [orgLd, ...jsonLd];
+// GA4：部署時設定 PUBLIC_GA_ID（G-XXXXXXXXXX）才輸出；未設定時不載入任何追蹤。
+const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
 ---
 
 <!doctype html>
@@ -144,6 +148,42 @@ const allLd = [orgLd, ...jsonLd];
     <link rel="sitemap" href="/sitemap.xml" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     {allLd.map((ld) => (<script type="application/ld+json" set:html={JSON.stringify(ld)} />))}
+    {GA_ID && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script is:inline define:vars={{ GA_ID, lang }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', GA_ID, { site_lang: lang });
+          // 轉換事件：預約初談、Email、LinkedIn、聯絡表單送出。label 取最近區塊的 eyebrow／標題。
+          document.addEventListener('click', function (e) {
+            var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+            if (!a) return;
+            var href = a.getAttribute('href') || '';
+            var name = href.indexOf('calendar.app.google') >= 0 ? 'book_call'
+              : href.indexOf('mailto:') === 0 ? 'email_click'
+              : href.indexOf('linkedin.com') >= 0 ? 'linkedin_click'
+              : href.indexOf('/contact') >= 0 ? 'contact_page_click'
+              : '';
+            if (!name) return;
+            var sec = a.closest('section, header, footer, .cta-band');
+            var head = sec && sec.querySelector('.eyebrow, h1, h2');
+            gtag('event', name, {
+              cta_text: (a.textContent || '').trim().slice(0, 60),
+              cta_section: head ? (head.textContent || '').trim().slice(0, 60) : (sec ? sec.tagName.toLowerCase() : ''),
+              page_path: location.pathname,
+            });
+          }, true);
+          var f = document.getElementById('contact-form') || document.querySelector('form[data-endpoint]');
+          if (f) f.addEventListener('submit', function () {
+            var t = f.querySelector('select[name="type"]');
+            gtag('event', 'contact_form_submit', { topic: t ? t.value : '', page_path: location.pathname });
+          }, true);
+        </script>
+      </>
+    )}
   </head>
   <body>
     <a class="skip-link" href="#main">{t.skipToContent}</a>

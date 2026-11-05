@@ -241,6 +241,7 @@ const webPageLd = {
   publisher: { '@id': company.siteUrl + '/#organization' },
 };
 const faqItems = homeFaq[lang];
+import WebinarPromo from '../WebinarPromo.astro';
 ---
 <BaseLayout title={c.pageTitle} description={c.metaDescription} path={ROUTES.home} jsonLd={[webPageLd, faqJsonLd(faqItems)]}>
   <!-- HERO -->
@@ -273,6 +274,12 @@ const faqItems = homeFaq[lang];
       </div>
     </div>
   </section>
+
+  {lang === 'zh' && (
+    <section class="section section--tight">
+      <div class="container"><WebinarPromo variant="band" /></div>
+    </section>
+  )}
 
   <!-- 代表實績 -->
   <section class="section section--surface">

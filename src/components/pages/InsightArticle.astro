@@ -6,6 +6,7 @@ import { getLang, localizePath, LOCALE_META } from '../../i18n/utils';
 import { useUI, ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
 import { insights, type InsightSlug } from '../../data/insights';
+import WebinarPromo from '../WebinarPromo.astro';
 
 interface Props { slug: InsightSlug; }
 const { slug } = Astro.props;
@@ -73,6 +74,15 @@ const articleLd = {
           {s.paras.map((p) => (<p>{p}</p>))}
         </section>
       ))}
+      {article.sources && article.sources.length > 0 && (
+        <section class="block sources">
+          <h2>{{ zh: '資料來源', en: 'Sources', ja: '出典' }[lang]}</h2>
+          <ol>
+            {article.sources.map((s) => (<li><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>))}
+          </ol>
+        </section>
+      )}
+      {lang === 'zh' && <WebinarPromo />}
       <p class="back"><a href={lp(ROUTES.insights)}>{{ zh: '← 全部洞察', en: '← All insights', ja: '← インサイト一覧' }[lang]}</a></p>
     </div>
   </article>
@@ -88,5 +98,7 @@ const articleLd = {
   .block h2 { font-size: var(--fs-500); margin-bottom: 0.8rem; }
   .block p { color: var(--c-muted); margin-bottom: 0.8rem; line-height: 1.7; }
   .back { margin-top: 2rem; }
+  .sources ol { padding-left: 1.2rem; list-style: decimal; display: grid; gap: 0.4rem; font-size: 0.9rem; }
+  .sources a { color: var(--c-muted); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }
   .back a { color: var(--c-accent-strong); font-weight: 700; }
 </style>

@@ -17,6 +17,8 @@ export const ROUTES = {
   about: '/about',
   cases: '/cases',
   insights: '/insights',
+  /** 只有中文版 */
+  webinar: '/webinar',
   careers: '/careers',
   cis: '/cis',
   contact: '/contact',
