@@ -16,6 +16,12 @@ const files = process.argv.slice(2).length
   ? process.argv.slice(2).map((s) => s.replace(/\.json$/, '') + '.json')
   : readdirSync(DIR).filter((f) => f.endsWith('.json'));
 
+// 跨篇重複句偵測（擋模板文）：收集全部文章 15 字以上的句子
+const sentOwner = new Map();
+const sentsOf = (z) => [z.lead, ...(z.sections || []).flatMap((s) => s.paras || [])].join('。').split(/[。？；\n]/).map((s) => s.trim()).filter((s) => s.length >= 15);
+for (const f of readdirSync(DIR).filter((x) => x.endsWith('.json'))) {
+  try { const a = JSON.parse(readFileSync(new URL(f, DIR), 'utf8')); for (const s of sentsOf(a.zh || {})) { if (!sentOwner.has(s)) sentOwner.set(s, new Set()); sentOwner.get(s).add(a.slug); } } catch {}
+}
 let bad = 0;
 const seenTitles = new Map();
 for (const f of files) {
@@ -44,6 +50,13 @@ for (const f of files) {
     for (const w of BANNED) if (all.includes(w)) errs.push(`禁用字詞「${w}」`);
     const m = all.match(SIMP); if (m) errs.push(`疑似簡體字「${m[0]}」`);
     if (/\d+(\.\d+)?\s*(%|％|萬|億|成)/.test(body) && (a.sources || []).length === 0) errs.push('內文有統計數字（%、萬、億、成）但 sources 為空');
+    const own = sentsOf(z);
+    const dupIn = own.filter((s) => (sentOwner.get(s)?.size || 0) > 1);
+    if (dupIn.length) errs.push(`有 ${dupIn.length} 句與其他文章相同（疑似模板），例如「${dupIn[0].slice(0, 30)}」`);
+    const selfDup = own.filter((s, i) => own.indexOf(s) !== i);
+    if (selfDup.length) errs.push(`同篇重複句：「${selfDup[0].slice(0, 30)}」`);
+    const tCount = body.split(z.title).length - 1;
+    if (tCount > 0) errs.push('正文直接複製整句標題（疑似模板）');
     if (seenTitles.has(z.title)) errs.push(`標題重複：${seenTitles.get(z.title)}`);
     seenTitles.set(z.title, slug);
     if (!errs.length) console.log(`✓ ${slug}｜${a.published}｜${z.eyebrow}｜${n} 字｜來源 ${(a.sources || []).length}`);
