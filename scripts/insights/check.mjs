@@ -45,7 +45,7 @@ for (const f of files) {
     if (!legacy && !Array.isArray(z.sections) || !legacy && z.sections.length < 4 || z.sections.length > 6) errs.push(`sections 須 4～6 個（${z.sections?.length}）`);
     const body = [z.lead, ...(z.sections || []).flatMap((s) => [s.heading, ...(s.paras || [])])].join('');
     const n = body.replace(/\s/g, '').length;
-    if (!legacy && (n < 1000 || n > 1700)) errs.push(`zh 內文字數 ${n}（須 1,000～1,700）`);
+    if (!legacy && (n < 1100 || n > 1700)) errs.push(`zh 內文字數 ${n}（須 1,100～1,700）`);
     const all = [z.title, z.description, body].join('\n');
     for (const w of BANNED) if (all.includes(w)) errs.push(`禁用字詞「${w}」`);
     const m = all.match(SIMP); if (m) errs.push(`疑似簡體字「${m[0]}」`);
