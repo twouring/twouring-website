@@ -11,7 +11,7 @@ import WebinarRegister from '../WebinarRegister.astro';
 import { localizePath } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
-import { TOPICS, SESSIONS, upcomingSessions, fmtDate, endsAt, sessionPath, WEBINAR_PATH } from '../../data/webinars';
+import { TOPICS, SESSIONS, upcomingSessions, fmtDate, endsAt, sessionPath, WEBINAR_PATH, OVERVIEW_IMAGE } from '../../data/webinars';
 
 const lp = (p: string) => localizePath(p, 'zh');
 
@@ -21,7 +21,7 @@ const topicOrder = ['intro', 'metal', 'machinery', 'labor'] as const;
 
 const title = 'AI 導入傳產線上說明會';
 const description =
-  '每隔週三上午 10:00 的免費線上說明會：用 60 分鐘看懂傳統產業怎麼導入 AI 與數位轉型——報價、料號、外銷文件、BOM、缺工，現場用模擬資料示範。';
+  '免費線上說明會，週二到週四輪流開場，上午、下午、晚上都有場次：用 60 分鐘看懂傳統產業怎麼導入 AI 與數位轉型——報價、料號、外銷文件、BOM、缺工，現場用模擬資料示範。';
 
 const eventsLd = upcoming.map((s) => ({
   '@context': 'https://schema.org',
@@ -49,10 +49,11 @@ const agenda = [
 ---
 <BaseLayout title={title} description={description} path={WEBINAR_PATH} jsonLd={eventsLd} locales={['zh']}>
   <PageHero
-    eyebrow="免費線上說明會｜每隔週三 10:00"
+    eyebrow="免費線上說明會｜上午、下午、晚上場輪流開"
     title="傳產導入 AI，先花 60 分鐘看別人怎麼做"
     lead="不賣軟體、不推大系統。用模擬資料現場示範報價、料號、外銷文件、BOM 和新人教材怎麼交給 AI 與系統，聽完知道自己的公司該從哪一步開始。"
     crumbs={[{ label: '線上說明會' }]}
+    image={OVERVIEW_IMAGE}
   >
     <div class="cluster hero-cta">
       <a class="btn btn--grad btn--lg" href="#register" data-cta="webinar_hero_register">
@@ -67,7 +68,7 @@ const agenda = [
       <div class="section-head">
         <p class="eyebrow">場次</p>
         <h2>四個主題輪流講，<span class="keep">挑跟你產業最近的一場</span></h2>
-        <p class="lead">每場 60 分鐘，Google Meet 線上進行，免費參加；每季另加一場專題。報名後，會前一天寄會議連結。</p>
+        <p class="lead">每場 60 分鐘，Google Meet 線上進行，免費參加；每季另加一場專題。報名後會收到 Google 行事曆邀請，裡面附 Meet 連結；開場前一天會再提醒。</p>
       </div>
 
       {upcoming.length > 0 ? (
@@ -110,6 +111,7 @@ const agenda = [
           const tp = TOPICS[k];
           return (
             <article class="card topic">
+              <img class="topic-img" src={tp.image.src} alt={tp.image.alt} width="1200" height="800" loading="lazy" />
               <span class="tag">{tp.label}</span>
               <h3>{tp.title}</h3>
               <p class="topic-aud">{tp.audience}</p>
@@ -167,20 +169,21 @@ const agenda = [
   .session-aud { color: var(--c-muted); font-size: 0.92rem; margin-top: 0.3rem; }
   .empty { color: var(--c-muted); }
   .topics { gap: 1.2rem; }
-  .topic { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  .topic-img { width: calc(100% + 2 * var(--card-pad, 1.6rem)); max-width: none; margin: calc(-1 * var(--card-pad, 1.6rem)) calc(-1 * var(--card-pad, 1.6rem)) 0.6rem; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .topic { --card-pad: clamp(1.4rem, 3vw, 2rem); overflow: hidden; display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
   .topic h3 { font-size: var(--fs-500); }
   .topic-aud { color: var(--c-muted); font-size: 0.92rem; }
   .topic-h { margin-top: 0.6rem; font-family: var(--font-head); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.04em; color: var(--c-faint); }
   .topic ul { display: grid; gap: 0.35rem; }
-  .agenda-wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: start; }
-  .agenda { margin-top: 1.2rem; display: grid; gap: 0.7rem; }
-  .agenda li { display: grid; grid-template-columns: 4.2rem 1fr; gap: 0.8rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--c-line); }
+  .agenda-wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center; }
+  .agenda { margin-top: 1.6rem; display: grid; gap: 0; }
+  .agenda li { display: grid; grid-template-columns: 4.6rem 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--c-line); font-size: var(--fs-500); }
   .agenda-m { font-family: var(--font-head); font-weight: 800; color: var(--c-accent-strong); }
-  .host { display: grid; grid-template-columns: 96px 1fr; gap: 1rem; align-items: start; }
-  .host img { width: 96px; height: 128px; object-fit: cover; border-radius: var(--radius); }
+  .host { display: grid; grid-template-columns: 1fr; gap: 1.1rem; align-items: start; }
+  .host img { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: center 20%; border-radius: var(--radius-lg); }
   .host-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); }
   .host-role { color: var(--c-faint); font-size: 0.9rem; }
-  .host-desc { color: var(--c-muted); font-size: 0.92rem; margin: 0.5rem 0; }
+  .host-desc { color: var(--c-muted); font-size: 0.98rem; line-height: 1.7; margin: 0.6rem 0; }
   .topic li { display: flex; gap: 0.5rem; align-items: flex-start; }
   .topic :global(svg) { color: var(--c-accent-strong); flex-shrink: 0; margin-top: 4px; }
   @media (max-width: 820px) {

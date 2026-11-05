@@ -7,6 +7,8 @@ export type TopicKey = 'intro' | 'metal' | 'machinery' | 'labor' | 'cbam';
 
 export interface WebinarTopic {
   key: TopicKey;
+  /** 示意圖（Pexels 授權：免費商用、免標註；仍標示出處以示尊重） */
+  image: { src: string; alt: string; credit: string };
   label: string;
   title: string;
   audience: string;
@@ -17,6 +19,7 @@ export interface WebinarTopic {
 export const TOPICS: Record<TopicKey, WebinarTopic> = {
   intro: {
     key: 'intro',
+    image: { src: '/webinar/intro.webp', alt: '年輕技術人員在工廠機台控制面板前作業（示意圖）', credit: '示意圖：Pexels' },
     label: '入門場',
     title: '傳產導入 AI，第一步做什麼？',
     audience: '各產業還沒開始、或試過但卡住的老闆、二代與主管',
@@ -25,6 +28,7 @@ export const TOPICS: Record<TopicKey, WebinarTopic> = {
   },
   metal: {
     key: 'metal',
+    image: { src: '/webinar/metal.webp', alt: '師傅在金屬加工工坊用虎鉗調整零件（示意圖）', credit: '示意圖：Pexels' },
     label: '五金金屬場',
     title: '料號上萬筆、報價靠老師傅：五金業怎麼少一半人工',
     audience: '五金、金屬加工、螺絲扣件、模具、汽機車零組件',
@@ -33,6 +37,7 @@ export const TOPICS: Record<TopicKey, WebinarTopic> = {
   },
   machinery: {
     key: 'machinery',
+    image: { src: '/webinar/machinery.webp', alt: '技術人員戴護目鏡檢查機台內部（示意圖）', credit: '示意圖：Pexels' },
     label: '機械設備場',
     title: '客製機台的報價、BOM 和售後，交給系統和 AI',
     audience: '機械、工具機、設備製造、自行車零件',
@@ -41,6 +46,7 @@ export const TOPICS: Record<TopicKey, WebinarTopic> = {
   },
   labor: {
     key: 'labor',
+    image: { src: '/webinar/labor.webp', alt: '資深師傅在工作台示範，年輕同仁在旁學習（示意圖）', credit: '示意圖：Pexels' },
     label: '缺工場',
     title: '少兩個人也做得完：用 AI 和系統補人力缺口',
     audience: '塑橡膠、紡織、食品等各類製造業，正面臨招募困難的公司',
@@ -49,6 +55,7 @@ export const TOPICS: Record<TopicKey, WebinarTopic> = {
   },
   cbam: {
     key: 'cbam',
+    image: { src: '/webinar/cbam.webp', alt: '港區堆場的盤元鋼捲與門式起重機（示意圖）', credit: '示意圖：Pexels' },
     label: '季度專題',
     title: '外銷文件與歐盟碳邊境申報：鋼鐵金屬業者的準備清單',
     audience: '有外銷歐洲或正在做碳盤查的鋼鐵、金屬製品業者',
@@ -66,15 +73,16 @@ export interface WebinarSession {
 }
 
 export const SESSIONS: WebinarSession[] = [
-  { id: '2026-11-25', date: '2026-11-25', start: '10:00', end: '11:00', topic: 'intro' },
-  { id: '2026-12-09', date: '2026-12-09', start: '10:00', end: '11:00', topic: 'metal' },
-  { id: '2026-12-23', date: '2026-12-23', start: '10:00', end: '11:00', topic: 'machinery' },
-  { id: '2027-01-06', date: '2027-01-06', start: '10:00', end: '11:00', topic: 'labor' },
-  { id: '2027-01-20', date: '2027-01-20', start: '10:00', end: '11:00', topic: 'intro' },
-  { id: '2027-02-17', date: '2027-02-17', start: '10:00', end: '11:00', topic: 'metal' },
-  { id: '2027-03-03', date: '2027-03-03', start: '10:00', end: '11:00', topic: 'machinery' },
-  { id: '2027-03-17', date: '2027-03-17', start: '10:00', end: '11:00', topic: 'cbam' },
-  { id: '2027-03-31', date: '2027-03-31', start: '10:00', end: '11:00', topic: 'labor' },
+  // 週二／三／四 × 上午 10:00／下午 14:00／晚上 19:30 輪替，9 種組合各一場；同主題兩場錯開時段。
+  { id: '2026-11-25', date: '2026-11-25', start: '10:00', end: '11:00', topic: 'intro' },     // 三 上午
+  { id: '2026-12-10', date: '2026-12-10', start: '14:00', end: '15:00', topic: 'metal' },     // 四 下午
+  { id: '2026-12-22', date: '2026-12-22', start: '10:00', end: '11:00', topic: 'machinery' }, // 二 上午
+  { id: '2027-01-06', date: '2027-01-06', start: '14:00', end: '15:00', topic: 'labor' },     // 三 下午
+  { id: '2027-01-21', date: '2027-01-21', start: '19:30', end: '20:30', topic: 'intro' },     // 四 晚上
+  { id: '2027-02-16', date: '2027-02-16', start: '19:30', end: '20:30', topic: 'metal' },     // 二 晚上（春節後）
+  { id: '2027-03-03', date: '2027-03-03', start: '19:30', end: '20:30', topic: 'machinery' }, // 三 晚上
+  { id: '2027-03-18', date: '2027-03-18', start: '10:00', end: '11:00', topic: 'cbam' },      // 四 上午
+  { id: '2027-03-30', date: '2027-03-30', start: '14:00', end: '15:00', topic: 'labor' },     // 二 下午
 ];
 
 const WD = ['日', '一', '二', '三', '四', '五', '六'];
@@ -92,6 +100,7 @@ export const endsAt = (s: WebinarSession) => Date.parse(`${s.date}T${s.end}:00+0
 export const upcomingSessions = (now = Date.now()) => SESSIONS.filter((s) => endsAt(s) > now);
 
 export const WEBINAR_PATH = '/webinar';
+export const OVERVIEW_IMAGE = { src: '/webinar/overview.webp', alt: '工程人員在廠房內拿平板查看生產資料（示意圖）', credit: '示意圖：Pexels' };
 
 /** 場次詳細頁內容（每個主題一份；同主題的不同日期共用）。 */
 export interface TopicDetail {

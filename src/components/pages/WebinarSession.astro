@@ -40,21 +40,23 @@ const eventLd = {
   location: { '@type': 'VirtualLocation', url: company.siteUrl + lp(path) },
   isAccessibleForFree: true,
   inLanguage: 'zh-Hant-TW',
+  image: [company.siteUrl + tp.image.src],
   organizer: { '@id': company.siteUrl + '/#organization' },
   performer: { '@type': 'Person', name: '徐愷（KK）' },
   offers: { '@type': 'Offer', price: 0, priceCurrency: 'TWD', availability: 'https://schema.org/InStock', url: company.siteUrl + lp(path) + '#register' },
 };
 // 加入行事曆（Google Calendar，台北時間轉 UTC）
 const toUtc = (t: string) => new Date(`${s.date}T${t}:00+08:00`).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`遊遊說明會｜${tp.label}：${tp.title}`)}&dates=${toUtc(s.start)}/${toUtc(s.end)}&details=${encodeURIComponent(`報名後會在前一天寄 Google Meet 連結。\n${company.siteUrl}${lp(path)}`)}&ctz=Asia/Taipei`;
+const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`遊遊說明會｜${tp.label}：${tp.title}`)}&dates=${toUtc(s.start)}/${toUtc(s.end)}&details=${encodeURIComponent(`報名後會收到附 Google Meet 連結的行事曆邀請。\n${company.siteUrl}${lp(path)}`)}&ctz=Asia/Taipei`;
 ---
-<BaseLayout title={title} description={description} path={path} jsonLd={[eventLd]} locales={['zh']}>
+<BaseLayout title={title} description={description} path={path} jsonLd={[eventLd]} locales={['zh']} ogImage={tp.image.src}>
   <PageHero
     eyebrow={`免費線上說明會｜${tp.label}`}
     title={tp.title}
     titleHtml={titleHtml}
     lead={d.summary}
     crumbs={[{ label: '線上說明會', path: WEBINAR_PATH }, { label: fmtDate(s.date) }]}
+    image={tp.image}
   >
     <ul class="facts" role="list">
       <li><span class="fact-k">日期</span><span>{fmtDate(s.date, true)}</span></li>
@@ -133,25 +135,25 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
   </section>
 
   <section class="section section--surface">
-    <div class="container detail-grid">
-      <div>
+    <div class="container host-wrap">
+      <img class="host-photo" src="/kk-portrait.jpg" alt="主講人徐愷（KK）" width="640" height="965" loading="lazy" />
+      <div class="host-body">
         <p class="eyebrow">主講</p>
-        <div class="host">
-          <img src="/kk-portrait.jpg" alt="主講人徐愷（KK）" width="640" height="965" loading="lazy" />
-          <div>
-            <p class="host-name">徐愷（KK）</p>
-            <p class="host-role">遊遊股份有限公司負責人／主導顧問</p>
-            <p class="host-desc">15 年軟體開發與系統建置經驗，做過五金材料業者的商品資料整合、醫院醫護人員 AI 培訓與政府單位的系統建置。</p>
-            <a href={lp(ROUTES.about)}>認識顧問團隊 →</a>
-          </div>
-        </div>
+        <h2 class="host-name">徐愷（KK）</h2>
+        <p class="host-role">遊遊股份有限公司負責人／主導顧問</p>
+        <p class="host-desc">15 年軟體開發與系統建置經驗。做過五金材料業者的商品資料整合、醫院醫護人員 AI 工作應用培訓，以及政府單位的系統建置。說明會以老闆和主管的角度講流程，不講技術名詞。</p>
+        <a class="btn btn--ghost" href={lp(ROUTES.about)}>認識顧問團隊 →</a>
       </div>
-      <div>
-        <p class="eyebrow">常見問題</p>
-        <dl class="faq">
-          {d.faq.map((f) => (<><dt>{f.q}</dt><dd>{f.a}</dd></>))}
-        </dl>
-      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container faq-wrap">
+      <p class="eyebrow">常見問題</p>
+      <h2>報名前常被問到的事</h2>
+      <dl class="faq">
+        {d.faq.map((f) => (<><dt>{f.q}</dt><dd>{f.a}</dd></>))}
+      </dl>
     </div>
   </section>
 
@@ -223,11 +225,12 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
   .steps { display: grid; gap: 0.7rem; }
   .steps li { display: flex; gap: 0.8rem; align-items: flex-start; }
   .step-n { display: inline-grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--c-accent-strong); color: #fff; font-weight: 800; flex-shrink: 0; font-size: 0.9rem; }
-  .host { display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem; align-items: start; margin-top: 0.8rem; }
-  .host img { width: 110px; height: 146px; object-fit: cover; border-radius: var(--radius); }
-  .host-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); }
-  .host-role { color: var(--c-faint); font-size: 0.9rem; }
-  .host-desc { color: var(--c-muted); font-size: 0.94rem; margin: 0.5rem 0; }
+  .host-wrap { display: grid; grid-template-columns: minmax(0, 380px) 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+  .host-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+  .host-name { font-size: var(--fs-700); }
+  .host-role { color: var(--c-faint); margin-top: 0.3rem; }
+  .host-desc { color: var(--c-muted); font-size: var(--fs-500); line-height: 1.7; margin: 1rem 0 1.4rem; max-width: 46ch; }
+  .faq-wrap { max-width: 820px; }
   .faq { margin-top: 0.8rem; }
   .faq dt { font-family: var(--font-head); font-weight: 700; margin-top: 1rem; }
   .faq dd { color: var(--c-muted); margin-top: 0.3rem; }
@@ -242,6 +245,8 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
     .facts li span:last-child { white-space: normal; }
     .hero-cta .btn { width: 100%; justify-content: center; }
     .detail-grid { grid-template-columns: 1fr; }
+    .host-wrap { grid-template-columns: 1fr; }
+    .host-photo { max-width: 340px; }
     .agenda > li { grid-template-columns: 1fr; gap: 0.3rem; }
     .other { grid-template-columns: 1fr; gap: 0.4rem; justify-items: start; }
   }
