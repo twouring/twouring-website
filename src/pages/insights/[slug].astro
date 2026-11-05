@@ -1,0 +1,9 @@
+---
+import InsightArticle from '../../components/pages/InsightArticle.astro';
+import { insightsFor } from '../../data/insights';
+export function getStaticPaths() {
+  return insightsFor('zh').map((a) => ({ params: { slug: a.slug } }));
+}
+const { slug } = Astro.params;
+---
+<InsightArticle slug={slug!} />

@@ -1,0 +1,172 @@
+{
+  "slug": "manufacturing-labor-shortage-ai",
+  "published": "2026-11-05",
+  "updated": "2026-11-05",
+  "sources": [
+    {
+      "title": "勞動部｜115年6月底職位空缺概況調查統計結果（115年9月30日發布）",
+      "url": "https://www.mol.gov.tw/1607/1632/1633/99227/post"
+    },
+    {
+      "title": "國家發展委員會｜國發會發布「中華民國人口推估（2026年至2075年）」（2026年8月28日）",
+      "url": "https://www.ndc.gov.tw/News_Content.aspx?n=114AAE178CD95D4C&s=6F7655EDC5AAD458"
+    },
+    {
+      "title": "國家發展委員會｜中華民國人口推估（2026-2075年）簡報",
+      "url": "https://ppws.ndc.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNDY0L3JlbGZpbGUvMTAzNDcvMTY5LzkwZWQ4ZjdiLTIyMjQtNDNmOS1hZTJmLWM0NmQ3MzIyYjkwYy5wZGY%3D&n=5Lit6I%2Bv5rCR5ZyL5Lq65Y%2Bj5o6o5LywKDIwMjblubToh7MyMDc15bm0KeewoeWgsS5wZGY%3D"
+    }
+  ],
+  "zh": {
+    "title": "台灣製造業缺工現況，與 AI 能補上的三個缺口",
+    "description": "用勞動部與國發會最新統計看製造業缺人的程度，再拆解 AI 與系統能實際接手的三類工作：師傅經驗與 SOP、行政文書與報表、跨部門重複輸入。",
+    "eyebrow": "產業資訊",
+    "lead": "製造業的職缺數是各行業最多，工作年齡人口又一年比一年少。人補不滿的時候，比較實際的做法是先把不必由人親手做的工作拿掉。這篇整理最新官方數字，再談 AI 能接手的三個缺口，以及它做不到的事。",
+    "sections": [
+      {
+        "heading": "數字怎麼說：職缺最多的行業，人口還在變少",
+        "paras": [
+          "勞動部「115年6月底職位空缺概況調查」（115年9月30日發布）顯示，工業及服務業職缺共29.6萬個，其中製造業11.1萬個，占37.4%，是各行業最多；製造業職缺率3.7%，高於整體的3.3%，全時職缺平均對外招募時間為2.9個月。按職類看，技藝、機械設備操作及組裝人員的全時職缺有6.8萬個，占全部全時職缺的25%，也就是現場作業員與技術工這一層。",
+          "勞動部在同一份新聞稿也說明，職缺反映的是用人需求，和「需求大於供給」的勞動力短缺不完全相同。不過供給端的方向很明確。國家發展委員會「中華民國人口推估（2026年至2075年）」中推估，15至64歲工作年齡人口2026年為1,576萬人，2035年降到1,416萬人；自2037年起，工作年齡人口將有一半以上是45至64歲的中高齡者。",
+          "放到工廠裡，就是新人越來越難找，資深師傅也陸續退休。招募當然要繼續做，但同時該做的，是把師傅和行政人員的時間，從可以交給系統的工作裡拿回來。"
+        ]
+      },
+      {
+        "heading": "缺口一：老師傅的經驗，變成新人查得到的資料",
+        "paras": [
+          "很多廠的關鍵知識只在幾位資深人員腦中：換模要注意什麼、某批原料要調哪個參數、機台出現某種聲音代表什麼。新人只能跟著看、跟著問，師傅一忙，學習就停住。",
+          "做法是把散在各處的文件整理成可以用中文提問的知識庫。新人問「這台射出機換色要洗幾次料管」，系統從 SOP 和異常紀錄裡找出相關段落回答，並附上出處讓人核對。師傅改用口述或錄影，由 AI 轉成文字稿與步驟草稿，再請師傅審過定稿，也可以順手做成新人教材和考題。",
+          "要準備的資料：現有 SOP、作業指導書、異常處理紀錄、品質檢驗標準，以及師傅願意花時間講的幾個重點工序。紙本可以直接拍照或掃描，不必先打字。",
+          "限制要先講清楚。知識庫回答的是文件裡寫了什麼，手感、聽聲音判斷異常、看原料狀況這類能力，還是要在現場帶。AI 縮短的是查資料和反覆詢問的時間，取代不了現場操作。文件本身寫錯，答案也會跟著錯，所以要排定由師傅定期校正。"
+        ]
+      },
+      {
+        "heading": "缺口二：排程、日報、詢單回覆，少做一點重複工",
+        "paras": [
+          "管理部和生管每天花不少時間在固定格式的文書上：把訂單整理成排程表、把各線產量彙整成日報、回覆客戶詢價與交期。這些工作規則明確、格式固定，適合交給系統先做第一版。",
+          "例如每天從現有的 Excel 或 ERP 匯出生產數字，自動產出日報與異常摘要；客戶來信問交期或規格時，AI 依產品資料與目前排程草擬回覆，業務確認後再寄出；排程則由系統依交期與機台產能先排一版，生管再調整。",
+          "要準備的資料：產品規格表、報價與交期的判斷規則、過去的排程表與日報範本、常見的詢單信件。規則寫得越清楚，草稿越能直接用。",
+          "對外的報價、交期承諾和最終排程，一定要由人確認。插單、機台臨時故障、原料延遲這些現場變數，系統只能依已輸入的資料計算，不會自己知道。"
+        ]
+      },
+      {
+        "heading": "缺口三：同一筆資料，不要讓三個部門各打一次",
+        "paras": [
+          "業務接單打一次，生管排程再打一次，倉庫出貨、會計開票又各打一次，在傳產很常見。每多打一次就多一次出錯的機會，常常到月底對帳才發現數量或單價對不上。",
+          "先盤點一張訂單從進來到出貨，經過哪些表單和系統、哪些欄位被重複輸入。接著指定一份資料當源頭，其他報表從它帶出；手寫或 PDF 的訂單、送貨單，可以用 AI 辨識後轉成結構化資料，人只負責核對。",
+          "要準備的資料：各部門現在用的表單與 Excel 檔、ERP 或進銷存系統的匯出格式、料號與客戶代碼對照表。料號命名不一致的話要先統一，否則系統串不起來。",
+          "這一塊最常卡住的是流程和權責，而不是技術。誰維護主資料、欄位改了要通知誰，需要老闆或廠長拍板。工具只能讓已經講好的流程跑得順。"
+        ]
+      },
+      {
+        "heading": "從哪裡開始",
+        "paras": [
+          "不建議一次全做。先挑一件每週重複最多、最常被抱怨出錯的工作，例如日報彙整或詢單回覆，做出可用的版本，讓實際使用的人試用並回饋，再決定下一步。",
+          "動手前先回答三個問題：這件工作現在誰在做、每週花多少時間；需要的資料放在哪裡、是否完整；做錯時由誰把關。答得出來就可以開始；答不出來，先把資料整理好，本身就是很實在的第一步。",
+          "遊遊協助製造業導入 AI 時，也是從這樣的盤點開始，再判斷哪些交給 AI、哪些用一般系統就夠、哪些還是要靠人。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Taiwan's Manufacturing Labor Shortage, and Three Gaps AI Can Help Fill",
+    "description": "What the latest Ministry of Labor and National Development Council figures say about hiring pressure in manufacturing, and three kinds of work AI and systems can realistically take over: master-technician know-how and SOPs, administrative paperwork and reports, and duplicate data entry across departments.",
+    "eyebrow": "Industry Insight",
+    "lead": "Manufacturing has more job vacancies than any other industry in Taiwan, and the working-age population shrinks every year. When positions cannot be filled, the practical move is to remove the work that does not need a person's hands. This article lays out the latest official figures, then covers three gaps AI can take on, and what it cannot do.",
+    "sections": [
+      {
+        "heading": "The numbers: the industry with the most vacancies, and a shrinking population",
+        "paras": [
+          "The Ministry of Labor's Job Vacancy Survey for end-June 2026 (ROC year 115, released September 30, 2026) counted 296,000 vacancies across industry and services. Manufacturing accounted for 111,000 of them, or 37.4%, the most of any industry. The manufacturing vacancy rate was 3.7%, above the overall 3.3%, and full-time vacancies took an average of 2.9 months to fill through external recruitment. By occupation, craft workers and plant and machine operators and assemblers made up 68,000 full-time vacancies, 25% of the total. These are the shop-floor operators and technicians.",
+          "The Ministry notes in the same release that vacancies measure hiring demand, which is not exactly the same as a labor shortage where demand exceeds supply. On the supply side, though, the direction is clear. Under the medium variant of the National Development Council's Population Projections for the R.O.C. (Taiwan): 2026-2075, the population aged 15 to 64 is 15.76 million in 2026 and falls to 14.16 million by 2035. From 2037, more than half of the working-age population will be aged 45 to 64.",
+          "On the factory floor, that means new hires are harder to find while experienced technicians keep retiring. Recruiting still matters. At the same time, it makes sense to take back the hours that technicians and office staff spend on work a system could handle."
+        ]
+      },
+      {
+        "heading": "Gap 1: Turning master technicians' experience into something new hires can look up",
+        "paras": [
+          "In many plants, critical knowledge lives in the heads of a few senior people: what to watch for during a mold change, which parameter to adjust for a certain batch of material, what a particular machine noise means. New hires can only watch and ask, and when the technician is busy, learning stops.",
+          "The approach is to gather scattered documents into a knowledge base that people can query in plain Chinese. A new hire asks how many purges are needed when changing colors on an injection molding machine, and the system answers from the SOPs and incident records, with citations so the answer can be checked. Technicians can explain procedures verbally or on video; AI turns these into transcripts and draft procedures, which the technician then reviews and approves. The same material can become training content and quizzes.",
+          "What to prepare: existing SOPs, work instructions, incident records, quality inspection standards, and a few key processes the technicians are willing to talk through. Paper documents can simply be photographed or scanned.",
+          "The limits need to be stated up front. The knowledge base answers what the documents say. Feel, diagnosing problems by sound, and judging material condition still have to be taught on the floor. AI cuts the time spent searching and asking the same questions; it does not replace hands-on operation. If a document is wrong, the answer will be wrong too, so technicians should review the content on a regular schedule."
+        ]
+      },
+      {
+        "heading": "Gap 2: Scheduling, daily reports, and inquiry replies with less repetitive work",
+        "paras": [
+          "Office and production-control staff spend a lot of time each day on fixed-format paperwork: turning orders into schedules, compiling line output into daily reports, and answering customer questions about prices and lead times. The rules are clear and the formats are fixed, which makes this work a good fit for a system to produce the first draft.",
+          "For example, production figures exported each day from existing Excel files or the ERP can generate a daily report and an exception summary automatically. When a customer emails about lead time or specifications, AI drafts a reply from product data and the current schedule, and sales confirms it before sending. For scheduling, the system produces a first pass based on due dates and machine capacity, and production control adjusts it.",
+          "What to prepare: product specification sheets, the rules used to decide prices and lead times, past schedules and report templates, and typical inquiry emails. The clearer the rules, the more usable the drafts.",
+          "Quotes, delivery commitments, and final schedules must be confirmed by a person. Rush orders, sudden machine breakdowns, and material delays are shop-floor variables the system only knows about if someone enters them."
+        ]
+      },
+      {
+        "heading": "Gap 3: Stop having three departments type in the same data",
+        "paras": [
+          "Sales enters the order, production control enters it again for scheduling, then the warehouse and accounting each enter it once more for shipping and invoicing. This is common in traditional manufacturing. Every extra entry is another chance for error, and mismatched quantities or prices often surface only at month-end reconciliation.",
+          "Start by mapping an order from receipt to shipment: which forms and systems it passes through, and which fields get re-entered. Then designate one dataset as the source and pull other reports from it. Handwritten or PDF orders and delivery notes can be read by AI and converted into structured data, with people only checking the result.",
+          "What to prepare: the forms and Excel files each department uses, export formats from the ERP or inventory system, and mapping tables for part numbers and customer codes. If part numbers are named inconsistently, standardize them first, or the systems cannot be connected.",
+          "What usually holds this up is process and ownership rather than technology. Who maintains master data, and who must be told when a field changes, are decisions the owner or plant manager has to make. Tools only help a process that has already been agreed on run smoothly."
+        ]
+      },
+      {
+        "heading": "Where to start",
+        "paras": [
+          "Do not try to do everything at once. Pick one task that repeats most often each week and draws the most complaints about errors, such as compiling daily reports or replying to inquiries. Build a usable version, let the people who actually do the work try it and give feedback, then decide the next step.",
+          "Before starting, answer three questions: who does this work now and how many hours a week it takes; where the needed data lives and whether it is complete; and who checks the result when something goes wrong. If you can answer them, you can begin. If you cannot, organizing the data is itself a worthwhile first step.",
+          "When Twouring helps manufacturers adopt AI, we start with this kind of review, then decide what goes to AI, what an ordinary system can handle, and what still needs people."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "台湾製造業の人手不足の現状と、AIが補える3つの穴",
+    "description": "台湾労働部と国家発展委員会の最新統計から製造業の人手不足の程度を確認し、AIとシステムが実際に引き受けられる3種類の業務（熟練技術者の経験とSOP、事務書類と報告書、部門間の重複入力）を整理します。",
+    "eyebrow": "業界レポート",
+    "lead": "台湾では製造業の欠員数が全業種で最も多く、生産年齢人口も年々減っています。人が埋まらないなら、まず人の手でやる必要のない仕事を減らすのが現実的です。本稿では最新の公的統計を整理したうえで、AIが担える3つの穴と、AIにできないことを説明します。",
+    "sections": [
+      {
+        "heading": "数字で見る：欠員が最も多い業種で、人口はさらに減る",
+        "paras": [
+          "台湾労働部「2026年（民国115年）6月末職位空缺概況調査」（2026年9月30日公表）によると、鉱工業およびサービス業の欠員は計29.6万件で、うち製造業が11.1万件、37.4%と全業種で最多でした。製造業の欠員率は3.7%で全体の3.3%を上回り、フルタイム欠員の平均外部募集期間は2.9か月です。職業別では、技能工・機械設備操作・組立工のフルタイム欠員が6.8万件で、フルタイム欠員全体の25%を占めます。現場の作業員や技能工にあたる層です。",
+          "労働部は同じ発表の中で、欠員は求人需要を示すもので、「需要が供給を上回る」労働力不足とは完全には一致しないと説明しています。ただ、供給側の方向ははっきりしています。国家発展委員会「中華民国人口推計（2026年～2075年）」の中位推計では、15～64歳の生産年齢人口は2026年の1,576万人から2035年には1,416万人に減少し、2037年以降は生産年齢人口の半数以上を45～64歳の中高年層が占めます。",
+          "工場に置き換えれば、新人は見つけにくくなり、ベテラン技術者は順に退職していくということです。採用は続けるべきですが、同時に、技術者と事務スタッフの時間を、システムに任せられる仕事から取り戻すことも必要です。"
+        ]
+      },
+      {
+        "heading": "穴その1：熟練技術者の経験を、新人が調べられる資料にする",
+        "paras": [
+          "多くの工場では、重要なノウハウが数人のベテランの頭の中にしかありません。金型交換で注意すべき点、特定ロットの原料で調整するパラメータ、機械が特定の音を立てたときの意味などです。新人は見て覚え、聞いて覚えるしかなく、技術者が忙しいと学びが止まります。",
+          "方法は、散らばった文書を、日常の言葉で質問できるナレッジベースにまとめることです。新人が「この射出成形機で色替えするとき、パージは何回必要か」と聞くと、システムがSOPや異常記録から該当箇所を探して答え、確認できるよう出典も示します。技術者は口頭説明や動画で手順を残し、AIが文字起こしと手順書の草案を作り、技術者が確認して確定させます。新人向け教材や確認テストにも転用できます。",
+          "準備する資料：既存のSOP、作業標準書、異常処理記録、品質検査基準、そして技術者が時間を割いて説明してくれる重点工程。紙の資料は写真やスキャンで構いません。",
+          "限界も最初に明確にしておきます。ナレッジベースが答えるのは文書に書かれていることです。手の感覚、音での異常判断、原料の状態の見極めは、引き続き現場で教える必要があります。AIが短縮するのは調べものと同じ質問の繰り返しにかかる時間で、現場作業の代わりにはなりません。文書が誤っていれば答えも誤るため、技術者による定期的な見直しを組み込みます。"
+        ]
+      },
+      {
+        "heading": "穴その2：生産計画、日報、問い合わせ返信の繰り返し作業を減らす",
+        "paras": [
+          "管理部や生産管理は毎日、定型書類に多くの時間を使っています。受注を生産計画表にまとめる、各ラインの生産量を日報に集計する、顧客からの見積や納期の問い合わせに返信する、といった業務です。ルールが明確で形式が決まっているため、システムに初稿を作らせるのに向いています。",
+          "たとえば、既存のExcelやERPから毎日出力する生産データをもとに、日報と異常サマリーを自動作成します。顧客から納期や仕様の問い合わせメールが来たら、AIが製品データと現在の生産計画から返信案を作り、営業が確認してから送ります。生産計画は、納期と設備能力に基づいてシステムが一次案を作り、生産管理が調整します。",
+          "準備する資料：製品仕様書、見積と納期の判断ルール、過去の生産計画表と日報のひな形、よくある問い合わせメール。ルールが明確なほど、草案はそのまま使えるものになります。",
+          "社外への見積、納期の約束、最終的な生産計画は、必ず人が確認します。割り込み注文、設備の突発故障、原料の遅れといった現場の変数は、入力されたデータがなければシステムにはわかりません。"
+        ]
+      },
+      {
+        "heading": "穴その3：同じデータを3つの部門で入力し直さない",
+        "paras": [
+          "営業が受注を入力し、生産管理が計画のためにもう一度入力し、倉庫が出荷で、経理が請求でさらに入力する。伝統的な製造業ではよくある光景です。入力が一回増えるごとにミスの機会も増え、数量や単価の食い違いが月末の照合で初めて見つかることも珍しくありません。",
+          "まず、1件の受注が入ってから出荷されるまでに、どの帳票とシステムを通り、どの項目が重複入力されているかを洗い出します。次に、1つのデータを正本と定め、ほかの帳票はそこから引き出す形にします。手書きやPDFの注文書・納品書は、AIで読み取って構造化データに変換し、人は確認だけを担当します。",
+          "準備する資料：各部門が使っている帳票とExcelファイル、ERPや販売在庫管理システムの出力形式、品番と顧客コードの対応表。品番の付け方がばらばらなら、先に統一しないとシステムをつなげられません。",
+          "ここで最も止まりやすいのは、技術よりも業務の流れと責任分担です。誰がマスターデータを管理するのか、項目を変えたら誰に知らせるのかは、経営者や工場長が決める必要があります。ツールは、決まった流れを滞りなく回すためのものです。"
+        ]
+      },
+      {
+        "heading": "どこから始めるか",
+        "paras": [
+          "一度にすべてをやろうとしないことです。まず、毎週最も繰り返され、ミスへの不満が最も多い業務を一つ選びます。日報の集計や問い合わせへの返信などです。使える形のものを作り、実際にその業務を担う人に試してもらってフィードバックを受け、次の一手を決めます。",
+          "着手前に3つの問いに答えてください。この業務は今だれが担当し、週に何時間かかっているか。必要なデータはどこにあり、そろっているか。間違えたときにだれがチェックするか。答えられるなら始められます。答えられないなら、データを整理すること自体が実のある第一歩です。",
+          "遊遊（Twouring）が製造業のAI導入を支援する際も、こうした棚卸しから始め、AIに任せるもの、一般的なシステムで足りるもの、引き続き人が担うものを判断します。"
+        ]
+      }
+    ]
+  }
+}

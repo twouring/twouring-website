@@ -1,0 +1,71 @@
+{
+  "slug": "digital-nomad-city-maturity",
+  "published": "2026-07-30",
+  "updated": "2026-07-30",
+  "zh": {
+    "title": "數位遊牧城市成熟度：五個構面怎麼看",
+    "description": "地方政府評估數位遊牧城市策略的五構面：場域、資訊、社群、政策與商業轉換，以及如何設定可驗收 KPI。",
+    "eyebrow": "城市策略",
+    "lead": "數位遊牧不是辦一場活動就結束；城市需要可盤點、可驗收、可延續的成熟度架構。",
+    "sections": [
+      {
+        "heading": "五個構面",
+        "paras": [
+          "場域（空間、網路、接待）、資訊（英文與可發現性）、社群（活動與延續）、政策（窗口與預算）、商業（在地消費與商家串聯）。",
+          "遊遊的城市遊牧成熟度診斷即依此盤點，產出 90 天行動建議與 KPI。"
+        ]
+      },
+      {
+        "heading": "KPI 怎麼設",
+        "paras": [
+          "避免只報「活動場次」；應包含長住人次、商家串聯數、國際社群回訪，以及可公開的成果報告。",
+          "Nomad Ready 友善場域檢核，是商家端落地的方法名稱之一，應服務上述構面而非取代策略。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Digital-nomad city maturity: five dimensions",
+    "description": "Five dimensions for city digital-nomad strategy: venues, information, community, policy and business conversion — plus auditable KPIs.",
+    "eyebrow": "City strategy",
+    "lead": "Digital nomadism is not one event; cities need a maturity frame that can be mapped, audited and sustained.",
+    "sections": [
+      {
+        "heading": "Five dimensions",
+        "paras": [
+          "Venues, information (English & discoverability), community, policy windows/budget, and local business conversion.",
+          "Twouring’s city nomad-readiness diagnostic maps these into a 90-day action plan and KPIs."
+        ]
+      },
+      {
+        "heading": "Setting KPIs",
+        "paras": [
+          "Go beyond event counts: long-stay guests, businesses linked, community return, and publishable results.",
+          "Nomad Ready venue checklists are one delivery method — they serve the strategy, they don’t replace it."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "デジタルノマド都市の成熟度：5つの観点",
+    "description": "地方自治体がデジタルノマド都市戦略を評価するための5つの観点（拠点、情報、コミュニティ、政策、ビジネス転換）と、検収可能なKPIの設定方法を解説します。",
+    "eyebrow": "都市戦略",
+    "lead": "デジタルノマド施策は、イベントを1回開催して終わりではありません。都市には、棚卸し・検収・継続が可能な成熟度のフレームワークが必要です。",
+    "sections": [
+      {
+        "heading": "5つの観点",
+        "paras": [
+          "拠点（スペース、通信環境、受け入れ体制）、情報（英語対応と見つけやすさ）、コミュニティ（イベントと継続性）、政策（窓口と予算）、ビジネス（地域での消費と店舗間の連携）。",
+          "Twouringの都市ノマド成熟度診断は、この観点に沿って現状を棚卸しし、90日間のアクション提案とKPIをまとめます。"
+        ]
+      },
+      {
+        "heading": "KPIの設定方法",
+        "paras": [
+          "「イベント開催回数」だけを報告するのは避けるべきです。長期滞在者数、連携店舗数、海外コミュニティの再訪、公開可能な成果報告書を含めます。",
+          "Nomad Ready対応拠点チェックは、店舗側で実装するための手法の一つです。上記の観点に資するものであり、戦略そのものに代わるものではありません。"
+        ]
+      }
+    ]
+  }
+}

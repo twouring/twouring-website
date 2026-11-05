@@ -1,0 +1,74 @@
+{
+  "slug": "ai-consultant-vs-training-vs-build",
+  "published": "2026-07-30",
+  "updated": "2026-07-30",
+  "zh": {
+    "title": "AI 顧問、企業內訓與系統開發怎麼選",
+    "description": "比較企業 AI 導入顧問、企業內訓與系統開發三種買法：各自解決什麼問題、何時該買、常見踩雷。",
+    "eyebrow": "採購決策",
+    "lead": "同一句「我們要做 AI」，可能對應三種完全不同的採購：顧問診斷、內訓賦能，或系統開發。",
+    "sections": [
+      {
+        "heading": "三種買法各自解決什麼",
+        "paras": [
+          "顧問：不清楚從哪開始、怕買錯工具、需要 90 天路線圖與 PMO。",
+          "內訓：決策層或團隊缺共同語言，需要案例與實作建立共識。",
+          "開發：流程已清楚、需求可規格化，需要系統或整合落地。"
+        ]
+      },
+      {
+        "heading": "常見錯誤",
+        "paras": [
+          "還沒盤點流程就直接開發；或只上完課卻沒有導入負責窗口。",
+          "把「買授權」當成「導入完成」——沒有流程改造與驗收，工具很快沒人用。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "AI consulting vs corporate training vs building a system",
+    "description": "Compare three ways to buy AI: advisory, training and build — what each solves, when to buy, and common pitfalls.",
+    "eyebrow": "Buying guide",
+    "lead": "“We want AI” can mean three different purchases: a diagnostic, training, or a build.",
+    "sections": [
+      {
+        "heading": "What each purchase solves",
+        "paras": [
+          "Advisory: you don’t know where to start, fear the wrong tool, need a 90-day roadmap and PMO.",
+          "Training: leaders or teams lack a shared language and need cases plus hands-on practice.",
+          "Build: the process is clear and requirements can be specified for a system or integration."
+        ]
+      },
+      {
+        "heading": "Common mistakes",
+        "paras": [
+          "Building before mapping processes — or training with no owner for adoption.",
+          "Treating licence purchase as “done” without process change and sign-off."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "AIコンサルティング・社内研修・システム開発、どれを選ぶべきか",
+    "description": "企業のAI導入における3つの調達方法（導入コンサルティング、社内研修、システム開発）を比較し、それぞれが解決する課題、選ぶべきタイミング、よくある落とし穴を解説します。",
+    "eyebrow": "調達の判断",
+    "lead": "同じ「AIをやりたい」でも、コンサルティングによる診断、研修による人材育成、システム開発という、まったく異なる3つの調達に分かれます。",
+    "sections": [
+      {
+        "heading": "3つの調達方法がそれぞれ解決すること",
+        "paras": [
+          "コンサルティング：どこから始めればよいか分からない、ツール選びで失敗したくない、90日ロードマップとPMOが必要な場合。",
+          "研修：経営層やチームに共通言語がなく、事例と実践を通じて合意形成が必要な場合。",
+          "開発：業務プロセスが明確で要件を仕様化でき、システムや連携の実装が必要な場合。"
+        ]
+      },
+      {
+        "heading": "よくある失敗",
+        "paras": [
+          "業務プロセスを棚卸しする前に開発を始めてしまう。あるいは研修を受けただけで、導入の責任者がいない。",
+          "「ライセンス購入」を「導入完了」とみなしてしまう。業務プロセスの見直しと検収がなければ、ツールはすぐに使われなくなります。"
+        ]
+      }
+    ]
+  }
+}

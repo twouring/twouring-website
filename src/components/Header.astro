@@ -2,15 +2,19 @@
 import { getLang, localizePath, switchLocaleHref, isActivePath, LOCALES, LOCALE_META } from '../i18n/utils';
 import { useUI, ROUTES, SERVICE_NAV } from '../i18n/ui';
 import { company } from '../i18n/company';
+import { insights } from '../data/insights';
 
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const pathname = Astro.url.pathname;
 const lp = (p: string) => localizePath(p, lang);
 const active = (p: string) => isActivePath(pathname, p);
+// 只有中文版的洞察文章：切語言時回該語言的洞察列表
+const artSlug = pathname.match(/\/insights\/([^/]+)\/?$/)?.[1];
+const langHref = (l: typeof lang) => (artSlug && insights[artSlug] && !insights[artSlug][l] ? localizePath(ROUTES.insights, l) : switchLocaleHref(pathname, l));
 const otherLangs = LOCALES.filter((l) => l !== lang).map((l) => ({
   code: l,
-  href: switchLocaleHref(pathname, l),
+  href: langHref(l),
   label: LOCALE_META[l].label,
   html: LOCALE_META[l].html,
 }));

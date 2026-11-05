@@ -5,7 +5,7 @@ import Icon from '../Icon.astro';
 import { getLang, localizePath, LOCALE_META } from '../../i18n/utils';
 import { useUI, ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
-import { insights, type InsightSlug } from '../../data/insights';
+import { insights, localesOf, type InsightSlug } from '../../data/insights';
 import { readMinutes, fmtDate, metaLabels, relatedInsights } from '../../data/insightMeta';
 import WebinarPromo from '../WebinarPromo.astro';
 
@@ -15,7 +15,7 @@ const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const lp = (p: string) => localizePath(p, lang);
 const article = insights[slug];
-const d = article[lang];
+const d = article[lang] ?? article.zh;
 const path = article.path;
 const L = metaLabels[lang];
 const minutes = readMinutes(article, lang);
@@ -64,7 +64,7 @@ const articleLd = {
   },
 };
 ---
-<BaseLayout title={d.title} description={d.description} path={path} jsonLd={[breadcrumbLd, articleLd]}>
+<BaseLayout title={d.title} description={d.description} path={path} jsonLd={[breadcrumbLd, articleLd]} locales={localesOf(article)}>
   <header class="mast">
     <div class="container mast-inner">
       <nav class="crumbs" aria-label={{ zh: '麵包屑', en: 'Breadcrumb', ja: 'パンくずリスト' }[lang]}>
@@ -143,8 +143,8 @@ const articleLd = {
         <div class="rel-grid">
           {related.map((a) => (
             <a class="rel" href={lp(a.path)}>
-              <span class="cat">{a[lang].eyebrow}</span>
-              <span class="rel-title">{a[lang].title}</span>
+              <span class="cat">{a[lang]!.eyebrow}</span>
+              <span class="rel-title">{a[lang]!.title}</span>
               <span class="meta">{fmtDate(a.published, lang)}・{L.min(readMinutes(a, lang))}</span>
             </a>
           ))}

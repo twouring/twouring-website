@@ -11,7 +11,7 @@ import WebinarSeats from '../WebinarSeats.astro';
 import { localizePath } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
-import { insights, type InsightSlug } from '../../data/insights';
+import { insights } from '../../data/insights';
 import { TOPICS, DETAILS, SESSIONS, fmtDate, endsAt, sessionPath, WEBINAR_PATH, type WebinarSession } from '../../data/webinars';
 
 interface Props { session: WebinarSession; }
@@ -23,7 +23,7 @@ const path = sessionPath(s);
 const when = `${fmtDate(s.date, true)} ${s.start}–${s.end}`;
 const isPast = endsAt(s) <= Date.now();
 const others = SESSIONS.filter((x) => x.id !== s.id && endsAt(x) > Date.now()).slice(0, 3);
-const related = d.related.filter((slug) => slug in insights).map((slug) => insights[slug as InsightSlug]);
+const related = d.related.filter((slug) => slug in insights).map((slug) => insights[slug]);
 
 const title = `${fmtDate(s.date)} ${tp.label}：${tp.title}`;
 // 桌機版依標點斷成詞組，避免「五金／業」這種斷詞；手機版照常換行以免溢出

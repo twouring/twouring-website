@@ -1,0 +1,175 @@
+{
+  "slug": "metal-parts-ai-quoting",
+  "published": "2026-11-05",
+  "updated": "2026-11-05",
+  "sources": [
+    {
+      "title": "出口貨物報關驗放辦法（全國法規資料庫）",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0350014"
+    },
+    {
+      "title": "個人資料保護法第 2 條（全國法規資料庫）",
+      "url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&flno=2"
+    },
+    {
+      "title": "NIST AI 600-1: Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+      "url": "https://nvlpubs.nist.gov/nistpubs/AI/NIST.AI.600-1.pdf"
+    }
+  ],
+  "zh": {
+    "title": "五金與金屬加工廠的報價、料號與外銷文件，哪些可以先交給 AI",
+    "description": "料號主檔亂、報價卡在資深同仁、詢單回得慢、Invoice 和 Packing List 一再重打。這篇拆成四個步驟，寫清楚每一步要準備的資料、常見的坑和驗收方式。",
+    "eyebrow": "AI 導入技巧",
+    "lead": "很多五金、扣件和模具廠想導入 AI，第一個念頭是「讓 AI 幫我報價」。方向沒錯，順序常常反了。報價要用到料號、材質、表面處理、包裝和歷史單價，這些資料如果散在三份 Excel 和一位資深業務的腦袋裡，AI 只會更快產出錯的報價。下面照我們建議的順序，把可以先交給 AI 的工作拆成四步。",
+    "sections": [
+      {
+        "heading": "第一步：先整理料號主檔",
+        "paras": [
+          "同一顆螺絲，業務叫「M6x20 不鏽鋼六角」，倉庫寫「SUS304 HEX M6*20」，客戶詢單上又是對方的料號。人看得懂，系統對不起來，而後面每一步都要先對到同一個內部料號。",
+          "要準備的資料：現有料號清單、近一兩年的出貨與報價紀錄、客戶料號對照表。主檔欄位建議至少有內部料號、中英文品名、規格（尺寸、牙距、長度）、材質、表面處理、單位、包裝方式與每箱數量、單件淨重、貨品分類號列（HS Code）、使用中或停產。淨重和分類號列第三步會用到，現在一起補。",
+          "常見的坑有三個。第一，想一次整理完所有料號，拖了半年。先挑近一年有出貨的。第二，「304」「SUS304」「不銹鋼304」混用。這段適合讓 AI 先列出疑似重複的料號，再由熟悉產品的同仁確認是否合併。第三，整理完沒人維護又亂掉。主檔要指定負責人，新增料號走固定流程。",
+          "怎麼驗收：抽查近期出貨單，每一行都能對到唯一的內部料號；必填欄位沒有空白；疑似重複的料號都有處理結論。"
+        ]
+      },
+      {
+        "heading": "第二步：讓 AI 讀詢單 email，產出報價初稿，價格由人核",
+        "paras": [
+          "詢單回得慢，常常慢在整理。客戶 email 列了二十個品項，有的附圖面、有的只寫「同上次」，業務得逐行抄出需求、對料號、查上次報價才能開始算。這段整理正是 AI 擅長的。",
+          "做法是讓 AI 讀詢單和附件，整理成一張表：客戶料號、對應內部料號、規格、數量、交期、貿易條件和歷史成交價。對不到或資訊不全的品項標成待確認，並列出要回問客戶的問題。單價欄只帶參考價，由業務或主管依原料行情、產能和客戶狀況決定。",
+          "要準備的資料：第一步的主檔與對照表、過去的報價與成交紀錄、報價範本、報價規則（最低訂購量、包裝加價等）。",
+          "常見的坑：生成式 AI 會產出看似合理但錯誤的內容。美國國家標準暨技術研究院（NIST）的生成式 AI 風險指引 NIST AI 600-1 稱之為 confabulation，並提醒人容易過度信任自動化輸出。所以 AI 對的每個料號都要附上依據（哪封信、哪份附件、哪一行），讓核價的人查得到。另外，詢單裡客戶窗口的姓名和聯絡方式，依《個人資料保護法》第 2 條屬於個人資料，選工具時要確認資料存在哪裡、會不會被拿去訓練模型。",
+          "怎麼驗收：拿已報過價的舊詢單回測，比對 AI 整理的品項、料號、數量和當初人工結果，逐筆記錄錯誤類型，再回頭補主檔或對照表。正式使用後，報價單送出前一律要有人簽核。"
+        ]
+      },
+      {
+        "heading": "第三步：用範本產生 Invoice 與 Packing List，再逐項核對",
+        "paras": [
+          "接單後，同一批資料常在訂單、出貨單、Commercial Invoice、Packing List 之間重打好幾次，每打一次就多一次出錯機會。",
+          "外銷文件有法規要求。依《出口貨物報關驗放辦法》第 6 條，出口報關應檢附裝箱單等文件（僅一箱、種類單一且包裝劃一等情形得免附）；第 8 條要求裝箱單詳細列載貨物規格及每件毛重、淨重、數量；第 12 條要求貨品分類號列依《中華民國輸出入貨品分類表》據實申報。",
+          "做法是固定 Invoice 與 Packing List 範本，品名、規格、數量、單價、毛淨重、箱數、嘜頭、分類號列都從訂單和主檔帶入。AI 負責比對客戶 PO 和訂單，標出數量、品名寫法等不一致處。文件本身用範本產生，不讓 AI 自由生成，格式和數字才穩定。",
+          "要準備的資料：近期外銷文件樣本、主要客戶格式要求、主檔的重量與包裝資料、報關行常要求補正的項目。常見的坑是淨重用理論值，和實際過磅有落差；換了包材或每箱數量沒更新主檔，文件就跟著錯。",
+          "怎麼驗收：出貨前由船務對照 PO、出貨單和裝箱紀錄核對，並記錄被報關行或客戶退回修改的次數與原因，作為下一輪改善依據。"
+        ]
+      },
+      {
+        "heading": "第四步：把每一步發現的問題接回主檔",
+        "paras": [
+          "報價和文件出錯，往回追多半是主檔的問題，所以要設回饋流程：報價時遇到的新客戶料號寫進對照表，出貨時量到的實際重量回填主檔，停產或替代料號在主檔標清楚。",
+          "我們可以分享的例子是一家經營數千種料號的五金材料業者，以商品資料為核心整合電商、ERP 與實體櫃位，減少跨系統重複輸入與人工比對。資料只在一處維護，其他系統都從那裡取用，AI 和自動化有這個基礎結果才穩。"
+        ]
+      },
+      {
+        "heading": "建議從哪一步開始",
+        "paras": [
+          "多數工廠我們建議從第一步開始，但不要整理全部料號。先挑營收占比最高的一兩個客戶，把他們近一年下過單的料號做成乾淨的主檔和客戶料號對照表。範圍小，較快看到結果，也能直接拿來測第二步。",
+          "如果主檔已算整齊，外銷文件重工又是船務最大負擔，可以先做第三步，範本化最容易驗收。報價初稿放在主檔穩定之後，價格決定權始終在人手上。",
+          "開始前先講好主檔由誰負責、拿哪些舊詢單和文件回測、驗收標準是什麼，再來選工具。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Quotes, Part Numbers and Export Documents: What Metal Parts Makers Can Hand to AI First",
+    "description": "Messy part master data, quotes that depend on a few senior staff, slow replies to RFQs, and invoices and packing lists retyped again and again. Four steps, with the data to prepare, the common pitfalls and how to check the results.",
+    "eyebrow": "AI Adoption in Practice",
+    "lead": "Many hardware, fastener and mold makers who look at AI start with the same idea: let AI do the quoting. The direction is fine, but the order is usually wrong. A quote draws on part numbers, materials, surface finishes, packaging and past prices. If that data is spread across three spreadsheets and one senior salesperson's memory, AI will only produce wrong quotes faster. Below are four steps, in the order we recommend.",
+    "sections": [
+      {
+        "heading": "Step 1: Clean up the part master first",
+        "paras": [
+          "Sales calls a screw \"M6x20 stainless hex\", the warehouse writes \"SUS304 HEX M6*20\", and the customer's RFQ uses its own part number. People can tell these are the same item. Systems cannot. Reading RFQs, drafting quotes and filling export documents all depend on mapping these names to one internal part number.",
+          "What to prepare: the current part list from your ERP or spreadsheets, one to two years of shipping and quotation records, and any customer part number cross-reference you already have. At minimum the master should hold internal part number, item name in Chinese and English, specification (size, thread pitch, length), material, surface finish, unit, packing method and quantity per carton, net weight per piece, HS code, and active or discontinued status. Step 3 needs net weight and HS code, so fill them in now.",
+          "Three common pitfalls. First, trying to clean every part number at once and losing six months. Start with parts shipped in the past year and leave discontinued items for later. Second, the same meaning written several ways, such as \"304\", \"SUS304\" and \"stainless 304\". AI is useful here for a first pass: let it group entries and flag likely duplicates, then have someone who knows the products decide what to merge. Third, nobody maintains the master afterward and it drifts again within months. Name an owner and route every new part number through a fixed process.",
+          "How to check it: sample recent delivery notes and confirm that every line maps to exactly one internal part number, required fields are filled, and every suspected duplicate has a decision."
+        ]
+      },
+      {
+        "heading": "Step 2: Let AI read RFQ emails and draft the quote; people set the price",
+        "paras": [
+          "Slow RFQ replies are often not about pricing. The delay is in the preparation. A customer lists twenty items in an email, some with drawings, some with a spreadsheet, some just saying \"same as last time\". Sales has to copy out each line, match part numbers and look up the last quote before any pricing starts. That preparation is work AI handles well.",
+          "Have AI read the email and attachments and produce a table: customer item name or part number, matched internal part number, specification, quantity, requested delivery, trade terms, and past transaction prices. Items it cannot match, or that lack information, are marked for review along with the questions to ask the customer. The unit price column stays empty or shows only a reference price. Sales or a manager sets the price based on material costs, capacity and the account.",
+          "What to prepare: the part master and customer cross-reference from Step 1, past quotes and order history, your current quote template, and your quoting rules such as minimum order quantities and packaging surcharges.",
+          "Common pitfalls: generative AI can produce content that looks plausible but is wrong. The U.S. National Institute of Standards and Technology calls this confabulation in its generative AI risk profile, NIST AI 600-1, and also warns that people tend to over-trust automated output. So every part match should show its basis, meaning which email, attachment and line it came from, so the person approving the quote can check it. RFQ emails also contain the names and contact details of customer staff, which count as personal data under Article 2 of Taiwan's Personal Data Protection Act. When choosing a tool, confirm where the data is stored and whether it is used for model training, and control account access.",
+          "How to check it: run the process on RFQs you have already quoted. Compare the items, part numbers and quantities AI extracted against what your staff prepared at the time, and log each error by type. Where errors cluster, fix the master or the cross-reference. Once in use, every quote is approved by a person before it goes out."
+        ]
+      },
+      {
+        "heading": "Step 3: Generate invoices and packing lists from templates, then check each line",
+        "paras": [
+          "After an order comes in, the same data is often retyped several times: sales order, delivery note, commercial invoice, packing list, and sometimes a customer-specific format. Every retyping is another chance for an error.",
+          "Export documents carry legal requirements. Under Article 6 of Taiwan's Regulations Governing Customs Clearance, Inspection and Release of Export Cargo, a packing list must be submitted with the export declaration (with exemptions such as single-package shipments or uniformly packed goods of one kind). Article 8 requires the packing list to state the specifications and the gross weight, net weight and quantity of each package. Article 12 requires tariff classification to be declared truthfully according to the Customs Import Tariff and Classification of Import and Export Commodities of the ROC.",
+          "Fix your invoice and packing list templates, and pull item name, specification, quantity, unit price, gross and net weight, carton count, shipping marks and HS code from the order and the part master. AI compares the customer PO against the order and flags mismatches, such as a PO quantity that differs from the packed quantity, or a customer-required item description that differs from the master. The documents themselves come from the template rather than free generation by AI, which keeps formats and figures consistent.",
+          "What to prepare: recent export document samples, format requirements from key customers, weight and packing data in the master, and the corrections your customs broker asks for most often. A common pitfall is using theoretical net weight that does not match the scale, so gross weight should be filled in from actual packing results. Another is changing packaging or carton quantity without updating the master, which makes every later document wrong.",
+          "How to check it: before each shipment, the shipping team checks the documents against the PO, delivery note and packing record, and logs how often and why the broker or customer sends documents back for correction. That log drives the next round of fixes."
+        ]
+      },
+      {
+        "heading": "Step 4: Feed every finding back into the master",
+        "paras": [
+          "After the first three steps, most teams find that quote and document errors trace back to the master data. Set up a feedback loop: new customer part numbers found during quoting go into the cross-reference, actual weights measured at shipping go back into the master, and discontinued or substitute parts are clearly marked.",
+          "One example we can share is a hardware materials business handling several thousand part numbers. It built its e-commerce, ERP and retail counter around a single product data source, which cut duplicate entry across systems and manual cross-checking. The point is that data is maintained in one place and every other system reads from it. AI and automation need that foundation to produce stable results."
+        ]
+      },
+      {
+        "heading": "Where to start",
+        "paras": [
+          "For most factories we recommend Step 1, but not for the whole catalog. Pick the one or two customers with the largest share of revenue and build a clean master and cross-reference for the parts they ordered in the past year. A small scope shows results sooner and gives you real data to test Step 2.",
+          "If your part master is already in reasonable shape and export paperwork is the biggest burden on the shipping team, start with Step 3. Template-based documents are the easiest to verify. Leave quote drafting until the master is stable, and keep pricing decisions with people.",
+          "Before starting, agree on who owns the master, which past RFQs and documents you will test against, and what counts as passing. Then choose tools."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "金物・金属加工メーカーの見積、品番、輸出書類。まずAIに任せられるのはどこか",
+    "description": "品番マスタの乱れ、ベテラン頼みの見積、遅れがちな引き合い対応、何度も打ち直すインボイスとパッキングリスト。4つのステップに分け、準備するデータ、よくある落とし穴、検収の方法を整理しました。",
+    "eyebrow": "AI導入の実務",
+    "lead": "金物、ファスナー、金型のメーカーがAI導入を考えるとき、最初に浮かぶのは「AIに見積をさせたい」という発想です。方向は間違っていませんが、順番が逆になりがちです。見積には品番、材質、表面処理、梱包、過去の単価が必要です。これらが3つのExcelとベテラン営業の頭の中に散らばっていれば、AIは間違った見積を速く作るだけです。以下、私たちが勧める順番で4つのステップに分けて説明します。",
+    "sections": [
+      {
+        "heading": "ステップ1：まず品番マスタを整える",
+        "paras": [
+          "同じねじでも、営業は「M6x20ステン六角」、倉庫は「SUS304 HEX M6*20」と書き、顧客の引き合いには先方の品番が載っています。人には同じものだと分かっても、システムでは突き合わせられません。引き合いの読み取り、見積作成、輸出書類の作成は、どれもこうした表記を一つの社内品番にひも付けることが前提です。",
+          "準備するデータ：ERPやExcelにある現行の品番一覧、直近1〜2年の出荷・見積記録、顧客品番の対照表（あれば）。マスタの項目は最低限、社内品番、品名（中国語・英語）、仕様（サイズ、ピッチ、長さ）、材質、表面処理、単位、梱包方法と入数、単品の正味重量、HSコード、使用中か廃番かを持たせることを勧めます。重量とHSコードはステップ3で使うので、この段階で埋めておきます。",
+          "よくある落とし穴は3つあります。1つ目は全品番を一度に整理しようとして半年かかること。直近1年に出荷実績のある品番から始め、廃番品は後回しにします。2つ目は同じ意味の表記ゆれで、「304」「SUS304」「ステンレス304」が混在するケースです。ここはAIに一次分類をさせて重複候補を洗い出し、製品に詳しい担当者が統合するかを判断するのに向いています。3つ目は整理後に誰も保守せず、数か月で元に戻ること。マスタの責任者を決め、新規品番は決まった手順で登録します。",
+          "検収の方法：最近の出荷伝票を抜き取り、各行が一つの社内品番に対応していること、必須項目に空欄がないこと、重複候補すべてに結論が出ていることを確認します。"
+        ]
+      },
+      {
+        "heading": "ステップ2：AIに引き合いメールを読ませて見積の下書きを作り、価格は人が決める",
+        "paras": [
+          "引き合いへの回答が遅いのは、価格計算よりも前段の整理に時間がかかっているからという場合が多くあります。顧客がメールに20品目を並べ、図面付きのもの、Excel付きのもの、「前回と同じ」とだけ書かれたものが混ざっている。営業は1行ずつ書き出し、品番を照合し、前回の見積を調べてから、ようやく計算に入ります。この整理こそAIが得意な作業です。",
+          "具体的には、AIに引き合いメールと添付ファイルを読ませ、顧客の品名または品番、対応する社内品番、仕様、数量、希望納期、貿易条件、過去の成約価格を一覧表にまとめさせます。品番が見つからない品目や情報が足りない品目は要確認とし、顧客に問い合わせるべき点も挙げさせます。単価欄は空欄か参考価格のみとし、営業や管理者が原材料相場、生産能力、取引状況を踏まえて決めます。",
+          "準備するデータ：ステップ1の品番マスタと顧客品番対照表、過去の見積書と成約記録、現行の見積テンプレート、見積ルール（最低発注数量、梱包の加算方法など）。",
+          "よくある落とし穴：生成AIはもっともらしく見えて誤った内容を出力することがあります。米国国立標準技術研究所（NIST）は生成AIのリスク管理文書NIST AI 600-1でこれをconfabulationと呼び、人が自動化システムの出力を過信しやすいことにも注意を促しています。そのため、AIが判断した品番にはどのメールのどの添付ファイルの何行目から判断したかという根拠を添え、価格を確認する人が検証できるようにします。また引き合いメールには顧客担当者の氏名や連絡先が含まれ、台湾の個人資料保護法第2条では個人データに当たります。ツールを選ぶ際は、データの保存場所とモデル学習に使われるかを確認し、アカウント権限も管理してください。",
+          "検収の方法：すでに見積済みの過去の引き合いで試し、AIが抽出した品目、品番、数量を当時の担当者の整理結果と照合して、誤りを種類別に記録します。誤りが集中する分野があれば、マスタや対照表を補強します。本番運用後も、見積書は送付前に必ず人が承認します。"
+        ]
+      },
+      {
+        "heading": "ステップ3：テンプレートでインボイスとパッキングリストを作り、項目ごとに照合する",
+        "paras": [
+          "受注後、同じデータが受注書、出荷伝票、コマーシャルインボイス、パッキングリスト、ときには顧客指定の書式へと何度も打ち直されます。打ち直すたびに誤りの機会が増えます。",
+          "輸出書類には法令上の要件があります。台湾の「出口貨物報関験放辦法」第6条は、輸出申告時にパッキングリスト等の添付を求めています（1箱のみ、単一品目で包装が均一な場合などは省略可）。第8条はパッキングリストに貨物の仕様と各梱包の総重量、正味重量、数量を詳しく記載するよう定め、第12条は「中華民国輸出入貨品分類表」に基づいて品目分類番号を正しく申告するよう定めています。",
+          "インボイスとパッキングリストのテンプレートを固定し、品名、仕様、数量、単価、総重量・正味重量、箱数、荷印、HSコードを受注データと品番マスタから自動で差し込みます。AIの役割は顧客の注文書（PO）と受注内容を突き合わせ、POの数量と実際の梱包数の違いや、顧客指定の品名表記とマスタの違いといった不一致を指摘することです。書類自体はテンプレートで生成し、AIに毎回自由に作らせないことで、書式と数値が安定します。",
+          "準備するデータ：最近の輸出書類のサンプル、主要顧客の書式要件、マスタの重量・梱包データ、通関業者からよく修正を求められる項目。よくある落とし穴は、単品の正味重量に理論値を使い実測と差が出ることです。総重量は実際の梱包結果で入力します。また梱包材や入数を変えたのにマスタを更新しないと、以後の書類がすべて誤ります。",
+          "検収の方法：出荷前に出荷担当がPO、出荷伝票、梱包記録と書類を照合し、通関業者や顧客から差し戻された回数と理由を記録して、次の改善の根拠にします。"
+        ]
+      },
+      {
+        "heading": "ステップ4：各ステップで見つかった問題をマスタに戻す",
+        "paras": [
+          "最初の3ステップを終えると、見積や書類の誤りをさかのぼれば、ほとんどがマスタの問題だと分かります。そこでフィードバックの流れを作ります。見積で出てきた新しい顧客品番は対照表に追加し、出荷時に量った実重量はマスタに反映し、廃番や代替品番はマスタに明記します。",
+          "紹介できる事例として、数千点の品番を扱う金物資材の事業者があります。商品データを中心にECサイト、ERP、店頭売場を統合し、システム間の二重入力と手作業による照合を減らしました。ポイントは、データを一か所で管理し、ほかのシステムはそこから参照することです。AIや自動化が安定した結果を出すには、この土台が欠かせません。"
+        ]
+      },
+      {
+        "heading": "どのステップから始めるべきか",
+        "paras": [
+          "多くの工場には、ステップ1から始めることを勧めます。ただし全品番ではありません。売上比率の高い顧客を1〜2社選び、直近1年に受注した品番について、整ったマスタと顧客品番対照表を作ります。範囲を絞れば早く結果が見え、そのままステップ2の検証にも使えます。",
+          "品番マスタがすでにある程度整っていて、輸出書類の打ち直しが出荷担当の最大の負担になっているなら、ステップ3から始めても構いません。テンプレート化は効果を検証しやすい分野です。見積の下書きはマスタが安定してから取り組み、価格の決定は常に人が担います。",
+          "始める前に、マスタの責任者は誰か、どの過去の引き合いと書類で検証するか、何をもって合格とするかの3点を決めておきます。ツール選びはその後です。"
+        ]
+      }
+    ]
+  }
+}

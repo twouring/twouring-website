@@ -1,0 +1,71 @@
+{
+  "slug": "department-ai-automation-roi",
+  "published": "2026-07-30",
+  "updated": "2026-07-30",
+  "zh": {
+    "title": "五個部門的 AI 自動化機會與 ROI 算法",
+    "description": "客服、行銷、人資、財務與營運的 AI 自動化機會，以及用工時與錯誤成本估算 ROI 的簡單算法。",
+    "eyebrow": "流程自動化",
+    "lead": "先算「這個流程一年燒掉多少人時與錯誤成本」，再決定值不值得自動化——比追新模型更務實。",
+    "sections": [
+      {
+        "heading": "五個部門常見機會",
+        "paras": [
+          "客服：FAQ、工單分類、回覆草稿；行銷：內容初稿、活動摘要、素材整理。",
+          "人資：職缺說明、履歷初篩輔助；財務：對帳輔助、費用類別建議；營運：SOP 查詢、交接摘要。"
+        ]
+      },
+      {
+        "heading": "簡單 ROI",
+        "paras": [
+          "年節省 ≈（每次節省分鐘 × 年次數 × 人力成本）−（工具＋導入＋維運成本）。",
+          "優先選高頻、規則清楚、錯誤成本可量化的流程；避開尚無資料或尚無負責人的流程。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "AI automation opportunities in five departments — and a simple ROI math",
+    "description": "Automation opportunities in support, marketing, HR, finance and ops — plus a simple hours-and-error cost ROI formula.",
+    "eyebrow": "Workflow automation",
+    "lead": "Price the hours and error cost a process burns each year before chasing the newest model.",
+    "sections": [
+      {
+        "heading": "Common opportunities",
+        "paras": [
+          "Support: FAQ, ticket triage, draft replies; Marketing: drafts, event summaries, asset sorting.",
+          "HR: job descriptions, assisted screening; Finance: reconciliation help, expense categories; Ops: SOP lookup, handoff summaries."
+        ]
+      },
+      {
+        "heading": "Simple ROI",
+        "paras": [
+          "Annual saving ≈ (minutes saved × yearly volume × labour cost) − (tools + adoption + run cost).",
+          "Prioritise high-frequency, rule-clear processes with measurable error cost."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "5部門におけるAI自動化の機会とROIの算出方法",
+    "description": "カスタマーサポート、マーケティング、人事、経理・財務、オペレーションにおけるAI自動化の機会と、工数とエラーコストからROIを見積もるシンプルな計算方法を紹介します。",
+    "eyebrow": "業務自動化",
+    "lead": "まず「この業務が年間でどれだけの工数とエラーコストを消費しているか」を算出し、そのうえで自動化する価値があるかを判断します。最新モデルを追いかけるより現実的です。",
+    "sections": [
+      {
+        "heading": "5部門でよくある機会",
+        "paras": [
+          "カスタマーサポート：FAQ、問い合わせチケットの分類、返信の下書き。マーケティング：コンテンツの初稿、イベントの要約、素材の整理。",
+          "人事：求人票の作成、書類選考の補助。経理・財務：照合作業の補助、費目の提案。オペレーション：SOPの検索、引き継ぎ内容の要約。"
+        ]
+      },
+      {
+        "heading": "シンプルなROI",
+        "paras": [
+          "年間削減額 ≈（1回あたりの削減分数 × 年間回数 × 人件費）−（ツール費＋導入費＋運用保守費）。",
+          "頻度が高く、ルールが明確で、エラーコストを数値化できる業務を優先します。データがまだない業務や、責任者が決まっていない業務は避けます。"
+        ]
+      }
+    ]
+  }
+}

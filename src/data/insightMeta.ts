@@ -1,19 +1,15 @@
 /**
- * 洞察頁共用的衍生資訊：排序、閱讀時間、日期格式。全部由 insights.ts 推算，新文章不用多填欄位。
+ * 洞察頁共用的衍生資訊：排序、閱讀時間、日期格式。全部由 insights 資料推算，新文章不用多填欄位。
  */
-import { INSIGHT_LIST, type InsightArticle } from './insights';
+import { insightsFor, type InsightArticle, type Lang } from './insights';
 
-type Lang = 'zh' | 'en' | 'ja';
-
-/** 依發布日新到舊排序（同日維持原順序） */
-export const SORTED_INSIGHTS: InsightArticle[] = INSIGHT_LIST
-  .map((a, i) => ({ a, i }))
-  .sort((x, y) => y.a.published.localeCompare(x.a.published) || x.i - y.i)
-  .map(({ a }) => a);
+/** 依發布日新到舊排序（同日依 slug） */
+export const sortedFor = (lang: Lang): InsightArticle[] =>
+  [...insightsFor(lang)].sort((x, y) => y.published.localeCompare(x.published) || x.slug.localeCompare(y.slug));
 
 /** 閱讀分鐘數：中文每分鐘約 450 字、日文約 500 字、英文約 220 字 */
 export function readMinutes(article: InsightArticle, lang: Lang): number {
-  const d = article[lang];
+  const d = article[lang] ?? article.zh;
   const text = [d.lead, ...d.sections.flatMap((s) => [s.heading, ...s.paras])].join(' ');
   if (lang === 'en') return Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 220));
   const chars = text.replace(/\s/g, '').length;
@@ -34,7 +30,8 @@ export const metaLabels = {
 
 /** 延伸閱讀：同分類優先，其次依新到舊 */
 export function relatedInsights(article: InsightArticle, lang: Lang, n = 3): InsightArticle[] {
-  const others = SORTED_INSIGHTS.filter((a) => a.slug !== article.slug);
-  const same = others.filter((a) => a[lang].eyebrow === article[lang].eyebrow);
+  const others = sortedFor(lang).filter((a) => a.slug !== article.slug);
+  const cat = article[lang]?.eyebrow;
+  const same = others.filter((a) => a[lang]!.eyebrow === cat);
   return [...same, ...others.filter((a) => !same.includes(a))].slice(0, n);
 }

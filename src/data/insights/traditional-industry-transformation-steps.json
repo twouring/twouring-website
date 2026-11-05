@@ -1,0 +1,183 @@
+{
+  "slug": "traditional-industry-transformation-steps",
+  "published": "2026-11-05",
+  "updated": "2026-11-05",
+  "sources": [],
+  "zh": {
+    "title": "傳產數位轉型不用一次換 ERP：先診斷、再數位化、最後導入 AI 的三步做法",
+    "description": "系統買了沒人用、上完課回來照舊、換 ERP 拖垮營運，多半是順序錯了。這篇整理遊遊的三步做法、每一步的產出與驗收方式，以及一份判斷起點的自我檢核清單。",
+    "eyebrow": "數位轉型方法",
+    "lead": "跟傳產老闆談數位轉型，最常聽到的第一句話是「我們是不是該換 ERP 了？」我們通常先不回答這題。換不換系統，要看過現場流程才知道。很多公司真正卡住的地方，是報價靠一個人記、庫存數字對不起來、生產進度要打電話問，這些都不一定要從換系統開始處理。",
+    "sections": [
+      {
+        "heading": "三種常見的失敗，問題多半出在順序",
+        "paras": [
+          "第一種是系統買了沒人用。導入前沒有弄清楚業務、生管、倉庫平常怎麼做事，系統上線後欄位對不上實際作業，同仁只好一邊輸入系統、一邊繼續維護自己的 Excel。過一段時間，系統裡的資料沒人相信，大家又回到舊方法。",
+          "第二種是派人上課，回來照舊。外面的 AI 或數位工具課程，案例多半是通用情境，跟自家的報價單、料號規則、客戶詢單格式沒有關係。同仁聽懂了，回到座位卻不知道明天早上的工作要從哪裡開始改。",
+          "第三種是一次把 ERP 全部換掉。新舊系統切換期間，訂單、庫存、帳務同時在變，任何一個環節卡住，都會直接影響出貨與收款。對人手本來就緊的中小企業，這段期間的風險常常比預期高。",
+          "這三種情況有個共通點：先決定了工具，才回頭看流程。我們的做法反過來，先把流程看清楚，再決定哪些地方要上系統、哪些地方適合交給 AI。"
+        ]
+      },
+      {
+        "heading": "第一步：現況診斷，找出最花人力的三個環節",
+        "paras": [
+          "診斷期約 2 到 3 週。顧問會到現場，依序訪談報價、接單、生管、倉庫與會計的負責同仁，追一張訂單從客戶詢價到出貨收款，中間經過幾個人、幾份表單、幾次重複輸入。",
+          "這一步的產出是一份診斷報告，列出最花人力、最常出錯的三個環節，附上處理的優先順序、建議時程與預算範圍。驗收方式很直接：老闆和各部門主管看完報告，是否同意這三個環節確實是現在最痛的地方。排序有不同意見，就回頭補訪談，直到大家有共識。",
+          "診斷可以單獨做。看完結果再決定要不要往下，或拿報告去和既有的系統廠商討論都可以。我們曾協助一個研究單位盤點數據流程，結論是把可以標準化的整理工作交給系統，需要判斷的部分留給人。這種分工，要先把流程攤開才看得出來。"
+        ]
+      },
+      {
+        "heading": "第二步：流程數位化，能串接就不強迫汰換",
+        "paras": [
+          "第二步處理診斷挑出來的環節，把報價、訂單、料號、庫存與生產進度，從 Excel 和紙本搬進系統。公司如果已經有 ERP，基本功能也還堪用，我們會優先做串接，讓新工具把資料送進既有系統，不要求全部換掉。",
+          "產出是一套每天真的在跑的流程與資料：料號有統一的編碼規則，訂單從建立到出貨有固定的狀態，庫存數字只有一個來源。驗收看日常作業，例如業務能不能在系統裡直接查到某張訂單的生產進度，倉庫盤點的數字和系統是否一致，月底對帳還要不要人工比對好幾份表。",
+          "有一家五金材料業者，手上有數千種料號，同時經營電商、ERP 和實體櫃位。我們的切入點是商品資料：先把料號、規格、價格整理成一份共用的主檔，再讓電商、ERP 和櫃位都從這份主檔取資料。商品資料整理好，後面要接什麼系統都比較容易。"
+        ]
+      },
+      {
+        "heading": "第三步：AI 導入與內訓，課程對到各部門的日常工作",
+        "paras": [
+          "資料進了系統，AI 才有東西可以用。第三步會依公司的實際工作設計 AI 應用，例如整理報價單、回覆客戶詢單、產出外銷文件、整理會議紀錄、彙整管理報表。",
+          "接著依部門開實作課。課堂上練的就是該部門每天在做的事：業務練詢單回覆，船務練外銷文件，主管練報表彙整，讓同仁下課回到座位就用得上。驗收看課後的實際使用情形，也就是指定的幾項工作，是否已經改用新做法完成。",
+          "我們曾為一家醫院的醫護人員規劃 24 小時 AI 工作應用培訓，共 8 堂主題課，依四類職務分梯上課，課堂一律使用模擬資料。傳產內訓也照這個原則，按職務分組、用模擬資料練習，不把客戶或公司的真實資料帶進課堂。"
+        ]
+      },
+      {
+        "heading": "從哪一步開始？用這份清單自我檢核",
+        "paras": [
+          "不是每家公司都要從第一步開始。可以先問自己下面四題：",
+          "一、說不出公司最花人力的三個環節，或各部門主管的答案不一樣。符合的話，從現況診斷開始。",
+          "二、報價、訂單或庫存主要還在 Excel、紙本或 LINE 對話裡，同一筆資料要重複輸入兩次以上。符合的話，可以從流程數位化開始，但動工前仍要做一次簡單盤點。",
+          "三、主要資料已經在系統裡，查得到也對得上，但同仁還花很多時間整理文件、回覆詢單、做報表。符合的話，可以直接進入 AI 導入與內訓。",
+          "四、以前導入過系統或派人上過課，但沒有延續下去。這種情況建議回到診斷，先找出當初卡住的原因，再談下一步。"
+        ]
+      },
+      {
+        "heading": "推動時要避開的三個錯誤",
+        "paras": [
+          "第一，跳過診斷直接挑工具。廠商展示的功能再完整，對不上自家流程就用不起來。",
+          "第二，一次改太多部門。先挑一個環節做出看得見的改變，讓同仁實際感受到差別，再擴到下一個部門，阻力會小很多。",
+          "第三，把轉型丟給年輕同仁或 IT 人員。這件事會改到每個部門的工作方式，老闆或接班人要親自參與優先順序的決定，不然各部門很容易各做各的。還不確定該從哪一步開始，可以先來線上說明會聽我們用實際流程說明。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Transforming a Traditional Business Without Replacing Your ERP All at Once: Diagnose, Digitize, Then Bring in AI",
+    "description": "Systems nobody uses, training that changes nothing, ERP migrations that stall operations: most of these come from doing things in the wrong order. Here is how Twouring approaches it in three steps, what each step delivers, how it is accepted, and a short checklist to find your starting point.",
+    "eyebrow": "Digital Transformation Methods",
+    "lead": "When we talk with owners of traditional businesses about digital transformation, the first question is usually: \"Should we replace our ERP?\" We usually hold off on answering. Whether to change systems depends on how work actually happens on the floor. In many companies, the real bottlenecks are quotes that live in one person's head, inventory numbers that never match, and production status that requires a phone call. None of these necessarily start with a new system.",
+    "sections": [
+      {
+        "heading": "Three common failures, and why order is usually the problem",
+        "paras": [
+          "The first is the system nobody uses. Nobody mapped how sales, production control and the warehouse actually work before rollout, so the fields do not match real tasks. Staff end up entering data into the system while still maintaining their own Excel files. After a while nobody trusts the system data, and everyone goes back to the old way.",
+          "The second is sending people to training and seeing nothing change. External AI or software courses use generic examples that have nothing to do with your quotation forms, part-number rules or customer inquiry formats. People understand the lesson, then return to their desks without knowing where to start tomorrow morning.",
+          "The third is replacing the entire ERP in one go. During cutover, orders, inventory and accounting all change at once, and a snag in any one of them hits shipping and collections directly. For small and mid-sized companies that are already short-handed, this period is often riskier than expected.",
+          "All three share one thing: the tool was chosen before anyone looked at the process. We do it the other way around. We get a clear picture of the process first, then decide what belongs in a system and what is a good fit for AI."
+        ]
+      },
+      {
+        "heading": "Step 1: Diagnosis, finding the three most labor-intensive steps",
+        "paras": [
+          "The diagnosis takes about two to three weeks. Our consultants go on site and interview the people responsible for quoting, order intake, production control, the warehouse and accounting. We follow one order from inquiry to shipment and payment, counting how many people, forms and repeated data entries it passes through.",
+          "The deliverable is a diagnostic report listing the three steps that consume the most labor and produce the most errors, with priorities, a suggested timeline and a budget range. Acceptance is simple: after reading it, do the owner and department heads agree these three are the most painful points today? If people disagree on the ranking, we go back for more interviews until there is consensus.",
+          "The diagnosis can stand alone. You can decide whether to continue after seeing the results, or take the report to your existing system vendor. We once helped a research institution map its data workflows. The conclusion was to hand standardizable sorting work to the system and keep judgment calls with people. You only see that kind of split once the process is laid out."
+        ]
+      },
+      {
+        "heading": "Step 2: Digitizing the process, integrating where possible instead of forcing replacement",
+        "paras": [
+          "Step 2 tackles the steps the diagnosis identified, moving quotes, orders, part numbers, inventory and production progress out of Excel and paper and into a system. If you already have an ERP whose core functions still work, we prioritize integration so new tools feed data into the existing system. We do not require you to replace everything.",
+          "The deliverable is a process and data set that runs every day: part numbers follow one coding rule, orders move through fixed statuses from creation to shipment, and inventory has a single source of truth. Acceptance is judged on daily work. Can sales look up an order's production status directly in the system? Does the warehouse count match the system? Does month-end reconciliation still require comparing several spreadsheets by hand?",
+          "One hardware and materials company carried thousands of part numbers across e-commerce, an ERP and physical retail counters. Our entry point was product data: first consolidate part numbers, specifications and prices into one shared master file, then have e-commerce, the ERP and the counters all pull from it. Once product data is in order, connecting any later system becomes much easier."
+        ]
+      },
+      {
+        "heading": "Step 3: AI adoption and in-house training tied to each department's daily work",
+        "paras": [
+          "AI needs data to work with, which is why it comes after digitization. In Step 3 we design AI applications around the company's actual work, such as organizing quotations, replying to customer inquiries, producing export documents, writing meeting minutes and compiling management reports.",
+          "Then we run hands-on classes by department. Each class practices what that department does every day: sales practices inquiry replies, shipping practices export documents, managers practice report compilation, so people can use it as soon as they return to their desks. Acceptance looks at actual use after class, meaning whether the designated tasks are now done the new way.",
+          "We once designed a 24-hour AI workplace training program for hospital medical staff: eight topic sessions, run in cohorts by four job categories, with simulated data used in every class. Training for traditional businesses follows the same principle. People are grouped by role and practice with simulated data, and no real customer or company data is brought into the classroom."
+        ]
+      },
+      {
+        "heading": "Where should you start? A self-check list",
+        "paras": [
+          "Not every company needs to start at Step 1. Ask yourself these four questions:",
+          "1. You cannot name the three most labor-intensive steps in your company, or department heads give different answers. If so, start with diagnosis.",
+          "2. Quotes, orders or inventory still live mainly in Excel, on paper or in LINE chats, and the same data is entered two or more times. If so, you can start with process digitization, but do a quick review before work begins.",
+          "3. Your core data is already in a system, searchable and consistent, yet staff still spend a lot of time preparing documents, replying to inquiries and building reports. If so, you can go straight to AI adoption and training.",
+          "4. You have rolled out a system or sent people to training before, but it did not stick. In that case, go back to diagnosis and find out what got stuck before deciding the next step."
+        ]
+      },
+      {
+        "heading": "Three mistakes to avoid",
+        "paras": [
+          "First, picking tools without a diagnosis. However complete a vendor demo looks, it will not get used if it does not fit your process.",
+          "Second, changing too many departments at once. Pick one step, make a visible change that staff can feel, then expand to the next department. Resistance will be much lower.",
+          "Third, handing transformation to younger staff or IT alone. It changes how every department works, so the owner or successor needs to take part in setting priorities. Otherwise each department tends to go its own way. If you are not sure where to start, join our online briefing, where we walk through the three steps using real workflows."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "伝統産業のDXはERPの一括入れ替えから始めなくていい：診断、デジタル化、AI導入の3ステップ",
+    "description": "導入したシステムが使われない、研修を受けても何も変わらない、ERP刷新で業務が止まる。原因の多くは進める順番にあります。遊遊（Twouring）の3ステップの進め方、各ステップの成果物と検収方法、出発点を判断するセルフチェックリストをまとめました。",
+    "eyebrow": "DXの進め方",
+    "lead": "伝統産業の経営者とDXの話をすると、最初によく聞かれるのは「ERPを入れ替えるべきでしょうか」という質問です。私たちはすぐには答えません。システムを替えるかどうかは、現場の業務フローを見てから判断することだからです。多くの会社で本当に詰まっているのは、見積もりが特定の一人の記憶に頼っている、在庫の数字が合わない、生産の進捗を電話で確認しなければならない、といった点です。これらは必ずしもシステムの入れ替えから手をつける必要はありません。",
+    "sections": [
+      {
+        "heading": "よくある3つの失敗、問題の多くは順番にある",
+        "paras": [
+          "一つ目は、システムを買ったのに誰も使わないケースです。導入前に営業、生産管理、倉庫が普段どう仕事をしているかを把握していないため、稼働後に項目が実務と合わず、社員はシステムに入力しながら自分のExcelも更新し続けることになります。しばらくするとシステムのデータは信用されなくなり、皆が元のやり方に戻ります。",
+          "二つ目は、研修に送り出しても戻ってきたら何も変わらないケースです。外部のAIやデジタルツールの講座は一般的な事例が中心で、自社の見積書、品番ルール、顧客からの問い合わせ形式とは関係がありません。内容は理解できても、席に戻ると明日の朝の仕事のどこから変えればいいのかわかりません。",
+          "三つ目は、ERPを一度にすべて入れ替えるケースです。新旧システムの切り替え期間中は受注、在庫、会計が同時に変わり、どこか一か所で詰まれば出荷と入金に直接影響します。もともと人手に余裕のない中小企業にとって、この期間のリスクは想定より高くなりがちです。",
+          "3つに共通するのは、業務フローを見る前にツールを決めてしまったことです。私たちは逆の順番で進めます。まず業務フローをはっきりさせ、そのうえでどこをシステム化し、どこをAIに任せるのが適しているかを決めます。"
+        ]
+      },
+      {
+        "heading": "ステップ1：現状診断、最も人手がかかる3つの工程を特定する",
+        "paras": [
+          "診断期間は2〜3週間ほどです。コンサルタントが現場に入り、見積もり、受注、生産管理、倉庫、会計の担当者に順にヒアリングします。一件の注文が問い合わせから出荷、入金に至るまでに、何人の手を経て、何枚の帳票を通り、何回重複入力されるかを追います。",
+          "成果物は診断レポートです。最も人手がかかり、ミスが多い3つの工程を挙げ、対応の優先順位、推奨スケジュール、予算の目安を添えます。検収はシンプルで、経営者と各部門の責任者がレポートを読んで、この3つが今いちばん困っている点だと納得できるかどうかです。順位に異論があれば追加でヒアリングを行い、合意が得られるまで詰めます。",
+          "診断だけを単独で依頼することもできます。結果を見てから先に進むかを決めても、レポートを既存のシステムベンダーとの相談に使っても構いません。以前、ある研究機関のデータ業務の棚卸しを支援した際には、標準化できる整理作業はシステムに任せ、判断が必要な部分は人に残すという結論になりました。こうした役割分担は、業務フローを広げて見て初めてわかります。"
+        ]
+      },
+      {
+        "heading": "ステップ2：業務フローのデジタル化、連携できるなら入れ替えを強制しない",
+        "paras": [
+          "ステップ2では、診断で挙がった工程に取り組み、見積もり、受注、品番、在庫、生産進捗をExcelや紙からシステムへ移します。すでにERPがあり、基本機能がまだ使える状態であれば、連携を優先し、新しいツールから既存システムへデータを送る形にします。すべての入れ替えは求めません。",
+          "成果物は、毎日実際に回る業務フローとデータです。品番は統一されたコード体系に従い、注文は作成から出荷まで決まったステータスで管理され、在庫の数字は一か所だけを正とします。検収は日常業務で確認します。たとえば、営業がシステム上で特定の注文の生産進捗を直接確認できるか、倉庫の棚卸し数とシステムの数字が一致するか、月末の照合でまだ複数の表を手作業で突き合わせる必要があるか、といった点です。",
+          "ある金物・建材の事業者は数千点の品番を扱い、ECサイト、ERP、実店舗の売り場を同時に運営していました。私たちの切り口は商品データでした。まず品番、仕様、価格を共通のマスターファイルにまとめ、ECサイト、ERP、売り場がすべてそのマスターからデータを取る形にしました。商品データが整っていれば、後からどのシステムをつなぐにしても進めやすくなります。"
+        ]
+      },
+      {
+        "heading": "ステップ3：AI導入と社内研修、各部門の日常業務に合わせる",
+        "paras": [
+          "データがシステムに入って初めて、AIが扱える材料がそろいます。ステップ3では、会社の実際の業務に合わせてAIの活用方法を設計します。たとえば見積書の整理、顧客からの問い合わせへの返信、輸出書類の作成、議事録の整理、管理レポートの取りまとめなどです。",
+          "続いて部門ごとに実践型の研修を行います。授業で練習するのはその部門が毎日やっている仕事そのもので、営業は問い合わせへの返信、船積み担当は輸出書類、管理職はレポートの取りまとめを練習し、授業が終わって席に戻ればすぐ使える状態を目指します。検収は研修後の実際の利用状況で見ます。指定した業務が新しいやり方で処理されるようになったかどうかです。",
+          "以前、ある病院の医療スタッフ向けに、24時間体制の現場でのAI活用研修を設計しました。8回のテーマ別講座を、4つの職種ごとにグループを分けて実施し、授業ではすべて模擬データを使いました。伝統産業の社内研修も同じ原則で進めます。職種ごとにグループを分け、模擬データで練習し、顧客や会社の実データは教室に持ち込みません。"
+        ]
+      },
+      {
+        "heading": "どのステップから始めるか：セルフチェックリスト",
+        "paras": [
+          "すべての会社がステップ1から始める必要はありません。まず次の4つを確認してください。",
+          "1. 社内で最も人手がかかる3つの工程を挙げられない、または部門の責任者によって答えが違う。当てはまる場合は、現状診断から始めてください。",
+          "2. 見積もり、受注、在庫がまだ主にExcel、紙、LINEのやり取りの中にあり、同じデータを2回以上入力している。当てはまる場合は業務フローのデジタル化から始められますが、着手前に簡単な棚卸しは行ってください。",
+          "3. 主要なデータはすでにシステムに入っていて検索も照合もできるが、社員が書類作成、問い合わせ対応、レポート作成に多くの時間を使っている。当てはまる場合は、AI導入と社内研修から直接始められます。",
+          "4. 以前システムを導入したり研修に人を送ったりしたが、定着しなかった。この場合は診断に戻り、当時どこで止まったのかを確かめてから次の手を考えることをおすすめします。"
+        ]
+      },
+      {
+        "heading": "進めるうえで避けたい3つの間違い",
+        "paras": [
+          "一つ目は、診断を飛ばしてツールを選ぶことです。ベンダーのデモがどれほど充実していても、自社の業務フローに合わなければ使われません。",
+          "二つ目は、一度に多くの部門を変えようとすることです。まず一つの工程で目に見える変化を出し、社員に違いを実感してもらってから次の部門へ広げると、抵抗はずっと小さくなります。",
+          "三つ目は、若手社員やIT担当だけに任せることです。DXはすべての部門の仕事のやり方を変えるため、経営者や後継者が自ら優先順位の決定に関わる必要があります。そうでないと、部門ごとにばらばらに動きがちです。どこから始めるべきか迷っている方は、まずオンライン説明会で、実際の業務フローを使った3ステップの進め方を聞いてみてください。"
+        ]
+      }
+    ]
+  }
+}

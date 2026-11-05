@@ -1,0 +1,71 @@
+{
+  "slug": "company-data-in-chatgpt",
+  "published": "2026-07-30",
+  "updated": "2026-07-30",
+  "zh": {
+    "title": "公司資料能不能放進 ChatGPT／Copilot？",
+    "description": "企業使用 ChatGPT、Copilot 時的資料風險、帳號分級、內部規範與導入前檢查清單。",
+    "eyebrow": "風險與治理",
+    "lead": "能不能放，取決於產品條款、帳號類型、資料分級與內部規範——不是一句「絕對不行」或「完全沒問題」。",
+    "sections": [
+      {
+        "heading": "先分清楚帳號與條款",
+        "paras": [
+          "消費者版、團隊版與企業版對訓練資料與管理控管的約定不同，導入前必須對齊實際使用的產品。",
+          "把個資、未公開財報、客戶合約或原始碼貼進未核准工具，是最常見的治理破口。"
+        ]
+      },
+      {
+        "heading": "導入前最低檢查清單",
+        "paras": [
+          "資料分類（公開／內部／機密）、允許使用的工具清單、禁止上傳類型、以及誰負責審核例外。",
+          "先用低風險流程試點，再擴大到含客戶資料的工作流。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Can you put company data into ChatGPT / Copilot?",
+    "description": "Data risk, account tiers, internal policy and a pre-adoption checklist for ChatGPT and Copilot at work.",
+    "eyebrow": "Risk & governance",
+    "lead": "It depends on product terms, account type, data classification and policy — not a blanket yes or no.",
+    "sections": [
+      {
+        "heading": "Separate account types and terms",
+        "paras": [
+          "Consumer, team and enterprise plans differ on training data and admin controls — match the product you actually use.",
+          "Pasting personal data, unpublished finance, client contracts or source into unapproved tools is the usual governance gap."
+        ]
+      },
+      {
+        "heading": "Minimum pre-adoption checklist",
+        "paras": [
+          "Data classification, an approved-tool list, banned upload types, and an owner for exceptions.",
+          "Pilot on low-risk workflows before expanding to client-data workflows."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "社内データをChatGPT／Copilotに入力してもよいのか？",
+    "description": "企業がChatGPTやCopilotを利用する際のデータリスク、アカウント区分、社内規程、導入前のチェックリストを解説します。",
+    "eyebrow": "リスクとガバナンス",
+    "lead": "入力してよいかどうかは、製品の利用規約、アカウントの種類、データ分類、社内規程によって決まります。「絶対にダメ」でも「まったく問題ない」でもありません。",
+    "sections": [
+      {
+        "heading": "まずアカウントと規約を区別する",
+        "paras": [
+          "個人向け、チーム向け、企業向けのプランでは、学習データの扱いや管理機能の取り決めが異なります。導入前に、実際に利用する製品と照らし合わせる必要があります。",
+          "個人情報、未公開の財務情報、顧客との契約書、ソースコードを未承認のツールに貼り付けることが、最も多いガバナンス上の抜け穴です。"
+        ]
+      },
+      {
+        "heading": "導入前の最低限のチェックリスト",
+        "paras": [
+          "データ分類（公開／社内／機密）、利用を許可するツールの一覧、アップロード禁止のデータ種別、例外を審査する責任者を定めます。",
+          "まずリスクの低い業務で試行し、その後に顧客データを扱うワークフローへ拡大します。"
+        ]
+      }
+    ]
+  }
+}

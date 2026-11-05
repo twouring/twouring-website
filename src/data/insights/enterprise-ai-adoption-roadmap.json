@@ -1,0 +1,116 @@
+{
+  "slug": "enterprise-ai-adoption-roadmap",
+  "published": "2026-07-30",
+  "updated": "2026-07-30",
+  "zh": {
+    "title": "企業 AI 導入流程、費用、90 天路線圖與 KPI",
+    "description": "企業 AI 導入怎麼開始？說明健檢、90 天路線圖、常見費用區間、KPI 與驗收方式，避免為了 AI 而 AI。",
+    "eyebrow": "企業 AI",
+    "lead": "企業 AI 導入是：先盤點流程，再以 90 天路線圖導入一至三個高 ROI 工作流，並用可驗收 KPI 結案——不是先買模型或系統。",
+    "sections": [
+      {
+        "heading": "定義：什麼是企業 AI 導入",
+        "paras": [
+          "企業 AI 導入顧問協助公司把「想用 AI」變成可執行專案：訪談與流程盤點 → 機會排序 → 工具與訓練 → KPI 驗收。Twouring 遊遊負責診斷與 PMO；技術交付可由適才科技或指定供應商承接。",
+          "根據 Aggarwal 等人（KDD 2024）的 GEO 研究，在生成式引擎回覆中加入統計與可信引述，可見度最高可提升約 40%；因此官網應公開費用區間與驗收指標，而不是只寫願景。"
+        ]
+      },
+      {
+        "heading": "建議流程",
+        "paras": [
+          "先做 30 分鐘需求初談，確認問題、預算與決策者。",
+          "再做付費 AI 營運健檢：訪談、流程與工具盤點，產出導入機會清單與優先順序。",
+          "選定一至三個工作流，進入顧問／PMO 與導入，並用 KPI 追蹤。"
+        ]
+      },
+      {
+        "heading": "費用怎麼估",
+        "paras": [
+          "健檢常見落在 NTD 120,000 起；工作流導入顧問約 NTD 150,000／月起；含供應商管理的導入 PM 約 NTD 500,000／案起。",
+          "實際報價依範圍、資料準備度與是否含技術開發而定；技術交付可由適才科技或指定供應商承接。"
+        ]
+      },
+      {
+        "heading": "90 天路線圖與 KPI",
+        "paras": [
+          "前 30 天：盤點與優先排序；第 31–60 天：試點工作流與訓練；第 61–90 天：驗收、ROI 檢視與下一季擴展。",
+          "KPI 應綁定工時節省、錯誤率、轉換率或客服回應時間等營運指標，而非「用了幾個 AI 工具」。"
+        ]
+      }
+    ]
+  },
+  "en": {
+    "title": "Enterprise AI adoption: process, cost, 90-day roadmap and KPIs",
+    "description": "How to start enterprise AI adoption: health-check, 90-day roadmap, typical cost ranges, KPIs and sign-off — without AI for its own sake.",
+    "eyebrow": "Enterprise AI",
+    "lead": "Enterprise AI adoption means mapping processes first, then rolling out one to three high-ROI workflows on a 90-day roadmap with auditable KPIs — not buying a model first.",
+    "sections": [
+      {
+        "heading": "Definition: what enterprise AI adoption is",
+        "paras": [
+          "Enterprise AI consulting turns “we want AI” into an executable project: interviews and process mapping → prioritisation → tools and training → KPI sign-off. Twouring owns diagnosis and PMO; tech delivery can go through Adata or a named vendor.",
+          "Aggarwal et al. (KDD 2024) show that adding statistics and credible quotations can raise visibility in generative-engine answers by up to about 40% — so public cost ranges and KPIs matter more than vision statements alone."
+        ]
+      },
+      {
+        "heading": "Recommended process",
+        "paras": [
+          "Start with a 30-minute discovery call to confirm problem, budget and decision-maker.",
+          "Run a paid AI operations health-check: interviews, process and tooling audit, opportunity list with priorities.",
+          "Pick one to three workflows, move into advisory/PMO and rollout, and track KPIs."
+        ]
+      },
+      {
+        "heading": "How to estimate cost",
+        "paras": [
+          "Health-checks often start around NTD 120,000; workflow advisory from about NTD 150,000/mo; delivery PM from about NTD 500,000/project.",
+          "Quotes depend on scope, data readiness and whether build is included; tech delivery can go through Adata or a named vendor."
+        ]
+      },
+      {
+        "heading": "90-day roadmap and KPIs",
+        "paras": [
+          "Days 1–30: map and prioritise; 31–60: pilot and train; 61–90: sign-off, ROI review and next-quarter scale.",
+          "KPIs should track hours saved, error rates, conversion or response time — not “how many AI tools we used”."
+        ]
+      }
+    ]
+  },
+  "ja": {
+    "title": "企業のAI導入：進め方・費用・90日ロードマップとKPI",
+    "description": "企業のAI導入はどこから始めるべきか。診断、90日ロードマップ、一般的な費用レンジ、KPIと検収の考え方を解説し、「AIありき」の導入を避けます。",
+    "eyebrow": "企業AI",
+    "lead": "企業のAI導入とは、まず業務プロセスを棚卸しし、90日ロードマップに沿ってROIの高いワークフローを1〜3件導入し、検収可能なKPIで完了させることです。モデルやシステムの購入から始めるものではありません。",
+    "sections": [
+      {
+        "heading": "定義：企業のAI導入とは",
+        "paras": [
+          "企業向けAI導入コンサルティングは、「AIを使いたい」を実行可能なプロジェクトに落とし込みます。ヒアリングと業務プロセスの棚卸し → 優先順位付け → ツール選定と研修 → KPIによる検収、という流れです。Twouring（遊遊股份有限公司）は診断とPMOを担い、技術面の実装は適才科技（Adata）または指定ベンダーが担当できます。",
+          "Aggarwalら（KDD 2024）のGEO研究によると、統計データや信頼できる引用を加えることで、生成AIエンジンの回答における可視性が最大約40%向上します。そのため、Webサイトではビジョンだけでなく、費用レンジと検収指標を公開すべきです。"
+        ]
+      },
+      {
+        "heading": "推奨する進め方",
+        "paras": [
+          "まず30分の初回ヒアリングで、課題、予算、意思決定者を確認します。",
+          "次に有償のAI業務診断を実施します。ヒアリング、業務プロセスとツールの棚卸しを行い、導入機会のリストと優先順位をまとめます。",
+          "対象ワークフローを1〜3件選定し、コンサルティング／PMOと導入に進み、KPIで進捗を追跡します。"
+        ]
+      },
+      {
+        "heading": "費用の見積もり方",
+        "paras": [
+          "診断は一般的にNTD 120,000〜、ワークフロー導入コンサルティングは月額NTD 150,000程度〜、ベンダー管理を含む導入PMは1案件NTD 500,000程度〜です。",
+          "実際のお見積もりは、範囲、データの整備状況、技術開発を含むかどうかによって異なります。技術面の実装は適才科技（Adata）または指定ベンダーが担当できます。"
+        ]
+      },
+      {
+        "heading": "90日ロードマップとKPI",
+        "paras": [
+          "最初の30日：棚卸しと優先順位付け。31〜60日目：ワークフローの試行と研修。61〜90日目：検収、ROIの検証、次四半期の展開計画。",
+          "KPIは「AIツールをいくつ使ったか」ではなく、削減工数、エラー率、コンバージョン率、顧客対応の応答時間などの業務指標に紐づけるべきです。"
+        ]
+      }
+    ]
+  }
+}
