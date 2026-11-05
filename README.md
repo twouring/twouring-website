@@ -51,7 +51,7 @@ backend/       Code.gs + DEPLOY.md（聯絡表單的 Apps Script 後端）
 ## 聯絡表單
 
 送到 Google Apps Script Web App（寫入 Google Sheet + 寄信 `us@twouring.com`）。
-設定環境變數 `PUBLIC_CONTACT_ENDPOINT`；未設定則退回 `mailto:`。部署見 `backend/DEPLOY.md`。
+預設送到 twouring-console 的 `/api/public/contact`（建客戶／聯絡人／活動紀錄／待辦，並通知 us@twouring.com）；設 `PUBLIC_CONTACT_ENDPOINT` 可覆寫，送出失敗時前端退回 `mailto:`。`backend/`（Apps Script）為舊方案，已不使用。
 
 ## 部署
 

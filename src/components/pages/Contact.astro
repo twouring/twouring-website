@@ -10,9 +10,8 @@ const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const lp = (p: string) => localizePath(p, lang);
 
-// 聯絡表單後端：Google Apps Script Web App URL（寫入 Google Sheet + 轉寄 us@twouring.com）。
-// 於部署環境設定 PUBLIC_CONTACT_ENDPOINT；未設定時表單自動退回 mailto。
-const ENDPOINT = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? '';
+// 預設送到 console（建客戶＋通知 us@twouring.com）；設 PUBLIC_CONTACT_ENDPOINT 可覆寫，失敗時前端退回 mailto。
+const ENDPOINT = import.meta.env.PUBLIC_CONTACT_ENDPOINT ?? 'https://console.twouring.com/api/public/contact';
 
 const c = {
   zh: {
@@ -332,8 +331,7 @@ const c = {
       }
 
       try {
-        // Apps Script /exec 會 302 轉址到 googleusercontent.com，後者回應帶 Access-Control-Allow-Origin: *，
-        // 故用預設 cors 模式即可讀取 JSON 結果、真正判斷成敗（取代 no-cors 的 opaque 誤報）。
+        // console 端點只對官網網域回 Access-Control-Allow-Origin，故用預設 cors 模式讀取 JSON 判斷成敗。
         // body 為 URLSearchParams（application/x-www-form-urlencoded）屬簡單請求、不觸發 preflight。
         // 任何失敗（HTTP 非 2xx、ok=false、解析失敗、網路錯誤）都退回 mailto，不再靜默誤報成功。
         const res = await fetch(endpoint, {
