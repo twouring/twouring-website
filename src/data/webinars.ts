@@ -74,6 +74,7 @@ export interface WebinarSession {
 
 export const SESSIONS: WebinarSession[] = [
   // 週二／三／四 × 上午 10:00／下午 14:00／晚上 19:30 輪替，9 種組合各一場；同主題兩場錯開時段。
+  { id: '2026-11-12', date: '2026-11-12', start: '19:30', end: '20:30', topic: 'intro' },     // 四 晚上（加開）
   { id: '2026-11-25', date: '2026-11-25', start: '10:00', end: '11:00', topic: 'intro' },     // 三 上午
   { id: '2026-12-10', date: '2026-12-10', start: '14:00', end: '15:00', topic: 'metal' },     // 四 下午
   { id: '2026-12-22', date: '2026-12-22', start: '10:00', end: '11:00', topic: 'machinery' }, // 二 上午
