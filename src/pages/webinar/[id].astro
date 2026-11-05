@@ -1,0 +1,10 @@
+---
+import WebinarSession from '../../components/pages/WebinarSession.astro';
+import { SESSIONS } from '../../data/webinars';
+
+export function getStaticPaths() {
+  return SESSIONS.map((session) => ({ params: { id: session.id }, props: { session } }));
+}
+const { session } = Astro.props;
+---
+<WebinarSession session={session} />

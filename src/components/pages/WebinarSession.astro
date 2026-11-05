@@ -1,0 +1,262 @@
+---
+/**
+ * 說明會單場詳細頁：/webinar/<YYYY-MM-DD>/（只有中文版）。
+ * 內容來自 data/webinars.ts 的 SESSIONS × TOPICS × DETAILS；報名表預選本場。
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import Icon from '../Icon.astro';
+import WebinarRegister from '../WebinarRegister.astro';
+import { localizePath } from '../../i18n/utils';
+import { ROUTES } from '../../i18n/ui';
+import { company } from '../../i18n/company';
+import { insights, type InsightSlug } from '../../data/insights';
+import { TOPICS, DETAILS, SESSIONS, fmtDate, endsAt, sessionPath, WEBINAR_PATH, type WebinarSession } from '../../data/webinars';
+
+interface Props { session: WebinarSession; }
+const { session: s } = Astro.props;
+const tp = TOPICS[s.topic];
+const d = DETAILS[s.topic];
+const lp = (p: string) => localizePath(p, 'zh');
+const path = sessionPath(s);
+const when = `${fmtDate(s.date, true)} ${s.start}–${s.end}`;
+const isPast = endsAt(s) <= Date.now();
+const others = SESSIONS.filter((x) => x.id !== s.id && endsAt(x) > Date.now()).slice(0, 3);
+const related = d.related.filter((slug) => slug in insights).map((slug) => insights[slug as InsightSlug]);
+
+const title = `${fmtDate(s.date)} ${tp.label}：${tp.title}`;
+// 桌機版依標點斷成詞組，避免「五金／業」這種斷詞；手機版照常換行以免溢出
+const titleHtml = tp.title.split(/(?<=[、：，？])/).map((x) => `<span class="kp">${x}</span>`).join('');
+const description = `${when}（台北時間）免費線上說明會。${d.summary}`.slice(0, 160);
+const eventLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: `AI 導入傳產線上說明會｜${tp.label}：${tp.title}`,
+  description: d.summary,
+  startDate: `${s.date}T${s.start}:00+08:00`,
+  endDate: `${s.date}T${s.end}:00+08:00`,
+  eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+  location: { '@type': 'VirtualLocation', url: company.siteUrl + lp(path) },
+  isAccessibleForFree: true,
+  inLanguage: 'zh-Hant-TW',
+  organizer: { '@id': company.siteUrl + '/#organization' },
+  performer: { '@type': 'Person', name: '徐愷（KK）' },
+  offers: { '@type': 'Offer', price: 0, priceCurrency: 'TWD', availability: 'https://schema.org/InStock', url: company.siteUrl + lp(path) + '#register' },
+};
+// 加入行事曆（Google Calendar，台北時間轉 UTC）
+const toUtc = (t: string) => new Date(`${s.date}T${t}:00+08:00`).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(`遊遊說明會｜${tp.label}：${tp.title}`)}&dates=${toUtc(s.start)}/${toUtc(s.end)}&details=${encodeURIComponent(`報名後會在前一天寄 Google Meet 連結。\n${company.siteUrl}${lp(path)}`)}&ctz=Asia/Taipei`;
+---
+<BaseLayout title={title} description={description} path={path} jsonLd={[eventLd]} locales={['zh']}>
+  <PageHero
+    eyebrow={`免費線上說明會｜${tp.label}`}
+    title={tp.title}
+    titleHtml={titleHtml}
+    lead={d.summary}
+    crumbs={[{ label: '線上說明會', path: WEBINAR_PATH }, { label: fmtDate(s.date) }]}
+  >
+    <ul class="facts" role="list">
+      <li><span class="fact-k">日期</span><span>{fmtDate(s.date, true)}</span></li>
+      <li><span class="fact-k">時間（台北）</span><span>{s.start}–{s.end}</span></li>
+      <li><span class="fact-k">形式</span><span>Google Meet 線上，免費</span></li>
+      <li><span class="fact-k">主講</span><span>徐愷（KK）</span></li>
+    </ul>
+    {isPast ? (
+      <p class="past" data-past>這一場已結束。<a href={lp(WEBINAR_PATH)}>看最近的場次 →</a></p>
+    ) : (
+      <div class="cluster hero-cta" data-ends={endsAt(s)}>
+        <a class="btn btn--grad btn--lg" href="#register" data-cta="webinar_detail_hero_register">免費報名這場</a>
+        <a class="btn btn--ghost btn--lg" href={gcal} target="_blank" rel="noopener" data-cta="webinar_add_calendar">加入 Google 行事曆</a>
+      </div>
+    )}
+  </PageHero>
+
+  <section class="section">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">適合誰</p>
+        <h2>這一場適合</h2>
+        <p class="aud">{tp.audience}</p>
+        <ul class="ticks" role="list">
+          {tp.pains.map((p) => (<li><Icon name="check" size={16} /> 正在遇到：{p}</li>))}
+        </ul>
+        <p class="notfor"><strong>可能不適合：</strong>{d.notFor}</p>
+      </div>
+      <aside class="card">
+        <h3>聽完可以帶走</h3>
+        <ul class="ticks" role="list">
+          {d.takeaways.map((x) => (<li><Icon name="check" size={16} /> {x}</li>))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">60 分鐘議程</p>
+        <h2>每一段講什麼</h2>
+      </div>
+      <ol class="agenda" role="list">
+        {d.agenda.map((a) => (
+          <li>
+            <span class="agenda-m">{a.min}</span>
+            <div>
+              <h3>{a.title}</h3>
+              <ul role="list">{a.points.map((p) => (<li>{p}</li>))}</ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">現場示範</p>
+        <h2>{tp.demo}</h2>
+        <p class="note">示範一律使用模擬資料，不使用任何客戶的真實資料。</p>
+        <ol class="steps" role="list">
+          {d.demoSteps.map((x, i) => (<li><span class="step-n">{i + 1}</span><span>{x}</span></li>))}
+        </ol>
+      </div>
+      <aside class="card">
+        <h3>會前可以先想好</h3>
+        <p class="note">報名時把答案寫在「最卡的流程」，問答時會優先回答。</p>
+        <ul class="ticks" role="list">
+          {d.prepare.map((x) => (<li><Icon name="check" size={16} /> {x}</li>))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">主講</p>
+        <div class="host">
+          <img src="/kk-portrait.jpg" alt="主講人徐愷（KK）" width="640" height="965" loading="lazy" />
+          <div>
+            <p class="host-name">徐愷（KK）</p>
+            <p class="host-role">遊遊股份有限公司負責人／主導顧問</p>
+            <p class="host-desc">15 年軟體開發與系統建置經驗，做過五金材料業者的商品資料整合、醫院醫護人員 AI 培訓與政府單位的系統建置。</p>
+            <a href={lp(ROUTES.about)}>認識顧問團隊 →</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow">常見問題</p>
+        <dl class="faq">
+          {d.faq.map((f) => (<><dt>{f.q}</dt><dd>{f.a}</dd></>))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">會前延伸閱讀</p>
+          <h2>先讀一篇，<span class="keep">問答時更好問</span></h2>
+        </div>
+        <div class="grid grid--3 related">
+          {related.map((a) => (
+            <a class="card card--link" href={lp(a.path)}>
+              <span class="tag">{a.zh.eyebrow}</span>
+              <h3>{a.zh.title}</h3>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {!isPast && <WebinarRegister preselect={s.id} compact />}
+
+  {others.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">其他場次</p><h2>時間不方便？</h2></div>
+        <ul class="others" role="list">
+          {others.map((o) => (
+            <li data-ends={endsAt(o)}>
+              <a class="card card--link other" href={lp(sessionPath(o))}>
+                <span class="other-date">{fmtDate(o.date, !o.date.startsWith('2026'))} {o.start}</span>
+                <span class="tag">{TOPICS[o.topic].label}</span>
+                <span class="other-title">{TOPICS[o.topic].title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p><a href={lp(WEBINAR_PATH)}>看全部場次 →</a></p>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .facts { display: grid; grid-template-columns: repeat(4, auto); gap: 0.6rem 2rem; margin-top: 1.4rem; justify-content: start; }
+  .facts li { display: flex; flex-direction: column; }
+  .fact-k { font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; color: var(--c-faint); letter-spacing: 0.04em; }
+  .facts li span:last-child { font-family: var(--font-head); font-weight: 700; color: var(--c-ink-strong); white-space: nowrap; }
+  .hero-cta { margin-top: 1.6rem; }
+  @media (min-width: 821px) { :global(.page-hero h1 .kp) { white-space: nowrap; } }
+  .section-head h2 { text-wrap: balance; }
+  .past { margin-top: 1.4rem; font-weight: 700; }
+  .detail-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: start; }
+  .detail-grid h2 { text-wrap: balance; margin-bottom: 0.8rem; }
+  .aud { color: var(--c-muted); font-size: var(--fs-500); margin-bottom: 1rem; }
+  .ticks { display: grid; gap: 0.55rem; }
+  .ticks li { display: flex; gap: 0.5rem; align-items: flex-start; }
+  .ticks :global(svg) { color: var(--c-accent-strong); flex-shrink: 0; margin-top: 4px; }
+  .card h3 { font-size: var(--fs-500); margin-bottom: 0.8rem; }
+  .notfor { margin-top: 1.2rem; color: var(--c-muted); font-size: 0.94rem; }
+  .note { color: var(--c-faint); font-size: 0.9rem; margin-bottom: 1rem; }
+  .agenda { display: grid; gap: 0; }
+  .agenda > li { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--c-line); }
+  .agenda-m { font-family: var(--font-head); font-weight: 800; color: var(--c-accent-strong); white-space: nowrap; }
+  .agenda h3 { font-size: var(--fs-500); margin-bottom: 0.4rem; }
+  .agenda ul { list-style: disc; padding-left: 1.2rem; color: var(--c-muted); display: grid; gap: 0.25rem; }
+  .steps { display: grid; gap: 0.7rem; }
+  .steps li { display: flex; gap: 0.8rem; align-items: flex-start; }
+  .step-n { display: inline-grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: var(--c-accent-strong); color: #fff; font-weight: 800; flex-shrink: 0; font-size: 0.9rem; }
+  .host { display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem; align-items: start; margin-top: 0.8rem; }
+  .host img { width: 110px; height: 146px; object-fit: cover; border-radius: var(--radius); }
+  .host-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); }
+  .host-role { color: var(--c-faint); font-size: 0.9rem; }
+  .host-desc { color: var(--c-muted); font-size: 0.94rem; margin: 0.5rem 0; }
+  .faq { margin-top: 0.8rem; }
+  .faq dt { font-family: var(--font-head); font-weight: 700; margin-top: 1rem; }
+  .faq dd { color: var(--c-muted); margin-top: 0.3rem; }
+  .related { gap: 1.2rem; }
+  .related h3 { font-size: var(--fs-500); margin-top: 0.6rem; }
+  .others { display: grid; gap: 0.8rem; margin-bottom: 1rem; }
+  .other { display: grid; grid-template-columns: 11rem auto 1fr; gap: 1rem; align-items: center; padding: 1rem 1.3rem; }
+  .other-date { font-family: var(--font-head); font-weight: 800; white-space: nowrap; }
+  .other-title { font-weight: 700; }
+  @media (max-width: 820px) {
+    .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .facts li span:last-child { white-space: normal; }
+    .hero-cta .btn { width: 100%; justify-content: center; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .agenda > li { grid-template-columns: 1fr; gap: 0.3rem; }
+    .other { grid-template-columns: 1fr; gap: 0.4rem; justify-items: start; }
+  }
+</style>
+
+<script>
+  // build 後才結束的場次：隱藏報名按鈕並改顯示已結束
+  document.querySelectorAll<HTMLElement>('.hero-cta[data-ends]').forEach((el) => {
+    if (Number(el.dataset.ends) <= Date.now()) {
+      const p = document.createElement('p');
+      p.className = 'past';
+      // 安全：固定字串，無使用者輸入
+      p.innerHTML = '這一場已結束。<a href="/webinar/">看最近的場次 →</a>';
+      el.replaceWith(p);
+      document.getElementById('register')?.remove();
+    }
+  });
+</script>

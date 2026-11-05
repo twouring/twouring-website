@@ -6,11 +6,13 @@ interface Crumb { label: string; path?: string; }
 interface Props {
   eyebrow?: string;
   title: string;
+  /** 選用：已斷好詞組的標題 HTML（只放自家資料，不放使用者輸入） */
+  titleHtml?: string;
   lead?: string;
   crumbs?: Crumb[];
   variant?: 'default' | 'warm';
 }
-const { eyebrow, title, lead, crumbs = [], variant = 'warm' } = Astro.props;
+const { eyebrow, title, titleHtml, lead, crumbs = [], variant = 'warm' } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const lp = (p: string) => localizePath(p, lang);
@@ -28,7 +30,7 @@ const home = { zh: '首頁', en: 'Home', ja: 'ホーム' }[lang];
       ))}
     </nav>
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-    <h1>{title}</h1>
+    {titleHtml ? <h1 set:html={titleHtml} /> : <h1>{title}</h1>}
     {lead && <p class="lead hero-lead">{lead}</p>}
     <slot />
   </div>

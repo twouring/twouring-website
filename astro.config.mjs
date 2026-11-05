@@ -32,7 +32,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // 說明會只有中文版：/en、/ja 轉址頁不進 sitemap
-      filter: (page) => !/\/(en|ja)\/webinar\/?$/.test(page),
+      filter: (page) => !/\/(en|ja)\/webinar(\/|$)/.test(page),
       i18n: {
         defaultLocale: 'zh',
         locales: {

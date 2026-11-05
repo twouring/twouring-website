@@ -3,7 +3,7 @@
  * 說明會推廣卡（中文頁使用）：洞察文章末、首頁共用。讀 data/webinars 的下一場；
  * 沒有未來場次時整塊不輸出。瀏覽器端再檢查一次，build 後才過期的場次改顯示下一場。
  */
-import { TOPICS, upcomingSessions, fmtDate, endsAt, WEBINAR_PATH } from '../data/webinars';
+import { TOPICS, upcomingSessions, fmtDate, endsAt, sessionPath } from '../data/webinars';
 
 interface Props { variant?: 'card' | 'band'; }
 const { variant = 'card' } = Astro.props;
@@ -14,13 +14,13 @@ const list = upcomingSessions().slice(0, 3);
     <div class="wpromo-copy">
       <p class="eyebrow">免費線上說明會</p>
       {list.map((s, i) => (
-        <div class="wpromo-item" data-ends={endsAt(s)} hidden={i > 0}>
+        <div class="wpromo-item" data-ends={endsAt(s)} data-href={`${sessionPath(s)}/`} hidden={i > 0}>
           <p class="wpromo-title">{fmtDate(s.date)} {s.start}｜{TOPICS[s.topic].label}：{TOPICS[s.topic].title}</p>
           <p class="wpromo-text">60 分鐘，用模擬資料現場示範傳產怎麼導入 AI。適合：{TOPICS[s.topic].audience}。</p>
         </div>
       ))}
     </div>
-    <a class="btn btn--primary" href={`${WEBINAR_PATH}/#register`} data-cta={`webinar_promo_${variant}`}>免費報名</a>
+    <a class="btn btn--primary" href={`${sessionPath(list[0])}/`} data-cta={`webinar_promo_${variant}`}>免費報名</a>
   </aside>
 )}
 
@@ -29,6 +29,8 @@ const list = upcomingSessions().slice(0, 3);
     const items = [...box.querySelectorAll<HTMLElement>('.wpromo-item')];
     const live = items.filter((el) => Number(el.dataset.ends) > Date.now());
     items.forEach((el) => (el.hidden = el !== live[0]));
+    const a = box.querySelector<HTMLAnchorElement>('a.btn');
+    if (a && live[0]?.dataset.href) a.href = live[0].dataset.href;
     if (!live.length) box.remove();
   });
 </script>

@@ -52,3 +52,4 @@ console.log('✓ i18n utils 全部通過');
 assert.equal(switchLocaleHref('/webinar/', 'en'), '/en/');
 assert.equal(switchLocaleHref('/webinar/', 'ja'), '/ja/');
 assert.equal(switchLocaleHref('/webinar/', 'zh'), '/webinar/');
+assert.equal(switchLocaleHref('/webinar/2026-11-25/', 'en'), '/en/');
