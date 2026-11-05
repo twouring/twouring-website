@@ -97,6 +97,13 @@ export function fmtDate(d: string, withYear = false): string {
 /** 場次結束時間（台北）轉 epoch ms，供前端隱藏過期場次。 */
 export const endsAt = (s: WebinarSession) => Date.parse(`${s.date}T${s.end}:00+08:00`);
 
+/** 報名人數基數：依場次 id 固定落在 5～10（同一場每次顯示一致）。 */
+export function seatSeed(id: string): number {
+  let h = 0;
+  for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return 5 + (h % 6);
+}
+
 /** build 時仍未結束的場次。 */
 export const upcomingSessions = (now = Date.now()) => SESSIONS.filter((s) => endsAt(s) > now);
 

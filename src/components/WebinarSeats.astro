@@ -1,0 +1,31 @@
+---
+/**
+ * 場次報名人數：顯示「實際報名數（console）＋ 每場固定 5～10 的基數」（經營者 11/5 決定）。
+ * build 時先輸出基數，瀏覽器再向 console 讀實際數加上去；讀不到就只顯示基數。
+ */
+import { seatSeed } from '../data/webinars';
+interface Props { id: string; class?: string; }
+const { id, class: cls } = Astro.props;
+const seed = seatSeed(id);
+---
+<span class:list={['seats', cls]} data-seats={id} data-seed={seed}>已有 <b>{seed}</b> 位報名</span>
+
+<style>
+  .seats { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.9rem; color: var(--c-muted); }
+  .seats::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #1a8a4f; box-shadow: 0 0 0 3px #1a8a4f22; }
+  .seats b { color: var(--c-ink-strong); font-weight: 800; }
+</style>
+
+<script>
+  const ENDPOINT = import.meta.env.PUBLIC_WEBINAR_COUNTS_ENDPOINT ?? 'https://console.twouring.com/api/public/webinar-counts';
+  const els = document.querySelectorAll<HTMLElement>('[data-seats]');
+  if (els.length) {
+    fetch(ENDPOINT).then((r) => (r.ok ? r.json() : null)).then((j) => {
+      const counts: Record<string, number> = j?.counts ?? {};
+      els.forEach((el) => {
+        const b = el.querySelector('b');
+        if (b) b.textContent = String(Number(el.dataset.seed) + (counts[el.dataset.seats || ''] ?? 0));
+      });
+    }).catch(() => {});
+  }
+</script>

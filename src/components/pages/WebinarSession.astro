@@ -7,6 +7,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../PageHero.astro';
 import Icon from '../Icon.astro';
 import WebinarRegister from '../WebinarRegister.astro';
+import WebinarSeats from '../WebinarSeats.astro';
 import { localizePath } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
@@ -66,12 +67,13 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
     </ul>
     {isPast ? (
       <p class="past" data-past>這一場已結束。<a href={lp(WEBINAR_PATH)}>看最近的場次 →</a></p>
-    ) : (
+    ) : (<>
+      <WebinarSeats id={s.id} class="hero-seats" />
       <div class="cluster hero-cta" data-ends={endsAt(s)}>
         <a class="btn btn--grad btn--lg" href="#register" data-cta="webinar_detail_hero_register">免費報名這場</a>
         <a class="btn btn--ghost btn--lg" href={gcal} target="_blank" rel="noopener" data-cta="webinar_add_calendar">加入 Google 行事曆</a>
       </div>
-    )}
+    </>)}
   </PageHero>
 
   <section class="section">
@@ -200,6 +202,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
 </BaseLayout>
 
 <style>
+  :global(.hero-seats) { margin: 0.2rem 0 0.8rem; }
   .facts { display: grid; grid-template-columns: repeat(4, auto); gap: 0.6rem 2rem; margin-top: 1.4rem; justify-content: start; }
   .facts li { display: flex; flex-direction: column; }
   .fact-k { font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; color: var(--c-faint); letter-spacing: 0.04em; }
@@ -260,6 +263,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
       p.className = 'past';
       // 安全：固定字串，無使用者輸入
       p.innerHTML = '這一場已結束。<a href="/webinar/">看最近的場次 →</a>';
+      document.querySelector('.hero-seats')?.remove();
       el.replaceWith(p);
       document.getElementById('register')?.remove();
     }

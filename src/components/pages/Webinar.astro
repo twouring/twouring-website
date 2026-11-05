@@ -11,6 +11,7 @@ import WebinarRegister from '../WebinarRegister.astro';
 import { localizePath } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
+import WebinarSeats from '../WebinarSeats.astro';
 import { TOPICS, SESSIONS, upcomingSessions, fmtDate, endsAt, sessionPath, WEBINAR_PATH, OVERVIEW_IMAGE } from '../../data/webinars';
 
 const lp = (p: string) => localizePath(p, 'zh');
@@ -85,6 +86,7 @@ const agenda = [
                   <span class="tag">{tp.label}</span>
                   <h3><a href={lp(sessionPath(s))}>{tp.title}</a></h3>
                   <p class="session-aud">適合：{tp.audience}</p>
+                  <WebinarSeats id={s.id} class="session-seats" />
                 </div>
                 <div class="session-acts">
                   <a class="btn btn--primary session-btn" href={lp(sessionPath(s))} data-cta="webinar_session_detail">詳細資訊與報名</a>
@@ -166,6 +168,7 @@ const agenda = [
   .session-body h3 { font-size: var(--fs-500); margin-top: 0.4rem; }
   .session-body h3 a { color: inherit; }
   .session-body h3 a:hover { color: var(--c-accent-strong); }
+  .session-body :global(.session-seats) { margin-top: 0.4rem; }
   .session-aud { color: var(--c-muted); font-size: 0.92rem; margin-top: 0.3rem; }
   .empty { color: var(--c-muted); }
   .topics { gap: 1.2rem; }
