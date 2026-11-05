@@ -1,61 +1,160 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../PageHero.astro';
 import CTABand from '../CTABand.astro';
 import Icon from '../Icon.astro';
 import { getLang, localizePath } from '../../i18n/utils';
 import { useUI, ROUTES } from '../../i18n/ui';
-import { INSIGHT_LIST } from '../../data/insights';
+import { company } from '../../i18n/company';
+import { SORTED_INSIGHTS, readMinutes, fmtDate, metaLabels } from '../../data/insightMeta';
 
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const lp = (p: string) => localizePath(p, lang);
+const L = metaLabels[lang];
 
 const c = {
   zh: {
-    eyebrow: '洞察與工具',
-    title: '第一手經驗的企業 AI 與城市策略內容',
-    lead: '不做空泛的「什麼是 AI」。這裡整理導入流程、採購選擇、資料風險、自動化 ROI 與數位遊牧城市成熟度——對準實際搜尋與採購問題。',
+    kicker: 'Twouring 洞察',
+    title: '給經營者的 AI 與轉型判斷',
+    lead: '每篇都從我們在現場遇過的問題寫起。數字附正式出處，案例只寫親手做過的，結論寫成可以直接拿進會議室討論的判斷。',
     metaDescription:
-      'Twouring 遊遊洞察中心：企業 AI 導入流程與費用、顧問與內訓怎麼選、公司資料與 ChatGPT、部門自動化 ROI、數位遊牧城市成熟度。',
-    read: '閱讀文章',
+      'Twouring 遊遊洞察：傳產數位轉型、AI 導入、缺工與報價自動化、資料風險、自動化 ROI 與數位遊牧城市策略。數字附正式來源，寫給做決策的經營者。',
+    featured: '本期焦點',
+    latest: '全部文章',
+    read: '閱讀全文',
+    principlesTitle: '我們怎麼寫',
+    principles: [
+      ['數字有出處', '統計與法規只引政府、公協會與國際組織的正式資料，並在文末列出來源。'],
+      ['不寫虛構案例', '案例只來自我們實際執行過的專案，去識別化後才寫出來。'],
+      ['寫給做決定的人', '每篇都要回答一個經營判斷：先做什麼、不做什麼、怎麼驗收。'],
+    ],
+    by: '執筆',
+    role: '遊遊股份有限公司負責人、主導顧問',
   },
   en: {
-    eyebrow: 'Insights & tools',
-    title: 'First-hand notes on enterprise AI and city strategy',
-    lead: 'No generic “what is AI”. Adoption process, buying choices, data risk, automation ROI and digital-nomad city maturity — written for real search and purchase questions.',
+    kicker: 'Twouring Insights',
+    title: 'Judgment calls on AI and transformation, for the people who decide',
+    lead: 'Every piece starts from a problem we have met on the ground. Figures are tied to official sources, cases come only from work we have delivered, and each conclusion is written so you can take it straight into a meeting.',
     metaDescription:
-      'Twouring insights: enterprise AI adoption and cost, consulting vs training vs build, company data in ChatGPT, department automation ROI, digital-nomad city maturity.',
-    read: 'Read article',
+      'Twouring insights: transforming traditional businesses, AI adoption, labor shortages, quoting automation, data risk, automation ROI and digital-nomad city strategy. Every figure cited.',
+    featured: 'Featured',
+    latest: 'All articles',
+    read: 'Read the article',
+    principlesTitle: 'How we write',
+    principles: [
+      ['Every figure is sourced', 'Statistics and regulations come only from governments, industry bodies and international organisations, listed at the end.'],
+      ['No invented cases', 'Examples come only from projects we have delivered, anonymised before publication.'],
+      ['Written for decision-makers', 'Each piece answers a business call: what to do first, what to skip, how to measure it.'],
+    ],
+    by: 'Written by',
+    role: 'Founder & lead advisor, Twouring Co., Ltd.',
   },
   ja: {
-    eyebrow: 'インサイト',
-    title: '現場の経験から書く、企業AIと地域戦略のノート',
-    lead: '「AIとは何か」のような一般論は書きません。導入プロセス、発注先の選び方、データのリスク、自動化のROI、デジタルノマド受け入れの成熟度など、実際の検討・発注で出てくる疑問に答えます。',
+    kicker: 'Twouring インサイト',
+    title: '経営者のための、AIと変革の判断材料',
+    lead: 'どの記事も、私たちが現場で向き合った課題から書いています。数字には公式の出典を付け、事例は実際に手がけた案件だけを使い、結論は会議にそのまま持ち込める判断として書きます。',
     metaDescription:
-      'Twouring のインサイト：企業AI導入の流れと費用、コンサル・研修・開発の選び方、社内データとChatGPT、部門別自動化のROI、デジタルノマド受け入れの成熟度。',
+      'Twouring のインサイト：伝統産業のDX、AI導入、人手不足、見積の自動化、データのリスク、自動化のROI、デジタルノマド受け入れ戦略。数字はすべて出典付き。',
+    featured: '注目の記事',
+    latest: 'すべての記事',
     read: '記事を読む',
+    principlesTitle: '執筆の方針',
+    principles: [
+      ['数字には出典を', '統計と法令は政府・業界団体・国際機関の公式資料のみを引用し、文末に出典を載せます。'],
+      ['架空の事例は書かない', '事例は実際に手がけた案件のみ。匿名化したうえで掲載します。'],
+      ['判断する人のために', '何から始め、何をやらず、どう検証するか。経営判断に答える形で書きます。'],
+    ],
+    by: '執筆',
+    role: 'Twouring 代表／リードコンサルタント',
   },
 }[lang];
+
+const [lead, ...rest] = SORTED_INSIGHTS;
+const leadD = lead[lang];
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
 <BaseLayout title={{ zh: '洞察', en: 'Insights', ja: 'インサイト' }[lang]} description={c.metaDescription} path={ROUTES.insights}>
-  <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.insights }]} />
-
-  <section class="section">
+  <header class="mast">
     <div class="container">
-      <div class="grid grid--2 insight-grid">
-        {INSIGHT_LIST.map((article) => {
-          const d = article[lang];
-          return (
-            <a class="card card--link insight-card" href={lp(article.path)}>
-              <span class="tag">{d.eyebrow}</span>
-              <h2>{d.title}</h2>
-              <p>{d.description}</p>
-              <span class="go">{c.read} <Icon name="arrow" size={18} /></span>
-            </a>
-          );
-        })}
+      <nav class="crumbs" aria-label={{ zh: '麵包屑', en: 'Breadcrumb', ja: 'パンくずリスト' }[lang]}>
+        <a href={lp(ROUTES.home)}>{{ zh: '首頁', en: 'Home', ja: 'ホーム' }[lang]}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{t.nav.insights}</span>
+      </nav>
+      <p class="kicker">{c.kicker}</p>
+      <h1>{c.title}</h1>
+      <p class="mast-lead">{c.lead}</p>
+    </div>
+  </header>
+
+  <section class="feature-wrap">
+    <div class="container">
+      <a class="feature" href={lp(lead.path)} data-cta="insight_featured">
+        <div class="feature-label">
+          <span class="rule-label">{c.featured}</span>
+          <span class="cat">{leadD.eyebrow}</span>
+        </div>
+        <div class="feature-main">
+          <h2>{leadD.title}</h2>
+          <p class="feature-dek">{leadD.description}</p>
+          <p class="meta">
+            <span>{fmtDate(lead.published, lang)}</span>
+            <span>{L.min(readMinutes(lead, lang))}</span>
+            {lead.sources && lead.sources.length > 0 && <span>{L.src(lead.sources.length)}</span>}
+          </p>
+          <span class="go">{c.read} <Icon name="arrow" size={18} /></span>
+        </div>
+        <ol class="feature-toc" aria-label={{ zh: '本文架構', en: 'In this article', ja: '記事の構成' }[lang]}>
+          {leadD.sections.map((s, i) => (<li><span class="n">{pad(i + 1)}</span><span>{s.heading}</span></li>))}
+        </ol>
+      </a>
+    </div>
+  </section>
+
+  <section class="section list-wrap">
+    <div class="container list-grid">
+      <div>
+        <h2 class="rule-label list-h">{c.latest}</h2>
+        <ol class="rows" role="list">
+          {rest.map((a) => {
+            const d = a[lang];
+            return (
+              <li>
+                <a class="row" href={lp(a.path)}>
+                  <span class="cat">{d.eyebrow}</span>
+                  <span class="row-main">
+                    <span class="row-title">{d.title}</span>
+                    <span class="row-dek">{d.description}</span>
+                    <span class="meta">
+                      <span>{fmtDate(a.published, lang)}</span>
+                      <span>{L.min(readMinutes(a, lang))}</span>
+                      {a.sources && a.sources.length > 0 && <span>{L.src(a.sources.length)}</span>}
+                    </span>
+                  </span>
+                  <span class="row-go" aria-hidden="true"><Icon name="arrow" size={20} /></span>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
       </div>
+
+      <aside class="side">
+        <div class="author">
+          <img src="/kk-portrait.jpg" alt="" width="640" height="965" loading="lazy" />
+          <div>
+            <p class="author-by">{c.by}</p>
+            <p class="author-name">{company.representative[lang]}</p>
+            <p class="author-role">{c.role}</p>
+          </div>
+        </div>
+        <h2 class="rule-label">{c.principlesTitle}</h2>
+        <ol class="principles" role="list">
+          {c.principles.map(([h, p], i) => (
+            <li><span class="n">{pad(i + 1)}</span><div><p class="p-h">{h}</p><p>{p}</p></div></li>
+          ))}
+        </ol>
+      </aside>
     </div>
   </section>
 
@@ -63,9 +162,69 @@ const c = {
 </BaseLayout>
 
 <style>
-  .insight-grid { gap: 1.2rem; }
-  .insight-card { display: flex; flex-direction: column; gap: 0.7rem; align-items: flex-start; }
-  .insight-card h2 { font-size: var(--fs-500); }
-  .insight-card p { color: var(--c-muted); }
-  .go { margin-top: auto; padding-top: 0.6rem; display: inline-flex; align-items: center; gap: 0.4em; color: var(--c-accent-strong); font-family: var(--font-head); font-weight: 700; }
+  .mast { background: var(--c-surface-ink); color: #c9ccd1; padding-block: clamp(2.4rem, 6vw, 4.2rem) clamp(5.5rem, 11vw, 8.5rem); }
+  .crumbs { display: flex; gap: 0.5rem; font-size: 0.88rem; margin-bottom: clamp(1.6rem, 4vw, 2.6rem); color: #9aa0a7; }
+  .crumbs a { color: #c9ccd1; }
+  .crumbs a:hover { color: #fff; }
+  .kicker { font-family: var(--font-head); font-weight: 700; font-size: var(--fs-300); letter-spacing: 0.14em; text-transform: uppercase; color: var(--c-accent-2); padding-bottom: 0.9rem; border-bottom: 1px solid #3a3d43; margin-bottom: 1.4rem; }
+  .mast h1 { color: #fff; font-size: var(--fs-900); max-width: 20ch; letter-spacing: -0.02em; }
+  .mast-lead { margin-top: 1.2rem; max-width: 62ch; font-size: var(--fs-500); line-height: 1.7; color: #c9ccd1; }
+
+  .rule-label { display: block; font-family: var(--font-head); font-weight: 800; font-size: var(--fs-300); letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-ink-strong); border-top: 3px solid var(--c-ink-strong); padding-top: 0.7rem; }
+  .cat { font-family: var(--font-head); font-weight: 700; font-size: var(--fs-300); color: var(--c-accent-strong); letter-spacing: 0.04em; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.3rem 0; font-size: 0.86rem; color: var(--c-faint); }
+  .meta > span + span::before { content: '·'; margin-inline: 0.55rem; color: var(--c-line-strong); }
+  .n { font-family: var(--font-head); font-weight: 800; color: var(--c-accent-strong); font-variant-numeric: tabular-nums; }
+
+  /* 焦點文章：壓在深色刊頭下緣 */
+  .feature-wrap { margin-top: clamp(-6rem, -8vw, -3.5rem); position: relative; }
+  .feature { display: grid; grid-template-columns: 10rem minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(1.4rem, 3vw, 2.6rem); background: #fff; border: 1px solid var(--c-line-strong); border-top: 4px solid var(--c-accent-strong); padding: clamp(1.4rem, 3.5vw, 2.6rem); color: var(--c-ink); box-shadow: var(--shadow); }
+  .feature-label { display: flex; flex-direction: column; gap: 0.8rem; }
+  .feature h2 { text-wrap: balance; font-size: var(--fs-700); line-height: 1.3; letter-spacing: -0.015em; transition: color 0.15s var(--ease); }
+  .feature:hover h2 { color: var(--c-accent-strong); }
+  .feature-dek { margin-top: 0.9rem; color: var(--c-muted); line-height: 1.75; }
+  .feature .meta { margin-top: 1.1rem; }
+  .go { margin-top: 1.3rem; display: inline-flex; align-items: center; gap: 0.4em; color: var(--c-accent-strong); font-family: var(--font-head); font-weight: 700; }
+  .feature-toc { border-left: 1px solid var(--c-line-strong); padding-left: clamp(1rem, 2.5vw, 1.8rem); display: grid; gap: 0.85rem; align-content: start; align-self: start; }
+  .feature-toc li > span:last-child { text-wrap: pretty; }
+  .feature-toc li { display: grid; grid-template-columns: 2rem 1fr; font-size: 0.94rem; line-height: 1.5; color: var(--c-ink); }
+
+  /* 文章列表 */
+  .list-grid { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .list-h { margin-bottom: 0.4rem; }
+  .rows li { border-bottom: 1px solid var(--c-line-strong); }
+  .row { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) 2rem; gap: 1.4rem; padding-block: 1.6rem; color: var(--c-ink); align-items: start; }
+  .row .cat { padding-top: 0.25rem; }
+  .row-main { display: grid; gap: 0.5rem; }
+  .row-title { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-600); line-height: 1.35; color: var(--c-ink-strong); text-wrap: balance; transition: color 0.15s var(--ease); }
+  .row-dek { color: var(--c-muted); line-height: 1.7; }
+  .row-go { color: var(--c-faint); padding-top: 0.35rem; transition: transform 0.2s var(--ease), color 0.15s var(--ease); }
+  .row:hover .row-title { color: var(--c-accent-strong); }
+  .row:hover .row-go { color: var(--c-accent-strong); transform: translateX(4px); }
+
+  /* 側欄 */
+  .side { position: sticky; top: 92px; display: grid; gap: 1.4rem; }
+  .author { display: grid; grid-template-columns: 4.2rem 1fr; gap: 1rem; align-items: center; background: var(--c-surface); padding: 1.1rem; }
+  .author img { width: 4.2rem; height: 4.2rem; object-fit: cover; object-position: top; border-radius: 50%; }
+  .author-by { font-size: 0.8rem; color: var(--c-faint); letter-spacing: 0.06em; }
+  .author-name { font-family: var(--font-head); font-weight: 800; color: var(--c-ink-strong); }
+  .author-role { font-size: 0.86rem; color: var(--c-muted); line-height: 1.5; }
+  .principles { display: grid; gap: 1.1rem; }
+  .principles li { display: grid; grid-template-columns: 2rem 1fr; }
+  .p-h { font-family: var(--font-head); font-weight: 800; color: var(--c-ink-strong); margin-bottom: 0.2rem; }
+  .principles p:not(.p-h) { font-size: 0.92rem; color: var(--c-muted); line-height: 1.65; }
+
+  @media (max-width: 1000px) {
+    .feature { grid-template-columns: 1fr; }
+    .feature-label { flex-direction: row; align-items: center; gap: 1rem; }
+    .feature-label .rule-label { border-top: 0; padding-top: 0; }
+    .feature-toc { border-left: 0; border-top: 1px solid var(--c-line-strong); padding: 1.2rem 0 0; }
+    .list-grid { grid-template-columns: 1fr; }
+    .side { position: static; }
+  }
+  @media (max-width: 640px) {
+    .row { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; padding-block: 1.3rem; }
+    .row-go { display: none; }
+    .feature-toc { display: none; }
+  }
 </style>

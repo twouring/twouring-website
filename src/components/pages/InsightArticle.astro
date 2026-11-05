@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../PageHero.astro';
 import CTABand from '../CTABand.astro';
+import Icon from '../Icon.astro';
 import { getLang, localizePath, LOCALE_META } from '../../i18n/utils';
 import { useUI, ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
 import { insights, type InsightSlug } from '../../data/insights';
+import { readMinutes, fmtDate, metaLabels, relatedInsights } from '../../data/insightMeta';
 import WebinarPromo from '../WebinarPromo.astro';
 
 interface Props { slug: InsightSlug; }
@@ -16,12 +17,23 @@ const lp = (p: string) => localizePath(p, lang);
 const article = insights[slug];
 const d = article[lang];
 const path = article.path;
+const L = metaLabels[lang];
+const minutes = readMinutes(article, lang);
+const related = relatedInsights(article, lang);
+const pad = (n: number) => String(n).padStart(2, '0');
+const sid = (i: number) => `s${i + 1}`;
+
+const ui = {
+  zh: { home: '首頁', author: '作者', published: '發布', updated: '更新', toc: '本文架構', sources: '資料來源', sourcesNote: '文中數字與法規均出自下列正式資料，引用時請以原始出處為準。', related: '延伸閱讀', back: '全部洞察', role: '遊遊股份有限公司負責人、主導顧問' },
+  en: { home: 'Home', author: 'Author', published: 'Published', updated: 'Updated', toc: 'In this article', sources: 'Sources', sourcesNote: 'Figures and regulations in this article come from the official sources below. Please cite the originals.', related: 'Further reading', back: 'All insights', role: 'Founder & lead advisor, Twouring Co., Ltd.' },
+  ja: { home: 'ホーム', author: '著者', published: '公開', updated: '更新', toc: '記事の構成', sources: '出典', sourcesNote: '本文の数字と法令は以下の公式資料に基づきます。引用の際は原典をご確認ください。', related: 'あわせて読みたい', back: 'インサイト一覧', role: 'Twouring 代表／リードコンサルタント' },
+}[lang];
 
 const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: { zh: '首頁', en: 'Home', ja: 'ホーム' }[lang], item: company.siteUrl + lp(ROUTES.home) },
+    { '@type': 'ListItem', position: 1, name: ui.home, item: company.siteUrl + lp(ROUTES.home) },
     { '@type': 'ListItem', position: 2, name: t.nav.insights, item: company.siteUrl + lp(ROUTES.insights) },
     { '@type': 'ListItem', position: 3, name: d.title, item: company.siteUrl + lp(path) },
   ],
@@ -53,52 +65,171 @@ const articleLd = {
 };
 ---
 <BaseLayout title={d.title} description={d.description} path={path} jsonLd={[breadcrumbLd, articleLd]}>
-  <PageHero
-    eyebrow={d.eyebrow}
-    title={d.title}
-    lead={d.lead}
-    crumbs={[{ label: t.nav.insights, path: ROUTES.insights }, { label: d.eyebrow }]}
-  >
-    <p class="meta">
-      <span>{{ zh: '作者', en: 'Author', ja: '著者' }[lang]}：{authorName}</span>
-      <span>{t.common.lastUpdated}：{article.updated}</span>
-    </p>
-  </PageHero>
-
-  <article class="section">
-    <div class="container prose">
-      <p class="article-lead">{d.lead}</p>
-      {d.sections.map((s) => (
-        <section class="block">
-          <h2>{s.heading}</h2>
-          {s.paras.map((p) => (<p>{p}</p>))}
-        </section>
-      ))}
-      {article.sources && article.sources.length > 0 && (
-        <section class="block sources">
-          <h2>{{ zh: '資料來源', en: 'Sources', ja: '出典' }[lang]}</h2>
-          <ol>
-            {article.sources.map((s) => (<li><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>))}
-          </ol>
-        </section>
-      )}
-      {lang === 'zh' && <WebinarPromo />}
-      <p class="back"><a href={lp(ROUTES.insights)}>{{ zh: '← 全部洞察', en: '← All insights', ja: '← インサイト一覧' }[lang]}</a></p>
+  <header class="mast">
+    <div class="container mast-inner">
+      <nav class="crumbs" aria-label={{ zh: '麵包屑', en: 'Breadcrumb', ja: 'パンくずリスト' }[lang]}>
+        <a href={lp(ROUTES.home)}>{ui.home}</a>
+        <span aria-hidden="true">/</span>
+        <a href={lp(ROUTES.insights)}>{t.nav.insights}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{d.eyebrow}</span>
+      </nav>
+      <p class="kicker">{d.eyebrow}</p>
+      <h1>{d.title}</h1>
+      <p class="dek">{d.description}</p>
+      <div class="byline">
+        <img src="/kk-portrait.jpg" alt="" width="640" height="965" />
+        <div class="by-who">
+          <span class="by-name">{authorName}</span>
+          <span class="by-role">{ui.role}</span>
+        </div>
+        <dl class="by-facts">
+          <div><dt>{ui.published}</dt><dd><time datetime={article.published}>{fmtDate(article.published, lang)}</time></dd></div>
+          {article.updated !== article.published && (<div><dt>{ui.updated}</dt><dd><time datetime={article.updated}>{fmtDate(article.updated, lang)}</time></dd></div>)}
+          <div><dt>{{ zh: '閱讀', en: 'Reading', ja: '読了' }[lang]}</dt><dd>{{ zh: `${minutes} 分鐘`, en: `${minutes} min`, ja: `${minutes}分` }[lang]}</dd></div>
+          {article.sources && article.sources.length > 0 && (<div><dt>{ui.sources}</dt><dd><a href="#sources">{{ zh: `${article.sources.length} 項`, en: `${article.sources.length}`, ja: `${article.sources.length}件` }[lang]}</a></dd></div>)}
+        </dl>
+      </div>
     </div>
-  </article>
+  </header>
+
+  <div class="section body-wrap">
+    <div class="container layout">
+      <aside class="toc" aria-label={ui.toc}>
+        <p class="rule-label">{ui.toc}</p>
+        <ol role="list">
+          {d.sections.map((s, i) => (<li><a href={`#${sid(i)}`}><span class="n">{pad(i + 1)}</span><span>{s.heading}</span></a></li>))}
+        </ol>
+      </aside>
+
+      <article class="prose">
+        <p class="article-lead">{d.lead}</p>
+        {d.sections.map((s, i) => (
+          <section class="block" id={sid(i)}>
+            <h2><span class="n">{pad(i + 1)}</span>{s.heading}</h2>
+            {s.paras.map((p) => (<p>{p}</p>))}
+          </section>
+        ))}
+
+        {article.sources && article.sources.length > 0 && (
+          <section class="sources" id="sources">
+            <p class="rule-label">{ui.sources}</p>
+            <p class="sources-note">{ui.sourcesNote}</p>
+            <ol role="list">
+              {article.sources.map((s, i) => (<li><span class="n">[{i + 1}]</span><a href={s.url} target="_blank" rel="noopener">{s.title}</a></li>))}
+            </ol>
+          </section>
+        )}
+
+        <div class="author-card">
+          <img src="/kk-portrait.jpg" alt={{ zh: '徐愷（KK）肖像照', en: 'Portrait of Kai Hsu (KK)', ja: '徐愷（KK）のポートレート' }[lang]} width="640" height="965" loading="lazy" />
+          <div>
+            <p class="ac-label">{ui.author}</p>
+            <p class="ac-name">{authorName}</p>
+            <p class="ac-role">{ui.role}</p>
+            <a class="ac-link" href={company.linkedinKK} target="_blank" rel="noopener">LinkedIn →</a>
+          </div>
+        </div>
+
+        {lang === 'zh' && <WebinarPromo />}
+      </article>
+    </div>
+  </div>
+
+  {related.length > 0 && (
+    <section class="section related">
+      <div class="container">
+        <p class="rule-label">{ui.related}</p>
+        <div class="rel-grid">
+          {related.map((a) => (
+            <a class="rel" href={lp(a.path)}>
+              <span class="cat">{a[lang].eyebrow}</span>
+              <span class="rel-title">{a[lang].title}</span>
+              <span class="meta">{fmtDate(a.published, lang)}・{L.min(readMinutes(a, lang))}</span>
+            </a>
+          ))}
+        </div>
+        <p class="back"><a href={lp(ROUTES.insights)}>{ui.back} <Icon name="arrow" size={16} /></a></p>
+      </div>
+    </section>
+  )}
 
   <CTABand />
 </BaseLayout>
 
 <style>
-  .meta { margin-top: 1rem; color: var(--c-faint); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
+  .mast { background: var(--c-surface-ink); color: #c9ccd1; padding-block: clamp(2.2rem, 5vw, 3.6rem) clamp(2.2rem, 5vw, 3.2rem); }
+  .mast h1, .dek { max-width: 980px; }
+  .crumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.86rem; margin-bottom: clamp(1.6rem, 4vw, 2.4rem); color: #9aa0a7; }
+  .crumbs a { color: #c9ccd1; }
+  .crumbs a:hover { color: #fff; }
+  .kicker { font-family: var(--font-head); font-weight: 700; font-size: var(--fs-300); letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-accent-2); margin-bottom: 1rem; }
+  .mast h1 { color: #fff; font-size: var(--fs-800); line-height: 1.25; letter-spacing: -0.02em; }
+  .dek { margin-top: 1.1rem; max-width: 64ch; font-size: var(--fs-500); line-height: 1.7; color: #c9ccd1; }
+  .byline { margin-top: clamp(1.8rem, 4vw, 2.6rem); padding-top: 1.3rem; border-top: 1px solid #3a3d43; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.6rem; }
+  .byline img { width: 3rem; height: 3rem; border-radius: 50%; object-fit: cover; object-position: top; }
+  .by-who { display: grid; line-height: 1.4; margin-right: auto; }
+  .by-name { color: #fff; font-weight: 700; font-family: var(--font-head); }
+  .by-role { font-size: 0.86rem; color: #9aa0a7; }
+  .by-facts { display: flex; flex-wrap: wrap; gap: 0.6rem 1.8rem; }
+  .by-facts div { display: grid; line-height: 1.4; }
+  .by-facts dt { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: #8a9097; }
+  .by-facts dd { color: #fff; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .by-facts a { color: #fff; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--c-accent-2); }
+
+  .rule-label { display: block; font-family: var(--font-head); font-weight: 800; font-size: var(--fs-300); letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-ink-strong); border-top: 3px solid var(--c-ink-strong); padding-top: 0.7rem; }
+  .n { font-family: var(--font-head); font-weight: 800; color: var(--c-accent-strong); font-variant-numeric: tabular-nums; }
+  .cat { font-family: var(--font-head); font-weight: 700; font-size: var(--fs-300); color: var(--c-accent-strong); letter-spacing: 0.04em; }
+  .meta { font-size: 0.86rem; color: var(--c-faint); }
+
+  .body-wrap { padding-block: clamp(2.4rem, 5vw, 3.6rem) clamp(2.4rem, 5vw, 3.2rem); }
+  .related { padding-block: clamp(2.4rem, 5vw, 3.6rem); }
+  .layout { display: grid; grid-template-columns: 15rem minmax(0, 720px); gap: clamp(2rem, 5vw, 4.5rem); justify-content: start; align-items: start; }
+  .toc { position: sticky; top: 92px; }
+  .toc ol { margin-top: 0.9rem; display: grid; gap: 0.2rem; }
+  .toc a { display: grid; grid-template-columns: 1.9rem 1fr; padding: 0.45rem 0; font-size: 0.9rem; line-height: 1.5; color: var(--c-muted); border-bottom: 1px solid var(--c-line); }
+  .toc a:hover { color: var(--c-ink-strong); }
+
   .prose { max-width: 720px; }
-  .article-lead { font-size: var(--fs-500); color: var(--c-ink); margin-bottom: 1.8rem; line-height: 1.65; }
-  .block { margin-bottom: 2.2rem; }
-  .block h2 { font-size: var(--fs-500); margin-bottom: 0.8rem; }
-  .block p { color: var(--c-muted); margin-bottom: 0.8rem; line-height: 1.7; }
+  .prose > * + * { margin-top: 0; }
+  .article-lead { font-family: var(--font-head); font-size: var(--fs-600); font-weight: 600; color: var(--c-ink-strong); line-height: 1.6; padding-left: 1.2rem; border-left: 4px solid var(--c-accent-strong); margin-bottom: clamp(2.2rem, 4vw, 3rem); }
+  .block { margin-bottom: clamp(2.2rem, 4vw, 2.8rem); scroll-margin-top: 92px; }
+  .block h2 { text-wrap: balance; font-size: var(--fs-600); line-height: 1.4; margin: 0 0 1rem; display: grid; grid-template-columns: 2.6rem 1fr; padding-top: 1.1rem; border-top: 1px solid var(--c-line-strong); }
+  .block p { color: var(--c-ink); margin-bottom: 1rem; line-height: 1.9; font-size: 1.04rem; }
+
+  .sources { margin-top: clamp(2.4rem, 5vw, 3.2rem); scroll-margin-top: 92px; }
+  .sources-note { margin: 0.8rem 0 1rem; font-size: 0.88rem; color: var(--c-faint); }
+  .sources ol { display: grid; gap: 0.55rem; padding: 0; list-style: none; }
+  .sources li { display: grid; grid-template-columns: 2.4rem 1fr; font-size: 0.9rem; line-height: 1.6; }
+  .sources .n { font-weight: 700; }
+  .sources a { color: var(--c-muted); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--c-line-strong); word-break: break-word; }
+  .sources a:hover { color: var(--c-accent-strong); }
+
+  .author-card { margin-top: clamp(2.4rem, 5vw, 3.2rem); display: grid; grid-template-columns: 5rem 1fr; gap: 1.2rem; align-items: center; background: var(--c-surface); padding: 1.3rem; }
+  .author-card img { width: 5rem; height: 5rem; border-radius: 50%; object-fit: cover; object-position: top; }
+  .ac-label { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-faint); }
+  .ac-name { font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); color: var(--c-ink-strong); }
+  .ac-role { font-size: 0.9rem; color: var(--c-muted); }
+  .ac-link { display: inline-block; margin-top: 0.3rem; font-weight: 700; font-size: 0.9rem; }
+  .prose :global(.wpromo) { margin-top: clamp(2rem, 4vw, 2.6rem); }
+
+  .related { background: var(--c-surface); }
+  .rel-grid { margin-top: 1.2rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2rem); }
+  .rel { display: grid; align-content: start; gap: 0.6rem; padding-top: 1rem; border-top: 1px solid var(--c-line-strong); color: var(--c-ink); }
+  .rel-title { text-wrap: balance; font-family: var(--font-head); font-weight: 800; font-size: var(--fs-500); line-height: 1.45; color: var(--c-ink-strong); transition: color 0.15s var(--ease); }
+  .rel:hover .rel-title { color: var(--c-accent-strong); }
   .back { margin-top: 2rem; }
-  .sources ol { padding-left: 1.2rem; list-style: decimal; display: grid; gap: 0.4rem; font-size: 0.9rem; }
-  .sources a { color: var(--c-muted); text-decoration: underline; text-underline-offset: 2px; word-break: break-word; }
-  .back a { color: var(--c-accent-strong); font-weight: 700; }
+  .back a { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-head); font-weight: 700; }
+
+  @media (max-width: 1000px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .toc { position: static; }
+    .rel-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .by-who { margin-right: 0; }
+    .by-facts { width: 100%; }
+    .block h2 { grid-template-columns: 2.2rem 1fr; }
+    .article-lead { font-size: var(--fs-500); }
+  }
 </style>
