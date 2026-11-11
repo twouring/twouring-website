@@ -107,6 +107,9 @@ const orgLd = {
 const allLd = [orgLd, ...jsonLd];
 // GA4：部署時設定 PUBLIC_GA_ID（G-XXXXXXXXXX）才輸出；未設定時不載入任何追蹤。
 const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
+// Google Ads（帳戶 221-245-5364）：轉換「提交待開發客戶表單」＝說明會報名成功，於 WebinarRegister 觸發。
+const ADS_ID = 'AW-18568309489';
+const TAG_ID = GA_ID || ADS_ID;
 ---
 
 <!doctype html>
@@ -148,15 +151,16 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
     <link rel="sitemap" href="/sitemap.xml" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     {allLd.map((ld) => (<script type="application/ld+json" set:html={JSON.stringify(ld)} />))}
-    {GA_ID && (
+    {TAG_ID && (
       <>
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-        <script is:inline define:vars={{ GA_ID, lang }}>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${TAG_ID}`}></script>
+        <script is:inline define:vars={{ GA_ID, ADS_ID, lang }}>
           window.dataLayer = window.dataLayer || [];
           function gtag(){ dataLayer.push(arguments); }
           window.gtag = gtag;
           gtag('js', new Date());
-          gtag('config', GA_ID, { site_lang: lang });
+          if (GA_ID) gtag('config', GA_ID, { site_lang: lang });
+          if (ADS_ID) gtag('config', ADS_ID);
           // 轉換事件：預約初談、Email、LinkedIn、聯絡表單送出。label 取最近區塊的 eyebrow／標題。
           document.addEventListener('click', function (e) {
             var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;

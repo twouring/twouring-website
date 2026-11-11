@@ -232,6 +232,8 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
           fetch(form.dataset.subscribe || '', { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ email: data.email, name: data.name }) }).catch(() => {});
         }
         (window as any).gtag?.('event', 'webinar_register', { session: v('session').split('：')[0], industry: v('industry') });
+        // Google Ads 轉換：說明會報名成功（提交待開發客戶表單）
+        (window as any).gtag?.('event', 'conversion', { send_to: 'AW-18568309489/qAvpCLjt_rUdEPHVh5ZF', value: 1.0, currency: 'TWD' });
         form.hidden = true;
         successEl.hidden = false;
         (successEl.querySelector('h2') as HTMLElement | null)?.focus();
