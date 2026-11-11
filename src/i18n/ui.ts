@@ -17,6 +17,8 @@ export const ROUTES = {
   about: '/about',
   cases: '/cases',
   insights: '/insights',
+  /** 遊遊愛馬仕 AI 工作空間定價頁（目前只有中文版） */
+  pricing: '/pricing',
   /** 只有中文版 */
   webinar: '/webinar',
   careers: '/careers',

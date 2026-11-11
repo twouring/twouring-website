@@ -54,6 +54,7 @@ const a11y = {
           </div>
         </li>
         <li><a href={lp(ROUTES.cases)} class:list={['nav-link', { 'is-active': active(ROUTES.cases) }]} aria-current={active(ROUTES.cases) ? 'page' : undefined}>{t.nav.cases}</a></li>
+        {lang === 'zh' && <li><a href={lp(ROUTES.pricing)} class:list={['nav-link', { 'is-active': active(ROUTES.pricing) }]} aria-current={active(ROUTES.pricing) ? 'page' : undefined} data-cta="nav_hermes_pricing">方案與價格</a></li>}
         {lang === 'zh' && <li><a href={lp(ROUTES.webinar)} class:list={['nav-link', { 'is-active': active(ROUTES.webinar) }]} aria-current={active(ROUTES.webinar) ? 'page' : undefined} data-cta="nav_webinar">說明會</a></li>}
         <li><a href={lp(ROUTES.insights)} class:list={['nav-link', { 'is-active': active(ROUTES.insights) }]} aria-current={active(ROUTES.insights) ? 'page' : undefined}>{t.nav.insights}</a></li>
         <li><a href={lp(ROUTES.about)} class:list={['nav-link', { 'is-active': active(ROUTES.about) }]} aria-current={active(ROUTES.about) ? 'page' : undefined}>{t.nav.about}</a></li>
@@ -86,6 +87,7 @@ const a11y = {
       </ul>
       <ul class="m-links">
         <li><a href={lp(ROUTES.cases)} aria-current={active(ROUTES.cases) ? 'page' : undefined}>{t.nav.cases}</a></li>
+        {lang === 'zh' && <li><a href={lp(ROUTES.pricing)} aria-current={active(ROUTES.pricing) ? 'page' : undefined} data-cta="nav_hermes_pricing_m">方案與價格</a></li>}
         {lang === 'zh' && <li><a href={lp(ROUTES.webinar)} aria-current={active(ROUTES.webinar) ? 'page' : undefined} data-cta="nav_webinar_m">線上說明會</a></li>}
         <li><a href={lp(ROUTES.insights)} aria-current={active(ROUTES.insights) ? 'page' : undefined}>{t.nav.insights}</a></li>
         <li><a href={lp(ROUTES.about)} aria-current={active(ROUTES.about) ? 'page' : undefined}>{t.nav.about}</a></li>

@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import { ROUTES } from '../../i18n/ui';
+import { company } from '../../i18n/company';
+
+const plans = [
+  {
+    name: '起步版',
+    members: '最多 3 位成員',
+    price: 'NT$ 6,000',
+    unit: '／月',
+    items: [
+      '1 個租戶、3 個帳號',
+      '50 GB 專屬雲端儲存',
+      'Email／LINE 客服，工作日 09:00–18:00',
+      '線上教育訓練 1 場（2 小時）',
+    ],
+  },
+  {
+    name: '團隊版',
+    members: '最多 10 位成員',
+    price: 'NT$ 12,000',
+    unit: '／月',
+    items: [
+      '1 個租戶、10 個帳號，可設子租戶',
+      '200 GB 專屬雲端儲存',
+      'Email／LINE 客服，工作日 09:00–18:00，一級問題 1 小時內回應',
+      '導入諮詢 2 小時＋教育訓練 2 場',
+      'MCP／外部 AI Agent 介接',
+    ],
+  },
+  {
+    name: '企業版',
+    members: '最多 20 位成員',
+    price: 'NT$ 20,000',
+    unit: '／月',
+    items: [
+      '1 個租戶、20 個帳號，不限子租戶',
+      '500 GB 專屬雲端儲存',
+      '專屬客服窗口，一級問題 1 小時內回應',
+      '導入諮詢 4 小時＋教育訓練 4 場＋季度檢視會議',
+      '自訂助理角色與企業技能庫建置',
+    ],
+  },
+];
+
+const termPlans = [
+  ['起步版', '3 人', '6 個月', 'NT$ 36,000', 'NT$ 6,000'],
+  ['團隊版', '10 人', '12 個月', 'NT$ 144,000', 'NT$ 12,000'],
+  ['企業版', '20 人', '12 個月', 'NT$ 240,000', 'NT$ 20,000'],
+];
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: '遊遊愛馬仕 AI 工作空間',
+  provider: { '@id': `${company.siteUrl}/#organization` },
+  areaServed: 'TW',
+  description: '企業專屬 AI 工作空間：獨立租戶、營運助理、共用技能庫、雲端掛載、瀏覽器代理、看板與排程。',
+  offers: plans.map((plan) => ({
+    '@type': 'Offer',
+    name: plan.name,
+    priceCurrency: 'TWD',
+    price: plan.price.replace(/[^0-9]/g, ''),
+    billingDuration: 'P1M',
+    availability: 'https://schema.org/InStock',
+  })),
+};
+---
+
+<BaseLayout
+  title="遊遊愛馬仕 AI 工作空間｜方案與價格"
+  description="遊遊愛馬仕 AI 工作空間方案與價格：含稅、按月計費，起步版每月 NT$6,000 起。"
+  path={ROUTES.pricing}
+  locales={['zh']}
+  jsonLd={[serviceLd]}
+>
+  <PageHero
+    eyebrow="遊遊愛馬仕 AI 工作空間"
+    title="遊遊愛馬仕 AI 工作空間｜方案與價格"
+    lead="每個企業都能擁有自己的 AI 工作團隊"
+    crumbs={[{ label: '方案與價格' }]}
+  />
+
+  <section class="section section--tight">
+    <div class="container container--narrow intro">
+      <p>所有價格為新臺幣、含 5% 營業稅，按月計費、最短訂閱 1 個月。每個方案都包含一個獨立租戶（專屬容器、專屬儲存空間）、九個預設營運助理、共用技能庫、Google Drive／雲端儲存掛載、瀏覽器代理、看板與排程，以及 AI 模型用量（公平使用原則）。</p>
+    </div>
+  </section>
+
+  <section class="section pricing-section" aria-labelledby="monthly-plans">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">按月計費</p>
+        <h2 id="monthly-plans">選擇適合團隊規模的方案</h2>
+      </div>
+      <div class="pricing-grid">
+        {plans.map((plan) => (
+          <article class="plan-card">
+            <h3>{plan.name}</h3>
+            <p class="members">{plan.members}</p>
+            <p class="price"><strong>{plan.price}</strong><span>{plan.unit}</span></p>
+            <ul>
+              {plan.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface" aria-labelledby="term-plans">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">一次簽約</p>
+        <h2 id="term-plans">期程方案</h2>
+      </div>
+      <div class="table-wrap" tabindex="0">
+        <table>
+          <thead><tr><th>方案</th><th>人數</th><th>期程</th><th>總價（含稅）</th><th>相當於月費</th></tr></thead>
+          <tbody>
+            {termPlans.map((row) => <tr>{row.map((cell) => <td>{cell}</td>)}</tr>)}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="fees">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <p class="eyebrow">合約與付款</p>
+        <h2 id="fees">續約與其他費用</h2>
+      </div>
+      <dl class="detail-list">
+        <div><dt>續約優惠</dt><dd>期滿後全額自付續約 12 個月，享 9 折。</dd></div>
+        <div><dt>額外費用</dt><dd>無。方案已包含 AI 模型用量、儲存空間、客服與教育訓練。客戶自行綁定的第三方服務（Google Workspace、GitHub、Railway 等）帳號費用由客戶自理。</dd></div>
+        <div><dt>加購</dt><dd>超出人數上限每人每月 NT$ 1,200；儲存空間每 100 GB 每月 NT$ 500。</dd></div>
+        <div><dt>付款方式</dt><dd>銀行轉帳／ATM 虛擬帳號、線上信用卡（第三方支付）。開立全額電子發票。</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--ink" aria-labelledby="sla">
+    <div class="container container--narrow">
+      <div class="section-head">
+        <p class="eyebrow">服務承諾</p>
+        <h2 id="sla">服務水準</h2>
+      </div>
+      <ul class="sla-list">
+        <li>系統可用性每月 99% 以上（以月份計算，排除事先 24 小時公告的維護）。</li>
+        <li>服務中斷累計達 4 小時以上：延長使用期為中斷時數的 3 倍；單月可用性低於 98% 扣減當月月費 10%、低於 95% 扣減 30%、低於 90% 扣減 50%。</li>
+        <li>資料每日自動備份至異地雲端儲存並保留 30 天（RPO 24 小時）。客戶可隨時免費自行完整下載對話（JSON／CSV／HTML）與所有檔案。</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro { font-size: var(--fs-500); color: var(--c-muted); }
+  .pricing-section { padding-top: 0; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 1.6rem); }
+  .plan-card { display: flex; flex-direction: column; padding: clamp(1.35rem, 3vw, 2rem); border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow-sm); }
+  .plan-card h3 { font-size: var(--fs-600); }
+  .members { margin-top: 0.25rem; color: var(--c-muted); }
+  .price { display: flex; align-items: baseline; gap: 0.25rem; margin: 1.35rem 0; color: var(--c-accent-strong); }
+  .price strong { font-family: var(--font-head); font-size: var(--fs-700); line-height: 1; }
+  .price span { color: var(--c-ink); font-weight: 700; }
+  .plan-card ul, .sla-list { display: grid; gap: 0.72rem; }
+  .plan-card li, .sla-list li { position: relative; padding-left: 1.2rem; }
+  .plan-card li::before, .sla-list li::before { content: '✓'; position: absolute; left: 0; color: var(--c-accent-strong); font-weight: 800; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--c-line); border-radius: var(--radius-lg); background: #fff; }
+  table { width: 100%; border-collapse: collapse; min-width: 680px; }
+  th, td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--c-line); }
+  th { font-family: var(--font-head); font-weight: 800; color: var(--c-ink-strong); background: var(--c-surface-warm); }
+  tr:last-child td { border-bottom: 0; }
+  .detail-list { border: 1px solid var(--c-line); border-radius: var(--radius-lg); overflow: hidden; }
+  .detail-list > div { display: grid; grid-template-columns: minmax(8rem, 0.38fr) 1fr; gap: 1.2rem; padding: 1.1rem 1.3rem; border-bottom: 1px solid var(--c-line); }
+  .detail-list > div:last-child { border-bottom: 0; }
+  .detail-list > div:nth-child(odd) { background: var(--c-surface); }
+  dt { font-family: var(--font-head); color: var(--c-ink-strong); font-weight: 800; }
+  dd { color: var(--c-muted); }
+  .sla-list { color: #d7dade; font-size: var(--fs-500); }
+  .sla-list li::before { color: #fff; }
+  @media (max-width: 820px) { .pricing-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .detail-list > div { grid-template-columns: 1fr; gap: 0.35rem; } th, td { padding: 0.85rem 1rem; } }
+</style>
