@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: twouring-website-production
@@ -46,22 +47,56 @@ jobs:
     environment:
       name: production
       url: https://www.twouring.com
+    env:
+      GCP_PROJECT: twouring-web
+      GCP_ZONE: asia-east1-b
+      GCP_INSTANCE: twouring-core
     steps:
       - uses: actions/download-artifact@v4
         with:
           name: site
           path: dist
 
-      - name: Configure SSH
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/491933408082/locations/global/workloadIdentityPools/github/providers/github
+          service_account: github-twouring-deploy@twouring-web.iam.gserviceaccount.com
+
+      - name: Set up Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure SSH through IAP
         env:
           DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
         run: |
-          set -eu
+          set -euo pipefail
           install -m 700 -d ~/.ssh
           printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          nohup gcloud compute start-iap-tunnel "$GCP_INSTANCE" 22 \
+            --project "$GCP_PROJECT" --zone "$GCP_ZONE" \
+            --local-host-port=localhost:2222 > /tmp/twouring-iap.log 2>&1 &
+          for attempt in {1..15}; do
+            if ssh-keyscan -p 2222 -H localhost >> ~/.ssh/known_hosts 2>/dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          grep -q 'localhost' ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host twouring-production
+            HostName localhost
+            Port 2222
+            User $DEPLOY_USER
+            IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+          EOF
+          chmod 600 ~/.ssh/config
+          ssh twouring-production 'test -d /opt/twouring/sites/twouring-releases'
 
       - name: Upload and activate release
         env:
@@ -76,10 +111,10 @@ jobs:
             *) echo 'DEPLOY_PATH must be /opt/twouring/sites/twouring-releases'; exit 1 ;;
           esac
           tar -C dist -czf /tmp/twouring-site.tgz .
-          ssh "$DEPLOY_USER@$DEPLOY_HOST" \
+          ssh twouring-production \
             "mkdir -p '$DEPLOY_PATH/releases' && rm -rf '$DEPLOY_PATH/releases/$RELEASE_ID' && mkdir '$DEPLOY_PATH/releases/$RELEASE_ID'"
-          scp /tmp/twouring-site.tgz "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/releases/$RELEASE_ID/site.tgz"
-          ssh "$DEPLOY_USER@$DEPLOY_HOST" \
+          scp /tmp/twouring-site.tgz "twouring-production:$DEPLOY_PATH/releases/$RELEASE_ID/site.tgz"
+          ssh twouring-production \
             "set -eu; cd '$DEPLOY_PATH/releases/$RELEASE_ID'; tar -xzf site.tgz; rm site.tgz; ln -sfn 'releases/$RELEASE_ID' '$DEPLOY_PATH/current'; test -f '$DEPLOY_PATH/current/index.html'"
 
       - name: Verify public site
