@@ -17,5 +17,9 @@
     "@fontsource/nunito": "^5.2.5",
     "@fontsource/source-sans-3": "^5.2.5",
     "astro": "^5.13.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "typescript": "^5.9.3"
   }
 }
