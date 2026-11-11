@@ -39,6 +39,7 @@ Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: co
 - AI corporate training: executive workshops from NTD 100,000 per session.
 - AI workflow automation: identify the three workflows most worth automating and measure ROI.
 - Systems development & integration: ERP/CRM integration, quoting and order systems, part-number master data, traceability and quality documents. Requirements interview can be bought alone; a 4-week PoC with acceptance criteria in the quote comes before any build; builds typically NTD 1,000,000–3,000,000; existing ERP/HIS is kept where possible. Engineering delivered with long-term partner Adata; contracts signed by Twouring.
+- Twouring Hermes AI workspace (遊遊愛馬仕): subscription AI workspace built in-house by Twouring — a dedicated tenant per company (isolated container and storage in DigitalOcean Singapore), nine operations assistants, shared skill library, Google Drive mounts, browser agent, kanban and schedules, AI model usage included under fair use. Tax-inclusive monthly pricing: Starter 3 seats NT$6,000, Team 10 seats NT$12,000, Enterprise 20 seats NT$20,000; 6/12-month terms NT$36,000 / NT$144,000 / NT$240,000; renewals 10% off. Full price list: https://www.twouring.com/pricing
 - Remote / hybrid work consulting: policies, collaboration and performance systems (separate purchase from AI).
 - Digital-nomad city strategy: maturity diagnostic, strategy and annual advisory for local governments.
 - Nomad-friendly venues: internationalisation for stays, cafés and districts; Nomad Ready is the method name.

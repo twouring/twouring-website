@@ -69,6 +69,7 @@ const breadcrumbLd = {
   <PageHero
     eyebrow={d.eyebrow}
     title={d.title}
+    titleHtml={d.titleHtml}
     lead={d.lead}
     crumbs={[{ label: t.nav.services, path: ROUTES.services }, { label: d.navLabel }]}
   >
@@ -125,6 +126,9 @@ const breadcrumbLd = {
         ))}
       </div>
       <p class="price-note">{d.priceFootnote}</p>
+      {slug === 'hermes' && lang === 'zh' && (
+        <p class="price-link"><a class="btn btn--primary" href={lp(ROUTES.pricing)} data-cta="service_hermes_pricing">看完整方案與價格 <Icon name="arrow" size={18} /></a></p>
+      )}
     </div>
   </section>
 
@@ -200,6 +204,7 @@ const breadcrumbLd = {
   .pkg-price { font-family: var(--font-head); font-weight: 800; color: var(--c-accent-strong); margin: 0.5rem 0 0.8rem; font-size: 1.05rem; }
   .pkg-desc { color: var(--c-muted); font-size: 0.96rem; }
   .price-note { margin-top: 1.4rem; font-size: 0.88rem; color: var(--c-faint); max-width: 70ch; }
+  .price-link { margin-top: 1.2rem; }
 
   .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .fit-col { border-radius: var(--radius-lg); padding: 1.6rem 1.8rem; border: 1px solid var(--c-line); }

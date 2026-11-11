@@ -9,6 +9,7 @@
 - [AI 企業內訓](https://www.twouring.com/services/ai-training/): 高階主管工作坊與團隊內訓
 - [AI 流程自動化](https://www.twouring.com/services/ai-workflow-automation/): 找出最值得自動化的三個工作流
 - [系統開發與整合](https://www.twouring.com/services/systems/): ERP／CRM 整合、報價與訂單系統；需求訪談可單獨買，先 4 週 PoC 再建置，建置常見 NTD 1,000,000–3,000,000
+- [遊遊愛馬仕 AI 工作空間](https://www.twouring.com/services/hermes/): 企業專屬 AI 工作團隊訂閱（獨立租戶、九個營運助理、瀏覽器代理、看板與排程，含 AI 模型用量）；含稅按月計費，起步版 3 人 NT$6,000／月、團隊版 10 人 NT$12,000／月、企業版 20 人 NT$20,000／月
 - [遠距與混合工作制度](https://www.twouring.com/services/remote-work-consulting/): 遠距政策、協作與績效制度顧問
 - [數位遊牧城市策略](https://www.twouring.com/services/city/): 地方政府成熟度診斷、策略與年度顧問
 - [友善場域與旅宿國際化](https://www.twouring.com/services/venue/): 數位遊牧友善商家改造（Nomad Ready 方法）

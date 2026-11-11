@@ -10,6 +10,7 @@ export const ROUTES = {
   aiWorkflow: '/services/ai-workflow-automation',
   remoteWork: '/services/remote-work-consulting',
   systems: '/services/systems',
+  hermes: '/services/hermes',
   /** @deprecated 舊路徑，已 301 至 aiConsulting */
   aiRemote: '/services/ai-remote',
   venue: '/services/venue',
@@ -31,12 +32,13 @@ export const ROUTES = {
 
 /** 主導覽服務入口（下拉、行動選單、首頁入口、頁尾共用）。順序＝潛在客戶詢問量：企業 → 政府 → 國際。 */
 export const SERVICE_NAV: {
-  key: 'aiConsulting' | 'aiTraining' | 'systems' | 'city' | 'venue' | 'international';
+  key: 'aiConsulting' | 'aiTraining' | 'systems' | 'hermes' | 'city' | 'venue' | 'international';
   path: string;
 }[] = [
   { key: 'aiConsulting', path: ROUTES.aiConsulting },
   { key: 'aiTraining', path: ROUTES.aiTraining },
   { key: 'systems', path: ROUTES.systems },
+  { key: 'hermes', path: ROUTES.hermes },
   { key: 'city', path: ROUTES.city },
   { key: 'venue', path: ROUTES.venue },
   { key: 'international', path: ROUTES.international },
@@ -44,13 +46,14 @@ export const SERVICE_NAV: {
 
 /** 企業線子服務（服務總覽與 AI 導入頁交叉連結）。 */
 export const AI_SERVICE_NAV: {
-  key: 'aiConsulting' | 'aiTraining' | 'aiWorkflow' | 'systems' | 'remoteWork';
+  key: 'aiConsulting' | 'aiTraining' | 'aiWorkflow' | 'systems' | 'hermes' | 'remoteWork';
   path: string;
 }[] = [
   { key: 'aiConsulting', path: ROUTES.aiConsulting },
   { key: 'aiTraining', path: ROUTES.aiTraining },
   { key: 'aiWorkflow', path: ROUTES.aiWorkflow },
   { key: 'systems', path: ROUTES.systems },
+  { key: 'hermes', path: ROUTES.hermes },
   { key: 'remoteWork', path: ROUTES.remoteWork },
 ];
 
@@ -78,6 +81,7 @@ export const ui = {
       aiWorkflow: 'AI 流程自動化',
       remoteWork: '遠距與混合工作',
       systems: '系統開發與整合',
+      hermes: '遊遊愛馬仕 AI 工作空間',
       venue: '場域與商家',
       international: '國際交流與參訪',
     },
@@ -88,6 +92,7 @@ export const ui = {
       aiWorkflow: '找出最值得自動化的工作流',
       remoteWork: '遠距及混合工作制度顧問',
       systems: 'ERP／CRM 整合、報價與訂單系統，先 PoC 再建置',
+      hermes: '企業專屬 AI 工作團隊，含稅月費 NT$6,000 起',
       venue: '數位遊牧友善場域與旅宿國際化',
       international: '亞洲城市交流與企業參訪設計',
     },
@@ -163,6 +168,7 @@ export const ui = {
       aiWorkflow: 'AI workflow automation',
       remoteWork: 'Remote & hybrid work',
       systems: 'Systems & integration',
+      hermes: 'Twouring Hermes AI workspace',
       venue: 'Venues & Local Business',
       international: 'International Exchange',
     },
@@ -173,6 +179,7 @@ export const ui = {
       aiWorkflow: 'Find the workflows worth automating',
       remoteWork: 'Remote and hybrid work systems',
       systems: 'ERP/CRM integration, quoting & order systems — PoC first',
+      hermes: 'Your company’s own AI team, from NT$6,000/mo',
       venue: 'Nomad-friendly venues and hospitality internationalisation',
       international: 'Asia city exchange & corporate visits',
     },
@@ -248,6 +255,7 @@ export const ui = {
       aiWorkflow: 'AI業務自動化',
       remoteWork: 'リモート・ハイブリッドワーク',
       systems: 'システム開発・統合',
+      hermes: 'Twouring Hermes AIワークスペース',
       venue: '施設・店舗',
       international: '国際交流・視察',
     },
@@ -258,6 +266,7 @@ export const ui = {
       aiWorkflow: '自動化すべき業務フローを特定',
       remoteWork: 'リモート・ハイブリッドワーク制度設計',
       systems: 'ERP／CRM連携、見積・受注システム。まずPoCから',
+      hermes: '自社専用のAIチーム。月額 NT$6,000 から',
       venue: 'ノマドフレンドリーな施設・宿泊のインバウンド対応',
       international: 'アジア都市交流と台湾企業視察の企画',
     },

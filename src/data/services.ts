@@ -9,6 +9,7 @@ export type ServiceSlug =
   | 'aiWorkflow'
   | 'remoteWork'
   | 'systems'
+  | 'hermes'
   | 'venue'
   | 'international';
 
@@ -21,6 +22,8 @@ export interface ServiceContent {
   navLabel: string;
   eyebrow: string;
   title: string;
+  /** Optional hero title with .keep spans to control line breaks (title stays plain for meta/JSON-LD). */
+  titleHtml?: string;
   lead: string;
   metaDescription: string;
   highlights: string[];
@@ -1273,6 +1276,211 @@ export const services: Record<
         'システム構築、稼働、データ移行',
         '操作マニュアルと現場研修の記録',
         '保守契約と次段階の提案',
+      ],
+    },
+  },
+
+  hermes: {
+    path: '/services/hermes',
+    icon: 'ai',
+    zh: {
+      navLabel: '遊遊愛馬仕 AI 工作空間',
+      eyebrow: '企業 · AI 工作空間訂閱',
+      title: '遊遊愛馬仕：每個企業都有自己的 AI 工作團隊',
+      titleHtml: '<span class="keep">遊遊愛馬仕：</span><span class="keep">每個企業</span><span class="keep">都有自己的</span> <span class="keep">AI 工作團隊</span>',
+      lead: '不是又一個聊天機器人。每家企業一個獨立工作空間，九個營運助理直接讀寫公司檔案、操作瀏覽器、跑排程、推進看板任務；成員共用同一份資料，所有操作都留紀錄。含稅按月計費，起步版每月 NT$ 6,000。',
+      metaDescription:
+        '遊遊愛馬仕 AI 工作空間：企業專屬租戶、九個營運助理、共用技能庫、Google Drive 掛載、瀏覽器代理、看板與排程，含 AI 模型用量。起步版 3 人 NT$6,000／月、團隊版 10 人 NT$12,000／月、企業版 20 人 NT$20,000／月（含稅）。',
+      highlights: ['每家企業獨立租戶與儲存', '含 AI 模型用量，按月計費', '資料可隨時完整下載'],
+      painTitle: '員工各用各的 AI，公司什麼都沒留下',
+      painPoints: [
+        '每個人用自己的 ChatGPT 帳號，對話和成果散在個人手上，人一離職就帶走。',
+        'AI 只會回答問題，報價、整理資料、更新網站還是要人複製貼上。',
+        'AI 能代寄信、發文之後，沒人知道誰核准了什麼，主管不敢放手。',
+        '資料放在哪、會不會被拿去訓練模型，講不清楚，也拿不出紀錄。',
+      ],
+      solutionTitle: '一個工作空間，讓 AI 真的進到公司流程',
+      solutionLead:
+        '遊遊愛馬仕由遊遊自行開發，部署在 DigitalOcean 新加坡機房，每家企業一個獨立容器與儲存空間。成員單一登入後，在同一個工作區和助理協作；助理可以讀寫公司檔案與雲端硬碟、開瀏覽器操作網站與表單、依排程產出報表，並把待辦放進看板分派。',
+      solutionPoints: [
+        '九個營運助理：策略、營運、財務、業務、行銷、人資、產品、工程、品質，各有角色與記憶，可互相交接。',
+        '直接動手：讀寫工作區檔案與 Google Drive、瀏覽器代理操作網站、執行指令與排程任務。',
+        '多模型自動選用：依任務選 Claude、GPT、Gemini 等模型並自動備援，不綁單一供應商。',
+        '權限與紀錄：成員權限分層，帳號、權限與 token 操作都有稽核紀錄；寄信、發文等對外動作可設人工核准。',
+        '資料歸你：對話可匯出 CSV／JSON／HTML，檔案隨時下載；客戶資料不用於訓練模型，每日異地備份保留 30 天。',
+      ],
+      pitch: '不是幫每個員工買一個 AI 帳號，是讓公司擁有一支會做事、會留紀錄的 AI 工作團隊。',
+      packagesTitle: '方案與價格（含稅，按月計費）',
+      packagesNote: '三個方案都含獨立租戶、九個營運助理、共用技能庫、雲端掛載、瀏覽器代理、看板與排程，以及 AI 模型用量（公平使用原則）。最短訂閱 1 個月；一次簽 6 或 12 個月也可以。',
+      packages: [
+        {
+          name: '起步版（最多 3 人）',
+          price: 'NT$ 6,000／月',
+          desc: '1 個租戶、3 個帳號、50 GB 專屬儲存；Email／LINE 客服；線上教育訓練 1 場。6 個月期程方案 NT$ 36,000。',
+        },
+        {
+          name: '團隊版（最多 10 人）',
+          price: 'NT$ 12,000／月',
+          desc: '10 個帳號、可設子租戶、200 GB 儲存；一級問題 1 小時內回應；導入諮詢 2 小時＋教育訓練 2 場；MCP／外部 AI Agent 介接。12 個月 NT$ 144,000。',
+        },
+        {
+          name: '企業版（最多 20 人）',
+          price: 'NT$ 20,000／月',
+          desc: '20 個帳號、不限子租戶、500 GB 儲存；專屬客服窗口；導入諮詢 4 小時＋教育訓練 4 場＋季度檢視；自訂助理角色與企業技能庫。12 個月 NT$ 240,000。',
+        },
+      ],
+      priceFootnote:
+        '價格含 5% 營業稅並開立全額電子發票。期滿全額自付續約 12 個月享 9 折；超出人數每人每月 NT$ 1,200，儲存每 100 GB 每月 NT$ 500。客戶自行綁定的第三方服務費用自理。完整條件、付款方式與服務水準見「方案與價格」頁。',
+      goodFit: [
+        '5 到 100 人、沒有專職幕僚或資訊人員的中小企業，想讓 AI 處理報價、整理資料、文件與報表。',
+        '已經有員工在用 AI，想把對話、檔案和成果收回公司，並且有權限與紀錄。',
+        '常申請政府補助或承接標案，需要整理大量文件與表單的團隊。',
+      ],
+      notFit: [
+        '只需要一個人用的聊天工具，不需要共享工作區與權限。',
+        '資料依法規必須留在客戶自有機房、不能放在公有雲。',
+        '希望不設定任何流程，買了就全自動取代人力。',
+      ],
+      deliverables: [
+        '企業專屬租戶、成員帳號與單一登入',
+        '九個營運助理的角色設定與公司知識',
+        '雲端硬碟掛載與檔案分類',
+        '線上教育訓練（依方案 1–4 場）',
+        '每月使用報表與帳號稽核紀錄',
+        '隨時可用的 CSV／JSON／HTML 資料匯出',
+      ],
+    },
+    en: {
+      navLabel: 'Twouring Hermes AI workspace',
+      eyebrow: 'Enterprise · AI workspace subscription',
+      title: 'Twouring Hermes: an AI team of your own for every company',
+      lead: 'Not another chatbot. Each company gets an isolated workspace where nine operations assistants read and write company files, drive a browser, run schedules and move kanban tasks forward — members share the same data and every action is logged. Billed monthly, from NT$ 6,000 including tax.',
+      metaDescription:
+        'Twouring Hermes AI workspace: a dedicated tenant, nine operations assistants, shared skill library, Google Drive mounts, browser agent, kanban and schedules, AI model usage included. Starter 3 seats NT$6,000/mo, Team 10 seats NT$12,000/mo, Enterprise 20 seats NT$20,000/mo (tax included).',
+      highlights: ['Dedicated tenant and storage per company', 'AI model usage included, billed monthly', 'Export all your data at any time'],
+      painTitle: 'Everyone uses their own AI — and the company keeps nothing',
+      painPoints: [
+        'Staff use personal ChatGPT accounts; chats and results stay with individuals and leave when they do.',
+        'AI only answers questions — quotes, data clean-up and website edits still need copy-and-paste.',
+        'Once AI can send email or post, nobody knows who approved what, so managers won’t let it act.',
+        'Nobody can say where the data lives or whether it trains a model, and there is no record to show.',
+      ],
+      solutionTitle: 'One workspace that puts AI inside your company’s processes',
+      solutionLead:
+        'Twouring Hermes is built in-house by Twouring and hosted in DigitalOcean’s Singapore region, with an isolated container and storage per company. Members sign in once and work with the assistants in a shared workspace; assistants read and write company files and cloud drives, operate websites and forms through a browser, produce scheduled reports and put to-dos on a kanban board.',
+      solutionPoints: [
+        'Nine operations assistants — strategy, operations, finance, sales, marketing, HR, product, engineering and quality — each with its own role and memory, handing work to each other.',
+        'They act, not just answer: workspace files and Google Drive, a browser agent for websites, commands and scheduled jobs.',
+        'Automatic model choice: Claude, GPT, Gemini and others picked per task with fail-over — no single-vendor lock-in.',
+        'Permissions and records: tiered member roles, audit logs for accounts, permissions and tokens; outbound actions such as email or posts can require human approval.',
+        'Your data stays yours: chats export as CSV/JSON/HTML, files download any time; customer data is not used to train models; daily off-site backups kept for 30 days.',
+      ],
+      pitch: 'Not an AI licence per employee — an AI team the company owns, that gets work done and keeps a record.',
+      packagesTitle: 'Plans and pricing (tax included, billed monthly)',
+      packagesNote: 'Every plan includes a dedicated tenant, nine operations assistants, the shared skill library, cloud mounts, browser agent, kanban and schedules, and AI model usage under a fair-use policy. Minimum term one month; 6- or 12-month terms are also available.',
+      packages: [
+        {
+          name: 'Starter (up to 3 members)',
+          price: 'NT$ 6,000/month',
+          desc: '1 tenant, 3 accounts, 50 GB dedicated storage; email/LINE support; one online training session. 6-month term NT$ 36,000.',
+        },
+        {
+          name: 'Team (up to 10 members)',
+          price: 'NT$ 12,000/month',
+          desc: '10 accounts, sub-tenants, 200 GB storage; priority-1 response within 1 hour; 2 h onboarding plus 2 training sessions; MCP / external AI agent access. 12 months NT$ 144,000.',
+        },
+        {
+          name: 'Enterprise (up to 20 members)',
+          price: 'NT$ 20,000/month',
+          desc: '20 accounts, unlimited sub-tenants, 500 GB storage; dedicated support contact; 4 h onboarding, 4 training sessions and quarterly reviews; custom assistant roles and company skill library. 12 months NT$ 240,000.',
+        },
+      ],
+      priceFootnote:
+        'Prices include 5% VAT with a full e-invoice. Self-paid 12-month renewals get 10% off; extra members NT$ 1,200 per seat per month, extra storage NT$ 500 per 100 GB per month. Third-party services you connect are billed by their providers. Full terms, payment methods and service levels are on the pricing page (Chinese).',
+      goodFit: [
+        'SMEs of 5–100 people without dedicated staff support or IT, who want AI to handle quotes, data clean-up, documents and reports.',
+        'Teams already using AI that want chats, files and results back inside the company, with permissions and records.',
+        'Organisations that often apply for grants or public tenders and handle large volumes of documents and forms.',
+      ],
+      notFit: [
+        'You only need a single-user chat tool, with no shared workspace or permissions.',
+        'Regulation requires your data to stay in your own data centre rather than public cloud.',
+        'You expect it to replace staff fully automatically without setting up any process.',
+      ],
+      deliverables: [
+        'Dedicated tenant, member accounts and single sign-on',
+        'Role setup and company knowledge for the nine assistants',
+        'Cloud-drive mounts and file structure',
+        'Online training (1–4 sessions by plan)',
+        'Monthly usage report and account audit log',
+        'CSV/JSON/HTML data export available at any time',
+      ],
+    },
+    ja: {
+      navLabel: 'Twouring Hermes AIワークスペース',
+      eyebrow: '企業向け · AIワークスペースのサブスクリプション',
+      title: 'Twouring Hermes：企業ごとに、自社専用のAIチームを',
+      titleHtml: 'Twouring <span class="keep">Hermes：</span><span class="keep">企業ごとに、</span><span class="keep">自社専用の</span><span class="keep">AIチームを</span>',
+      lead: 'ただのチャットボットではありません。企業ごとに独立したワークスペースを用意し、9つの業務アシスタントが社内ファイルの読み書き、ブラウザ操作、定期実行、カンバンのタスク推進まで行います。メンバーは同じデータを共有し、すべての操作が記録されます。税込・月額制、スタータープランは月額 NT$ 6,000 から。',
+      metaDescription:
+        'Twouring Hermes AIワークスペース：企業専用テナント、9つの業務アシスタント、共有スキルライブラリ、Google Drive 連携、ブラウザエージェント、カンバンと定期実行、AIモデル利用料込み。スターター3名 NT$6,000／月、チーム10名 NT$12,000／月、エンタープライズ20名 NT$20,000／月（税込）。',
+      highlights: ['企業ごとに独立したテナントとストレージ', 'AIモデル利用料込みの月額制', 'データはいつでも完全にダウンロード可能'],
+      painTitle: '社員がそれぞれ別のAIを使い、会社には何も残らない',
+      painPoints: [
+        '社員が個人の ChatGPT アカウントを使い、会話や成果物は個人の手元に残り、退職とともに失われます。',
+        'AIは質問に答えるだけで、見積、データ整理、Webサイトの更新はいまだにコピー＆ペーストです。',
+        'AIがメール送信や投稿をできるようになっても、誰が何を承認したのか分からず、管理者は任せられません。',
+        'データがどこに保存され、モデルの学習に使われるのかを説明できず、記録も示せません。',
+      ],
+      solutionTitle: 'ひとつのワークスペースで、AIを業務の中に',
+      solutionLead:
+        'Twouring Hermes は Twouring が自社開発し、DigitalOcean のシンガポールリージョンで運用しています。企業ごとに独立したコンテナとストレージを割り当てます。メンバーは一度ログインするだけで、共有ワークスペースでアシスタントと協働できます。アシスタントは社内ファイルやクラウドドライブを読み書きし、ブラウザでWebサイトやフォームを操作し、定期レポートを作成し、ToDoをカンバンに登録して振り分けます。',
+      solutionPoints: [
+        '9つの業務アシスタント：戦略、業務、財務、営業、マーケティング、人事、プロダクト、エンジニアリング、品質。それぞれ役割と記憶を持ち、互いに引き継ぎます。',
+        '答えるだけでなく実行する：ワークスペースのファイルと Google Drive、ブラウザエージェントによるWeb操作、コマンドと定期ジョブ。',
+        'モデルの自動選択：タスクに応じて Claude、GPT、Gemini などを選び、障害時は自動で切り替え。特定ベンダーに縛られません。',
+        '権限と記録：メンバー権限を階層化し、アカウント・権限・トークン操作をすべて監査ログに記録。メール送信や投稿など外部への操作は人の承認を必須にできます。',
+        'データはお客様のもの：会話は CSV／JSON／HTML でエクスポート、ファイルはいつでもダウンロード可能。お客様のデータはモデルの学習に使わず、毎日異なる拠点にバックアップし30日間保管します。',
+      ],
+      pitch: '社員一人ずつにAIアカウントを買うのではなく、会社が持つ「仕事をして記録を残すAIチーム」を。',
+      packagesTitle: 'プランと料金（税込・月額制）',
+      packagesNote: 'すべてのプランに、専用テナント、9つの業務アシスタント、共有スキルライブラリ、クラウド連携、ブラウザエージェント、カンバンと定期実行、AIモデル利用料（公正利用の範囲内）が含まれます。最短1か月から。6か月・12か月の一括契約も可能です。',
+      packages: [
+        {
+          name: 'スターター（最大3名）',
+          price: 'NT$ 6,000／月',
+          desc: '1テナント、3アカウント、専用ストレージ 50 GB、Email／LINE サポート、オンライン研修1回。6か月契約 NT$ 36,000。',
+        },
+        {
+          name: 'チーム（最大10名）',
+          price: 'NT$ 12,000／月',
+          desc: '10アカウント、サブテナント設定可、ストレージ 200 GB、重大障害は1時間以内に対応、導入相談2時間＋研修2回、MCP／外部AIエージェント連携。12か月 NT$ 144,000。',
+        },
+        {
+          name: 'エンタープライズ（最大20名）',
+          price: 'NT$ 20,000／月',
+          desc: '20アカウント、サブテナント無制限、ストレージ 500 GB、専任サポート窓口、導入相談4時間＋研修4回＋四半期レビュー、アシスタントの役割と社内スキルライブラリのカスタマイズ。12か月 NT$ 240,000。',
+        },
+      ],
+      priceFootnote:
+        '価格は5%の営業税込みで、全額の電子インボイスを発行します。満了後に全額自己負担で12か月更新する場合は10%割引。上限を超えるメンバーは1名あたり月額 NT$ 1,200、ストレージは 100 GB あたり月額 NT$ 500。お客様が連携する外部サービスの費用は各提供元への直接のお支払いとなります。詳細条件、支払方法、サービスレベルは料金ページ（中国語）をご覧ください。',
+      goodFit: [
+        '専任のスタッフや情報システム担当がいない5〜100名の中小企業で、見積、データ整理、書類、レポートをAIに任せたい企業。',
+        'すでに社員がAIを使っており、会話・ファイル・成果物を権限と記録つきで会社に取り戻したい企業。',
+        '補助金申請や公共入札が多く、大量の書類やフォームを扱うチーム。',
+      ],
+      notFit: [
+        '1人で使うチャットツールだけが必要で、共有ワークスペースや権限管理は不要な場合。',
+        '法規制により、データを自社のデータセンターに置く必要があり、パブリッククラウドを使えない場合。',
+        '業務フローを一切設定せず、導入するだけで人員を完全に自動で置き換えたい場合。',
+      ],
+      deliverables: [
+        '企業専用テナント、メンバーアカウント、シングルサインオン',
+        '9つのアシスタントの役割設定と社内ナレッジ',
+        'クラウドドライブ連携とファイル構成',
+        'オンライン研修（プランに応じて1〜4回）',
+        '月次利用レポートとアカウント監査ログ',
+        'いつでも利用できる CSV／JSON／HTML のデータエクスポート',
       ],
     },
   },
