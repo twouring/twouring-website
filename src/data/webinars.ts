@@ -96,6 +96,9 @@ export function fmtDate(d: string, withYear = false): string {
 
 /** 場次結束時間（台北）轉 epoch ms，供前端隱藏過期場次。 */
 export const endsAt = (s: WebinarSession) => Date.parse(`${s.date}T${s.end}:00+08:00`);
+/** 報名截止：場次前一天台北時間中午 12:00（經營者 11/11 決定）。console /api/public/contact 也會擋。 */
+export const regClosesAt = (s: WebinarSession) => Date.parse(`${s.date}T12:00:00+08:00`) - 86_400_000;
+export const REG_CUTOFF_NOTE = '每場報名至前一天中午 12:00 截止';
 
 /** 報名人數基數：依場次 id 固定落在 5～10（同一場每次顯示一致）。 */
 export function seatSeed(id: string): number {
@@ -105,7 +108,8 @@ export function seatSeed(id: string): number {
 }
 
 /** build 時仍未結束的場次。 */
-export const upcomingSessions = (now = Date.now()) => SESSIONS.filter((s) => endsAt(s) > now);
+/** 還能報名的場次（未過前一天中午）。 */
+export const upcomingSessions = (now = Date.now()) => SESSIONS.filter((s) => regClosesAt(s) > now);
 
 export const WEBINAR_PATH = '/webinar';
 export const OVERVIEW_IMAGE = { src: '/webinar/overview.webp', alt: '工程人員在廠房內拿平板查看生產資料（示意圖）', credit: '示意圖：Pexels' };

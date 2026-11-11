@@ -12,7 +12,7 @@ import { localizePath } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
 import WebinarSeats from '../WebinarSeats.astro';
-import { TOPICS, SESSIONS, upcomingSessions, fmtDate, endsAt, sessionPath, WEBINAR_PATH, OVERVIEW_IMAGE } from '../../data/webinars';
+import { TOPICS, SESSIONS, upcomingSessions, fmtDate, regClosesAt, REG_CUTOFF_NOTE, sessionPath, WEBINAR_PATH, OVERVIEW_IMAGE } from '../../data/webinars';
 
 const lp = (p: string) => localizePath(p, 'zh');
 
@@ -69,7 +69,7 @@ const agenda = [
       <div class="section-head">
         <p class="eyebrow">場次</p>
         <h2>四個主題輪流講，<span class="keep">挑跟你產業最近的一場</span></h2>
-        <p class="lead">每場 60 分鐘，Google Meet 線上進行，免費參加；每季另加一場專題。報名後會收到 Google 行事曆邀請，裡面附 Meet 連結；開場前一天會再提醒。</p>
+        <p class="lead">每場 60 分鐘，Google Meet 線上進行，免費參加；每季另加一場專題。報名後會收到 Google 行事曆邀請，裡面附 Meet 連結；開場前一天會再提醒。{REG_CUTOFF_NOTE}。</p>
       </div>
 
       {upcoming.length > 0 ? (
@@ -77,7 +77,7 @@ const agenda = [
           {upcoming.map((s, i) => {
             const tp = TOPICS[s.topic];
             return (
-              <li class:list={['card', 'session', { 'session--more': i >= 4 }]} data-ends={endsAt(s)} data-session={s.id}>
+              <li class:list={['card', 'session', { 'session--more': i >= 4 }]} data-ends={regClosesAt(s)} data-session={s.id}>
                 <div class="session-when">
                   <span class="session-date">{fmtDate(s.date, !s.date.startsWith('2026'))}</span>
                   <span class="session-time">{s.start}–{s.end}</span>

@@ -8,7 +8,7 @@ import Icon from './Icon.astro';
 import { localizePath } from '../i18n/utils';
 import { ROUTES } from '../i18n/ui';
 import { company } from '../i18n/company';
-import { TOPICS, upcomingSessions, fmtDate, endsAt } from '../data/webinars';
+import { TOPICS, upcomingSessions, fmtDate, regClosesAt, REG_CUTOFF_NOTE } from '../data/webinars';
 
 interface Props { preselect?: string; compact?: boolean; }
 const { preselect, compact = false } = Astro.props;
@@ -23,14 +23,14 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
     <div class:list={["container", "reg-grid", { "reg-grid--compact": compact }]}>
       <div class="reg-form">
         <h2>報名說明會</h2>
-        <p class="reg-lead">填寫約 1 分鐘。資料只用於這場說明會與後續聯繫，不會提供給第三方。</p>
+        <p class="reg-lead">填寫約 1 分鐘，{REG_CUTOFF_NOTE}。資料只用於這場說明會與後續聯繫，不會提供給第三方。</p>
 
         <form id="webinar-form" data-endpoint={ENDPOINT} data-subscribe={SUBSCRIBE} data-email={company.email} novalidate>
           <div class="field">
             <label for="wf-session">場次 <span class="req" aria-hidden="true">*</span></label>
             <select id="wf-session" name="session" required>
               {upcoming.map((s, i) => (
-                <option value={`${fmtDate(s.date, true)} ${s.start} ${TOPICS[s.topic].label}：${TOPICS[s.topic].title}`} data-id={s.id} data-ends={endsAt(s)} selected={preselect ? s.id === preselect : i === 0}>
+                <option value={`${fmtDate(s.date, true)} ${s.start} ${TOPICS[s.topic].label}：${TOPICS[s.topic].title}`} data-id={s.id} data-ends={regClosesAt(s)} selected={preselect ? s.id === preselect : i === 0}>
                   {fmtDate(s.date)} {s.start}｜{TOPICS[s.topic].label}：{TOPICS[s.topic].title}
                 </option>
               ))}
@@ -166,7 +166,7 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
 </style>
 
 <script>
-  // 隱藏 build 之後才過期的場次（靜態站不會每天重建）。
+  // 隱藏 build 之後才截止報名的場次（靜態站不會每天重建）。
   const now = Date.now();
   document.querySelectorAll<HTMLElement>('[data-ends]').forEach((el) => {
     if (Number(el.dataset.ends) <= now) el.remove();
@@ -219,6 +219,13 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
       try {
         const res = await fetch(form.dataset.endpoint || '', { method: 'POST', body: new URLSearchParams(data) });
         const result = await res.json().catch(() => null);
+        if (result && result.error === 'registration_closed') {
+          statusEl.classList.add('error');
+          statusEl.textContent = '這一場已截止報名（每場報名至前一天中午 12:00），請改選其他場次。';
+          btn.disabled = false;
+          btn.textContent = label;
+          return;
+        }
         if (!(res.ok && result && result.ok)) throw new Error(String(res.status));
         if (v('newsletter')) {
           // console /subscribe 回 HTML、不開 CORS；no-cors 只送不讀，失敗不影響報名結果。

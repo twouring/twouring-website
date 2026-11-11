@@ -12,7 +12,7 @@ import { localizePath } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
 import { insights } from '../../data/insights';
-import { TOPICS, DETAILS, SESSIONS, fmtDate, endsAt, sessionPath, WEBINAR_PATH, type WebinarSession } from '../../data/webinars';
+import { TOPICS, DETAILS, SESSIONS, fmtDate, endsAt, regClosesAt, sessionPath, WEBINAR_PATH, type WebinarSession } from '../../data/webinars';
 
 interface Props { session: WebinarSession; }
 const { session: s } = Astro.props;
@@ -22,7 +22,8 @@ const lp = (p: string) => localizePath(p, 'zh');
 const path = sessionPath(s);
 const when = `${fmtDate(s.date, true)} ${s.start}–${s.end}`;
 const isPast = endsAt(s) <= Date.now();
-const others = SESSIONS.filter((x) => x.id !== s.id && endsAt(x) > Date.now()).slice(0, 3);
+const isClosed = regClosesAt(s) <= Date.now();   // 前一天中午截止報名
+const others = SESSIONS.filter((x) => x.id !== s.id && regClosesAt(x) > Date.now()).slice(0, 3);
 const related = d.related.filter((slug) => slug in insights).map((slug) => insights[slug]);
 
 const title = `${fmtDate(s.date)} ${tp.label}：${tp.title}`;
@@ -65,11 +66,12 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
       <li><span class="fact-k">形式</span><span>Google Meet 線上，免費</span></li>
       <li><span class="fact-k">主講</span><span>徐愷（KK）</span></li>
     </ul>
-    {isPast ? (
-      <p class="past" data-past>這一場已結束。<a href={lp(WEBINAR_PATH)}>看最近的場次 →</a></p>
+    {isClosed ? (
+      <p class="past" data-past>{isPast ? '這一場已結束。' : '這一場已截止報名（每場報名至前一天中午 12:00）。'}<a href={lp(WEBINAR_PATH)}>看最近的場次 →</a></p>
     ) : (<>
       <WebinarSeats id={s.id} class="hero-seats" />
-      <div class="cluster hero-cta" data-ends={endsAt(s)}>
+      <p class="reg-cutoff">報名至 {fmtDate(new Date(regClosesAt(s) + 8 * 3600_000).toISOString().slice(0, 10))} 中午 12:00 截止</p>
+      <div class="cluster hero-cta" data-ends={endsAt(s)} data-closes={regClosesAt(s)}>
         <a class="btn btn--grad btn--lg" href="#register" data-cta="webinar_detail_hero_register">免費報名這場</a>
         <a class="btn btn--ghost btn--lg" href={gcal} target="_blank" rel="noopener" data-cta="webinar_add_calendar">加入 Google 行事曆</a>
       </div>
@@ -178,7 +180,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
     </section>
   )}
 
-  {!isPast && <WebinarRegister preselect={s.id} compact />}
+  {!isClosed && <WebinarRegister preselect={s.id} compact />}
 
   {others.length > 0 && (
     <section class="section">
@@ -186,7 +188,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
         <div class="section-head"><p class="eyebrow">其他場次</p><h2>時間不方便？</h2></div>
         <ul class="others" role="list">
           {others.map((o) => (
-            <li data-ends={endsAt(o)}>
+            <li data-ends={regClosesAt(o)}>
               <a class="card card--link other" href={lp(sessionPath(o))}>
                 <span class="other-date">{fmtDate(o.date, !o.date.startsWith('2026'))} {o.start}</span>
                 <span class="tag">{TOPICS[o.topic].label}</span>
@@ -211,6 +213,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
   @media (min-width: 821px) { :global(.page-hero h1 .kp) { white-space: nowrap; } }
   .section-head h2 { text-wrap: balance; }
   .past { margin-top: 1.4rem; font-weight: 700; }
+  .reg-cutoff { color: var(--c-muted); font-size: 0.92rem; margin: -0.4rem 0 0.8rem; }
   .detail-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2.5rem; align-items: start; }
   .detail-grid h2 { text-wrap: balance; margin-bottom: 0.8rem; }
   .aud { color: var(--c-muted); font-size: var(--fs-500); margin-bottom: 1rem; }
@@ -256,14 +259,16 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
 </style>
 
 <script>
-  // build 後才結束的場次：隱藏報名按鈕並改顯示已結束
-  document.querySelectorAll<HTMLElement>('.hero-cta[data-ends]').forEach((el) => {
-    if (Number(el.dataset.ends) <= Date.now()) {
+  // build 後才截止／結束的場次：隱藏報名按鈕並改顯示狀態
+  document.querySelectorAll<HTMLElement>('.hero-cta[data-closes]').forEach((el) => {
+    const now = Date.now();
+    if (Number(el.dataset.closes) <= now) {
       const p = document.createElement('p');
       p.className = 'past';
       // 安全：固定字串，無使用者輸入
-      p.innerHTML = '這一場已結束。<a href="/webinar/">看最近的場次 →</a>';
+      p.innerHTML = (Number(el.dataset.ends) <= now ? '這一場已結束。' : '這一場已截止報名（每場報名至前一天中午 12:00）。') + '<a href="/webinar/">看最近的場次 →</a>';
       document.querySelector('.hero-seats')?.remove();
+      document.querySelector('.reg-cutoff')?.remove();
       el.replaceWith(p);
       document.getElementById('register')?.remove();
     }
