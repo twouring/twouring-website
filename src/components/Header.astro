@@ -18,6 +18,13 @@ const otherLangs = LOCALES.filter((l) => l !== lang).map((l) => ({
   label: LOCALE_META[l].label,
   html: LOCALE_META[l].html,
 }));
+const enterpriseServices = SERVICE_NAV.filter((s) => ['aiConsulting', 'aiTraining', 'systems', 'hermes'].includes(s.key));
+const placeServices = SERVICE_NAV.filter((s) => ['city', 'venue', 'international'].includes(s.key));
+const serviceGroups = {
+  zh: { enterprise: '企業解決方案', place: '城市、場域與國際' },
+  en: { enterprise: 'Enterprise solutions', place: 'Cities, venues & international' },
+  ja: { enterprise: '企業向けソリューション', place: '自治体・拠点・国際交流' },
+}[lang];
 const a11y = {
   zh: { home: '首頁', primary: '主要導覽', mobile: '行動導覽', lang: '切換語言' },
   en: { home: 'home', primary: 'Primary', mobile: 'Mobile', lang: 'Change language' },
@@ -44,12 +51,24 @@ const a11y = {
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <div class="mega">
-            {SERVICE_NAV.map((s) => (
-              <a class="mega-item" href={lp(s.path)}>
-                <span class="mega-title">{t.serviceNav[s.key]}</span>
-                <span class="mega-desc">{t.serviceNavDesc[s.key]}</span>
-              </a>
-            ))}
+            <div class="mega-group">
+              <p class="mega-group-label">{serviceGroups.enterprise}</p>
+              {enterpriseServices.map((s) => (
+                <a class="mega-item" href={lp(s.path)}>
+                  <span class="mega-title">{t.serviceNav[s.key]}</span>
+                  <span class="mega-desc">{t.serviceNavDesc[s.key]}</span>
+                </a>
+              ))}
+            </div>
+            <div class="mega-group">
+              <p class="mega-group-label">{serviceGroups.place}</p>
+              {placeServices.map((s) => (
+                <a class="mega-item" href={lp(s.path)}>
+                  <span class="mega-title">{t.serviceNav[s.key]}</span>
+                  <span class="mega-desc">{t.serviceNavDesc[s.key]}</span>
+                </a>
+              ))}
+            </div>
             <a class="mega-all" href={lp(ROUTES.services)}>{t.nav.servicesOverview} →</a>
           </div>
         </li>
@@ -57,8 +76,21 @@ const a11y = {
         {lang === 'zh' && <li><a href={lp(ROUTES.pricing)} class:list={['nav-link', { 'is-active': active(ROUTES.pricing) }]} aria-current={active(ROUTES.pricing) ? 'page' : undefined} data-cta="nav_hermes_pricing">方案與價格</a></li>}
         {lang === 'zh' && <li><a href={lp(ROUTES.webinar)} class:list={['nav-link', { 'is-active': active(ROUTES.webinar) }]} aria-current={active(ROUTES.webinar) ? 'page' : undefined} data-cta="nav_webinar">說明會</a></li>}
         <li><a href={lp(ROUTES.insights)} class:list={['nav-link', { 'is-active': active(ROUTES.insights) }]} aria-current={active(ROUTES.insights) ? 'page' : undefined}>{t.nav.insights}</a></li>
-        <li><a href={lp(ROUTES.about)} class:list={['nav-link', { 'is-active': active(ROUTES.about) }]} aria-current={active(ROUTES.about) ? 'page' : undefined}>{t.nav.about}</a></li>
-        <li><a href={lp(ROUTES.careers)} class:list={['nav-link', { 'is-active': active(ROUTES.careers) }]} aria-current={active(ROUTES.careers) ? 'page' : undefined}>{t.nav.careers}</a></li>
+        <li class="has-menu">
+          <a
+            href={lp(ROUTES.about)}
+            class:list={['nav-link', { 'is-active': active(ROUTES.about) || active(ROUTES.careers) }]}
+            aria-current={active(ROUTES.about) || active(ROUTES.careers) ? 'page' : undefined}
+            aria-haspopup="true"
+          >
+            {t.nav.company}
+            <svg class="caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="mega mega--small">
+            <a class="mega-item" href={lp(ROUTES.about)}><span class="mega-title">{t.nav.about}</span></a>
+            <a class="mega-item" href={lp(ROUTES.careers)}><span class="mega-title">{t.nav.careers}</span></a>
+          </div>
+        </li>
         <li><a href={lp(ROUTES.contact)} class:list={['nav-link', { 'is-active': active(ROUTES.contact) }]} aria-current={active(ROUTES.contact) ? 'page' : undefined}>{t.nav.contact}</a></li>
       </ul>
     </nav>
@@ -80,7 +112,12 @@ const a11y = {
     <nav class="container" aria-label={a11y.mobile}>
       <p class="m-group-label">{t.nav.services}</p>
       <ul class="m-services">
-        {SERVICE_NAV.map((s) => (
+        <li class="m-service-group">{serviceGroups.enterprise}</li>
+        {enterpriseServices.map((s) => (
+          <li><a href={lp(s.path)}><strong>{t.serviceNav[s.key]}</strong><span>{t.serviceNavDesc[s.key]}</span></a></li>
+        ))}
+        <li class="m-service-group">{serviceGroups.place}</li>
+        {placeServices.map((s) => (
           <li><a href={lp(s.path)}><strong>{t.serviceNav[s.key]}</strong><span>{t.serviceNavDesc[s.key]}</span></a></li>
         ))}
         <li><a href={lp(ROUTES.services)} class="m-all">{t.nav.servicesOverview} →</a></li>
@@ -90,6 +127,7 @@ const a11y = {
         {lang === 'zh' && <li><a href={lp(ROUTES.pricing)} aria-current={active(ROUTES.pricing) ? 'page' : undefined} data-cta="nav_hermes_pricing_m">方案與價格</a></li>}
         {lang === 'zh' && <li><a href={lp(ROUTES.webinar)} aria-current={active(ROUTES.webinar) ? 'page' : undefined} data-cta="nav_webinar_m">線上說明會</a></li>}
         <li><a href={lp(ROUTES.insights)} aria-current={active(ROUTES.insights) ? 'page' : undefined}>{t.nav.insights}</a></li>
+        <li class="m-link-group">{t.nav.company}</li>
         <li><a href={lp(ROUTES.about)} aria-current={active(ROUTES.about) ? 'page' : undefined}>{t.nav.about}</a></li>
         <li><a href={lp(ROUTES.careers)} aria-current={active(ROUTES.careers) ? 'page' : undefined}>{t.nav.careers}</a></li>
         <li><a href={lp(ROUTES.contact)} aria-current={active(ROUTES.contact) ? 'page' : undefined}>{t.nav.contact}</a></li>
@@ -140,6 +178,11 @@ const a11y = {
     opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0);
   }
   .has-menu:hover .caret, .has-menu:focus-within .caret { transform: rotate(180deg); }
+  .mega-group { display: grid; gap: 0.15rem; }
+  .mega-group + .mega-group { border-top: 1px solid var(--c-line); margin-top: 0.3rem; padding-top: 0.45rem; }
+  .mega-group-label, .m-service-group, .m-link-group { font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-faint); font-weight: 800; }
+  .mega-group-label { padding: 0.45rem 0.9rem 0.2rem; }
+  .mega--small { width: min(220px, 84vw); }
   .mega-item { display: grid; gap: 0.1rem; padding: 0.7em 0.9em; border-radius: var(--radius); color: var(--c-ink-strong); }
   .mega-item:hover { background: var(--c-surface-warm); }
   .mega-title { font-family: var(--font-head); font-weight: 700; }
@@ -175,8 +218,11 @@ const a11y = {
   .m-services a { display: grid; gap: 0.1rem; padding: 0.6em 0.7em; border-radius: var(--radius); color: var(--c-ink-strong); }
   .m-services a:hover { background: var(--c-surface-warm); }
   .m-services span { font-size: 0.85rem; color: var(--c-muted); }
+  .m-service-group { padding: 0.75rem 0.7rem 0.2rem; }
+  .m-service-group + li a { margin-top: 0.1rem; }
   .m-all { color: var(--c-accent-strong) !important; font-weight: 700; }
   .m-links { display: grid; gap: 0.1rem; margin-bottom: 1rem; }
+  .m-link-group { padding: 1rem 0.7rem 0.2rem; margin-top: 0.3rem; border-top: 1px solid var(--c-line); }
   .m-links a { display: block; padding: 0.7em 0.7em; border-radius: var(--radius); font-family: var(--font-head); font-weight: 700; color: var(--c-ink-strong); }
   .m-links a:hover { background: var(--c-surface-warm); }
 
