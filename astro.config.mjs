@@ -5,7 +5,7 @@ import { sitemapXml } from './src/integrations/sitemap-xml.js';
 
 // 正式對外網域。如改用 apex（https://twouring.com）只需改這一處。
 const SITE = 'https://www.twouring.com';
-const LASTMOD = new Date('2026-11-05T00:00:00.000Z');
+const LASTMOD = '2026-11-05T00:00:00.000Z';
 
 export default defineConfig({
   site: SITE,

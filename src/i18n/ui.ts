@@ -30,19 +30,23 @@ export const ROUTES = {
   cookies: '/cookies',
 } as const;
 
-/** 主導覽服務入口（下拉、行動選單、首頁入口、頁尾共用）。順序＝潛在客戶詢問量：企業 → 政府 → 國際。 */
-export const SERVICE_NAV: {
-  key: 'aiConsulting' | 'aiTraining' | 'systems' | 'hermes' | 'city' | 'venue' | 'international';
-  path: string;
-}[] = [
-  { key: 'aiConsulting', path: ROUTES.aiConsulting },
-  { key: 'aiTraining', path: ROUTES.aiTraining },
-  { key: 'systems', path: ROUTES.systems },
-  { key: 'hermes', path: ROUTES.hermes },
-  { key: 'city', path: ROUTES.city },
-  { key: 'venue', path: ROUTES.venue },
-  { key: 'international', path: ROUTES.international },
-];
+/** 全站服務群組：以客戶類型分流，供 Header、Footer、首頁與服務總覽共用。 */
+export const SERVICE_GROUPS = [
+  {
+    id: 'enterprise',
+    keys: ['aiConsulting', 'aiWorkflow', 'aiTraining', 'systems', 'remoteWork', 'hermes'],
+  },
+  { id: 'government', keys: ['city'] },
+  { id: 'place', keys: ['venue', 'international'] },
+] as const;
+
+export type ServiceNavKey = (typeof SERVICE_GROUPS)[number]['keys'][number];
+export type ServiceGroupId = (typeof SERVICE_GROUPS)[number]['id'];
+
+/** 全部可購買服務入口；由群組展平，避免某服務有頁面卻沒有全站入口。 */
+export const SERVICE_NAV: { key: ServiceNavKey; path: string }[] = SERVICE_GROUPS.flatMap((group) =>
+  group.keys.map((key) => ({ key, path: ROUTES[key] })),
+);
 
 /** 企業線子服務（服務總覽與 AI 導入頁交叉連結）。 */
 export const AI_SERVICE_NAV: {

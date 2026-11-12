@@ -4,7 +4,7 @@ import CTABand from '../CTABand.astro';
 import FaqSection from '../FaqSection.astro';
 import Icon from '../Icon.astro';
 import { getLang, localizePath, LOCALE_META } from '../../i18n/utils';
-import { useUI, ROUTES, SERVICE_NAV } from '../../i18n/ui';
+import { useUI, ROUTES, SERVICE_GROUPS } from '../../i18n/ui';
 import { company } from '../../i18n/company';
 import { services } from '../../data/services';
 import { homeFaq, faqJsonLd } from '../../data/faq';
@@ -39,7 +39,9 @@ const c = {
     entryDesc: {
       aiConsulting: '不知道從哪裡開始用 AI：先做健檢，產出 90 天路線圖與 KPI，再決定要不要導入。',
       aiTraining: '上過 AI 課但沒人用：一日實作工作坊，學員帶自己的文件來，當天帶工作流回去。',
+      aiWorkflow: '重複工作很多卻不知從何開始：找出最值得自動化的三個流程，先算 ROI 再導入。',
       systems: '報價靠 Excel、資料散在各業務手上：ERP／CRM 整合與報價訂單系統，先 4 週 PoC 再建置。',
+      remoteWork: '遠距做了制度沒跟上：把協作流程、績效與工具規範變成可運作的混合工作制度。',
       hermes: '員工各用各的 AI、公司什麼都沒留下：遊遊愛馬仕給企業一支會做事、留紀錄的 AI 團隊，含稅月費 NT$6,000 起。',
       city: '想吸引國際人才卻只辦過一次活動：數位遊牧城市策略，做成可驗收的 KPI。',
       venue: '想接待國際客卻缺英文資訊與流程：友善場域、友善商家與旅宿國際化（Nomad Ready）。',
@@ -109,7 +111,9 @@ const c = {
     entryDesc: {
       aiConsulting: 'No idea where to start with AI: a health-check, a 90-day roadmap and KPIs before any rollout.',
       aiTraining: 'AI training nobody applied: a one-day hands-on workshop — bring your own documents, leave with a workflow.',
+      aiWorkflow: 'Too much repetitive work and no clear starting point: find the three workflows worth automating, estimate ROI, then roll out.',
       systems: 'Quotes in Excel, data scattered across sales reps: ERP/CRM integration and quoting/order systems, 4-week PoC first.',
+      remoteWork: 'You went remote but the system did not: make collaboration, performance and tooling into a workable hybrid model.',
       hermes: 'Everyone on their own AI and nothing kept: Twouring Hermes gives the company an AI team that works and keeps records, from NT$6,000/mo.',
       city: 'Want international talent but only ran one event: digital-nomad city strategy with auditable KPIs.',
       venue: 'Want international guests but lack English info and flow: nomad-friendly venues and hospitality (Nomad Ready).',
@@ -179,7 +183,9 @@ const c = {
     entryDesc: {
       aiConsulting: 'AIをどこから始めればよいかわからない：まず診断し、90日ロードマップとKPIをつくってから導入を判断します。',
       aiTraining: 'AI研修を受けても使われない：1日の実践研修。自分の資料を持ち込み、その日のうちにワークフローを持ち帰ります。',
+      aiWorkflow: '定型業務は多いのに着手点がない：自動化すべき3業務を選び、ROIを試算してから導入します。',
       systems: '見積はExcel、データは営業担当ごとにバラバラ：ERP／CRM連携と見積・受注システム。まず4週間のPoCから。',
+      remoteWork: 'リモートを始めても制度が追いつかない：協働、評価、ツールを機能するハイブリッド制度に整えます。',
       hermes: '社員ごとに別々のAIで、会社に何も残らない：Twouring Hermes なら、仕事をして記録を残すAIチームを月額 NT$6,000 から。',
       city: '海外人材を呼びたいが単発イベント止まり：デジタルノマド都市戦略を、検収できるKPIに。',
       venue: '海外客を迎えたいが英語情報も流れもない：ノマドフレンドリーな施設・店舗づくり（Nomad Ready）。',
@@ -224,6 +230,24 @@ const c = {
     kkQuoteBy: 'KK、Twouring 代表',
     kkCta: 'KK の経歴を見る',
     kkBook: '30分の相談を予約',
+  },
+}[lang];
+
+const serviceGroups = {
+  zh: {
+    enterprise: { title: '企業解決方案', lead: '從 AI 導入、流程自動化、內訓到系統整合與工作制度。' },
+    government: { title: '政府與城市', lead: '把人才、場域與政策目標做成可驗收的城市策略。' },
+    place: { title: '場域與國際', lead: '讓商家、旅宿與跨國交流有清楚的接待與合作入口。' },
+  },
+  en: {
+    enterprise: { title: 'Enterprise solutions', lead: 'AI adoption, automation, training, systems and ways of working.' },
+    government: { title: 'Government & cities', lead: 'Turn talent, venues and policy goals into an auditable city strategy.' },
+    place: { title: 'Venues & international', lead: 'Clear hosting and collaboration paths for venues and cross-border exchange.' },
+  },
+  ja: {
+    enterprise: { title: '企業向けソリューション', lead: 'AI導入、業務自動化、研修、システム、働き方まで。' },
+    government: { title: '自治体・地域', lead: '人材、拠点、政策目標を検証可能な地域戦略にします。' },
+    place: { title: '拠点・国際交流', lead: '店舗・宿泊施設と国際交流に、明確な受け入れと連携の入口を。' },
   },
 }[lang];
 
@@ -364,14 +388,24 @@ import WebinarPromo from '../WebinarPromo.astro';
         <h2>{c.entryTitle}</h2>
         <p class="lead">{c.entryLead}</p>
       </div>
-      <div class="grid grid--3 entry-grid">
-        {SERVICE_NAV.map((s) => (
-          <a class="card card--link entry-card" href={lp(services[s.key].path)}>
-            <span class="entry-icon"><Icon name={services[s.key].icon} size={26} /></span>
-            <h3>{t.serviceNav[s.key]}</h3>
-            <p>{c.entryDesc[s.key]}</p>
-            <span class="entry-go">{t.cta.viewService} <Icon name="arrow" size={18} /></span>
-          </a>
+      <div class="service-groups">
+        {SERVICE_GROUPS.map((group) => (
+          <div class="service-group">
+            <div class="service-group-head">
+              <h3>{serviceGroups[group.id].title}</h3>
+              <p>{serviceGroups[group.id].lead}</p>
+            </div>
+            <div class="grid grid--3 entry-grid">
+              {group.keys.map((key) => (
+                <a class="card card--link entry-card" href={lp(services[key].path)}>
+                  <span class="entry-icon"><Icon name={services[key].icon} size={26} /></span>
+                  <h4>{t.serviceNav[key]}</h4>
+                  <p>{c.entryDesc[key]}</p>
+                  <span class="entry-go">{t.cta.viewService} <Icon name="arrow" size={18} /></span>
+                </a>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -488,10 +522,14 @@ import WebinarPromo from '../WebinarPromo.astro';
   }
 
   /* 服務入口 */
+  .service-groups { display: grid; gap: 2.4rem; }
+  .service-group-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 1rem; margin-bottom: 1rem; }
+  .service-group-head h3 { font-size: var(--fs-600); }
+  .service-group-head p { color: var(--c-muted); }
   .entry-grid { gap: 1.2rem; }
   .entry-card { display: flex; flex-direction: column; gap: 0.6rem; }
   .entry-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--radius); background: var(--grad-soft); color: var(--c-accent-strong); margin-bottom: 0.4rem; }
-  .entry-card h3 { font-size: var(--fs-600); }
+  .entry-card h4 { font-size: var(--fs-600); }
   .entry-card p { color: var(--c-muted); }
   .entry-go { margin-top: auto; padding-top: 0.6rem; display: inline-flex; align-items: center; gap: 0.4em; color: var(--c-accent-strong); font-family: var(--font-head); font-weight: 700; }
   .entry-card:hover .entry-go :global(svg) { transform: translateX(4px); transition: transform 0.2s var(--ease); }

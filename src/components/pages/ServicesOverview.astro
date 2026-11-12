@@ -4,7 +4,7 @@ import PageHero from '../PageHero.astro';
 import CTABand from '../CTABand.astro';
 import Icon from '../Icon.astro';
 import { getLang, localizePath } from '../../i18n/utils';
-import { useUI, ROUTES, AI_SERVICE_NAV } from '../../i18n/ui';
+import { useUI, ROUTES, SERVICE_GROUPS } from '../../i18n/ui';
 import { services } from '../../data/services';
 
 const lang = getLang(Astro.currentLocale);
@@ -20,7 +20,10 @@ const c = {
       '遊遊顧問服務：企業 AI 導入、AI 內訓、流程自動化、ERP／CRM 系統開發與整合、遠距工作制度、數位遊牧城市策略、友善場域與國際企業參訪。皆以 30 分鐘需求初談為入口。',
     aiTitle: '企業：AI、內訓、系統與工作制度',
     aiLead: '企業最常問的三件事：AI 從哪裡開始、團隊怎麼教才會用、既有系統怎麼整合。',
-    otherTitle: '城市、場域與國際',
+    governmentTitle: '政府與城市：把人才、場域與政策做成可驗收的策略',
+    governmentLead: '從數位遊牧城市策略、場域盤點到年度 PMO，讓一次活動延伸為可追蹤的成果。',
+    placeTitle: '場域與國際：讓接待與跨國合作留下來',
+    placeLead: '從友善場域與旅宿國際化，到亞洲城市交流與企業參訪。',
     ladderTitle: '合作怎麼開始',
     ladderLead: '每一條服務線都走同一套階梯。你可以只做第一步，看完結果再決定要不要往下。',
     ladder: [
@@ -42,7 +45,10 @@ const c = {
       'Twouring advisory: enterprise AI adoption, AI training, workflow automation, ERP/CRM systems integration, remote-work systems, digital-nomad city strategy, friendly venues and Taiwan business delegations — starting with a 30-minute discovery call.',
     aiTitle: 'Enterprise: AI, training, systems and work policy',
     aiLead: 'The three questions companies ask most: where to start with AI, how to train a team so it sticks, and how to integrate the systems you already have.',
-    otherTitle: 'City, venue and international',
+    governmentTitle: 'Government & cities: turn talent, venues and policy into an auditable strategy',
+    governmentLead: 'From digital-nomad city strategy and venue mapping to annual PMO, turn a one-off event into measurable results.',
+    placeTitle: 'Venues & international: make hosting and cross-border work last',
+    placeLead: 'From venue and hospitality internationalisation to Asia city exchange and corporate visits.',
     ladderTitle: 'How an engagement starts',
     ladderLead: 'Every service line follows the same ladder. Take the first step only, see the result, then decide whether to continue.',
     ladder: [
@@ -64,7 +70,10 @@ const c = {
       'Twouring のサービス：企業AI導入支援、AI研修、業務自動化、ERP／CRMシステム開発・統合、リモートワーク制度、デジタルノマド誘致戦略、ノマドフレンドリーな施設づくり、台湾視察の企画。すべて30分の無料ヒアリングから。',
     aiTitle: '企業向け：AI・研修・システム・働き方',
     aiLead: '企業からもっとも多いご質問は三つ。AIをどこから始めるか、研修をどう定着させるか、既存システムをどう統合するか。',
-    otherTitle: '自治体・施設・国際交流',
+    governmentTitle: '自治体・地域：人材、拠点、政策を検証可能な戦略に',
+    governmentLead: 'デジタルノマドの地域戦略、拠点の棚卸し、年間PMOまで。一度のイベントを測定可能な成果へ。',
+    placeTitle: '拠点・国際交流：受け入れと越境協働を継続させる',
+    placeLead: 'ノマドフレンドリーな拠点・宿泊施設の国際化から、アジア都市交流・企業視察まで。',
     ladderTitle: 'ご相談の進め方',
     ladderLead: 'どのサービスも同じステップで進めます。最初の一歩だけ試し、結果を見てから次に進むかをご判断いただけます。',
     ladder: [
@@ -80,61 +89,42 @@ const c = {
   },
 }[lang];
 
-const otherKeys = ['city', 'venue', 'international'] as const;
+const groupContent = {
+  enterprise: { title: c.aiTitle, lead: c.aiLead, surface: false },
+  government: { title: c.governmentTitle, lead: c.governmentLead, surface: true },
+  place: { title: c.placeTitle, lead: c.placeLead, surface: false },
+};
 ---
 <BaseLayout title={{ zh: '服務', en: 'Services', ja: 'サービス' }[lang]} description={c.metaDescription} path={ROUTES.services}>
   <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} crumbs={[{ label: t.nav.services }]} />
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">{c.aiTitle}</p>
-        <h2>{c.aiLead}</h2>
+  {SERVICE_GROUPS.map((group) => (
+    <section class:list={['section', { 'section--surface': groupContent[group.id].surface }]}>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">{groupContent[group.id].title}</p>
+          <h2>{groupContent[group.id].lead}</h2>
+        </div>
+        <div class="grid grid--3 svc-grid">
+          {group.keys.map((key) => {
+            const d = services[key][lang];
+            return (
+              <article class="card svc-card">
+                <span class="svc-icon"><Icon name={services[key].icon} size={26} /></span>
+                <p class="svc-eyebrow">{d.eyebrow}</p>
+                <h3>{d.title}</h3>
+                <p class="svc-lead">{d.lead}</p>
+                <ul class="svc-highlights" role="list">
+                  {d.highlights.map((h) => (<li><Icon name="check" size={16} /> {h}</li>))}
+                </ul>
+                <a class="btn btn--ghost svc-btn" href={lp(services[key].path)}>{c.seeService} <Icon name="arrow" size={18} /></a>
+              </article>
+            );
+          })}
+        </div>
       </div>
-      <div class="grid grid--3 svc-grid">
-        {AI_SERVICE_NAV.map((s) => {
-          const d = services[s.key][lang];
-          return (
-            <article class="card svc-card">
-              <span class="svc-icon"><Icon name={services[s.key].icon} size={26} /></span>
-              <p class="svc-eyebrow">{d.eyebrow}</p>
-              <h2>{d.title}</h2>
-              <p class="svc-lead">{d.lead}</p>
-              <ul class="svc-highlights" role="list">
-                {d.highlights.map((h) => (<li><Icon name="check" size={16} /> {h}</li>))}
-              </ul>
-              <a class="btn btn--ghost svc-btn" href={lp(services[s.key].path)}>{c.seeService} <Icon name="arrow" size={18} /></a>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--surface">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">{c.otherTitle}</p>
-      </div>
-      <div class="grid grid--2 svc-grid">
-        {otherKeys.map((key) => {
-          const d = services[key][lang];
-          return (
-            <article class="card svc-card">
-              <span class="svc-icon"><Icon name={services[key].icon} size={26} /></span>
-              <p class="svc-eyebrow">{d.eyebrow}</p>
-              <h2>{d.title}</h2>
-              <p class="svc-lead">{d.lead}</p>
-              <ul class="svc-highlights" role="list">
-                {d.highlights.map((h) => (<li><Icon name="check" size={16} /> {h}</li>))}
-              </ul>
-              <a class="btn btn--ghost svc-btn" href={lp(services[key].path)}>{c.seeService} <Icon name="arrow" size={18} /></a>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </section>
+    </section>
+  ))}
 
   <section class="section">
     <div class="container">

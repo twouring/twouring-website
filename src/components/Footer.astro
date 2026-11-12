@@ -1,11 +1,16 @@
 ---
 import { getLang, localizePath } from '../i18n/utils';
-import { useUI, ROUTES, SERVICE_NAV } from '../i18n/ui';
+import { useUI, ROUTES, SERVICE_GROUPS } from '../i18n/ui';
 import { company } from '../i18n/company';
 
 const lang = getLang(Astro.currentLocale);
 const t = useUI(lang);
 const lp = (p: string) => localizePath(p, lang);
+const serviceGroups = {
+  zh: { enterprise: '企業解決方案', government: '政府與城市', place: '場域與國際' },
+  en: { enterprise: 'Enterprise solutions', government: 'Government & cities', place: 'Venues & international' },
+  ja: { enterprise: '企業向けソリューション', government: '自治体・地域', place: '拠点・国際交流' },
+}[lang];
 const year = new Date().getFullYear(); // 建置時求值
 ---
 
@@ -20,12 +25,17 @@ const year = new Date().getFullYear(); // 建置時求值
       </a>
     </div>
 
-    <nav class="footer-col" aria-label={t.footer.servicesTitle}>
+    <nav class="footer-col footer-services" aria-label={t.footer.servicesTitle}>
       <h2>{t.footer.servicesTitle}</h2>
-      <ul role="list">
-        {SERVICE_NAV.map((s) => (<li><a href={lp(s.path)}>{t.serviceNav[s.key]}</a></li>))}
-        <li><a href={lp(ROUTES.services)}>{t.nav.servicesOverview}</a></li>
-      </ul>
+      {SERVICE_GROUPS.map((group) => (
+        <section class="footer-service-group">
+          <h3>{serviceGroups[group.id]}</h3>
+          <ul role="list">
+            {group.keys.map((key) => (<li><a href={lp(ROUTES[key])}>{t.serviceNav[key]}</a></li>))}
+          </ul>
+        </section>
+      ))}
+      <a class="footer-all-services" href={lp(ROUTES.services)}>{t.nav.servicesOverview} →</a>
     </nav>
 
     <nav class="footer-col" aria-label={t.footer.companyTitle}>
@@ -80,6 +90,9 @@ const year = new Date().getFullYear(); // 建置時求值
 
   .footer-col h2 { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; margin-bottom: 1rem; font-family: var(--font-head); }
   .footer-col ul { display: grid; gap: 0.6rem; }
+  .footer-service-group + .footer-service-group { margin-top: 1rem; }
+  .footer-service-group h3 { color: #e4e7ea; font-size: 0.78rem; font-family: var(--font-head); margin-bottom: 0.5rem; }
+  .footer-all-services { display: inline-block; margin-top: 1rem; color: var(--c-accent-2) !important; font-family: var(--font-head); font-weight: 700; }
   .footer-col a { color: #aeb3ba; }
   .footer-col a:hover { color: #fff; }
   .footer-contact li { color: #aeb3ba; }

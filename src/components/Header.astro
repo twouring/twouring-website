@@ -1,6 +1,6 @@
 ---
 import { getLang, localizePath, switchLocaleHref, isActivePath, LOCALES, LOCALE_META } from '../i18n/utils';
-import { useUI, ROUTES, SERVICE_NAV } from '../i18n/ui';
+import { useUI, ROUTES, SERVICE_GROUPS } from '../i18n/ui';
 import { company } from '../i18n/company';
 import { insights } from '../data/insights';
 
@@ -18,12 +18,10 @@ const otherLangs = LOCALES.filter((l) => l !== lang).map((l) => ({
   label: LOCALE_META[l].label,
   html: LOCALE_META[l].html,
 }));
-const enterpriseServices = SERVICE_NAV.filter((s) => ['aiConsulting', 'aiTraining', 'systems', 'hermes'].includes(s.key));
-const placeServices = SERVICE_NAV.filter((s) => ['city', 'venue', 'international'].includes(s.key));
 const serviceGroups = {
-  zh: { enterprise: '企業解決方案', place: '城市、場域與國際' },
-  en: { enterprise: 'Enterprise solutions', place: 'Cities, venues & international' },
-  ja: { enterprise: '企業向けソリューション', place: '自治体・拠点・国際交流' },
+  zh: { enterprise: '企業解決方案', government: '政府與城市', place: '場域與國際' },
+  en: { enterprise: 'Enterprise solutions', government: 'Government & cities', place: 'Venues & international' },
+  ja: { enterprise: '企業向けソリューション', government: '自治体・地域', place: '拠点・国際交流' },
 }[lang];
 const a11y = {
   zh: { home: '首頁', primary: '主要導覽', mobile: '行動導覽', lang: '切換語言' },
@@ -51,24 +49,17 @@ const a11y = {
             <svg class="caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <div class="mega">
-            <div class="mega-group">
-              <p class="mega-group-label">{serviceGroups.enterprise}</p>
-              {enterpriseServices.map((s) => (
-                <a class="mega-item" href={lp(s.path)}>
-                  <span class="mega-title">{t.serviceNav[s.key]}</span>
-                  <span class="mega-desc">{t.serviceNavDesc[s.key]}</span>
-                </a>
-              ))}
-            </div>
-            <div class="mega-group">
-              <p class="mega-group-label">{serviceGroups.place}</p>
-              {placeServices.map((s) => (
-                <a class="mega-item" href={lp(s.path)}>
-                  <span class="mega-title">{t.serviceNav[s.key]}</span>
-                  <span class="mega-desc">{t.serviceNavDesc[s.key]}</span>
-                </a>
-              ))}
-            </div>
+            {SERVICE_GROUPS.map((group) => (
+              <div class="mega-group">
+                <p class="mega-group-label">{serviceGroups[group.id]}</p>
+                {group.keys.map((key) => (
+                  <a class="mega-item" href={lp(ROUTES[key])}>
+                    <span class="mega-title">{t.serviceNav[key]}</span>
+                    <span class="mega-desc">{t.serviceNavDesc[key]}</span>
+                  </a>
+                ))}
+              </div>
+            ))}
             <a class="mega-all" href={lp(ROUTES.services)}>{t.nav.servicesOverview} →</a>
           </div>
         </li>
@@ -112,13 +103,13 @@ const a11y = {
     <nav class="container" aria-label={a11y.mobile}>
       <p class="m-group-label">{t.nav.services}</p>
       <ul class="m-services">
-        <li class="m-service-group">{serviceGroups.enterprise}</li>
-        {enterpriseServices.map((s) => (
-          <li><a href={lp(s.path)}><strong>{t.serviceNav[s.key]}</strong><span>{t.serviceNavDesc[s.key]}</span></a></li>
-        ))}
-        <li class="m-service-group">{serviceGroups.place}</li>
-        {placeServices.map((s) => (
-          <li><a href={lp(s.path)}><strong>{t.serviceNav[s.key]}</strong><span>{t.serviceNavDesc[s.key]}</span></a></li>
+        {SERVICE_GROUPS.map((group) => (
+          <>
+            <li class="m-service-group">{serviceGroups[group.id]}</li>
+            {group.keys.map((key) => (
+              <li><a href={lp(ROUTES[key])}><strong>{t.serviceNav[key]}</strong><span>{t.serviceNavDesc[key]}</span></a></li>
+            ))}
+          </>
         ))}
         <li><a href={lp(ROUTES.services)} class="m-all">{t.nav.servicesOverview} →</a></li>
       </ul>
