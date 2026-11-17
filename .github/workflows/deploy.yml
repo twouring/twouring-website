@@ -1,0 +1,134 @@
+name: Deploy Twouring website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: twouring-website-production
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: test -f dist/index.html && test -f dist/sitemap-index.xml
+      - run: echo "${{ github.sha }}" > dist/version.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    name: Deploy production
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+      url: https://www.twouring.com
+    env:
+      GCP_PROJECT: twouring-web
+      GCP_ZONE: asia-east1-b
+      GCP_INSTANCE: twouring-core
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: dist
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: projects/491933408082/locations/global/workloadIdentityPools/github/providers/github
+          service_account: github-twouring-deploy@twouring-web.iam.gserviceaccount.com
+
+      - name: Set up Google Cloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure SSH through IAP
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          nohup gcloud compute start-iap-tunnel "$GCP_INSTANCE" 22 \
+            --project "$GCP_PROJECT" --zone "$GCP_ZONE" \
+            --local-host-port=localhost:2222 > /tmp/twouring-iap.log 2>&1 &
+          for attempt in {1..15}; do
+            if ssh-keyscan -p 2222 -H localhost >> ~/.ssh/known_hosts 2>/dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          grep -q 'localhost' ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host twouring-production
+            HostName localhost
+            Port 2222
+            User $DEPLOY_USER
+            IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+          EOF
+          chmod 600 ~/.ssh/config
+          ssh twouring-production 'test -d /opt/twouring/sites/twouring-releases'
+
+      - name: Upload and activate release
+        env:
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ vars.DEPLOY_PATH }}
+          RELEASE_ID: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          case "$DEPLOY_PATH" in
+            /opt/twouring/sites/twouring-releases) ;;
+            *) echo 'DEPLOY_PATH must be /opt/twouring/sites/twouring-releases'; exit 1 ;;
+          esac
+          tar -C dist -czf /tmp/twouring-site.tgz .
+          ssh twouring-production \
+            "mkdir -p '$DEPLOY_PATH/releases' && rm -rf '$DEPLOY_PATH/releases/$RELEASE_ID' && mkdir '$DEPLOY_PATH/releases/$RELEASE_ID'"
+          scp /tmp/twouring-site.tgz "twouring-production:$DEPLOY_PATH/releases/$RELEASE_ID/site.tgz"
+          ssh twouring-production \
+            "set -eu; cd '$DEPLOY_PATH/releases/$RELEASE_ID'; tar -xzf site.tgz; rm site.tgz; ln -sfn 'releases/$RELEASE_ID' '$DEPLOY_PATH/current'; test -f '$DEPLOY_PATH/current/index.html'"
+
+      - name: Show served root (diagnostic)
+        run: ssh twouring-production 'grep -rn "root" /opt/twouring/caddy.d/ 2>/dev/null; ls -la /opt/twouring/sites/ 2>/dev/null' || true
+
+      - name: Verify public site serves this commit
+        run: |
+          set -euo pipefail
+          live=""
+          for i in $(seq 1 10); do
+            live=$(curl -fsS --max-time 20 "https://www.twouring.com/version.txt?v=${{ github.sha }}" || true)
+            [ "$live" = "${{ github.sha }}" ] && { echo "live = $live"; exit 0; }
+            sleep 3
+          done
+          echo "::error::www.twouring.com/version.txt = '$live', expected ${{ github.sha }}"
+          exit 1

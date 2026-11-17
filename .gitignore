@@ -11,3 +11,7 @@ npm-debug.log*
 .env.production
 # macOS
 .DS_Store
+
+# local GitHub Actions deployment key (never commit)
+.deploy_key
+.deploy_key.pub
