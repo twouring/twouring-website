@@ -137,6 +137,16 @@ export const milestones: Milestone[] = [
       ja: '情報部門のエンジニア・PM・管理職向けに、要件→仕様→動くプロトタイプまでの3時間実践研修。',
     },
   },
+  {
+    date: '2026.11',
+    kind: 'intl',
+    title: { zh: '加入 OpenAI、NVIDIA、Anthropic 官方計畫', en: 'Joined OpenAI, NVIDIA and Anthropic programs', ja: 'OpenAI・NVIDIA・Anthropic の公式プログラムに参加' },
+    desc: {
+      zh: 'OpenAI Partner Network 完成加入、NVIDIA Inception 核准，並於 10 月入選 Anthropic 新創計畫 Claude for Startups。',
+      en: 'Onboarded to the OpenAI Partner Network, approved for NVIDIA Inception, and accepted to Anthropic’s Claude for Startups in October.',
+      ja: 'OpenAI Partner Network への参加完了、NVIDIA Inception に承認、10月には Anthropic の Claude for Startups に採択。',
+    },
+  },
 ];
 
 /** 具名實績（已交付／已簽約）。 */
