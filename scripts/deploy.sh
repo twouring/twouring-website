@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
-# 建置並部署官網到 GCP（twouring-core）。用法：bash scripts/deploy.sh
+# 部署官網：push main → GitHub Actions（twouring/twouring-website）建置、部署並驗證。
+# 用法：先 commit，再 bash scripts/deploy.sh。等 CI 完成並確認正式站 version.txt = HEAD。
+# 不要再直接 scp 到 VM：/opt/twouring/sites/twouring-com 是指向 twouring-releases/current 的 symlink。
 set -euo pipefail
 cd "$(dirname "$0")/.."
-export PATH=/workspace/local/gcp/google-cloud-sdk/bin:$PATH CLOUDSDK_CONFIG=/workspace/local/gcp/config
-unset CLOUDSDK_AUTH_ACCESS_TOKEN
-TS=$(TZ=Asia/Taipei date +%Y%m%d%H%M)
-npm run build >/workspace/local/_scratch/site-build.log 2>&1 || { tail -20 /workspace/local/_scratch/site-build.log; exit 1; }
-tar -czf /workspace/local/_scratch/site-dist.tgz -C dist .
-gcloud compute scp /workspace/local/_scratch/site-dist.tgz twouring-core:/tmp/site-dist.tgz --zone asia-east1-b --project twouring-web --tunnel-through-iap >/dev/null 2>&1
-gcloud compute ssh twouring-core --zone asia-east1-b --project twouring-web --tunnel-through-iap --command "set -e; cd /opt/twouring/sites; sudo rm -rf twouring-com.new; sudo mkdir twouring-com.new; sudo tar -xzf /tmp/site-dist.tgz -C twouring-com.new; sudo mv twouring-com twouring-com.bak-$TS; sudo mv twouring-com.new twouring-com; ls -dt twouring-com.bak-* | tail -n +6 | xargs -r sudo rm -rf; cd /opt/twouring && sudo docker compose exec -T caddy caddy reload --config /etc/caddy/Caddyfile >/dev/null 2>&1; echo DEPLOYED $TS"
+REPO=twouring/twouring-website
+[ -z "$(git status --porcelain --untracked-files=no)" ] || { echo "有未 commit 的變更，先 commit"; exit 1; }
+git push origin HEAD:main
+SHA=$(git rev-parse HEAD)
+for i in $(seq 1 20); do
+  id=$(gh run list -R $REPO --commit "$SHA" -L1 --json databaseId --jq '.[0].databaseId' 2>/dev/null || true)
+  [ -n "$id" ] && break; sleep 3
+done
+[ -n "${id:-}" ] || { echo "找不到 $SHA 的 Actions run"; exit 1; }
+gh run watch "$id" -R $REPO --exit-status >/dev/null || { gh run view "$id" -R $REPO --log-failed | tail -30; exit 1; }
+live=$(curl -fsS "https://www.twouring.com/version.txt?v=$SHA")
+[ "$live" = "$SHA" ] || { echo "正式站版本 $live ≠ $SHA"; exit 1; }
+echo "DEPLOYED $SHA"
