@@ -269,7 +269,7 @@ export const services: Record<
       lead: '先診斷營運與流程，再規劃 AI 導入路線圖。從機會盤點、90 天行動計畫到 KPI 與 PMO，把 AI 導入當成有里程碑、可驗收的專案來管理。',
       metaDescription:
         '遊遊提供企業 AI 導入顧問，協助中小企業與服務業盤點流程、制定 90 天導入路線圖與 KPI。服務含 AI 營運健檢、工作流導入顧問、專案導入 PM 與 PMO，技術交付由適才科技承接。',
-      highlights: ['先診斷，再談系統', '90 天路線圖與 KPI', '技術交付由適才／Adata 承接'],
+      highlights: ['先診斷，再談系統', '90 天路線圖與 KPI', '自有工程團隊，並與適才科技協作'],
       painTitle: '想用 AI，卻不知從何開始',
       painPoints: [
         '不知道哪些流程值得用 AI、從哪裡開始。',
@@ -279,7 +279,7 @@ export const services: Record<
       ],
       solutionTitle: '先診斷，再規劃可驗收的 AI 導入路線',
       solutionLead:
-        '遊遊負責診斷、流程設計、90 天路線圖、KPI 與專案 PMO；技術交付由適才科技或 Adata 等外部團隊承接。先用兩到三週盤點，找出最值得導入 AI 的優先項目。',
+        '遊遊負責診斷、流程設計、90 天路線圖、KPI 與專案 PMO；技術開發由遊遊自有工程團隊執行，需要擴編時與長期合作的適才科技協作。先用兩到三週盤點，找出最值得導入 AI 的優先項目。',
       solutionPoints: [
         'AI 營運健檢：訪談、流程盤點、工具盤點，產出導入機會清單與優先順序。',
         '90 天導入路線圖：里程碑、KPI、資源配置與風險控管。',
@@ -308,7 +308,7 @@ export const services: Record<
         },
       ],
       priceFootnote:
-        zhFootnote + ' 另有「補助型 AI 導入包（NTD 250,000 ＋ PMO 80,000／月）」可搭配；技術開發由適才科技或 Adata 另行報價。',
+        zhFootnote + ' 另有「補助型 AI 導入包（NTD 250,000 ＋ PMO 80,000／月）」可搭配；技術開發另行報價。',
       goodFit: [
         '中小企業、服務業、連鎖品牌、旅宿、餐飲與地方品牌。',
         '已有 AI 想法或已買工具，但缺乏流程改造與專案管理能力。',
@@ -335,7 +335,7 @@ export const services: Record<
       lead: 'We diagnose operations and processes first, then plan the AI adoption roadmap. From opportunity mapping and a 90-day action plan to KPIs and PMO, AI adoption is run as a project with milestones and sign-off.',
       metaDescription:
         'Twouring provides enterprise AI adoption advisory for SMEs and service businesses: process audit, 90-day adoption roadmap and KPIs. Services include AI operations health-check, workflow adoption advisory and project PM with PMO; technical delivery via Adata.',
-      highlights: ['Diagnosis before any system purchase', '90-day roadmap & KPIs', 'Tech delivery via Adata'],
+      highlights: ['Diagnosis before any system purchase', '90-day roadmap & KPIs', 'In-house engineers, plus partner Adata'],
       painTitle: 'You want AI but don’t know where to start',
       painPoints: [
         'You don’t know which processes are worth automating, or where to begin.',
@@ -345,7 +345,7 @@ export const services: Record<
       ],
       solutionTitle: 'Diagnose first, then plan an auditable AI adoption route',
       solutionLead:
-        'We own the diagnosis, process design, 90-day roadmap, KPIs and project PMO; technical delivery is handled by Adata or an external team. A two-to-three week mapping finds the highest-priority AI adoption opportunities.',
+        'We own the diagnosis, process design, 90-day roadmap, KPIs and project PMO; development is done by our in-house engineers, with long-term partner Adata when a project needs more capacity. A two-to-three week mapping finds the highest-priority AI adoption opportunities.',
       solutionPoints: [
         'AI operations health-check: interviews, process and tooling audit, an opportunity list with priorities.',
         '90-day adoption roadmap: milestones, KPIs, resource allocation and risk control.',
@@ -375,7 +375,7 @@ export const services: Record<
       ],
       priceFootnote:
         enFootnote +
-        ' A grant-backed AI package (NTD 250,000 + PMO 80,000/mo) can be added; technical development is quoted separately by Adata.',
+        ' A grant-backed AI package (NTD 250,000 + PMO 80,000/mo) can be added; technical development is quoted separately.',
       goodFit: [
         'SMEs, service businesses, chains, hospitality, F&B and local brands.',
         'Companies with an AI idea or tools already bought but no process-change or project-management capacity.',
@@ -404,7 +404,7 @@ export const services: Record<
       highlights: [
         'システム購入の前に診断',
         '90日ロードマップとKPI',
-        '技術開発は適才科技（Adata）が担当',
+        '技術開発は社内チームと適才科技（Adata）',
       ],
       painTitle: 'AIを活用したいが、何から始めればよいかわからない',
       painPoints: [
@@ -414,7 +414,7 @@ export const services: Record<
         'プロダクト、業務、技術、PMの間を調整する担当者がいない。',
       ],
       solutionTitle: 'まず診断、そして検収可能なAI導入計画へ',
-      solutionLead: 'Twouringは診断、業務設計、90日ロードマップ、KPI、プロジェクトPMOを担い、技術開発は適才科技（Adata）などの外部チームが担当します。まず2〜3週間で現状を棚卸しし、AI導入の優先度が最も高い領域を特定します。',
+      solutionLead: 'Twouringは診断、業務設計、90日ロードマップ、KPI、プロジェクトPMOを担い、技術開発は社内のエンジニアチームが担当し、必要に応じて協力会社の適才科技（Adata）と協業します。まず2〜3週間で現状を棚卸しし、AI導入の優先度が最も高い領域を特定します。',
       solutionPoints: [
         'AI業務診断：ヒアリング、業務・ツールの棚卸しを行い、導入機会の一覧と優先順位をまとめます。',
         '90日導入ロードマップ：マイルストーン、KPI、リソース配分、リスク管理。',
@@ -442,7 +442,7 @@ export const services: Record<
           desc: '要件ヒアリング、仕様整理、ベンダー管理、検収書類、社内研修、90日ロードマップ。',
         },
       ],
-      priceFootnote: jaFootnote + ' 「補助金活用型AI導入パッケージ（NTD 250,000＋PMO 80,000／月）」も組み合わせ可能です。技術開発は適才科技（Adata）が別途お見積りします。',
+      priceFootnote: jaFootnote + ' 「補助金活用型AI導入パッケージ（NTD 250,000＋PMO 80,000／月）」も組み合わせ可能です。技術開発は別途お見積りします。',
       goodFit: [
         '中小企業、サービス業、チェーンブランド、宿泊、飲食、地域ブランド。',
         'AI活用の構想や導入済みのツールはあるが、業務改革やプロジェクト管理の体制がない企業。',
@@ -498,7 +498,7 @@ export const services: Record<
       packages: [
         {
           name: '高階主管 AI 工作坊',
-          price: 'NTD 100,000 起／場',
+          price: 'NTD 50,000–100,000／場',
           desc: '半日或一日工作坊，案例演練、導入路線圖與內部共識建立。',
         },
         {
@@ -563,7 +563,7 @@ export const services: Record<
       packages: [
         {
           name: 'Executive AI workshop',
-          price: 'from NTD 100,000/session',
+          price: 'NTD 50,000–100,000/session',
           desc: 'Half- or full-day workshop with case exercises, adoption roadmap and alignment building.',
         },
         {
@@ -632,7 +632,7 @@ export const services: Record<
       packages: [
         {
           name: '経営層向けAIワークショップ',
-          price: 'NTD 100,000〜／回',
+          price: 'NTD 50,000〜100,000／回',
           desc: '半日または1日のワークショップ。事例演習、導入ロードマップ、社内合意の形成。',
         },
         {
@@ -717,7 +717,7 @@ export const services: Record<
         },
       ],
       priceFootnote:
-        zhFootnote + ' 可搭配 AI 營運健檢（NTD 120,000 起）作為前置診斷；技術開發由適才科技或 Adata 另行報價。',
+        zhFootnote + ' 可搭配 AI 營運健檢（NTD 120,000 起）作為前置診斷；技術開發另行報價。',
       goodFit: [
         '有明確重複性流程、想先從三個高 ROI 工作流開始的企業。',
         '已買自動化工具但缺乏流程重設與驗收能力的公司。',
@@ -784,7 +784,7 @@ export const services: Record<
       ],
       priceFootnote:
         enFootnote +
-        ' An AI operations health-check (from NTD 120,000) can be added as a pre-step; technical development is quoted separately by Adata.',
+        ' An AI operations health-check (from NTD 120,000) can be added as a pre-step; technical development is quoted separately.',
       goodFit: [
         'Companies with clear repetitive processes who want to start with three high-ROI workflows.',
         'Teams that bought automation tools but lack process redesign and sign-off capacity.',
@@ -851,7 +851,7 @@ export const services: Record<
           desc: '月次定例会議、効果測定、業務改善、次期候補の評価、保守サポート。',
         },
       ],
-      priceFootnote: jaFootnote + ' 事前診断としてAI業務診断（NTD 120,000〜）を組み合わせることも可能です。技術開発は適才科技（Adata）が別途お見積りします。',
+      priceFootnote: jaFootnote + ' 事前診断としてAI業務診断（NTD 120,000〜）を組み合わせることも可能です。技術開発は別途お見積りします。',
       goodFit: [
         '明確な定型業務があり、まずROIの高い3業務から始めたい企業。',
         '自動化ツールは導入済みだが、業務の再設計や検収の体制がない企業。',
@@ -1097,7 +1097,7 @@ export const services: Record<
       ],
       solutionTitle: '先訪談、再 PoC，驗收通過才建置',
       solutionLead:
-        '遊遊負責需求、規格、專案管理與驗收，系統由長期合作夥伴適才科技（Adata）的工程團隊承接。例如一家數千料號的五金材料業者，我們以商品資料為中心整合電商、ERP 與門市，減少重複輸入和人工比對；一家電子廠不換 ERP，在既有系統上加一層決策中樞，MRP 幾分鐘就重算完，總費用約為原廠模組的一半。',
+        '遊遊負責需求、規格、專案管理與驗收，開發由遊遊自有工程團隊執行，需要擴編時與長期合作的適才科技（Adata）協作。例如五金材料業者酷擊有限公司有數千個料號，我們以商品資料為中心整合電商、ERP 與門市，減少重複輸入和人工比對；一家電子廠不換 ERP，在既有系統上加一層決策中樞，MRP 幾分鐘就重算完，總費用約為原廠模組的一半。',
       solutionPoints: [
         '需求訪談與系統規格：2 到 3 週，訪談老闆、業務、現場和財務，寫出可報價、可驗收的規格。',
         '4 週 PoC：用公司真實的料號、訂單和報工資料驗證，驗收指標寫在報價裡，通過才進入建置。',
@@ -1126,7 +1126,7 @@ export const services: Record<
         },
       ],
       priceFootnote:
-        '以上為服務起點價格，實際依專案範圍、合作單位與交付內容報價，正式合作以書面報價與合約為準。 維運另外簽約；既有 ERP／HIS 能保留就保留，不強迫全部汰換；技術開發由遊遊與適才科技（Adata）的工程團隊承接。',
+        '以上為服務起點價格，實際依專案範圍、合作單位與交付內容報價，正式合作以書面報價與合約為準。 維運另外簽約；既有 ERP／HIS 能保留就保留，不強迫全部汰換；技術開發由遊遊自有工程團隊執行，必要時與適才科技（Adata）協作。',
       goodFit: [
         '製造業、醫療生技或服務業中小企業，資料散在 Excel 和各業務手上，想把報價、訂單、現場和庫存接起來。',
         '已有 ERP 或 HIS，不想全部汰換，但要補上 CRM、報價、追溯或品質文件這幾塊。',
@@ -1163,7 +1163,7 @@ export const services: Record<
       ],
       solutionTitle: 'Interview first, PoC second, build only after sign-off',
       solutionLead:
-        'Twouring owns requirements, specification, project management and acceptance; our long-term partner Adata’s engineering team builds the system. A hardware materials supplier with thousands of part numbers had e-commerce, ERP and stores integrated around a single product master, cutting duplicate entry and manual matching. An electronics plant kept its ERP and added a decision layer on top so MRP reruns in minutes. The total cost was about half that of the vendor’s own module.',
+        'Twouring owns requirements, specification, project management and acceptance; our in-house engineering team builds the system, working with long-term partner Adata when more capacity is needed. At 酷擊有限公司, a hardware materials supplier with thousands of part numbers, we integrated e-commerce, ERP and stores around a single product master, cutting duplicate entry and manual matching. An electronics plant kept its ERP and added a decision layer on top so MRP reruns in minutes. The total cost was about half that of the vendor’s own module.',
       solutionPoints: [
         'Requirements interview & specification: two to three weeks with the owner, sales, shop floor and finance, producing a spec you can quote and sign off against.',
         'Four-week PoC: validated on your real part, order and shop-floor data, with acceptance metrics written into the quote; build starts only when they pass.',
@@ -1192,7 +1192,7 @@ export const services: Record<
         },
       ],
       priceFootnote:
-        'Prices shown are starting points. Actual quotes depend on scope, partners and deliverables; engagements are confirmed by written quote and contract. Maintenance is a separate contract; existing ERP/HIS is kept wherever it works rather than replaced wholesale; development is delivered by Twouring with Adata’s engineering team.',
+        'Prices shown are starting points. Actual quotes depend on scope, partners and deliverables; engagements are confirmed by written quote and contract. Maintenance is a separate contract; existing ERP/HIS is kept wherever it works rather than replaced wholesale; development is done by Twouring’s in-house engineers, with Adata’s team when more capacity is needed.',
       goodFit: [
         'Manufacturing, healthcare or service SMEs whose data lives in Excel and with individual salespeople, and who want quotes, orders, the shop floor and stock connected.',
         'Organisations with an existing ERP or HIS that don’t want to replace it but need CRM, quoting, traceability or quality records added.',
@@ -1229,7 +1229,7 @@ export const services: Record<
       ],
       solutionTitle: 'まずヒアリング、次に PoC、検収に合格してから構築',
       solutionLead:
-        'Twouringが要件定義、仕様、プロジェクト管理、検収を担当し、システムは長年の協力会社である適才科技（Adata）のエンジニアチームが構築します。数千品番を扱う金物材料の会社では、商品データを軸に EC、ERP、店舗を統合し、二重入力と手作業の照合を減らしました。ある電子部品メーカーでは ERP を入れ替えず、既存システムの上に意思決定用の層を加え、MRP の再計算が数分で終わるようになりました。総費用はメーカー純正モジュールの約半分です。',
+        'Twouringが要件定義、仕様、プロジェクト管理、検収を担当し、開発は Twouring の社内エンジニアチームが担当し、必要に応じて長年の協力会社である適才科技（Adata）と協業します。数千品番を扱う金物材料の会社、酷擊有限公司では、商品データを軸に EC、ERP、店舗を統合し、二重入力と手作業の照合を減らしました。ある電子部品メーカーでは ERP を入れ替えず、既存システムの上に意思決定用の層を加え、MRP の再計算が数分で終わるようになりました。総費用はメーカー純正モジュールの約半分です。',
       solutionPoints: [
         '要件ヒアリングと仕様策定：2〜3週間で経営者、営業、現場、経理にヒアリングし、見積と検収の基準にできる仕様を作成します。',
         '4週間の PoC：実際の品番、受注、現場の実績データで検証します。検収指標は見積書に明記し、合格した場合のみ構築に進みます。',
@@ -1258,7 +1258,7 @@ export const services: Record<
         },
       ],
       priceFootnote:
-        '掲載価格はサービスの開始価格です。実際の金額はプロジェクトの範囲、連携先、提供内容に応じてお見積りし、正式なご契約は書面の見積書および契約書をもって確定します。 保守は別途契約です。既存の ERP／HIS は活かせる限り残し、全面的な入替を強いることはありません。技術開発はTwouringと適才科技（Adata）のエンジニアチームが担当します。',
+        '掲載価格はサービスの開始価格です。実際の金額はプロジェクトの範囲、連携先、提供内容に応じてお見積りし、正式なご契約は書面の見積書および契約書をもって確定します。 保守は別途契約です。既存の ERP／HIS は活かせる限り残し、全面的な入替を強いることはありません。技術開発は Twouring の社内エンジニアが担当し、必要に応じて適才科技（Adata）と協業します。',
       goodFit: [
         '製造業、医療・バイオ、サービス業の中小企業で、データが Excel と営業担当の手元に散らばり、見積、受注、現場、在庫をつなぎたい企業。',
         'ERP や HIS はすでにあり、全面入替はせずに CRM、見積、トレーサビリティ、品質書類を補いたい企業。',

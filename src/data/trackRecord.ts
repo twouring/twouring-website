@@ -8,7 +8,7 @@ import type { Lang } from '../i18n/company';
 type T = Record<Lang, string>;
 
 export interface Stat { n: T; l: T }
-export interface Milestone { date: string; title: T; desc: T; kind: 'gov' | 'ent' | 'intl' | 'eco' }
+export interface Milestone { date: string; title: T; desc: T; kind: 'gov' | 'ent' | 'intl' | 'eco' | 'kk' }
 export interface Engagement { tag: T; client: T; title: T; desc: T; points: Record<Lang, string[]> }
 
 export const trackStats: Stat[] = [
@@ -47,6 +47,46 @@ export const trackStats: Stat[] = [
 ];
 
 export const milestones: Milestone[] = [
+  {
+    date: '2014',
+    kind: 'kk',
+    title: { zh: 'KK 加入 MoBagel 行動貝果，後任技術副總', en: 'KK joins MoBagel, later VP of Engineering', ja: 'KK が MoBagel に参画、のちに技術副総裁' },
+    desc: {
+      zh: '2014–2018 年從工程師做到技術副總，經歷產品快速成長、技術債管理、資安與跨部門協作。',
+      en: 'From engineer to VP of Engineering, 2014–2018: rapid product growth, technical-debt management, security and cross-team work.',
+      ja: '2014〜2018年、エンジニアから技術副総裁へ。急成長するプロダクト、技術的負債の管理、セキュリティ、部門間連携を経験。',
+    },
+  },
+  {
+    date: '2018',
+    kind: 'kk',
+    title: { zh: 'KK 共同創辦匠說，任技術長', en: 'KK co-founds Jiangshuo as CTO', ja: 'KK が匠說を共同創業、CTO に' },
+    desc: {
+      zh: '帶領產品與技術團隊，從零做出線上教學與內容產品，整合前後端與雲端架構。',
+      en: 'Led product and engineering to build online-learning and content products from scratch, across front end, back end and cloud.',
+      ja: 'プロダクトと開発チームを率い、オンライン学習・コンテンツ製品をゼロから構築。フロント、バックエンド、クラウドを統合。',
+    },
+  },
+  {
+    date: '2020',
+    kind: 'kk',
+    title: { zh: 'KK 創立適才科技', en: 'KK founds Adata', ja: 'KK が適才科技を設立' },
+    desc: {
+      zh: '接案開發、技術顧問與工程師培訓，協助企業建立可跨國協作的技術團隊。',
+      en: 'Contract development, technical advisory and engineer training, helping companies build teams that work across borders.',
+      ja: '受託開発、技術顧問、エンジニア育成。企業が国境を越えて協業できる開発チームづくりを支援。',
+    },
+  },
+  {
+    date: '2023.11',
+    kind: 'kk',
+    title: { zh: 'KK 創立言文字', en: 'KK founds Yan-Wen-Zi', ja: 'KK が言文字を設立' },
+    desc: {
+      zh: '台北車站前的複合式場域，結合咖啡、共享空間與科技新創社群活動。',
+      en: 'A venue in front of Taipei Main Station combining a café, co-working space and tech and startup community events.',
+      ja: '台北駅前の複合拠点。カフェ、コワーキング、テック・スタートアップのコミュニティイベントを組み合わせる。',
+    },
+  },
   {
     date: '2024.05',
     kind: 'ent',
@@ -253,11 +293,11 @@ export const coachingCases: { tag: T; title: T; desc: T }[] = [
   },
   {
     tag: { zh: '製造／零售', en: 'Manufacturing / retail', ja: '製造・小売' },
-    title: { zh: '數千品項五金業者 電商、ERP 與門市整合', en: 'Hardware supplier: e-commerce, ERP and store integration', ja: '数千品目の金物商社：EC・ERP・店舗の統合' },
+    title: { zh: '酷擊有限公司：五金電商、ERP 與門市整合', en: '酷擊有限公司 (hardware supplier): e-commerce, ERP and store integration', ja: '酷擊有限公司（金物商社）：EC・ERP・店舗の統合' },
     desc: {
-      zh: '以商品主檔串接線上銷售、庫存與門市取貨，減少重複輸入與人工比對。',
-      en: 'Used the product master to link online sales, inventory and in-store pickup, cutting double entry and manual checks.',
-      ja: '商品マスタを軸にEC・在庫・店頭受取をつなぎ、二重入力と手作業の突合を削減。',
+      zh: '數千個料號的五金業者。以商品主檔串接線上銷售、庫存與門市取貨，減少重複輸入與人工比對。',
+      en: 'A hardware supplier with thousands of part numbers. We used the product master to link online sales, inventory and in-store pickup, cutting double entry and manual checks.',
+      ja: '数千品番を扱う金物商社。商品マスタを軸にEC・在庫・店頭受取をつなぎ、二重入力と手作業の突合を削減。',
     },
   },
   {

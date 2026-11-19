@@ -14,7 +14,7 @@ export const homeFaq = {
     },
     {
       q: '企業 AI 導入要花多少錢、多久？',
-      a: '常見起點是 AI 營運健檢約 NTD 120,000；工作流導入顧問約 NTD 150,000／月起；一日 AI 實作工作坊 NTD 80,000–100,000 起；ERP／CRM 等系統建置常見 NTD 1,000,000–3,000,000，先 4 週 PoC 再建置。一般流程是先做 30 分鐘需求初談，再做付費診斷，接著 90 天試點並以 KPI 驗收。實際報價依範圍與是否含技術開發而定。',
+      a: '常見起點是 AI 營運健檢約 NTD 120,000；工作流導入顧問約 NTD 150,000／月起；一日 AI 實作工作坊 NTD 50,000–100,000；ERP／CRM 等系統建置常見 NTD 1,000,000–3,000,000，先 4 週 PoC 再建置。一般流程是先做 30 分鐘需求初談，再做付費診斷，接著 90 天試點並以 KPI 驗收。實際報價依範圍與是否含技術開發而定。',
     },
     {
       q: '我們公司沒有 ERP、資料都在 Excel，也能做嗎？',
@@ -44,7 +44,7 @@ export const homeFaq = {
     },
     {
       q: 'How much does enterprise AI adoption cost, and how long does it take?',
-      a: 'A common starting point is an AI operations health-check around NTD 120,000; workflow advisory from about NTD 150,000/mo; a one-day hands-on AI workshop from NTD 80,000–100,000; ERP/CRM-type system builds typically NTD 1,000,000–3,000,000 with a 4-week PoC first. The usual sequence is a free 30-minute discovery call, then a paid diagnostic, then a 90-day pilot signed off against KPIs. Quotes depend on scope and whether build is included.',
+      a: 'A common starting point is an AI operations health-check around NTD 120,000; workflow advisory from about NTD 150,000/mo; a one-day hands-on AI workshop NTD 50,000–100,000; ERP/CRM-type system builds typically NTD 1,000,000–3,000,000 with a 4-week PoC first. The usual sequence is a free 30-minute discovery call, then a paid diagnostic, then a 90-day pilot signed off against KPIs. Quotes depend on scope and whether build is included.',
     },
     {
       q: 'We have no ERP and everything lives in Excel. Can you still help?',
@@ -74,7 +74,7 @@ export const homeFaq = {
     },
     {
       q: '企業のAI導入にはどれくらいの費用と期間がかかりますか？',
-      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜、1日のAI実践研修がNTD 80,000〜100,000程度〜です。ERP／CRMなどのシステム構築は一般的にNTD 1,000,000〜3,000,000で、まず4週間のPoCを行います。通常の流れは、無料の30分初回ヒアリング、有償診断、KPIで検収する90日間の試行の順です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
+      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜、1日のAI実践研修がNTD 50,000〜100,000です。ERP／CRMなどのシステム構築は一般的にNTD 1,000,000〜3,000,000で、まず4週間のPoCを行います。通常の流れは、無料の30分初回ヒアリング、有償診断、KPIで検収する90日間の試行の順です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
     },
     {
       q: 'ERPがなく、データがすべてExcelにある状態でも依頼できますか？',
@@ -103,7 +103,7 @@ export const aiConsultingFaq = {
   zh: [
     {
       q: '什麼是企業 AI 導入顧問？',
-      a: '企業 AI 導入顧問先盤點流程與工具，再決定要自動化的工作流、工具選型、訓練與 KPI，不會一開始就買系統。Twouring 遊遊負責診斷與 PMO；技術交付可由適才科技或指定供應商承接。',
+      a: '企業 AI 導入顧問先盤點流程與工具，再決定要自動化的工作流、工具選型、訓練與 KPI，不會一開始就買系統。Twouring 遊遊負責診斷與 PMO；技術開發由遊遊自有工程團隊執行，必要時與適才科技協作。',
     },
     {
       q: 'AI 顧問、內訓和系統開發有何不同？',
@@ -117,7 +117,7 @@ export const aiConsultingFaq = {
   en: [
     {
       q: 'What is enterprise AI consulting?',
-      a: 'Enterprise AI consulting maps processes and tools first, then chooses workflows, tooling, training and KPIs, rather than starting by buying a system. Twouring owns diagnosis and PMO; tech delivery can go through Adata or a named vendor.',
+      a: 'Enterprise AI consulting maps processes and tools first, then chooses workflows, tooling, training and KPIs, rather than starting by buying a system. Twouring owns diagnosis and PMO; development is done by our in-house engineers, with partner Adata when needed.',
     },
     {
       q: 'How do AI consulting, training and building a system differ?',
@@ -131,7 +131,7 @@ export const aiConsultingFaq = {
   ja: [
     {
       q: '企業向けAI導入コンサルティングとは何ですか？',
-      a: '企業向けAI導入コンサルティングでは、まず業務プロセスとツールを棚卸しし、そのうえで自動化するワークフロー、ツール選定、研修、KPIを決めます。最初にシステムを購入するのではありません。Twouringは診断とPMOを担い、技術面の実装は適才科技（Adata）または指定ベンダーが担当できます。',
+      a: '企業向けAI導入コンサルティングでは、まず業務プロセスとツールを棚卸しし、そのうえで自動化するワークフロー、ツール選定、研修、KPIを決めます。最初にシステムを購入するのではありません。Twouringは診断とPMOを担い、技術面の実装は社内エンジニアが担当し、必要に応じて適才科技（Adata）と協業します。',
     },
     {
       q: 'AIコンサルティング、社内研修、システム開発は何が違いますか？',

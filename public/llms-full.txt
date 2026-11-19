@@ -20,7 +20,7 @@
 
 ## What Twouring is
 
-Twouring 遊遊是企業 AI 導入顧問，也是城市數位轉型與數位遊牧策略顧問。合作從免費的 30 分鐘需求初談開始，再進入付費診斷、顧問／PMO 與導入。技術交付可由合作夥伴適才科技承接；TDNA（台灣數位遊牧者協會）是公益協會，提供社群與產業連結，不是遊遊的付費客戶。
+Twouring 遊遊是企業 AI 導入顧問，也是城市數位轉型與數位遊牧策略顧問。合作從免費的 30 分鐘需求初談開始，再進入付費診斷、顧問／PMO 與導入。遊遊有自己的工程團隊，需要擴編時與合作夥伴適才科技協作；TDNA（台灣數位遊牧者協會）是公益協會，提供社群與產業連結，不是遊遊的付費客戶。
 
 ## Awarded government cases
 
@@ -37,7 +37,7 @@ Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: co
 ## Services (definitions)
 
 - Enterprise AI consulting: diagnose processes first, then adopt AI with a 90-day roadmap, KPIs and PMO. Starting package: AI operations health-check from NTD 120,000.
-- AI corporate training: executive workshops from NTD 100,000 per session.
+- AI corporate training: one-day workshops NTD 50,000–100,000 per session.
 - AI workflow automation: identify the three workflows most worth automating and measure ROI.
 - Systems development & integration: ERP/CRM integration, quoting and order systems, part-number master data, traceability and quality documents. Requirements interview can be bought alone; a 4-week PoC with acceptance criteria in the quote comes before any build; builds typically NTD 1,000,000–3,000,000; existing ERP/HIS is kept where possible. Engineering delivered with long-term partner Adata; contracts signed by Twouring.
 - Twouring Hermes AI workspace (遊遊愛馬仕): subscription AI workspace built in-house by Twouring: a dedicated tenant per company (isolated container and storage in DigitalOcean Singapore), nine operations assistants, shared skill library, Google Drive mounts, browser agent, kanban and schedules, AI model usage included under fair use. Tax-inclusive monthly pricing: Starter 3 seats NT$6,000, Team 10 seats NT$12,000, Enterprise 20 seats NT$20,000; 6/12-month terms NT$36,000 / NT$144,000 / NT$240,000; renewals 10% off. Full price list: https://www.twouring.com/pricing
@@ -48,7 +48,7 @@ Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: co
 
 ## Lead advisor
 
-Kai Hsu (徐愷, KK) is founder and lead advisor. B.S. Computer Science, National Taiwan University; 15 years building software; former VP of Engineering at MoBagel (2014–2018); AWS Certified Solutions Architect – Associate; speaker at PyCon Taiwan and PyCon JP 2019 (Tokyo, in English); corporate trainer for Chunghwa Telecom and III. Also Chair of the Taiwan Digital Nomad Association and Executive Director of the NDC Nomad Taiwan Office (personal roles, not Twouring clients). He scopes every engagement; day-to-day delivery is by the project team.
+Kai Hsu (徐愷, KK) is founder and lead advisor. B.S. Computer Science, National Taiwan University; 15 years building software; former VP of Engineering at MoBagel (2014–2018); co-founder and CTO of Jiangshuo (2018); founder of Adata (2020) and Yan-Wen-Zi (2023); AWS Certified Solutions Architect – Associate; speaker at PyCon Taiwan and PyCon JP 2019 (Tokyo, in English); corporate trainer for Chunghwa Telecom and III; 1st place at Microsoft GCR Startup Hackfest and 6th worldwide at the Salesforce $1M Hackathon. Also Chair of the Taiwan Digital Nomad Association and Executive Director of the NDC Nomad Taiwan Office (personal roles, not Twouring clients). He scopes every engagement; day-to-day delivery is by the project team.
 
 ## Entry ladder
 

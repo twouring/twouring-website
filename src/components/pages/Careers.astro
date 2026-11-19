@@ -6,7 +6,7 @@ import Icon from '../Icon.astro';
 import { getLang } from '../../i18n/utils';
 import { ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
-import { contentJobs, engineeringJobs, employmentLabel, type Job } from '../../data/careers';
+import { contentJobs, employmentLabel, type Job } from '../../data/careers';
 
 const lang = getLang(Astro.currentLocale);
 
@@ -14,13 +14,10 @@ const c = {
   zh: {
     eyebrow: '人才招募',
     title: '加入遊遊',
-    lead: '遊遊以遠端工作為主，組織扁平。目前招募社群小編、活動企劃，以及日本大型系統專案的遠端派遣工程師。我們需要能自行安排工作、對成果負責的人。',
+    lead: '遊遊以遠端工作為主，組織扁平。目前招募社群小編與活動企劃。我們需要能自行安排工作、對成果負責的人。',
     contentTitle: '內容與社群',
     contentLead: '品牌社群與活動',
     contentDesc: '經營自家與客戶的品牌社群，企劃並執行實體與線上活動。',
-    engTitle: '遠端派遣工程師',
-    engLead: '日本大型系統專案',
-    engDesc: '團隊涵蓋後端、前端、雲端、AI 與系統架構，全程遠端協作。專案規模：同時在線 16 萬人、系統可用率 99.9%。實際條件與時區配合方式將於面談說明。',
     respLabel: '工作內容',
     reqLabel: '條件要求',
     bonusLabel: '加分條件',
@@ -28,21 +25,17 @@ const c = {
     applyTitle: '應徵方式',
     applyLead: '請將履歷寄至下方信箱，主旨註明應徵職缺。',
     applyContent: '應徵社群小編或活動企劃，請一併附上：(1) 經營過或參與過的社群、活動（連結或截圖，個人帳號也可以）；(2) 一張自己用 Canva 製作的圖；(3) 一句話：挑一個你有在追蹤的品牌，說說它的社群現在最該改進的一件事。',
-    applyEng: '應徵工程職缺，請附上履歷與 GitHub 或作品集連結，主旨註明應徵角色（可複選）。',
     applyBtn: '寄出履歷',
     applyRole: '應徵此職缺',
-    metaDescription: '遊遊股份有限公司（Twouring 遊遊）人才招募：社群小編（正職全遠端）、活動企劃（兼職），以及日本大型系統專案的遠端派遣工程師（Rails、Next.js、AWS/SRE、AI/LLM、SharePoint、系統架構），月薪 NT$100,000 起。',
+    metaDescription: '遊遊股份有限公司（Twouring 遊遊）人才招募：社群小編（正職全遠端）、活動企劃（兼職）。',
   },
   en: {
     eyebrow: 'Careers',
     title: 'Join Twouring',
-    lead: 'Twouring works remote-first with a flat structure. We are hiring a social media editor, an event producer, and remote contract engineers for a large-scale system project in Japan. We look for people who plan their own work and are accountable for the results.',
+    lead: 'Twouring works remote-first with a flat structure. We are hiring a social media editor and an event producer. We look for people who plan their own work and are accountable for the results.',
     contentTitle: 'Content & Social',
     contentLead: 'Brand social & events',
     contentDesc: 'Run social media for our own and client brands, and plan and deliver in-person and online events.',
-    engTitle: 'Contract Engineers (Remote)',
-    engLead: 'A large-scale project in Japan',
-    engDesc: 'The team covers backend, frontend, cloud, AI and architecture, working fully remotely. Project scale: 160,000 concurrent users, 99.9% availability. Exact terms and time-zone arrangements discussed at interview.',
     respLabel: 'Responsibilities',
     reqLabel: 'Requirements',
     bonusLabel: 'Nice to have',
@@ -50,21 +43,17 @@ const c = {
     applyTitle: 'How to apply',
     applyLead: 'Email your resume to the address below with the role in the subject line.',
     applyContent: 'For social media or event roles, please also include: (1) social accounts or events you have run or joined (links or screenshots; personal accounts are fine); (2) one graphic you made in Canva; (3) one line: pick a brand you follow and name the one thing its social media should fix.',
-    applyEng: 'For engineering roles, attach your resume and GitHub or portfolio links, and name the role(s) in the subject line.',
     applyBtn: 'Send your resume',
     applyRole: 'Apply for this role',
-    metaDescription: 'Careers at Twouring Co., Ltd.: Social Media Editor (full-time remote), Event Producer (part-time), and remote contract engineers for a large-scale Japan project (Rails, Next.js, AWS/SRE, AI/LLM, SharePoint, architecture) from NT$100,000/month.',
+    metaDescription: 'Careers at Twouring Co., Ltd.: Social Media Editor (full-time remote) and Event Producer (part-time).',
   },
   ja: {
     eyebrow: '採用情報',
     title: 'Twouring で働く',
-    lead: 'Twouring はリモート中心のフラットな組織です。現在、SNS担当、イベント企画、日本の大規模システム案件のリモート派遣エンジニアを募集しています。自分で業務を組み立て、成果に責任を持てる方を求めています。',
+    lead: 'Twouring はリモート中心のフラットな組織です。現在、SNS担当とイベント企画を募集しています。自分で業務を組み立て、成果に責任を持てる方を求めています。',
     contentTitle: 'コンテンツ・コミュニティ',
     contentLead: 'ブランドSNSとイベント',
     contentDesc: '自社およびクライアントのブランドSNSを運用し、オンライン・オフラインのイベントを企画・実施します。',
-    engTitle: 'リモート派遣エンジニア',
-    engLead: '日本の大規模システム案件',
-    engDesc: 'バックエンド、フロントエンド、クラウド、AI、システムアーキテクチャまで、フルリモートで協業するチームです。案件規模：同時接続16万人、可用性99.9%。詳細条件と時差への対応はご面談時にご説明します。',
     respLabel: '業務内容',
     reqLabel: '応募要件',
     bonusLabel: '歓迎スキル',
@@ -72,10 +61,9 @@ const c = {
     applyTitle: '応募方法',
     applyLead: '下記アドレスに履歴書をお送りください。件名に応募職種をご記入ください。',
     applyContent: 'SNS担当・イベント企画にご応募の方は、次も添えてください：(1) 運用・参加したSNSアカウントやイベント（リンクまたはスクリーンショット、個人アカウント可）、(2) Canva で作成した画像1点、(3) フォローしているブランドを1つ選び、そのSNSで今いちばん改善すべき点をひと言で。',
-    applyEng: 'エンジニア職にご応募の方は、履歴書と GitHub またはポートフォリオのリンクを添え、件名に応募職種（複数可）をご記入ください。',
     applyBtn: '履歴書を送る',
     applyRole: 'この職種に応募する',
-    metaDescription: 'Twouring（遊遊股份有限公司）採用情報：SNS担当（正社員・フルリモート）、イベント企画（パートタイム）、日本の大規模システム案件のリモート派遣エンジニア（Rails、Next.js、AWS/SRE、AI/LLM、SharePoint、アーキテクチャ）。月給 NT$100,000〜。',
+    metaDescription: 'Twouring（遊遊股份有限公司）採用情報：SNS担当（正社員・フルリモート）、イベント企画（パートタイム）。',
   },
 }[lang];
 
@@ -142,40 +130,6 @@ const applyHref = (job: Job) =>
     </div>
   </section>
 
-  <!-- 遠端派遣工程師 -->
-  <section class="section section--surface">
-    <div class="container">
-      <div class="section-head"><p class="eyebrow">{c.engTitle}</p><h2>{c.engLead}</h2><p class="lead">{c.engDesc}</p></div>
-      <div class="grid grid--2 jobs">
-        {engineeringJobs.map((job: Job) => (
-          <article class="card job-card">
-            <div class="job-tags">
-              <span class:list={['emp-badge', `emp-badge--${job.employment}`]}>{employmentLabel[job.employment][lang]}</span>
-              <span class="tag">{job.mode[lang]}</span>
-              {job.tag && <span class="tag">{job.tag[lang]}</span>}
-            </div>
-            <h3 class="job-title">{job.title[lang]}</h3>
-            <p class="job-salary">{job.salary[lang]}</p>
-            <p class="job-summary">{job.summary[lang]}</p>
-            {job.requirements && (
-              <div class="job-block">
-                <h4>{c.reqLabel}</h4>
-                <ul role="list">{job.requirements[lang].map((x) => (<li><Icon name="check" size={17} /> {x}</li>))}</ul>
-              </div>
-            )}
-            {job.stack && (
-              <div class="job-block">
-                <h4>{c.stackLabel}</h4>
-                <ul class="stack" role="list">{job.stack.map((s) => (<li class="tag tag--stack">{s}</li>))}</ul>
-              </div>
-            )}
-            <a class="btn btn--primary job-cta" href={applyHref(job)}>{c.applyRole}</a>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- 應徵方式 -->
   <section class="section">
     <div class="container container--narrow">
@@ -183,7 +137,6 @@ const applyHref = (job: Job) =>
       <div class="flow apply">
         <p class="lead">{c.applyLead}</p>
         <p>{c.applyContent}</p>
-        <p>{c.applyEng}</p>
         <a class="btn btn--primary btn--lg" href={mailHref}>{c.applyBtn} · {company.email}</a>
       </div>
     </div>
