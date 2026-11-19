@@ -174,9 +174,9 @@ export const engagements: Engagement[] = [
     tag: { zh: '日本 · 公部門教育平台', en: 'Japan · Public education platform', ja: '日本 · 教育行政プラットフォーム' },
     client: { zh: '日本政令指定都市 教育委員會（協力開發）', en: 'A Japanese designated-city board of education (co-development)', ja: '政令指定都市の教育委員会（開発協力）' },
     title: {
-      zh: '教職員學習平台「スキルアップライブラリ」',
-      en: 'Teacher learning platform “Skill-up Library”',
-      ja: '教職員向け学習プラットフォーム「スキルアップライブラリ」',
+      zh: '教職員教材分享與學習平台',
+      en: 'Teaching-materials sharing and learning platform',
+      ja: '教職員向け教材共有・学習プラットフォーム',
     },
     desc: {
       zh: '服務數百所中小學與幼稚園、十餘萬名師生的教材分享平台；參與需求定義、Microsoft 365 串接與 AI 非同步作業架構驗證。',
@@ -184,9 +184,9 @@ export const engagements: Engagement[] = [
       ja: '数百校の小中学校・幼稚園、十数万人の教職員・児童生徒が使う教材共有基盤。要件定義、Microsoft 365 連携、AI 非同期処理の PoC に参画。',
     },
     points: {
-      zh: ['教材投稿、搜尋、評價、審核與儀表板', '串接 SharePoint Online／Stream', '「先生 AI チャット」AI 作業架構 PoC'],
+      zh: ['教材投稿、搜尋、評價、審核與儀表板', '串接 SharePoint Online／Stream', '教師用 AI 對話功能的非同步作業架構 PoC'],
       en: ['Upload, search, rating, review and dashboards', 'SharePoint Online / Stream integration', 'PoC for the teachers’ AI chat job architecture'],
-      ja: ['教材投稿・検索・評価・審査・ダッシュボード', 'SharePoint Online／Stream 連携', '「先生AIチャット」非同期処理の PoC'],
+      ja: ['教材投稿・検索・評価・審査・ダッシュボード', 'SharePoint Online／Stream 連携', '教職員向け AI チャットの非同期処理 PoC'],
     },
   },
   {
