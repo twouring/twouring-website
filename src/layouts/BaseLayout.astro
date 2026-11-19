@@ -9,6 +9,7 @@ import '../styles/global.css';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { programsLd } from '../data/programs';
 import { getLang, localizePath, LOCALES, LOCALE_META } from '../i18n/utils';
 import { useUI } from '../i18n/ui';
 import { company, type Lang } from '../i18n/company';
@@ -103,6 +104,7 @@ const orgLd = {
   areaServed: ['TW', 'Asia'],
   sameAs: [company.linkedin, company.tenderProfileUrl, company.findbizUrl, company.llmsTxtUrl],
   knowsAbout,
+  memberOf: programsLd,
 };
 const allLd = [orgLd, ...jsonLd];
 // GA4：部署時設定 PUBLIC_GA_ID（G-XXXXXXXXXX）才輸出；未設定時不載入任何追蹤。

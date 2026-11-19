@@ -1,0 +1,67 @@
+---
+/**
+ * 國際 AI 大廠官方計畫區塊（首頁、關於頁共用）。
+ * variant="strip"：hero 下方一行信任列；variant="section"：完整區塊（說明＋官方連結）。
+ * 資料單一來源：src/data/programs.ts。不放對方 logo。
+ */
+import { getLang } from '../i18n/utils';
+import { programs, programsLabel, programsCopy } from '../data/programs';
+
+interface Props { variant?: 'strip' | 'section'; surface?: boolean }
+const { variant = 'section', surface = false } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const copy = programsCopy[lang];
+---
+{variant === 'strip' ? (
+  <a class="pstrip" href="#programs" data-cta="programs_strip">
+    <span class="pstrip-label">{programsLabel[lang]}</span>
+    <ul class="pstrip-list" role="list">
+      {programs.map((p) => (
+        <li><strong>{p.org}</strong><span>{p.short[lang]}</span></li>
+      ))}
+    </ul>
+  </a>
+) : (
+  <section id="programs" class:list={['section', 'programs-sec', { 'section--surface': surface }]}>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">{programsLabel[lang]}</p>
+        <h2>{copy.title}</h2>
+        <p class="lead">{copy.lead}</p>
+      </div>
+      <ul class="pcards" role="list">
+        {programs.map((p) => (
+          <li class="pcard">
+            <p class="pcard-org">{p.org}</p>
+            <p class="pcard-name">{p.name[lang]}</p>
+            <p class="pcard-status">{p.status[lang]}<span class="pcard-date">{copy.joined} {p.date}</span></p>
+            <p class="pcard-desc">{p.desc[lang]}</p>
+            <a class="pcard-link" href={p.url} target="_blank" rel="noopener" data-cta={`program_${p.org.toLowerCase()}`}>{copy.verify} ↗</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .pstrip { margin-top: 1.6rem; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; padding: 0.65rem 1rem; background: #fff; border: 1px solid var(--c-line); border-left: 3px solid var(--c-ink-strong); border-radius: var(--radius); color: var(--c-ink); text-decoration: none; }
+  .pstrip:hover { border-color: var(--c-ink-strong); }
+  .pstrip-label { font-size: 0.8rem; letter-spacing: 0.06em; color: var(--c-muted); font-weight: 700; }
+  .pstrip-list { display: flex; flex-wrap: wrap; gap: 0.4rem 0; }
+  .pstrip-list li + li { border-left: 1px solid var(--c-line); margin-left: 1rem; padding-left: 1rem; }
+  .pstrip-list li { display: inline-flex; align-items: baseline; gap: 0.4rem; font-size: 0.9rem; }
+  .pstrip-list strong { font-family: var(--font-head); font-weight: 800; color: var(--c-ink-strong); font-size: 1rem; }
+  .pstrip-list span { color: var(--c-ink); }
+
+  .pcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .pcard { display: flex; flex-direction: column; gap: 0.35rem; background: #fff; border: 1px solid var(--c-line); border-top: 4px solid var(--c-ink-strong); border-radius: var(--radius-lg); padding: 1.4rem 1.4rem 1.2rem; }
+  .pcard-org { font-family: var(--font-head); font-weight: 800; font-size: 1.7rem; line-height: 1.1; color: var(--c-ink-strong); letter-spacing: 0.01em; }
+  .pcard-name { font-family: var(--font-head); font-weight: 700; color: var(--c-ink); }
+  .pcard-status { font-family: var(--font-head); font-weight: 700; color: var(--c-accent-strong); font-size: 0.95rem; display: flex; flex-wrap: wrap; gap: 0.2rem 0.7rem; align-items: baseline; }
+  .pcard-date { font-weight: 600; font-size: 0.8rem; color: var(--c-faint); }
+  .pcard-desc { color: var(--c-muted); font-size: 0.92rem; margin-top: 0.3rem; flex: 1; }
+  .pcard-link { margin-top: 0.6rem; font-weight: 700; font-size: 0.9rem; }
+  @media (max-width: 860px) { .pcards { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .pstrip { display: flex; } .pstrip-list { flex-direction: column; gap: 0.3rem; } .pstrip-list li + li { border-left: 0; margin-left: 0; padding-left: 0; } .pstrip-list li { flex-wrap: wrap; } }
+</style>

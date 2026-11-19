@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../PageHero.astro';
 import CTABand from '../CTABand.astro';
 import Icon from '../Icon.astro';
+import ProgramsSection from '../ProgramsSection.astro';
 import { getLang, localizePath } from '../../i18n/utils';
 import { useUI, ROUTES } from '../../i18n/ui';
 import { company } from '../../i18n/company';
@@ -275,6 +276,8 @@ const personLd = {
       </div>
     </div>
   </section>
+
+  <ProgramsSection surface />
 
   <!-- 合作夥伴角色 -->
   <section class="section section--surface">
