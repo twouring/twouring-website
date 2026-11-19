@@ -32,7 +32,7 @@ const c = {
     workLead: '政府標案金額取自公開採購資料；企業與海外案件以實際交付內容呈現。',
     seeAllCases: '看全部實績',
     timelineEyebrow: '兩年軌跡',
-    timelineTitle: '從成立到跨國交付，2024–2026',
+    timelineTitle: '從跨國交付回看成立，2026–2024',
     timelineNote: '標註「TDNA」或「KK 職務」者為生態系或個人職務經歷，非遊遊付費客戶。',
     entryEyebrow: '服務',
     entryTitle: '你現在最卡的是哪一件？',
@@ -104,7 +104,7 @@ const c = {
     workLead: 'Tender values come from public procurement records; enterprise and overseas work is described by what we actually delivered.',
     seeAllCases: 'View all work',
     timelineEyebrow: 'Two years in',
-    timelineTitle: 'From founding to cross-border delivery, 2024–2026',
+    timelineTitle: 'From cross-border delivery back to founding, 2026–2024',
     timelineNote: 'Items marked TDNA or KK’s role are ecosystem or personal roles — not Twouring paid clients.',
     entryEyebrow: 'Services',
     entryTitle: 'Which one is blocking you right now?',
@@ -176,7 +176,7 @@ const c = {
     workLead: '公共入札の金額は公開調達データに基づきます。企業・海外案件は実際の納品内容でご紹介します。',
     seeAllCases: '実績一覧へ',
     timelineEyebrow: 'この2年の歩み',
-    timelineTitle: '設立から越境デリバリーまで（2024–2026）',
+    timelineTitle: '越境デリバリーから設立まで（2026–2024）',
     timelineNote: '「TDNA」「KK の役職」と記載したものは、エコシステムまたは代表個人の経歴であり、Twouring の有償顧客ではありません。',
     entryEyebrow: 'サービス',
     entryTitle: 'いま、どこで詰まっていますか',
@@ -372,7 +372,7 @@ import WebinarPromo from '../WebinarPromo.astro';
         <h2>{c.timelineTitle}</h2>
       </div>
       <ol class="timeline" role="list">
-        {milestones.map((m) => (
+        {[...milestones].reverse().map((m) => (
           <li class:list={['tl-item', `tl-item--${m.kind}`]}>
             <p class="tl-date">{m.date}<span class="tl-kind">{kindLabel[m.kind]}</span></p>
             <h3>{m.title[lang]}</h3>
