@@ -13,16 +13,16 @@ const lp = (p: string) => localizePath(p, lang);
 
 const defaults = {
   zh: {
-    title: '先用一場 30 分鐘需求初談，找出最值得投入的下一步',
-    text: '我們不先賣方案，先判斷你的問題是否清楚、是否有預算與決策者，並給出可執行的初步方向。',
+    title: '先預約 30 分鐘需求初談，確認下一步該做什麼',
+    text: '初談免費。我們會確認問題範圍、預算與決策者，再提出初步建議與可執行的下一步。',
   },
   en: {
-    title: 'Start with a 30-minute discovery call to find the next step worth taking',
-    text: 'We do not pitch first. We assess whether the problem is clear, whether there is budget and a decision-maker, and give you an actionable initial direction.',
+    title: 'Start with a 30-minute discovery call to confirm your next step',
+    text: 'The call is free. We confirm the scope of the problem, the budget and the decision-maker, then give you initial recommendations and a practical next step.',
   },
   ja: {
-    title: 'まずは30分の無料ヒアリングで、次に打つべき一手を見つけましょう',
-    text: 'いきなり提案はしません。課題の輪郭、予算と意思決定者の有無を確認し、すぐに動ける初期の方向性をお伝えします。',
+    title: 'まずは30分の無料ヒアリングで、次の一歩を確認しましょう',
+    text: 'ヒアリングは無料です。課題の範囲、予算、意思決定者を確認したうえで、初期の提案と実行可能な次の一歩をお伝えします。',
   },
 };
 const { title = defaults[lang].title, text = defaults[lang].text } = Astro.props;

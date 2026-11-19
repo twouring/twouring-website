@@ -79,7 +79,7 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
           </div>
           <div class="field">
             <label for="wf-pain">目前最卡的一個流程（選填）</label>
-            <textarea id="wf-pain" name="pain" rows="3" placeholder="例：報價都靠一位老業務，他請假就沒人能報；或料號在三個 Excel 裡對不起來⋯⋯"></textarea>
+            <textarea id="wf-pain" name="pain" rows="3" placeholder="例：報價都靠一位老業務，他請假就沒人能報；或料號分散在三個 Excel，彼此對不起來"></textarea>
             <p class="hint">填了會在問答時間優先回答（不會公開你的公司名稱）。</p>
           </div>
           <label class="consent">
@@ -97,9 +97,9 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
 
         <div class="form-success" id="wf-success" hidden>
           <span class="success-icon" aria-hidden="true"><Icon name="check" size={32} /></span>
-          <h2 tabindex="-1">報名完成，謝謝你！</h2>
+          <h2 tabindex="-1">報名完成</h2>
           <p>稍後會收到 Google 行事曆邀請，裡面附 Google Meet 連結（沒看到請檢查垃圾信件匣）。若有勾選電子報，請到信箱點一下確認訂閱信。</p>
-          <p>等不及說明會？也可以直接 <a href={company.bookingUrl} target="_blank" rel="noopener">預約 30 分鐘初談</a>。</p>
+          <p>如果想在說明會前先討論，也可以直接<a href={company.bookingUrl} target="_blank" rel="noopener">預約 30 分鐘初談</a>。</p>
         </div>
       </div>
 
@@ -116,7 +116,7 @@ const sizes = ['10 人以下', '11–50 人', '51–200 人', '201–500 人', '
         <div class="card faq">
           <h3>常見問題</h3>
           <p class="q">需要先懂 AI 嗎？</p>
-          <p>不用。內容以老闆和主管的角度講流程，不講技術名詞。</p>
+          <p>不用。內容以老闆和主管的角度講流程，不使用技術術語。</p>
           <p class="q">會推銷嗎？</p>
           <p>最後一分鐘會說明我們的服務，其餘時間都是實務內容。要不要往下談由你決定。</p>
           <p class="q">可以帶同事一起嗎？</p>

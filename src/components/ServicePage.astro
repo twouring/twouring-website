@@ -23,14 +23,14 @@ const proc = {
   zh: [
     { t: '30 分鐘需求初談', d: '判斷問題是否清楚、是否有預算與決策者（免費）。' },
     { t: '付費診斷', d: '盤點現況、利害關係人與資源，產出最高優先機會與 90 天路線圖。' },
-    { t: '顧問 / PMO', d: '把診斷轉成執行：例會、策略文件、導入追蹤與 KPI。' },
-    { t: '導入與年度合作', d: '專案導入、培訓、年度顧問，並把成果轉成可公開案例。' },
+    { t: '顧問 / PMO', d: '依診斷結果執行：定期例會、策略文件、導入追蹤與 KPI 管理。' },
+    { t: '導入與年度合作', d: '專案導入、培訓與年度顧問；成果可整理為公開案例。' },
   ],
   en: [
     { t: '30-min discovery', d: 'Confirm the problem, budget and decision-maker (free).' },
     { t: 'Paid diagnostic', d: 'Map the status quo, stakeholders and resources into priorities and a 90-day roadmap.' },
-    { t: 'Advisory / PMO', d: 'Turn the diagnostic into delivery: cadence, strategy docs, adoption tracking and KPIs.' },
-    { t: 'Rollout & annual', d: 'Project rollout, training, annual advisory — and turning results into public cases.' },
+    { t: 'Advisory / PMO', d: 'Carry out the diagnostic: regular meetings, strategy documents, adoption tracking and KPIs.' },
+    { t: 'Rollout & annual', d: 'Project rollout, training and annual advisory; results can be written up as public cases.' },
   ],
   ja: [
     { t: '30分の無料ヒアリング', d: '課題の明確さ、予算と意思決定者の有無を確認します（無料）。' },
@@ -149,7 +149,7 @@ const breadcrumbLd = {
   <!-- 合作流程 -->
   <section class="section section--surface">
     <div class="container">
-      <div class="section-head center"><p class="eyebrow">{t.common.process}</p><h2>{{ zh: '從一場會議到可持續的成果', en: 'From one call to lasting results', ja: '1回の相談から、続く成果へ' }[lang]}</h2></div>
+      <div class="section-head center"><p class="eyebrow">{t.common.process}</p><h2>{{ zh: '合作的四個階段', en: 'Four stages of an engagement', ja: 'ご相談から導入までの4段階' }[lang]}</h2></div>
       <ol class="steps" role="list">
         {proc[lang].map((s, i) => (
           <li class="step"><span class="step-num">{i + 1}</span><div><h3>{s.t}</h3><p>{s.d}</p></div></li>

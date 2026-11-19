@@ -39,7 +39,7 @@ export const contentJobs: Job[] = [
     salary: { zh: '月薪 NT$35,000', en: 'NT$35,000 / month', ja: '月給 NT$35,000' },
     summary: {
       zh: '代操多個客戶品牌的社群，通路涵蓋 IG、Threads、Facebook、X。每個品牌調性不同，需要能獨立切換語氣，並對成效負責。',
-      en: 'Run social media for multiple client brands across IG, Threads, Facebook and X. Each brand has its own voice — you switch between them independently and own the results.',
+      en: 'Run social media for multiple client brands across IG, Threads, Facebook and X. Each brand has its own voice; you switch between them on your own and are accountable for the results.',
       ja: '複数のクライアントブランドのSNS運用を代行していただきます。対象チャネルは IG、Threads、Facebook、X です。ブランドごとにトーンが異なるため、ご自身で語り口を切り替えながら、成果にも責任を持っていただきます。',
     },
     responsibilities: {
@@ -117,7 +117,7 @@ export const contentJobs: Job[] = [
     salary: { zh: '面議（依專案與經驗）', en: 'Negotiable (by project & experience)', ja: '応相談（案件・経験に応じて）' },
     summary: {
       zh: '企劃與執行數位遊牧主題活動：工作坊、社群聚會、國際參訪與城市體驗，從前期企劃到現場執行完整參與。',
-      en: 'Plan and run digital-nomad events — workshops, community meetups, international visits and city experiences — from early planning through on-site delivery.',
+      en: 'Plan and run digital-nomad events (workshops, community meetups, international visits and city experiences) from early planning through on-site delivery.',
       ja: 'デジタルノマドをテーマにしたイベント（ワークショップ、コミュニティミートアップ、海外視察、都市体験など）を、初期の企画から当日の運営まで一貫してご担当いただきます。',
     },
     responsibilities: {
@@ -148,7 +148,7 @@ export const contentJobs: Job[] = [
         '溝通協調能力佳，能對接講者、來賓與合作單位。',
       ],
       en: [
-        'Event planning or production experience; able to own an event end to end.',
+        'Event planning or production experience; able to run an event on your own from start to finish.',
         'Detail-oriented, able to track multiple workstreams, reliable on schedules.',
         'Available on event dates (mostly weekends or evenings).',
         'Strong coordination skills with speakers, guests and partners.',
@@ -188,10 +188,10 @@ export const engineeringJobs: Job[] = [
     employment: 'dispatch',
     mode: { zh: '全遠端', en: 'Fully remote', ja: 'フルリモート' },
     salary: { zh: '月薪 NT$100,000 起', en: 'From NT$100,000 / month', ja: '月給 NT$100,000〜' },
-    tag: { zh: '核心系統主力', en: 'Core system', ja: 'コアシステムの主力' },
+    tag: { zh: '主要人力需求', en: 'Largest headcount', ja: '主要募集ポジション' },
     summary: {
       zh: '負責擴充既有的 CM 核心系統，為本專案人力配置的主體。',
-      en: 'Extend the existing CM core system — the largest share of the project’s engineering headcount.',
+      en: 'Extend the existing CM core system. This role makes up the largest share of the project’s engineering headcount.',
       ja: '既存の CM コアシステムの機能拡張をご担当いただきます。本プロジェクトの人員構成の中心となるポジションです。',
     },
     requirements: {
@@ -225,7 +225,7 @@ export const engineeringJobs: Job[] = [
     tag: { zh: '稀缺技能', en: 'Scarce skill', ja: '希少スキル' },
     summary: {
       zh: '日本市場相當稀缺的技能組合，為本專案優先招募的角色。',
-      en: 'A skill set that is genuinely scarce in the Japanese market — a priority hire for this project.',
+      en: 'This skill set is scarce in the Japanese market, so it is a priority hire for this project.',
       ja: '日本市場では非常に希少なスキルセットであり、本プロジェクトで優先的に採用を進めているポジションです。',
     },
     requirements: {
@@ -252,9 +252,9 @@ export const engineeringJobs: Job[] = [
     salary: { zh: '月薪 NT$100,000 起', en: 'From NT$100,000 / month', ja: '月給 NT$100,000〜' },
     tag: { zh: '中高階', en: 'Senior', ja: 'シニア' },
     summary: {
-      zh: '需要能依 SLA 要求進行架構設計與驗證測試的中高階工程師，而不只是能建置環境。',
-      en: 'A senior engineer who designs and validates architecture against SLA requirements — not just someone who can stand up environments.',
-      ja: '環境構築だけでなく、SLA 要件に基づいたアーキテクチャ設計と検証テストまで担えるシニアエンジニアを求めています。',
+      zh: '依 SLA 要求進行架構設計與驗證測試，工作範圍不限於環境建置，需中高階經驗。',
+      en: 'Design and validate architecture against SLA requirements. The scope goes beyond setting up environments, so this is a senior role.',
+      ja: 'SLA 要件に基づくアーキテクチャ設計と検証テストをご担当いただきます。業務は環境構築にとどまらないため、シニアレベルの経験が必要です。',
     },
     requirements: {
       zh: [
@@ -316,7 +316,7 @@ export const engineeringJobs: Job[] = [
     salary: { zh: '月薪 NT$100,000 起', en: 'From NT$100,000 / month', ja: '月給 NT$100,000〜' },
     summary: {
       zh: '從零建立新的前端 Repository，預計約 30 個畫面。',
-      en: 'Build a new frontend repository from scratch — roughly 30 screens.',
+      en: 'Build a new frontend repository from scratch (roughly 30 screens).',
       ja: '新しいフロントエンドの Repository をゼロから構築していただきます（約 30 画面を予定）。',
     },
     requirements: {
@@ -353,7 +353,7 @@ export const engineeringJobs: Job[] = [
     tag: { zh: '技術負責人', en: 'Tech lead', ja: 'テックリード' },
     summary: {
       zh: '統籌 CM、PL、AM 三套系統的整體架構設計，需要能從全局掌握所有系統的架構師。',
-      en: 'Own the end-to-end architecture across the CM, PL and AM systems — an architect who can hold the whole design in view.',
+      en: 'Lead the overall architecture across the CM, PL and AM systems. We need an architect who can keep all three systems in view.',
       ja: 'CM・PL・AM の 3 システムにまたがる全体アーキテクチャ設計を統括していただきます。すべてのシステムを俯瞰して把握できるアーキテクトを求めています。',
     },
     requirements: {
@@ -364,7 +364,7 @@ export const engineeringJobs: Job[] = [
       ],
       en: [
         'LTI 1.3 / OIDC / JWT / SSO / shared sessions.',
-        'End-to-end architecture across three systems: CM (PostgreSQL), PL (PostgreSQL), AM (DynamoDB).',
+        'Overall architecture across three systems: CM (PostgreSQL), PL (PostgreSQL), AM (DynamoDB).',
         'Unified identifiers, visibility and permission rules, cross-datastore data linking, and async aggregation via Lambda.',
       ],
       ja: [

@@ -22,7 +22,7 @@ const topicOrder = ['intro', 'metal', 'machinery', 'labor'] as const;
 
 const title = 'AI 導入傳產線上說明會';
 const description =
-  '免費線上說明會，週二到週四輪流開場，上午、下午、晚上都有場次：用 60 分鐘看懂傳統產業怎麼導入 AI 與數位轉型——報價、料號、外銷文件、BOM、缺工，現場用模擬資料示範。';
+  '免費線上說明會，週二到週四輪流舉行，上午、下午、晚上都有場次。60 分鐘說明傳統產業如何導入 AI 與推動數位轉型，主題涵蓋報價、料號、外銷文件、BOM 與缺工，現場以模擬資料示範。';
 
 const eventsLd = upcoming.map((s) => ({
   '@context': 'https://schema.org',
@@ -45,14 +45,14 @@ const agenda = [
   ['15 分', '現場示範：一律用模擬資料，不碰任何客戶資料'],
   ['10 分', '去識別化案例：五金材料業者料號整合、醫院 24 小時 AI 培訓'],
   ['5 分', '三步做法：現況診斷 → 流程數位化 → AI 導入與內訓'],
-  ['20 分', '問答：報名時填的「最卡的流程」，會優先回答'],
+  ['20 分', '問答：優先回答報名時填寫的「最卡的流程」'],
 ];
 ---
 <BaseLayout title={title} description={description} path={WEBINAR_PATH} jsonLd={eventsLd} locales={['zh']}>
   <PageHero
-    eyebrow="免費線上說明會｜上午、下午、晚上場輪流開"
-    title="傳產導入 AI，先花 60 分鐘看別人怎麼做"
-    lead="不賣軟體、不推大系統。用模擬資料現場示範報價、料號、外銷文件、BOM 和新人教材怎麼交給 AI 與系統，聽完知道自己的公司該從哪一步開始。"
+    eyebrow="免費線上說明會｜上午、下午、晚上輪流開場"
+    title="傳產導入 AI：用 60 分鐘判斷從哪一步開始"
+    lead="以模擬資料現場示範報價、料號、外銷文件、BOM 與新人教材如何交由 AI 與系統處理，聽完可以判斷自己的公司該從哪一步開始。說明會不銷售軟體，也不建議一次導入大型系統。"
     crumbs={[{ label: '線上說明會' }]}
     image={OVERVIEW_IMAGE}
   >
@@ -68,7 +68,7 @@ const agenda = [
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">場次</p>
-        <h2>四個主題輪流講，<span class="keep">挑跟你產業最近的一場</span></h2>
+        <h2>四個主題輪流舉辦，<span class="keep">請選擇與你產業最相近的場次</span></h2>
         <p class="lead">每場 60 分鐘，Google Meet 線上進行，免費參加；每季另加一場專題。報名後會收到 Google 行事曆邀請，裡面附 Meet 連結；開場前一天會再提醒。{REG_CUTOFF_NOTE}。</p>
       </div>
 
@@ -96,7 +96,7 @@ const agenda = [
           })}
         </ol>
       ) : (
-        <p class="empty">下一輪場次排定中，請在下方留下資料，排定後第一時間通知你。</p>
+        <p class="empty">下一輪場次排定中。請在下方留下資料，場次確定後會通知你。</p>
       )}
       {upcoming.length > 4 && <button type="button" class="btn btn--ghost more-btn" id="more-sessions">看更多場次</button>}
     </div>

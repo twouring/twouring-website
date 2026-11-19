@@ -72,7 +72,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
       <WebinarSeats id={s.id} class="hero-seats" />
       <p class="reg-cutoff">報名至 {fmtDate(new Date(regClosesAt(s) + 8 * 3600_000).toISOString().slice(0, 10))} 中午 12:00 截止</p>
       <div class="cluster hero-cta" data-ends={endsAt(s)} data-closes={regClosesAt(s)}>
-        <a class="btn btn--grad btn--lg" href="#register" data-cta="webinar_detail_hero_register">免費報名這場</a>
+        <a class="btn btn--grad btn--lg" href="#register" data-cta="webinar_detail_hero_register">報名這一場（免費）</a>
         <a class="btn btn--ghost btn--lg" href={gcal} target="_blank" rel="noopener" data-cta="webinar_add_calendar">加入 Google 行事曆</a>
       </div>
     </>)}
@@ -145,7 +145,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
         <p class="eyebrow">主講</p>
         <h2 class="host-name">徐愷（KK）</h2>
         <p class="host-role">遊遊股份有限公司負責人／主導顧問</p>
-        <p class="host-desc">15 年軟體開發與系統建置經驗。做過五金材料業者的商品資料整合、醫院醫護人員 AI 工作應用培訓，以及政府單位的系統建置。說明會以老闆和主管的角度講流程，不講技術名詞。</p>
+        <p class="host-desc">15 年軟體開發與系統建置經驗。做過五金材料業者的商品資料整合、醫院醫護人員 AI 工作應用培訓，以及政府單位的系統建置。說明會以老闆和主管的角度講流程，不使用技術術語。</p>
         <a class="btn btn--ghost" href={lp(ROUTES.about)}>認識顧問團隊 →</a>
       </div>
     </div>
@@ -166,7 +166,7 @@ const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=$
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">會前延伸閱讀</p>
-          <h2>先讀一篇，<span class="keep">問答時更好問</span></h2>
+          <h2>會前可先閱讀，<span class="keep">問答時更容易提問</span></h2>
         </div>
         <div class="grid grid--3 related">
           {related.map((a) => (

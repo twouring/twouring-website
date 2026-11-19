@@ -46,17 +46,17 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       period: '115 年度（公開招標得標）',
       metaDescription:
         '遊遊股份有限公司得標花蓮縣政府「115花蓮雲基地營運推廣計畫」委託專業服務案，公開契約金額 NTD 5,880,000。說明問題、角色、交付物與里程碑。',
-      lead: '協助花蓮縣政府把數位遊牧與雲基地營運，從活動延伸為可接待國際人才、帶動在地消費的城市行動。',
+      lead: '受花蓮縣政府委託，把雲基地從單次活動延伸為常態營運，接待國際人才並帶動在地消費。',
       contractAmount: 'NTD 5,880,000',
       contractSourceLabel: '公開標案資料（ezbid）',
       contractSourceUrl: TENDER_URL,
       problem:
-        '希望把數位遊牧與雲基地從一次性活動，延伸為可吸引國際人才、串聯在地場域與商家、並可持續追蹤成果的城市營運推廣。',
+        '雲基地過去以單次活動為主。縣府希望延伸為常態的營運推廣：吸引國際人才、串聯在地場域與商家，並持續追蹤成果。',
       roles: [
         { name: '遊遊股份有限公司', role: '簽約／得標廠商：顧問、專案整合與執行管理（PMO）' },
         { name: '徐愷（KK）', role: '主導顧問；政策與數位遊牧專業經歷另見關於頁（非本案機關職務）' },
         { name: '交付合作夥伴', role: '技術、場域或活動執行依專案需要由合作夥伴承接' },
-        { name: 'TDNA 公益生態系', role: '產業與社群連結參考；本案非 TDNA 付費客戶關係' },
+        { name: 'TDNA（公益協會）', role: '提供產業與社群連結；本案與 TDNA 沒有付費客戶關係' },
       ],
       deliverables: [
         '場域與資源盤點、商家串聯',
@@ -88,7 +88,7 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       period: 'ROC Year 115 (awarded via public tender)',
       metaDescription:
         'Twouring Co., Ltd. was awarded Hualien County’s Cloud Base operations & promotion professional-services contract (NTD 5,880,000 award total). Problem, roles, deliverables and milestones.',
-      lead: 'Helping Hualien County extend digital-nomad and Cloud Base operations from events into a city action that hosts international talent and drives local spending.',
+      lead: 'Commissioned by Hualien County to turn Cloud Base from one-off events into ongoing operations that host international talent and bring spending to local businesses.',
       contractAmount: 'NTD 5,880,000',
       contractSourceLabel: 'Public tender data (ezbid)',
       contractSourceUrl: TENDER_URL,
@@ -98,7 +98,7 @@ export const cases: Record<CaseSlug, CaseDetail> = {
         { name: 'Twouring Co., Ltd.', role: 'Contracted / awarded vendor: advisory, integration and PMO' },
         { name: 'Kai Hsu (KK)', role: 'Lead advisor; policy roles disclosed separately on About (not a client role on this engagement)' },
         { name: 'Delivery partners', role: 'Tech, venue or programme delivery as needed' },
-        { name: 'TDNA ecosystem', role: 'Industry/community reference — not a paid-client relationship for this case' },
+        { name: 'TDNA (non-profit)', role: 'Industry and community links; no paid-client relationship on this case' },
       ],
       deliverables: [
         'Venue and resource mapping, business linkage',
@@ -130,7 +130,7 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       period: '2026年度（公開入札にて落札）',
       metaDescription:
         'Twouring（遊遊股份有限公司）は花蓮県政府「115花蓮雲基地運営推進計画」専門サービス業務を公開入札で落札（公開契約額 NTD 5,880,000）。課題、役割、成果物、マイルストーンをご紹介します。',
-      lead: 'デジタルノマドと「雲基地」の運営を、単発イベントから、海外人材を受け入れ地域消費を生む都市の取り組みへと広げる花蓮県の挑戦を支援しています。',
+      lead: '花蓮県政府の委託を受け、単発イベント中心だった「雲基地」を、海外人材を受け入れ地域の消費につなげる常設の運営へ広げています。',
       contractAmount: 'NTD 5,880,000',
       contractSourceLabel: '公共入札データ（ezbid）',
       contractSourceUrl: TENDER_URL,
@@ -140,7 +140,7 @@ export const cases: Record<CaseSlug, CaseDetail> = {
         { name: 'Twouring（遊遊股份有限公司）', role: '受託・落札事業者：コンサルティング、プロジェクト統括、実行管理（PMO）' },
         { name: '徐愷（KK）', role: 'リードコンサルタント。政策関連の経歴は会社概要に記載（本案件における発注者側の役職ではありません）' },
         { name: 'デリバリーパートナー', role: '技術・施設・イベントの実施は必要に応じてパートナーが担当' },
-        { name: 'TDNA エコシステム', role: '業界・コミュニティとの連携先。本案件で TDNA が有償の顧客関係にあるわけではありません' },
+        { name: 'TDNA（非営利の協会）', role: '業界・コミュニティとの連携先。本案件で TDNA との有償の顧客関係はありません' },
       ],
       deliverables: [
         '施設・リソースの棚卸しと地元事業者の連携',
@@ -177,17 +177,17 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       period: '115 年度（公開招標得標）',
       metaDescription:
         '遊遊股份有限公司得標臺東縣政府「115年臺東縣移動式國際客廳暨數位游牧TTNomads社群平台」勞務服務採購案，公開契約金額 NTD 2,400,000。',
-      lead: '結合在地場域與國際遊牧社群，設計可延續的接待、交流與 TTNomads 社群平台連結。',
+      lead: '受臺東縣政府委託，結合在地場域與國際遊牧社群，規劃能持續運作的接待、交流活動，並經營 TTNomads 社群平台。',
       contractAmount: 'NTD 2,400,000',
       contractSourceLabel: '公開標案資料（ezbid）',
       contractSourceUrl: TENDER_URL,
       problem:
-        '結合在地場域與國際遊牧社群，設計可延續的接待、交流與在地連結，並推動 TTNomads 社群平台相關服務。',
+        '臺東有在地場域，也有國際遊牧社群，但缺少能持續運作的接待、交流與在地連結。本案規劃這些機制，並提供 TTNomads 社群平台相關服務。',
       roles: [
         { name: '遊遊股份有限公司', role: '簽約／得標廠商：顧問、活動與場域整合' },
         { name: '徐愷（KK）', role: '主導顧問；政策職務經歷另見關於頁' },
         { name: '交付合作夥伴', role: '場域、活動或技術執行依專案需要承接' },
-        { name: 'TDNA 公益生態系', role: '社群與產業連結參考；本案非 TDNA 付費客戶關係' },
+        { name: 'TDNA（公益協會）', role: '提供社群與產業連結；本案與 TDNA 沒有付費客戶關係' },
       ],
       deliverables: [
         '在地場域與社群盤點',
@@ -219,17 +219,17 @@ export const cases: Record<CaseSlug, CaseDetail> = {
       period: 'ROC Year 115 (awarded via public tender)',
       metaDescription:
         'Twouring Co., Ltd. was awarded Taitung County’s TTNomads mobile international living room & community platform services contract (NTD 2,400,000 award total).',
-      lead: 'Combining local venues with the global nomad community into lasting hosting, exchange and TTNomads platform linkage.',
+      lead: 'Commissioned by Taitung County to combine local venues with the international nomad community, plan hosting and exchange that can keep running, and operate the TTNomads community platform.',
       contractAmount: 'NTD 2,400,000',
       contractSourceLabel: 'Public tender data (ezbid)',
       contractSourceUrl: TENDER_URL,
       problem:
-        'Design lasting hosting, exchange and local connection — and deliver TTNomads community-platform related services.',
+        'Design hosting, exchange and local connections that keep running after the programme, and deliver TTNomads community-platform services.',
       roles: [
         { name: 'Twouring Co., Ltd.', role: 'Contracted / awarded vendor: advisory, programme and venue integration' },
         { name: 'Kai Hsu (KK)', role: 'Lead advisor; policy roles disclosed separately on About' },
         { name: 'Delivery partners', role: 'Venue, programme or tech delivery as needed' },
-        { name: 'TDNA ecosystem', role: 'Community/industry reference — not a paid-client relationship for this case' },
+        { name: 'TDNA (non-profit)', role: 'Community and industry links; no paid-client relationship on this case' },
       ],
       deliverables: [
         'Local venue and community mapping',
@@ -271,7 +271,7 @@ export const cases: Record<CaseSlug, CaseDetail> = {
         { name: 'Twouring（遊遊股份有限公司）', role: '受託・落札事業者：コンサルティング、プログラムと拠点の統合' },
         { name: '徐愷（KK）', role: 'リードコンサルタント。政策関連の経歴は会社概要に記載' },
         { name: 'デリバリーパートナー', role: '施設・イベント・技術の実施は必要に応じて担当' },
-        { name: 'TDNA エコシステム', role: 'コミュニティ・業界との連携先。本案件で有償の顧客関係にあるわけではありません' },
+        { name: 'TDNA（非営利の協会）', role: 'コミュニティ・業界との連携先。本案件で有償の顧客関係はありません' },
       ],
       deliverables: [
         '地域の拠点とコミュニティの棚卸し',
@@ -307,18 +307,18 @@ export const relationLabels = {
     awarded: '遊遊簽約／得標客戶',
     policy: 'KK 政策職務與專業經歷',
     partner: '交付合作夥伴',
-    ecosystem: 'TDNA 公益生態系',
+    ecosystem: 'TDNA（公益協會）',
   },
   en: {
     awarded: 'Twouring contracted / awarded clients',
     policy: 'KK’s policy roles & professional experience',
     partner: 'Delivery partners',
-    ecosystem: 'TDNA non-profit ecosystem',
+    ecosystem: 'TDNA (non-profit association)',
   },
   ja: {
     awarded: 'Twouring の受託・落札案件',
     policy: 'KK の政策関連の役職・経歴',
     partner: 'デリバリーパートナー',
-    ecosystem: 'TDNA（非営利）エコシステム',
+    ecosystem: 'TDNA（非営利の協会）',
   },
 } as const;

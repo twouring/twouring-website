@@ -33,9 +33,9 @@ export const programs: Program[] = [
     status: { zh: '新創加速計畫會員', en: 'Startup program member', ja: 'スタートアップ支援プログラム会員' },
     short: { zh: 'Inception 會員', en: 'Inception member', ja: 'Inception 会員' },
     desc: {
-      zh: 'NVIDIA 為 AI 新創設立的官方計畫。會員可使用 NVIDIA 的技術資源、開發者工具與生態系對接。',
-      en: 'NVIDIA’s official program for AI startups, giving members access to its technical resources, developer tools and ecosystem.',
-      ja: 'NVIDIA が AI スタートアップ向けに運営する公式プログラム。技術リソース、開発者ツール、エコシステムとの接点を利用できます。',
+      zh: 'NVIDIA 為 AI 新創設立的官方計畫。會員可使用 NVIDIA 的技術資源與開發者工具，並與其合作網絡對接。',
+      en: 'NVIDIA’s official program for AI startups, giving members access to its technical resources, developer tools and partner network.',
+      ja: 'NVIDIA が AI スタートアップ向けに運営する公式プログラム。技術リソースと開発者ツールを利用でき、パートナーネットワークとの接点も得られます。',
     },
     url: 'https://www.nvidia.com/en-us/startups/',
     date: '2026.11',
@@ -46,7 +46,7 @@ export const programs: Program[] = [
     status: { zh: 'Anthropic 新創計畫入選', en: 'Accepted to Anthropic’s startup program', ja: 'Anthropic スタートアップ支援に採択' },
     short: { zh: 'Claude for Startups 入選', en: 'Claude for Startups', ja: 'Claude for Startups 採択' },
     desc: {
-      zh: 'Claude 開發商 Anthropic 的官方新創計畫，入選團隊以 Claude 打造產品與服務。',
+      zh: 'Claude 開發商 Anthropic 的官方新創計畫，入選團隊以 Claude 開發產品與服務。',
       en: 'The official startup program run by Anthropic, the company behind Claude, for teams building products and services on Claude.',
       ja: 'Claude を開発する Anthropic の公式スタートアップ支援プログラム。採択チームは Claude で製品・サービスを構築します。',
     },
@@ -64,20 +64,20 @@ export const programsLabel: T = {
 /** 區塊標題與說明：講清楚對客戶的意義，不誇大。 */
 export const programsCopy: Record<Lang, { title: string; lead: string; verify: string; joined: string }> = {
   zh: {
-    title: '同時加入 OpenAI、NVIDIA、Anthropic 三家官方計畫',
-    lead: '遊遊不綁單一模型。ChatGPT、Claude 與 NVIDIA 生態系都在我們的工具箱裡，依你的流程、資安與預算選最合適的那一個。',
+    title: '遊遊參與 OpenAI、NVIDIA、Anthropic 的官方計畫',
+    lead: '遊遊不綁定單一模型。ChatGPT、Claude 與 NVIDIA 的工具我們都會用，依你的流程、資安要求與預算選擇。',
     verify: '官方計畫說明',
     joined: '加入',
   },
   en: {
     title: 'In the official programs of OpenAI, NVIDIA and Anthropic',
-    lead: 'We are not tied to one model vendor. ChatGPT, Claude and the NVIDIA ecosystem are all in our toolbox, and we pick what fits your workflow, security needs and budget.',
+    lead: 'We are not tied to one model vendor. We work with ChatGPT, Claude and NVIDIA tools, and choose based on your workflow, security requirements and budget.',
     verify: 'About the program',
     joined: 'Joined',
   },
   ja: {
     title: 'OpenAI・NVIDIA・Anthropic の公式プログラムに参加',
-    lead: '特定のモデルに縛られません。ChatGPT、Claude、NVIDIA のエコシステムを使い分け、業務フロー・セキュリティ・予算に合うものを選びます。',
+    lead: '特定のモデルに縛られません。ChatGPT、Claude、NVIDIA のツールを使い分け、業務フロー・セキュリティ要件・予算に合わせて選びます。',
     verify: 'プログラムの説明',
     joined: '参加',
   },

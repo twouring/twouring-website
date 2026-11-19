@@ -10,11 +10,11 @@ export const homeFaq = {
   zh: [
     {
       q: 'Twouring 遊遊是做什麼的？',
-      a: 'Twouring 遊遊（遊遊股份有限公司）是企業 AI 導入與城市數位轉型顧問。協助企業做 AI 健檢、90 天路線圖、流程自動化與內訓；協助地方政府規劃數位遊牧城市策略、友善場域與國際人才專案。',
+      a: 'Twouring 遊遊（遊遊股份有限公司）是企業 AI 導入與城市數位轉型顧問公司。企業客戶的服務包括 AI 健檢、90 天路線圖、流程自動化與內訓；地方政府的服務包括數位遊牧城市策略、友善場域與國際人才專案。',
     },
     {
       q: '企業 AI 導入要花多少錢、多久？',
-      a: '常見起點是 AI 營運健檢約 NTD 120,000；工作流導入顧問約 NTD 150,000／月起；一日 AI 實作工作坊 NTD 80,000–100,000 起；ERP／CRM 等系統建置常見 NTD 1,000,000–3,000,000，先 4 週 PoC 再建置。標準路徑是 30 分鐘需求初談 → 付費診斷 → 90 天試點與 KPI 驗收。實際報價依範圍與是否含技術開發而定。',
+      a: '常見起點是 AI 營運健檢約 NTD 120,000；工作流導入顧問約 NTD 150,000／月起；一日 AI 實作工作坊 NTD 80,000–100,000 起；ERP／CRM 等系統建置常見 NTD 1,000,000–3,000,000，先 4 週 PoC 再建置。一般流程是先做 30 分鐘需求初談，再做付費診斷，接著 90 天試點並以 KPI 驗收。實際報價依範圍與是否含技術開發而定。',
     },
     {
       q: '我們公司沒有 ERP、資料都在 Excel，也能做嗎？',
@@ -26,7 +26,7 @@ export const homeFaq = {
     },
     {
       q: '誰負責我的案子？',
-      a: '需求判斷、關鍵提案與品質把關由負責人徐愷（KK）負責：台大資工畢業、前 MoBagel 技術副總、AWS 認證架構師、15 年軟體經驗。日常執行由專案團隊承接，系統工程由長期合作的適才科技（Adata）團隊交付，合約一律由遊遊簽署。',
+      a: '需求判斷、主要提案與品質把關由負責人徐愷（KK）負責。KK 台大資工畢業，曾任 MoBagel 技術副總，是 AWS 認證架構師，有 15 年軟體經驗。日常執行由專案團隊承接，系統工程由長期合作的適才科技（Adata）團隊交付，合約一律由遊遊簽署。',
     },
     {
       q: '花蓮、臺東案是遊遊的客戶嗎？契約金額多少？',
@@ -44,11 +44,11 @@ export const homeFaq = {
     },
     {
       q: 'How much does enterprise AI adoption cost, and how long does it take?',
-      a: 'A common starting point is an AI operations health-check around NTD 120,000; workflow advisory from about NTD 150,000/mo; a one-day hands-on AI workshop from NTD 80,000–100,000; ERP/CRM-type system builds typically NTD 1,000,000–3,000,000 with a 4-week PoC first. The path is a free 30-minute discovery call → paid diagnostic → 90-day pilot with KPIs. Quotes depend on scope and whether build is included.',
+      a: 'A common starting point is an AI operations health-check around NTD 120,000; workflow advisory from about NTD 150,000/mo; a one-day hands-on AI workshop from NTD 80,000–100,000; ERP/CRM-type system builds typically NTD 1,000,000–3,000,000 with a 4-week PoC first. The usual sequence is a free 30-minute discovery call, then a paid diagnostic, then a 90-day pilot signed off against KPIs. Quotes depend on scope and whether build is included.',
     },
     {
       q: 'We have no ERP and everything lives in Excel. Can you still help?',
-      a: 'Yes — that is the most common starting point. A 2–3 week requirements review maps your quoting, order intake, inventory and production-tracking flows and spreadsheets, finds the three steps that cost the most labour or cause the most errors, and decides which to digitise first. We integrate with what you already run rather than forcing a full replacement.',
+      a: 'Yes. That is the most common starting point. A 2–3 week requirements review maps your quoting, order intake, inventory and production-tracking flows and spreadsheets, finds the three steps that cost the most labour or cause the most errors, and decides which to digitise first. We integrate with what you already run rather than forcing a full replacement.',
     },
     {
       q: 'Will training or rollout touch our confidential data?',
@@ -56,7 +56,7 @@ export const homeFaq = {
     },
     {
       q: 'Who is actually responsible for my project?',
-      a: 'Scoping, key proposals and quality control sit with founder Kai Hsu (KK): NTU Computer Science graduate, former VP of Engineering at MoBagel, AWS-certified architect, 15 years in software. Day-to-day delivery is handled by the project team; systems engineering is delivered by long-term partner Adata, and every contract is signed by Twouring.',
+      a: 'Scoping, main proposals and quality control sit with founder Kai Hsu (KK): NTU Computer Science graduate, former VP of Engineering at MoBagel, AWS-certified architect, 15 years in software. Day-to-day delivery is handled by the project team; systems engineering is delivered by long-term partner Adata, and every contract is signed by Twouring.',
     },
     {
       q: 'Are Hualien and Taitung Twouring clients, and what were the contract amounts?',
@@ -74,7 +74,7 @@ export const homeFaq = {
     },
     {
       q: '企業のAI導入にはどれくらいの費用と期間がかかりますか？',
-      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜、1日のAI実践研修がNTD 80,000〜100,000程度〜です。ERP／CRMなどのシステム構築は一般的にNTD 1,000,000〜3,000,000で、まず4週間のPoCを行います。標準的な流れは、無料の30分初回ヒアリング → 有償診断 → KPIによる検収を伴う90日間の試行です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
+      a: '一般的な出発点は、AI業務診断がNTD 120,000程度、ワークフロー導入コンサルティングが月額NTD 150,000程度〜、1日のAI実践研修がNTD 80,000〜100,000程度〜です。ERP／CRMなどのシステム構築は一般的にNTD 1,000,000〜3,000,000で、まず4週間のPoCを行います。通常の流れは、無料の30分初回ヒアリング、有償診断、KPIで検収する90日間の試行の順です。実際のお見積もりは、範囲と技術開発を含むかどうかによって異なります。',
     },
     {
       q: 'ERPがなく、データがすべてExcelにある状態でも依頼できますか？',
@@ -103,11 +103,11 @@ export const aiConsultingFaq = {
   zh: [
     {
       q: '什麼是企業 AI 導入顧問？',
-      a: '企業 AI 導入顧問先盤點流程與工具，再決定要自動化的工作流、工具選型、訓練與 KPI，而不是先買一套系統。Twouring 遊遊負責診斷與 PMO；技術交付可由適才科技或指定供應商承接。',
+      a: '企業 AI 導入顧問先盤點流程與工具，再決定要自動化的工作流、工具選型、訓練與 KPI，不會一開始就買系統。Twouring 遊遊負責診斷與 PMO；技術交付可由適才科技或指定供應商承接。',
     },
     {
       q: 'AI 顧問、內訓和系統開發有何不同？',
-      a: '顧問解決「從哪開始、怎麼排優先」；內訓建立決策層與團隊共同語言；系統開發在流程已清楚後落地整合。三者是不同採購，可依階段搭配，不應混成一包萬能方案。',
+      a: '顧問處理「從哪開始、先做哪件」；內訓讓主管與團隊對 AI 有一致的理解；系統開發在流程確定後做串接與建置。三者是不同的採購，可依階段搭配，不建議包成一個大方案。',
     },
     {
       q: '公司資料能不能放進 ChatGPT 或 Copilot？',
@@ -117,11 +117,11 @@ export const aiConsultingFaq = {
   en: [
     {
       q: 'What is enterprise AI consulting?',
-      a: 'Enterprise AI consulting maps processes and tools first, then chooses workflows, tooling, training and KPIs — instead of buying a system first. Twouring owns diagnosis and PMO; tech delivery can go through Adata or a named vendor.',
+      a: 'Enterprise AI consulting maps processes and tools first, then chooses workflows, tooling, training and KPIs, rather than starting by buying a system. Twouring owns diagnosis and PMO; tech delivery can go through Adata or a named vendor.',
     },
     {
       q: 'How do AI consulting, training and building a system differ?',
-      a: 'Consulting answers where to start and what to prioritise; training builds shared language; build ships integrations once the process is clear. They are different purchases and should not be sold as one magic package.',
+      a: 'Consulting answers where to start and what to do first; training gives managers and staff a shared understanding of AI; build delivers integrations once the process is settled. They are separate purchases that can be combined by stage, and we do not recommend bundling them into one large package.',
     },
     {
       q: 'Can company data go into ChatGPT or Copilot?',
@@ -135,7 +135,7 @@ export const aiConsultingFaq = {
     },
     {
       q: 'AIコンサルティング、社内研修、システム開発は何が違いますか？',
-      a: 'コンサルティングは「どこから始め、何を優先するか」を明確にします。研修は経営層とチームの共通言語をつくります。システム開発は、業務プロセスが明確になった後に連携や実装を行います。これらは別々の調達であり、段階に応じて組み合わせるべきもので、ひとまとめの万能パッケージにすべきではありません。',
+      a: 'コンサルティングは「どこから始め、何を優先するか」を明確にします。研修は経営層とチームがAIについて共通の理解を持つためのものです。システム開発は、業務プロセスが固まった後に連携や実装を行います。これらは別々の調達で、段階に応じて組み合わせられます。ひとつの大きなパッケージにまとめることはお勧めしません。',
     },
     {
       q: '社内データをChatGPTやCopilotに入力してもよいですか？',

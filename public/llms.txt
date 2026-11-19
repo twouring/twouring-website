@@ -1,6 +1,6 @@
 # Twouring 遊遊
 
-> Twouring 遊遊（遊遊股份有限公司，統一編號 95440838）是台灣的企業 AI 導入與城市數位轉型顧問公司。協助企業做 AI 營運健檢、90 天路線圖、流程自動化與內訓；協助地方政府規劃數位遊牧城市策略、友善場域與國際人才接待。公開得標實績含花蓮雲基地（契約 NTD 5,880,000）與臺東 TTNomads（契約 NTD 2,400,000）。為 OpenAI Partner Network 成員、NVIDIA Inception 計畫會員，並入選 Anthropic 新創計畫 Claude for Startups。
+> Twouring 遊遊（遊遊股份有限公司，統一編號 95440838）是台灣的企業 AI 導入與城市數位轉型顧問公司。企業服務包括 AI 營運健檢、90 天路線圖、流程自動化與內訓；地方政府服務包括數位遊牧城市策略、友善場域與國際人才接待。公開得標實績含花蓮雲基地（契約 NTD 5,880,000）與臺東 TTNomads（契約 NTD 2,400,000）。為 OpenAI Partner Network 成員、NVIDIA Inception 計畫會員，並入選 Anthropic 新創計畫 Claude for Startups。
 
 登記地址：臺北市中正區開封街一段 37 號 11 樓。營運／會議地點：臺北市中正區重慶南路一段 11 號。聯絡：us@twouring.com。品牌固定寫法：Twouring 遊遊｜遊遊股份有限公司。
 
@@ -13,14 +13,14 @@
 - [遠距與混合工作制度](https://www.twouring.com/services/remote-work-consulting/): 遠距政策、協作與績效制度顧問
 - [數位遊牧城市策略](https://www.twouring.com/services/city/): 地方政府成熟度診斷、策略與年度顧問
 - [友善場域與旅宿國際化](https://www.twouring.com/services/venue/): 數位遊牧友善商家改造（Nomad Ready 方法）
-- [國際企業參訪](https://www.twouring.com/services/international/): 台灣新創生態系與亞洲城市交流設計
-- [服務總覽](https://www.twouring.com/services/): 全部顧問入口與銷售階梯
+- [國際企業參訪](https://www.twouring.com/services/international/): 台灣企業與新創參訪、亞洲城市交流設計
+- [服務總覽](https://www.twouring.com/services/): 全部服務與合作階段
 - [遊遊愛馬仕 AI 工作空間｜方案與價格](https://www.twouring.com/pricing): 含稅按月計費，起步版 3 人 NT$6,000／月、團隊版 10 人 NT$12,000／月、企業版 20 人 NT$20,000／月；方案含獨立租戶、營運助理與 AI 模型用量。
 
 ## Work
 - [花蓮雲基地營運推廣計畫](https://www.twouring.com/cases/hualien-cloud-base/): 花蓮縣政府得標案；公開契約金額 NTD 5,880,000
 - [臺東 TTNomads](https://www.twouring.com/cases/taitung-ttnomads/): 臺東縣政府得標案；公開契約金額 NTD 2,400,000
-- [案例總覽](https://www.twouring.com/cases/): 得標客戶、政策經歷與匿名情境案例切分
+- [案例總覽](https://www.twouring.com/cases/): 得標客戶、政策經歷與未具名輔導案例，分開標示
 
 ## Insights
 - [企業 AI 導入流程與費用](https://www.twouring.com/insights/enterprise-ai-adoption-roadmap/): 健檢、90 天路線圖、KPI 與費用區間
@@ -28,7 +28,7 @@
 - [公司資料與 ChatGPT／Copilot](https://www.twouring.com/insights/company-data-in-chatgpt/): 資料風險與導入前檢查清單
 - [五部門 AI 自動化 ROI](https://www.twouring.com/insights/department-ai-automation-roi/): 機會與簡單 ROI 算法
 - [數位遊牧城市成熟度五構面](https://www.twouring.com/insights/digital-nomad-city-maturity/): 場域、資訊、社群、政策、商業
-- [洞察中心](https://www.twouring.com/insights/): 全部高採購意圖內容
+- [洞察中心](https://www.twouring.com/insights/): 全部文章
 
 ## About
 - [關於遊遊](https://www.twouring.com/about/): 品牌、KK、合作夥伴與公司登記資訊

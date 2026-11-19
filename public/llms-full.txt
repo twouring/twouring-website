@@ -1,6 +1,6 @@
 # Twouring 遊遊
 
-> Twouring 遊遊（遊遊股份有限公司，統一編號 95440838）是台灣的企業 AI 導入與城市數位轉型顧問公司。協助企業做 AI 營運健檢、90 天路線圖、流程自動化與內訓；協助地方政府規劃數位遊牧城市策略、友善場域與國際人才接待。
+> Twouring 遊遊（遊遊股份有限公司，統一編號 95440838）是台灣的企業 AI 導入與城市數位轉型顧問公司。企業服務包括 AI 營運健檢、90 天路線圖、流程自動化與內訓；地方政府服務包括數位遊牧城市策略、友善場域與國際人才接待。
 
 ## Company facts
 
@@ -20,19 +20,19 @@
 
 ## What Twouring is
 
-Twouring 遊遊是企業 AI 導入顧問，也是城市數位轉型與數位遊牧策略顧問。合作從免費的 30 分鐘需求初談開始，再進入付費診斷、顧問／PMO 與導入。技術交付可由合作夥伴適才科技承接；TDNA 為公益生態系連結，不是遊遊的付費客戶關係。
+Twouring 遊遊是企業 AI 導入顧問，也是城市數位轉型與數位遊牧策略顧問。合作從免費的 30 分鐘需求初談開始，再進入付費診斷、顧問／PMO 與導入。技術交付可由合作夥伴適才科技承接；TDNA（台灣數位遊牧者協會）是公益協會，提供社群與產業連結，不是遊遊的付費客戶。
 
 ## Awarded government cases
 
 ### 花蓮雲基地營運推廣計畫
 https://www.twouring.com/cases/hualien-cloud-base/
 
-Client: 花蓮縣政府. Public contract award: NTD 5,880,000 (tender award total, not company profit). Twouring role: contracted vendor — advisory, integration, PMO.
+Client: 花蓮縣政府. Public contract award: NTD 5,880,000 (tender award total, not company profit). Twouring role: contracted vendor (advisory, integration, PMO).
 
 ### 臺東 TTNomads
 https://www.twouring.com/cases/taitung-ttnomads/
 
-Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: contracted vendor — advisory, programme and venue integration. Cumulative published awards with Hualien: NTD 8,280,000.
+Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: contracted vendor (advisory, programme and venue integration). Cumulative published awards with Hualien: NTD 8,280,000.
 
 ## Services (definitions)
 
@@ -40,11 +40,11 @@ Client: 臺東縣政府. Public contract award: NTD 2,400,000. Twouring role: co
 - AI corporate training: executive workshops from NTD 100,000 per session.
 - AI workflow automation: identify the three workflows most worth automating and measure ROI.
 - Systems development & integration: ERP/CRM integration, quoting and order systems, part-number master data, traceability and quality documents. Requirements interview can be bought alone; a 4-week PoC with acceptance criteria in the quote comes before any build; builds typically NTD 1,000,000–3,000,000; existing ERP/HIS is kept where possible. Engineering delivered with long-term partner Adata; contracts signed by Twouring.
-- Twouring Hermes AI workspace (遊遊愛馬仕): subscription AI workspace built in-house by Twouring — a dedicated tenant per company (isolated container and storage in DigitalOcean Singapore), nine operations assistants, shared skill library, Google Drive mounts, browser agent, kanban and schedules, AI model usage included under fair use. Tax-inclusive monthly pricing: Starter 3 seats NT$6,000, Team 10 seats NT$12,000, Enterprise 20 seats NT$20,000; 6/12-month terms NT$36,000 / NT$144,000 / NT$240,000; renewals 10% off. Full price list: https://www.twouring.com/pricing
+- Twouring Hermes AI workspace (遊遊愛馬仕): subscription AI workspace built in-house by Twouring: a dedicated tenant per company (isolated container and storage in DigitalOcean Singapore), nine operations assistants, shared skill library, Google Drive mounts, browser agent, kanban and schedules, AI model usage included under fair use. Tax-inclusive monthly pricing: Starter 3 seats NT$6,000, Team 10 seats NT$12,000, Enterprise 20 seats NT$20,000; 6/12-month terms NT$36,000 / NT$144,000 / NT$240,000; renewals 10% off. Full price list: https://www.twouring.com/pricing
 - Remote / hybrid work consulting: policies, collaboration and performance systems (separate purchase from AI).
 - Digital-nomad city strategy: maturity diagnostic, strategy and annual advisory for local governments.
 - Nomad-friendly venues: internationalisation for stays, cafés and districts; Nomad Ready is the method name.
-- International visits: Taiwan business delegation and startup ecosystem visit design (not travel agency booking).
+- International visits: Taiwan business delegation and startup visit design (not travel agency booking).
 
 ## Lead advisor
 
